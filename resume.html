@@ -57,7 +57,8 @@
     32% { transform: rotate(0deg); }
   }
   @media (prefers-reduced-motion: reduce) { .jaw { animation: none; } }
-  .gator { display: block; margin: 0 0 1.25rem auto; width: clamp(9rem, 26vw, 22rem); height: auto; color: var(--gator); }
+  .gator-link { display: block; margin: 0 0 1.25rem auto; width: clamp(9rem, 26vw, 22rem); }
+  .gator { display: block; width: 100%; height: auto; color: var(--gator); }
 
   /* sections */
   section { border-bottom: var(--line) solid var(--rule); }
@@ -106,7 +107,7 @@
 <main>
 
   <header>
-    <svg class="gator" viewBox="0 0 660 170" role="img" aria-label="Blocky alligator logo" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <a class="gator-link" href="./" aria-label="Home"><svg class="gator" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
       <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
       <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
@@ -131,7 +132,7 @@
       <polygon points="68,86 84,86 76,96"/>
       <polygon points="92,86 108,86 100,96"/>
       <polygon points="116,86 132,86 124,96"/>
-    </svg>
+    </svg></a>
     <h1>Resume</h1>
     <ul class="meta">
       <li><span class="d">Garrett Heaney</span></li>
