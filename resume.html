@@ -33,19 +33,6 @@
   a:focus-visible { outline: 6px solid var(--rule); outline-offset: -6px; }
   .d { font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; }
 
-  /* site nav */
-  .site { border-bottom: var(--line) solid var(--rule); }
-  .site ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
-  .site li { flex: 1 1 auto; border-right: 1px solid var(--rule); }
-  .site li:last-child { border-right: 0; }
-  .site a {
-    display: block; padding: 0.9rem var(--pad); text-decoration: none; text-align: center;
-    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
-    font-size: clamp(0.85rem, 1.6vw, 1.3rem);
-  }
-  .site a:hover, .site a:focus-visible { background: var(--ink); color: var(--pale); }
-  .site a[aria-current="page"] { background: var(--ink); color: var(--pale); }
-
   /* hero */
   header { padding: var(--pad); border-bottom: var(--line) solid var(--rule); }
   h1 {
@@ -105,30 +92,18 @@
   footer { padding: var(--pad); font-size: clamp(0.95rem, 1.8vw, 1.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
 
   @media (max-width: 44rem) {
-    .site li { flex: 1 1 33%; border-bottom: 1px solid var(--rule); }
-    .site li:nth-child(3n) { border-right: 0; }
     .job { grid-template-columns: 1fr; }
     .when { border-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 0.75rem; }
   }
   @media print {
     html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .site, .pdf { display: none; }
+    .pdf { display: none; }
     .job { break-inside: avoid; }
   }
 </style>
 </head>
 <body>
 <main>
-  <nav class="site" aria-label="Site pages">
-    <ul>
-      <li><a href="./">Home</a></li>
-      <li><a href="resume.html" aria-current="page">Resume</a></li>
-      <li><a href="design.html">Design</a></li>
-      <li><a href="art.html">Art</a></li>
-      <li><a href="music.html">Music</a></li>
-      <li><a href="writing.html">Writing</a></li>
-    </ul>
-  </nav>
 
   <header>
     <svg class="gator" viewBox="0 0 660 170" role="img" aria-label="Blocky alligator logo" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
