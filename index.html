@@ -57,6 +57,16 @@
     margin: 0;
   }
 
+  .jaw { transform-origin: 150px 100px; animation: chomp 3.4s ease-in-out infinite; }
+  @keyframes chomp {
+    0%, 52%, 100% { transform: rotate(0deg); }
+    8%  { transform: rotate(-17deg); }
+    16% { transform: rotate(0deg); }
+    24% { transform: rotate(-17deg); }
+    32% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .jaw { animation: none; } }
+
   /* link rows */
   nav { border-bottom: var(--line) solid var(--rule); }
   nav ul { list-style: none; margin: 0; padding: 0; }
@@ -135,7 +145,7 @@
       <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
       <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
       <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
-      <polygon points="10,96 150,96 150,110 100,112 10,104"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
       <rect x="172" y="110" width="32" height="40"/>
       <rect x="150" y="142" width="54" height="14"/>
       <rect x="310" y="110" width="32" height="40"/>
