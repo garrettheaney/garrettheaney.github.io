@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art – Garrett Heaney (Auto Heaney)</title>
+<meta name="description" content="Art by Auto Heaney, the alias of Garrett Heaney. Illustration, posters and prints.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --ink: #ffffff;
+    --pale: #000000;
+    --rule: #6fe3ff;
+    --gator: #3ddc5a;
+    --display: "Archivo Black", Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --pad: clamp(1rem, 4vw, 3rem);
+    --line: 2px;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--text); font-weight: 500;
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 90rem; margin: 0 auto; background: var(--bg); border-left: var(--line) solid var(--rule); border-right: var(--line) solid var(--rule); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 4px solid var(--rule); outline-offset: -4px; }
+  .d { font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; }
+
+  /* hero */
+  header { padding: var(--pad); border-bottom: var(--line) solid var(--rule); position: relative; }
+  .top {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(1rem, 2.2vw, 1.8rem); line-height: 1.05;
+    margin: 0 0 clamp(4rem, 12vw, 10rem); max-width: 55%;
+  }
+  .nb { white-space: nowrap; }
+  .gator-link { position: absolute; top: var(--pad); right: var(--pad); width: clamp(9rem, 28vw, 24rem); }
+  .gator { display: block; width: 100%; height: auto; color: var(--gator); }
+  .jaw { transform-origin: 150px 100px; animation: chomp 3.4s ease-in-out infinite; }
+  @keyframes chomp {
+    0%, 52%, 100% { transform: rotate(0deg); }
+    8%  { transform: rotate(-17deg); }
+    16% { transform: rotate(0deg); }
+    24% { transform: rotate(-17deg); }
+    32% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .jaw { animation: none; } }
+  h1 {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(5rem, 40vw, 34rem); line-height: 0.8; letter-spacing: -0.045em; margin: 0;
+  }
+  .hint { margin: 1.5rem 0 0; font-weight: 800; text-transform: uppercase; font-size: 0.95em; }
+  .hint b { font-family: var(--display); font-weight: 900; font-synthesis: none; }
+
+  /* gallery */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+    grid-auto-rows: clamp(20rem, 34vw, 31rem);
+    grid-auto-flow: dense;
+    border-bottom: var(--line) solid var(--rule);
+  }
+  .cell {
+    display: flex; flex-direction: column;
+    padding: clamp(0.75rem, 1.6vw, 1.25rem);
+    border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    text-decoration: none; min-width: 0; min-height: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cell.wide { grid-column: span 2; }
+  .grid .cell:last-child { border-bottom: 0; }
+  .frame { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: transform 0.25s; }
+  .cap {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--rule);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.8rem, 1.1vw, 1rem); line-height: 1.1;
+  }
+  .num { color: var(--rule); flex: none; }
+  .ttl { text-align: right; }
+  .cell:hover, .cell:focus-visible { background: var(--ink); color: var(--bg); }
+  .cell:hover .num, .cell:focus-visible .num { color: var(--bg); }
+  .cell:hover .cap, .cell:focus-visible .cap { border-top-color: var(--bg); }
+  .cell:hover .frame img { transform: scale(1.03); }
+  @media (prefers-reduced-motion: reduce) { .cell:hover .frame img { transform: none; } }
+  @media (max-width: 34rem) { .cell.wide { grid-column: span 1; } }
+
+  footer { padding: var(--pad); font-size: clamp(0.95rem, 1.8vw, 1.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
+  footer a { text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  footer a:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+
+  /* viewer */
+  dialog {
+    width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+    background: var(--bg); color: var(--ink); overflow: hidden;
+  }
+  dialog::backdrop { background: #000; }
+  .viewer { display: grid; grid-template-rows: auto 1fr auto; height: 100%; }
+  .vbar { display: flex; justify-content: space-between; align-items: stretch; border-bottom: 1px solid var(--rule); }
+  .vcount { padding: 0.8rem var(--pad); font-size: clamp(0.9rem, 1.6vw, 1.3rem); display: flex; align-items: center; }
+  .vbtn {
+    appearance: none; background: transparent; color: inherit; border: 0; border-left: 1px solid var(--rule);
+    font: inherit; cursor: pointer; padding: 0.8rem clamp(1rem, 3vw, 2rem);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .vbtn:hover { background: var(--ink); color: var(--bg); }
+  .vstage { min-height: 0; display: grid; grid-template-columns: auto 1fr auto; align-items: stretch; }
+  .vstage .vbtn { border: 0; border-right: 1px solid var(--rule); writing-mode: vertical-rl; }
+  .vstage .vbtn.next { border-right: 0; border-left: 1px solid var(--rule); }
+  .vstage .vbtn.prev { transform: rotate(180deg); border-right: 0; border-left: 1px solid var(--rule); }
+  .vfig { margin: 0; min-height: 0; min-width: 0; display: flex; align-items: center; justify-content: center; padding: clamp(0.75rem, 2.5vw, 2rem); touch-action: pan-y; }
+  .vfig img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+  .vcap {
+    border-top: 1px solid var(--rule); padding: 0.9rem var(--pad);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(1rem, 2.4vw, 1.9rem); line-height: 1.05;
+  }
+  @media (max-width: 40rem) {
+    .vstage { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+    .vstage .vbtn { display: none; }
+    .mnav { display: flex !important; }
+  }
+  .mnav { display: none; border-top: 1px solid var(--rule); }
+  .mnav .vbtn { flex: 1; border-left: 0; border-right: 1px solid var(--rule); padding: 1rem; }
+  .mnav .vbtn:last-child { border-right: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="top">I create art under the alias <span class="nb">Auto Heaney.</span></p>
+    <a class="gator-link" href="./" aria-label="Home"><svg class="gator" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/>
+      <rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg></a>
+    <h1>Art</h1>
+    <p class="hint"><b>40</b> pieces. Select any one to view it larger.</p>
+  </header>
+
+  <section aria-label="Gallery">
+    <div class="grid">
+      <a class="cell" href="art/full/01-selfie.webp" data-i="0">
+        <span class="frame"><img src="art/thumb/01-selfie.webp" width="500" height="636" alt="A yellow-faced figure with a square head in a gray suit and tie" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">01</span><span class="ttl">Selfie</span></span>
+      </a>
+      <a class="cell wide" href="art/full/02-archimedes-the-bird.webp" data-i="1">
+        <span class="frame"><img src="art/thumb/02-archimedes-the-bird.webp" width="800" height="639" alt="Illustrated kitchen wall of cabinets and appliances with a small bird" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">02</span><span class="ttl">Archimedes the Bird</span></span>
+      </a>
+      <a class="cell" href="art/full/03-crocodile.webp" data-i="2">
+        <span class="frame"><img src="art/thumb/03-crocodile.webp" width="500" height="662" alt="A figure in a black t-shirt and green cap in front of a purple city under a cyan sky" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">03</span><span class="ttl">Crocodile</span></span>
+      </a>
+      <a class="cell wide" href="art/full/04-eights.webp" data-i="3">
+        <span class="frame"><img src="art/thumb/04-eights.webp" width="800" height="518" alt="Black figure-eight shapes and dots scattered across a gray field" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">04</span><span class="ttl">Eights</span></span>
+      </a>
+      <a class="cell" href="art/full/05-pursuit-of-peace.webp" data-i="4">
+        <span class="frame"><img src="art/thumb/05-pursuit-of-peace.webp" width="601" height="800" alt="Blue mountains above water with bunting strung across the top" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">05</span><span class="ttl">Pursuit of Peace</span></span>
+      </a>
+      <a class="cell" href="art/full/06-good-cop.webp" data-i="5">
+        <span class="frame"><img src="art/thumb/06-good-cop.webp" width="500" height="666" alt="A figure in a beanie and blue sweater beside the words Be Good" loading="eager" decoding="async"></span>
+        <span class="cap"><span class="num">06</span><span class="ttl">Good Cop</span></span>
+      </a>
+      <a class="cell" href="art/full/07-fridge.webp" data-i="6">
+        <span class="frame"><img src="art/thumb/07-fridge.webp" width="500" height="719" alt="Overhead view of a kitchen with appliances and a vinyl record on the floor" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">07</span><span class="ttl">Fridge</span></span>
+      </a>
+      <a class="cell" href="art/full/08-lover.webp" data-i="7">
+        <span class="frame"><img src="art/thumb/08-lover.webp" width="500" height="666" alt="A figure in a white knit hat and red sweater on a white background" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">08</span><span class="ttl">Lover</span></span>
+      </a>
+      <a class="cell" href="art/full/09-dee-brown.webp" data-i="8">
+        <span class="frame"><img src="art/thumb/09-dee-brown.webp" width="543" height="800" alt="A basketball player mid-dunk beside the hoop on a gray background" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">09</span><span class="ttl">Dee Brown</span></span>
+      </a>
+      <a class="cell wide" href="art/full/10-airplanes.webp" data-i="9">
+        <span class="frame"><img src="art/thumb/10-airplanes.webp" width="752" height="600" alt="A flock of paper airplanes on an orange background" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">10</span><span class="ttl">Airplanes</span></span>
+      </a>
+      <a class="cell" href="art/full/11-expander.webp" data-i="10">
+        <span class="frame"><img src="art/thumb/11-expander.webp" width="500" height="679" alt="A black balloon with pink hearts floating above small gray buildings" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">11</span><span class="ttl">Expander</span></span>
+      </a>
+      <a class="cell" href="art/full/12-megaman.webp" data-i="11">
+        <span class="frame"><img src="art/thumb/12-megaman.webp" width="500" height="691" alt="A robot in an astronaut helmet on black with the word Heaney" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">12</span><span class="ttl">Megaman</span></span>
+      </a>
+      <a class="cell wide" href="art/full/13-belles-lettres.webp" data-i="12">
+        <span class="frame"><img src="art/thumb/13-belles-lettres.webp" width="700" height="494" alt="Cursive text reading belles lettres over blue water" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">13</span><span class="ttl">Belles Lettres</span></span>
+      </a>
+      <a class="cell" href="art/full/14-players.webp" data-i="13">
+        <span class="frame"><img src="art/thumb/14-players.webp" width="500" height="634" alt="Three tall rounded figures in blue and green with red circles" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">14</span><span class="ttl">Players</span></span>
+      </a>
+      <a class="cell" href="art/full/15-blockface.webp" data-i="14">
+        <span class="frame"><img src="art/thumb/15-blockface.webp" width="500" height="666" alt="A circular map of blue rectangles and dotted lines" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">15</span><span class="ttl">Blockface</span></span>
+      </a>
+      <a class="cell" href="art/full/16-meet-and-greet.webp" data-i="15">
+        <span class="frame"><img src="art/thumb/16-meet-and-greet.webp" width="500" height="660" alt="A figure in a cap holding a bamboo plant under a black sky" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">16</span><span class="ttl">Meet and Greet</span></span>
+      </a>
+      <a class="cell wide" href="art/full/17-business-casual.webp" data-i="16">
+        <span class="frame"><img src="art/thumb/17-business-casual.webp" width="500" height="386" alt="A figure working at a table in front of gray hills and a small boat" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">17</span><span class="ttl">Business Casual</span></span>
+      </a>
+      <a class="cell" href="art/full/18-critical-mass.webp" data-i="17">
+        <span class="frame"><img src="art/thumb/18-critical-mass.webp" width="500" height="411" alt="A dense crowd of small figures in pink and blue" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">18</span><span class="ttl">Critical Mass</span></span>
+      </a>
+      <a class="cell" href="art/full/19-cityscape-magenta.webp" data-i="18">
+        <span class="frame"><img src="art/thumb/19-cityscape-magenta.webp" width="300" height="507" alt="Tall red and white towers in a stylized skyline" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">19</span><span class="ttl">Cityscape (Magenta)</span></span>
+      </a>
+      <a class="cell" href="art/full/20-sink-it.webp" data-i="19">
+        <span class="frame"><img src="art/thumb/20-sink-it.webp" width="500" height="425" alt="A tangled green and blue landscape with a yellow figure and water" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">20</span><span class="ttl">Sink It</span></span>
+      </a>
+      <a class="cell" href="art/full/21-girl.webp" data-i="20">
+        <span class="frame"><img src="art/thumb/21-girl.webp" width="300" height="440" alt="A child in a yellow raincoat with a red heart standing on a shore" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">21</span><span class="ttl">Girl</span></span>
+      </a>
+      <a class="cell" href="art/full/22-forrest-wu.webp" data-i="21">
+        <span class="frame"><img src="art/thumb/22-forrest-wu.webp" width="500" height="500" alt="A figure in blue standing in a snowy field of bare trees with black mountains behind" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">22</span><span class="ttl">Forrest Wu</span></span>
+      </a>
+      <a class="cell" href="art/full/23-auto-heaney-lp.webp" data-i="22">
+        <span class="frame"><img src="art/thumb/23-auto-heaney-lp.webp" width="500" height="500" alt="Four panels of kitchen scenes with the name Auto Heaney down the side" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">23</span><span class="ttl">Auto Heaney LP</span></span>
+      </a>
+      <a class="cell" href="art/full/24-shoulders-of-giants.webp" data-i="23">
+        <span class="frame"><img src="art/thumb/24-shoulders-of-giants.webp" width="500" height="406" alt="A small figure pointing in front of a skyline under the word Standing" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">24</span><span class="ttl">Standing on the Shoulders of Giants</span></span>
+      </a>
+      <a class="cell" href="art/full/25-write.webp" data-i="24">
+        <span class="frame"><img src="art/thumb/25-write.webp" width="500" height="415" alt="A figure writing the word write on a brick wall" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">25</span><span class="ttl">Write</span></span>
+      </a>
+      <a class="cell" href="art/full/26-good-boi.webp" data-i="25">
+        <span class="frame"><img src="art/thumb/26-good-boi.webp" width="500" height="489" alt="A dog in a speech bubble asking who&#x27;s a good boi, on a gray circle" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">26</span><span class="ttl">Good Boi</span></span>
+      </a>
+      <a class="cell wide" href="art/full/27-moebi-heaney.webp" data-i="26">
+        <span class="frame"><img src="art/thumb/27-moebi-heaney.webp" width="500" height="385" alt="Two purple rockets shooting beams downward against a dark sky" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">27</span><span class="ttl">Moebi Heaney</span></span>
+      </a>
+      <a class="cell wide" href="art/full/28-soda-right.webp" data-i="27">
+        <span class="frame"><img src="art/thumb/28-soda-right.webp" width="500" height="323" alt="Kitchen appliances in blue and gray tones" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">28</span><span class="ttl">Soda Right</span></span>
+      </a>
+      <a class="cell wide" href="art/full/29-subview.webp" data-i="28">
+        <span class="frame"><img src="art/thumb/29-subview.webp" width="500" height="372" alt="A round window view of a blue underwater scene with small fish" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">29</span><span class="ttl">Subview</span></span>
+      </a>
+      <a class="cell" href="art/full/30-my-noodles-are-dope.webp" data-i="29">
+        <span class="frame"><img src="art/thumb/30-my-noodles-are-dope.webp" width="500" height="489" alt="A plate of yellow noodles with chopsticks on a green square" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">30</span><span class="ttl">My Noodles Are Dope</span></span>
+      </a>
+      <a class="cell wide" href="art/full/31-butterflies.webp" data-i="30">
+        <span class="frame"><img src="art/thumb/31-butterflies.webp" width="800" height="488" alt="White butterflies scattered across a green field" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">31</span><span class="ttl">Butterflies</span></span>
+      </a>
+      <a class="cell wide" href="art/full/32-golden-section-spectrum.webp" data-i="31">
+        <span class="frame"><img src="art/thumb/32-golden-section-spectrum.webp" width="500" height="355" alt="Blue and green geometric triangles and a quarter circle" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">32</span><span class="ttl">Golden Section Spectrum</span></span>
+      </a>
+      <a class="cell wide" href="art/full/33-heaney-1-3.webp" data-i="32">
+        <span class="frame"><img src="art/thumb/33-heaney-1-3.webp" width="500" height="400" alt="A bright green field of small circular patterns" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">33</span><span class="ttl">Untitled</span></span>
+      </a>
+      <a class="cell" href="art/full/34-court.webp" data-i="33">
+        <span class="frame"><img src="art/thumb/34-court.webp" width="550" height="800" alt="Teal brushstroke figures on white" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">34</span><span class="ttl">Court</span></span>
+      </a>
+      <a class="cell" href="art/full/35-one-of-ten-million.webp" data-i="34">
+        <span class="frame"><img src="art/thumb/35-one-of-ten-million.webp" width="500" height="735" alt="Stacked red geometric stripes on white with a red dot and the text Heaney 1/10000000" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">35</span><span class="ttl">1 of 10,000,000</span></span>
+      </a>
+      <a class="cell" href="art/full/36-pigeon.webp" data-i="35">
+        <span class="frame"><img src="art/thumb/36-pigeon.webp" width="571" height="800" alt="A gray pigeon on a white sheet" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">36</span><span class="ttl">Pigeon</span></span>
+      </a>
+      <a class="cell" href="art/full/37-apple.webp" data-i="36">
+        <span class="frame"><img src="art/thumb/37-apple.webp" width="450" height="655" alt="A single red apple on white" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">37</span><span class="ttl">Untitled</span></span>
+      </a>
+      <a class="cell" href="art/full/38-lemons.webp" data-i="37">
+        <span class="frame"><img src="art/thumb/38-lemons.webp" width="400" height="618" alt="A glass filled with lemons" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">38</span><span class="ttl">Untitled</span></span>
+      </a>
+      <a class="cell" href="art/full/39-cubes.webp" data-i="38">
+        <span class="frame"><img src="art/thumb/39-cubes.webp" width="333" height="415" alt="Stacked blue cubes patterned with tiny marks" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">39</span><span class="ttl">Untitled</span></span>
+      </a>
+      <a class="cell" href="art/full/40-bandit-masks.webp" data-i="39">
+        <span class="frame"><img src="art/thumb/40-bandit-masks.webp" width="500" height="646" alt="A bandit mask poster priced at five dollars" loading="lazy" decoding="async"></span>
+        <span class="cap"><span class="num">40</span><span class="ttl">Bandit Masks</span></span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="d">
+    <span>Auto Heaney / Garrett Heaney</span>
+    <a href="./">Back home</a>
+  </footer>
+</main>
+
+<dialog id="viewer" aria-label="Artwork viewer">
+  <div class="viewer">
+    <div class="vbar">
+      <div class="vcount d" id="vcount" aria-live="polite"></div>
+      <button class="vbtn" id="vclose" type="button">Close</button>
+    </div>
+    <div class="vstage" id="vstage">
+      <button class="vbtn prev" id="vprev" type="button" aria-label="Previous piece">Prev</button>
+      <figure class="vfig"><img id="vimg" alt=""></figure>
+      <button class="vbtn next" id="vnext" type="button" aria-label="Next piece">Next</button>
+      <div class="mnav">
+        <button class="vbtn" id="mprev" type="button">Prev</button>
+        <button class="vbtn" id="mnext" type="button">Next</button>
+      </div>
+    </div>
+    <div class="vcap" id="vcap"></div>
+  </div>
+</dialog>
+
+<script>
+  /* To add, remove or reorder pieces: edit this list and the matching tiles above. */
+  const works = [
+  {
+    "src": "art/full/01-selfie.webp",
+    "title": "Selfie",
+    "alt": "A yellow-faced figure with a square head in a gray suit and tie"
+  },
+  {
+    "src": "art/full/02-archimedes-the-bird.webp",
+    "title": "Archimedes the Bird",
+    "alt": "Illustrated kitchen wall of cabinets and appliances with a small bird"
+  },
+  {
+    "src": "art/full/03-crocodile.webp",
+    "title": "Crocodile",
+    "alt": "A figure in a black t-shirt and green cap in front of a purple city under a cyan sky"
+  },
+  {
+    "src": "art/full/04-eights.webp",
+    "title": "Eights",
+    "alt": "Black figure-eight shapes and dots scattered across a gray field"
+  },
+  {
+    "src": "art/full/05-pursuit-of-peace.webp",
+    "title": "Pursuit of Peace",
+    "alt": "Blue mountains above water with bunting strung across the top"
+  },
+  {
+    "src": "art/full/06-good-cop.webp",
+    "title": "Good Cop",
+    "alt": "A figure in a beanie and blue sweater beside the words Be Good"
+  },
+  {
+    "src": "art/full/07-fridge.webp",
+    "title": "Fridge",
+    "alt": "Overhead view of a kitchen with appliances and a vinyl record on the floor"
+  },
+  {
+    "src": "art/full/08-lover.webp",
+    "title": "Lover",
+    "alt": "A figure in a white knit hat and red sweater on a white background"
+  },
+  {
+    "src": "art/full/09-dee-brown.webp",
+    "title": "Dee Brown",
+    "alt": "A basketball player mid-dunk beside the hoop on a gray background"
+  },
+  {
+    "src": "art/full/10-airplanes.webp",
+    "title": "Airplanes",
+    "alt": "A flock of paper airplanes on an orange background"
+  },
+  {
+    "src": "art/full/11-expander.webp",
+    "title": "Expander",
+    "alt": "A black balloon with pink hearts floating above small gray buildings"
+  },
+  {
+    "src": "art/full/12-megaman.webp",
+    "title": "Megaman",
+    "alt": "A robot in an astronaut helmet on black with the word Heaney"
+  },
+  {
+    "src": "art/full/13-belles-lettres.webp",
+    "title": "Belles Lettres",
+    "alt": "Cursive text reading belles lettres over blue water"
+  },
+  {
+    "src": "art/full/14-players.webp",
+    "title": "Players",
+    "alt": "Three tall rounded figures in blue and green with red circles"
+  },
+  {
+    "src": "art/full/15-blockface.webp",
+    "title": "Blockface",
+    "alt": "A circular map of blue rectangles and dotted lines"
+  },
+  {
+    "src": "art/full/16-meet-and-greet.webp",
+    "title": "Meet and Greet",
+    "alt": "A figure in a cap holding a bamboo plant under a black sky"
+  },
+  {
+    "src": "art/full/17-business-casual.webp",
+    "title": "Business Casual",
+    "alt": "A figure working at a table in front of gray hills and a small boat"
+  },
+  {
+    "src": "art/full/18-critical-mass.webp",
+    "title": "Critical Mass",
+    "alt": "A dense crowd of small figures in pink and blue"
+  },
+  {
+    "src": "art/full/19-cityscape-magenta.webp",
+    "title": "Cityscape (Magenta)",
+    "alt": "Tall red and white towers in a stylized skyline"
+  },
+  {
+    "src": "art/full/20-sink-it.webp",
+    "title": "Sink It",
+    "alt": "A tangled green and blue landscape with a yellow figure and water"
+  },
+  {
+    "src": "art/full/21-girl.webp",
+    "title": "Girl",
+    "alt": "A child in a yellow raincoat with a red heart standing on a shore"
+  },
+  {
+    "src": "art/full/22-forrest-wu.webp",
+    "title": "Forrest Wu",
+    "alt": "A figure in blue standing in a snowy field of bare trees with black mountains behind"
+  },
+  {
+    "src": "art/full/23-auto-heaney-lp.webp",
+    "title": "Auto Heaney LP",
+    "alt": "Four panels of kitchen scenes with the name Auto Heaney down the side"
+  },
+  {
+    "src": "art/full/24-shoulders-of-giants.webp",
+    "title": "Standing on the Shoulders of Giants",
+    "alt": "A small figure pointing in front of a skyline under the word Standing"
+  },
+  {
+    "src": "art/full/25-write.webp",
+    "title": "Write",
+    "alt": "A figure writing the word write on a brick wall"
+  },
+  {
+    "src": "art/full/26-good-boi.webp",
+    "title": "Good Boi",
+    "alt": "A dog in a speech bubble asking who's a good boi, on a gray circle"
+  },
+  {
+    "src": "art/full/27-moebi-heaney.webp",
+    "title": "Moebi Heaney",
+    "alt": "Two purple rockets shooting beams downward against a dark sky"
+  },
+  {
+    "src": "art/full/28-soda-right.webp",
+    "title": "Soda Right",
+    "alt": "Kitchen appliances in blue and gray tones"
+  },
+  {
+    "src": "art/full/29-subview.webp",
+    "title": "Subview",
+    "alt": "A round window view of a blue underwater scene with small fish"
+  },
+  {
+    "src": "art/full/30-my-noodles-are-dope.webp",
+    "title": "My Noodles Are Dope",
+    "alt": "A plate of yellow noodles with chopsticks on a green square"
+  },
+  {
+    "src": "art/full/31-butterflies.webp",
+    "title": "Butterflies",
+    "alt": "White butterflies scattered across a green field"
+  },
+  {
+    "src": "art/full/32-golden-section-spectrum.webp",
+    "title": "Golden Section Spectrum",
+    "alt": "Blue and green geometric triangles and a quarter circle"
+  },
+  {
+    "src": "art/full/33-heaney-1-3.webp",
+    "title": "Untitled",
+    "alt": "A bright green field of small circular patterns"
+  },
+  {
+    "src": "art/full/34-court.webp",
+    "title": "Court",
+    "alt": "Teal brushstroke figures on white"
+  },
+  {
+    "src": "art/full/35-one-of-ten-million.webp",
+    "title": "1 of 10,000,000",
+    "alt": "Stacked red geometric stripes on white with a red dot and the text Heaney 1/10000000"
+  },
+  {
+    "src": "art/full/36-pigeon.webp",
+    "title": "Pigeon",
+    "alt": "A gray pigeon on a white sheet"
+  },
+  {
+    "src": "art/full/37-apple.webp",
+    "title": "Untitled",
+    "alt": "A single red apple on white"
+  },
+  {
+    "src": "art/full/38-lemons.webp",
+    "title": "Untitled",
+    "alt": "A glass filled with lemons"
+  },
+  {
+    "src": "art/full/39-cubes.webp",
+    "title": "Untitled",
+    "alt": "Stacked blue cubes patterned with tiny marks"
+  },
+  {
+    "src": "art/full/40-bandit-masks.webp",
+    "title": "Bandit Masks",
+    "alt": "A bandit mask poster priced at five dollars"
+  }
+];
+
+  const dlg = document.getElementById('viewer');
+  const img = document.getElementById('vimg');
+  const cap = document.getElementById('vcap');
+  const count = document.getElementById('vcount');
+  let cur = 0, opener = null;
+
+  function show(i) {
+    cur = (i + works.length) % works.length;
+    const w = works[cur];
+    img.src = w.src;
+    img.alt = w.alt;
+    cap.textContent = w.title;
+    count.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(works.length).padStart(2, '0');
+    const nxt = new Image(); nxt.src = works[(cur + 1) % works.length].src;
+    const prv = new Image(); prv.src = works[(cur - 1 + works.length) % works.length].src;
+  }
+  function open(i, el) {
+    opener = el || null;
+    show(i);
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function close() { dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
+
+  document.querySelectorAll('.cell').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      open(Number(a.dataset.i), a);
+    });
+  });
+  document.getElementById('vclose').addEventListener('click', close);
+  document.getElementById('vprev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('vnext').addEventListener('click', function () { show(cur + 1); });
+  document.getElementById('mprev').addEventListener('click', function () { show(cur - 1); });
+  document.getElementById('mnext').addEventListener('click', function () { show(cur + 1); });
+  dlg.addEventListener('close', function () {
+    document.documentElement.style.overflow = '';
+    if (opener) opener.focus();
+  });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+  });
+
+  /* swipe */
+  let sx = null;
+  const stage = document.getElementById('vstage');
+  stage.addEventListener('pointerdown', function (e) { sx = e.clientX; });
+  stage.addEventListener('pointerup', function (e) {
+    if (sx === null) return;
+    const dx = e.clientX - sx; sx = null;
+    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  });
+</script>
+</body>
+</html>
