@@ -203,8 +203,33 @@
   .menu-foot svg { width: clamp(6.5rem, 14vw, 11rem); height: auto; display: block; color: var(--gator); }
   @media (max-width: 40rem) {
     .menu-list .ds { display: none; }
-    .menu-list .nm { font-size: min(21vw, 14vh); }
+    .menu-list .nm { font-size: min(16vw, 14vh); }
   }
+
+  /* ---------- gator walks over and bites the word you pick ---------- */
+  .walker-slot { flex: none; width: clamp(6.5rem, 14vw, 11rem); }
+  .walker { width: 100%; will-change: transform; }
+  .menu-foot .walker svg { width: 100%; height: auto; display: block; color: var(--gator); transform-origin: 50% 100%; }
+  .walker.walking svg { animation: waddle 0.26s ease-in-out infinite alternate; }
+  @keyframes waddle { from { transform: rotate(-2.5deg) translateY(0); } to { transform: rotate(2.5deg) translateY(-5px); } }
+  .walker.walking .la { animation: step 0.26s ease-in-out infinite alternate; }
+  .walker.walking .lb { animation: step 0.26s ease-in-out infinite alternate-reverse; }
+  @keyframes step { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+  .walker.walking .jaw { animation: none; }
+  .walker.biting .jaw { animation: bite 0.42s ease-in-out 2; }
+  @keyframes bite { 0% { transform: rotate(0deg); } 35% { transform: rotate(-24deg); } 70%, 100% { transform: rotate(0deg); } }
+  .menu-list.busy { pointer-events: none; }
+  .menu-list .nm.b1 {
+    -webkit-mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+            mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+  }
+  .menu-list .nm.b2 {
+    -webkit-mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+            mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+    -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+  }
+  .crumb { position: fixed; z-index: 60; width: 0.65rem; height: 0.65rem; background: var(--rule); pointer-events: none; }
   @media print { .menu-btn, .menu-fixed, #menu { display: none !important; } }
 </style>
 </head>
@@ -301,7 +326,7 @@
     </ul>
     <div class="menu-foot">
       <a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a>
-      <svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <div class="walker-slot"><div class="walker"><svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
       <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
       <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
@@ -313,10 +338,10 @@
       <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
       <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
       <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
-      <rect x="172" y="110" width="32" height="40"/>
-      <rect x="150" y="142" width="54" height="14"/>
-      <rect x="310" y="110" width="32" height="40"/>
-      <rect x="288" y="142" width="54" height="14"/>
+      <g class="la"><rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/></g>
+      <g class="lb"><rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/></g>
       <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
       <rect x="132" y="54" width="6" height="6"/>
       <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
@@ -326,7 +351,7 @@
       <polygon points="68,86 84,86 76,96"/>
       <polygon points="92,86 108,86 100,96"/>
       <polygon points="116,86 132,86 124,96"/>
-    </svg>
+    </svg></div></div>
     </div>
   </div>
 </dialog>
@@ -360,6 +385,82 @@
       fixed.tabIndex = away ? 0 : -1;
     }, { threshold: 0 }).observe(hero);
   }
+})();
+</script>
+
+<script>
+/* the gator walks to the word you pick, bites it, then the page loads */
+(function () {
+  var dlg = document.getElementById('menu');
+  if (!dlg) return;
+  var list = dlg.querySelector('.menu-list');
+  var walker = dlg.querySelector('.walker');
+  var slot = dlg.querySelector('.walker-slot');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var busy = false, anim = null, crumbs = [], timers = [];
+
+  function reset() {
+    busy = false;
+    timers.forEach(clearTimeout); timers = [];
+    if (anim) { anim.cancel(); anim = null; }
+    walker.classList.remove('walking', 'biting');
+    walker.style.cssText = '';
+    slot.style.height = '';
+    list.classList.remove('busy');
+    dlg.querySelectorAll('.nm').forEach(function (n) { n.classList.remove('b1', 'b2'); });
+    crumbs.forEach(function (c) { c.remove(); }); crumbs = [];
+  }
+  function spray(x, y) {
+    for (var i = 0; i < 7; i++) {
+      var c = document.createElement('i');
+      c.className = 'crumb'; c.style.left = x + 'px'; c.style.top = y + 'px';
+      dlg.appendChild(c); crumbs.push(c);
+      var dx = (Math.random() - 0.7) * 160, dy = (Math.random() - 0.5) * 140;
+      c.animate([{ transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+                 { transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + (Math.random() * 360) + 'deg)', opacity: 0 }],
+                { duration: 600 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
+    }
+  }
+  function go(a) {
+    busy = true; list.classList.add('busy');
+    var nm = a.querySelector('.nm');
+    var r0 = walker.getBoundingClientRect();
+    slot.style.height = r0.height + 'px';
+    walker.style.position = 'fixed';
+    walker.style.left = r0.left + 'px'; walker.style.top = r0.top + 'px';
+    walker.style.width = r0.width + 'px'; walker.style.margin = '0';
+    walker.style.zIndex = '50'; walker.style.transformOrigin = '0 0';
+    var S = window.innerWidth < 640 ? 1.1 : 1.7, mx = r0.width * (10 / 660), my = r0.height * (91 / 170);
+    var w = nm.getBoundingClientRect();
+    var tx = w.right - w.height * 0.1, ty = w.top + w.height * 0.52;
+    var dx = tx - r0.left - S * mx, dy = ty - r0.top - S * my;
+    var dur = Math.max(650, Math.min(1100, Math.hypot(dx, dy) * 0.9));
+    walker.classList.add('walking');
+    anim = walker.animate(
+      [{ transform: 'translate(0,0) scale(1)' }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + S + ')' }],
+      { duration: dur, easing: 'cubic-bezier(.45,.05,.35,1)', fill: 'forwards' });
+    anim.onfinish = function () {
+      walker.classList.remove('walking'); walker.classList.add('biting');
+      timers.push(setTimeout(function () { nm.classList.add('b1'); spray(tx, ty); }, 280));
+      timers.push(setTimeout(function () { nm.classList.add('b2'); spray(tx, ty); }, 700));
+      timers.push(setTimeout(function () {
+        if (a.getAttribute('aria-current') === 'page') dlg.close();
+        else window.location.href = a.href;
+      }, 1000));
+    };
+  }
+  dlg.querySelectorAll('.menu-list a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      if (reduce.matches) return;
+      e.preventDefault();
+      if (!busy) go(a);
+    });
+  });
+  dlg.addEventListener('close', reset);
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { if (dlg.open) dlg.close(); reset(); }
+  });
 })();
 </script>
 </body>
