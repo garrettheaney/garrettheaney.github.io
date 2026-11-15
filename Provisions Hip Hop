@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music – Garrett Heaney (Provisions Hip Hop)</title>
+<meta name="description" content="Music from Provisions Hip Hop, the Burlington, Vermont label of executive producer Auto Heaney. EPs, singles and the Know Thyself LP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000000;
+    --ink: #ffffff;
+    --pale: #000000;
+    --rule: #6fe3ff;
+    --gator: #3ddc5a;
+    --display: "Archivo Black", Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --pad: clamp(1rem, 4vw, 3rem);
+    --line: 2px;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--text); font-weight: 500;
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 90rem; margin: 0 auto; background: var(--bg); border-left: var(--line) solid var(--rule); border-right: var(--line) solid var(--rule); border-top: var(--line) solid var(--rule); border-bottom: var(--line) solid var(--rule); }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 4px solid var(--rule); outline-offset: -4px; }
+  .d { font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; }
+
+  /* hero */
+  header { padding: var(--pad); border-bottom: var(--line) solid var(--rule); position: relative; }
+  .top {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(1rem, 2.2vw, 1.8rem); line-height: 1.05;
+    margin: 0 0 clamp(4rem, 12vw, 10rem); max-width: 55%;
+  }
+  .nb { white-space: nowrap; }
+  .gator-link { position: absolute; top: var(--pad); right: var(--pad); width: clamp(9rem, 28vw, 24rem); }
+  .gator { display: block; width: 100%; height: auto; color: var(--gator); }
+  .jaw { transform-origin: 150px 100px; animation: chomp 3.4s ease-in-out infinite; }
+  @keyframes chomp {
+    0%, 52%, 100% { transform: rotate(0deg); }
+    8%  { transform: rotate(-17deg); }
+    16% { transform: rotate(0deg); }
+    24% { transform: rotate(-17deg); }
+    32% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .jaw { animation: none; } }
+  h1 {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(3.5rem, 23.5vw, 22rem); line-height: 0.8; letter-spacing: -0.045em; margin: 0;
+  }
+  .hint { margin: 1.5rem 0 0; font-weight: 800; text-transform: uppercase; font-size: 0.95em; }
+  .block-note { padding: var(--pad); margin: 0; }
+  .hint b { font-family: var(--display); font-weight: 900; font-synthesis: none; }
+
+  /* releases */
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: var(--line) solid var(--rule); }
+  .cell {
+    display: flex; flex-direction: column; min-width: 0;
+    padding: clamp(0.75rem, 1.6vw, 1.25rem);
+    border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+  }
+  .cell:nth-child(3n) { border-right: 0; }
+  .grid .cell:nth-last-child(-n+3) { border-bottom: 0; }
+  .cover { display: block; aspect-ratio: 1; overflow: hidden; background: #111; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+  .cap { margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
+  .meta-row {
+    display: flex; justify-content: space-between; gap: 1rem;
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.75rem, 1vw, 0.9rem); letter-spacing: 0.03em;
+  }
+  .kind { color: var(--rule); }
+  .ttl {
+    display: block; margin-top: 0.4rem;
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(1.2rem, 2.4vw, 2.1rem); line-height: 0.95; letter-spacing: -0.02em;
+  }
+  .cell:hover, .cell:focus-visible { background: var(--ink); color: var(--bg); }
+  .cell:hover .kind, .cell:focus-visible .kind { color: var(--bg); }
+  .cell:hover .cap, .cell:focus-visible .cap { border-top-color: var(--bg); }
+  .cell:hover .cover img { transform: scale(1.04); }
+  @media (prefers-reduced-motion: reduce) { .cell:hover .cover img { transform: none; } }
+  @media (max-width: 62rem) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cell:nth-child(3n) { border-right: 1px solid var(--rule); } .cell:nth-child(2n) { border-right: 0; }
+    .grid .cell:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); } .grid .cell:last-child { border-bottom: 0; } }
+  @media (max-width: 36rem) { .grid { grid-template-columns: 1fr; }
+    .cell, .cell:nth-child(2n), .cell:nth-child(3n) { border-right: 0; } }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+  .links a, .vlink {
+    display: inline-block; border: 2px solid var(--rule); padding: 0.55rem 1rem; text-decoration: none; color: var(--ink);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; font-size: 0.95rem;
+  }
+  .links a:hover, .vlink:hover { background: var(--ink); color: var(--bg); }
+  .block-note { padding: var(--pad); margin: 0; }
+  .noscript-list { padding: var(--pad); margin: 0; }
+  .noscript-list a { text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+  footer { padding: var(--pad); font-size: clamp(0.95rem, 1.8vw, 1.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
+  footer a { text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  footer a:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+
+  /* viewer */
+  dialog#viewer {
+    width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+    background: var(--bg); color: var(--ink); overflow: hidden;
+  }
+  dialog#viewer::backdrop { background: #000; }
+  .viewer { display: grid; grid-template-rows: auto 1fr; height: 100%; border: var(--line) solid var(--rule); max-width: 90rem; margin: 0 auto; }
+  .vbar { display: flex; justify-content: space-between; align-items: stretch; border-bottom: 1px solid var(--rule); }
+  .vcount { padding: 0.8rem var(--pad); font-size: clamp(0.9rem, 1.6vw, 1.3rem); display: flex; align-items: center; }
+  .vbtn {
+    appearance: none; background: transparent; color: var(--ink); border: 0; border-left: 1px solid var(--rule);
+    cursor: pointer; padding: 0.8rem clamp(1rem, 3vw, 2rem);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .vbtn:hover { background: var(--ink); color: var(--bg); }
+  .vmain { min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .vcover { min-height: 0; display: flex; align-items: center; justify-content: center; padding: clamp(0.75rem, 2.5vw, 2rem); border-right: 1px solid var(--rule); }
+  .vcover img { max-width: 100%; max-height: 100%; aspect-ratio: 1; object-fit: contain; display: block; }
+  .vinfo { min-height: 0; overflow-y: auto; padding: var(--pad); }
+  .vtype { margin: 0; color: var(--rule); font-size: clamp(0.85rem, 1.3vw, 1.1rem); }
+  .vtitle {
+    margin: 0.4rem 0 1.25rem; font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(2rem, 5.2vw, 4.6rem); line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .vplayer { display: block; width: 100%; border: 0; background: transparent; }
+  .vtext { margin: 1.5rem 0; max-width: 40rem; }
+  .vtext p { margin: 0 0 0.7rem; }
+  .vdate { font-weight: 800; text-transform: uppercase; font-size: 0.9em; }
+  .vnav { display: flex; margin-top: 1.5rem; border: 1px solid var(--rule); }
+  .vnav .vbtn { flex: 1; border-left: 0; border-right: 1px solid var(--rule); }
+  .vnav .vbtn:last-child { border-right: 0; }
+  @media (max-width: 48rem) {
+    .vmain { grid-template-columns: 1fr; overflow-y: auto; display: block; }
+    .vcover { border-right: 0; border-bottom: 1px solid var(--rule); max-height: 55vh; }
+    .vcover img { max-height: 50vh; }
+    .vinfo { overflow: visible; }
+  }
+  a:focus-visible, button:focus-visible { outline: 4px solid var(--rule); outline-offset: -4px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- menu (gator button + full-screen overlay) ---------- */
+  .menu-btn { appearance: none; background: none; border: 0; padding: 0; font: inherit; color: var(--gator); cursor: pointer; text-align: right; }
+  .gator-link.menu-btn { display: block; }
+  .menu-label {
+    display: block; margin-top: 0.35rem; text-align: right; color: var(--rule);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem); letter-spacing: 0.04em;
+  }
+  .menu-btn:hover .menu-label { color: var(--ink); }
+  .menu-fixed {
+    position: fixed; top: 0; right: 0; z-index: 30;
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--bg); color: var(--gator);
+    border: 0; border-left: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    padding: 0.45rem 0.95rem; text-align: left;
+    transform: translateY(-101%); transition: transform 0.25s ease;
+  }
+  .menu-fixed.show { transform: none; }
+  .menu-fixed svg { width: 5.2rem; height: auto; display: block; }
+  .menu-fixed .t {
+    color: var(--ink); font-family: var(--display); font-weight: 900; font-synthesis: none;
+    text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.04em;
+  }
+  .menu-fixed:hover, .menu-fixed:focus-visible { background: var(--ink); }
+  .menu-fixed:hover .t, .menu-fixed:focus-visible .t { color: var(--bg); }
+  @media (prefers-reduced-motion: reduce) { .menu-fixed { transition: none; } }
+
+  #menu {
+    width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none;
+    margin: 0; padding: 0; border: 0; background: var(--bg); color: var(--ink); overflow: hidden;
+  }
+  #menu::backdrop { background: #000; }
+  #menu[open] { animation: menuIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  @keyframes menuIn { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+  @media (prefers-reduced-motion: reduce) { #menu[open] { animation: none; } }
+  .menu-inner {
+    max-width: 90rem; height: 100%; margin: 0 auto; display: flex; flex-direction: column;
+    border: var(--line) solid var(--rule);
+  }
+  .menu-bar { display: flex; justify-content: space-between; align-items: stretch; border-bottom: 1px solid var(--rule); }
+  .menu-bar .mt {
+    padding: 0.8rem var(--pad); display: flex; align-items: center;
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .menu-close {
+    appearance: none; background: transparent; color: var(--ink); border: 0; border-left: 1px solid var(--rule);
+    cursor: pointer; padding: 0.8rem clamp(1rem, 3vw, 2rem);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .menu-close:hover { background: var(--ink); color: var(--bg); }
+  .menu-list { list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .menu-list li { flex: 1; min-height: 0; border-bottom: 1px solid var(--rule); display: flex; }
+  .menu-list a {
+    flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 0 var(--pad); text-decoration: none; color: var(--ink); min-height: 0;
+  }
+  .menu-list .nm {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: min(15vw, 17vh); line-height: 0.9; letter-spacing: -0.04em;
+  }
+  .menu-list .ds { display: flex; align-items: center; gap: 0.9rem; font-weight: 800; text-align: right; text-transform: uppercase; font-size: clamp(0.8rem, 1.2vw, 1rem); max-width: 14rem; }
+  .menu-list .ds::after { content: ""; flex: none; width: 1.2rem; height: 1.2rem; background: var(--rule); }
+  .menu-list a[aria-current="page"] .ds { color: var(--rule); }
+  .menu-list a:hover, .menu-list a:focus-visible { background: var(--ink); color: var(--bg); outline: 0; }
+  .menu-list a[aria-current="page"]:hover .ds, .menu-list a[aria-current="page"]:focus-visible .ds { color: var(--bg); }
+  .menu-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem var(--pad); }
+  .menu-foot a { font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; font-size: clamp(0.85rem, 1.5vw, 1.2rem); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .menu-foot a:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+  .menu-foot svg { width: clamp(6.5rem, 14vw, 11rem); height: auto; display: block; color: var(--gator); }
+  @media (max-width: 40rem) {
+    .menu-list .ds { display: none; }
+    .menu-list .nm { font-size: min(16vw, 14vh); }
+  }
+
+  /* ---------- gator walks over and bites the word you pick ---------- */
+  .walker-slot { flex: none; width: clamp(6.5rem, 14vw, 11rem); }
+  .walker { width: 100%; will-change: transform; }
+  .menu-foot .walker svg { width: 100%; height: auto; display: block; color: var(--gator); transform-origin: 50% 100%; }
+  .walker.walking svg { animation: waddle 0.26s ease-in-out infinite alternate; }
+  @keyframes waddle { from { transform: rotate(-2.5deg) translateY(0); } to { transform: rotate(2.5deg) translateY(-5px); } }
+  .walker.walking .la { animation: step 0.26s ease-in-out infinite alternate; }
+  .walker.walking .lb { animation: step 0.26s ease-in-out infinite alternate-reverse; }
+  @keyframes step { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+  .walker.walking .jaw { animation: none; }
+  .walker.biting .jaw { animation: bite 0.42s ease-in-out 2; }
+  @keyframes bite { 0% { transform: rotate(0deg); } 35% { transform: rotate(-24deg); } 70%, 100% { transform: rotate(0deg); } }
+  .menu-list.busy { pointer-events: none; }
+  .menu-list .nm.b1 {
+    -webkit-mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+            mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+  }
+  .menu-list .nm.b2 {
+    -webkit-mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+            mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+    -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+  }
+  .crumb { position: fixed; z-index: 60; width: 0.65rem; height: 0.65rem; background: var(--rule); pointer-events: none; }
+  @media print { .menu-btn, .menu-fixed, #menu { display: none !important; } }
+</style>
+</head>
+<body>
+<button class="menu-btn menu-fixed" id="menu-fixed" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Open menu" aria-hidden="true" tabindex="-1"><svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/>
+      <rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg><span class="t">Menu</span></button>
+<main>
+  <header>
+    <p class="top">Auto Heaney is an Executive Producer from Vermont. He can’t rap or make beats.</p>
+    <button class="gator-link menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Open menu"><svg class="gator" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/>
+      <rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg><span class="menu-label">Menu</span></button>
+    <h1>Music</h1>
+    <p class="hint"><b id="total">0</b> releases on Provisions Hip Hop. Select one to listen.</p>
+    <ul class="links">
+      <li><a href="https://provisionshiphop.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a></li>
+      <li><a href="https://www.instagram.com/prov.exec/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.facebook.com/prov.exec/" target="_blank" rel="noopener">Facebook</a></li>
+    </ul>
+  </header>
+
+  <section aria-label="Releases">
+    <div class="grid" id="grid"></div>
+    <noscript><ul class="noscript-list"><li><a href="https://provisionshiphop.bandcamp.com/track/self-help">Self Help (Jan 2024)</a></li><li><a href="https://provisionshiphop.bandcamp.com/track/million-dollar-advance">Million Dollar Advance (Sep 2023)</a></li><li><a href="https://provisionshiphop.bandcamp.com/album/dont-matter-ep">Don&#x27;t Matter EP (Aug 2023)</a></li><li><a href="https://provisionshiphop.bandcamp.com/album/inner-g-ep">Inner G EP (Apr 2023)</a></li><li><a href="https://provisionshiphop.bandcamp.com/track/mind-pressure">Mind Pressure (Jan 2023)</a></li><li><a href="https://provisionshiphop.bandcamp.com/track/footprints">Footprints (Nov 2022)</a></li><li><a href="https://provisionshiphop.bandcamp.com/track/gtfo-of-work">GTFO of Work (Nov 2022)</a></li><li><a href="https://provisionshiphop.bandcamp.com/track/end-of-times">End of Times (Oct 2022)</a></li><li><a href="https://provisionshiphop.bandcamp.com/album/know-thyself-lp">Know Thyself LP (Feb 2022)</a></li></ul></noscript>
+  </section>
+
+  <footer class="d">
+    <span>Provisions Hip Hop / Burlington, Vermont</span>
+    <a href="./">Back home</a>
+  </footer>
+</main>
+
+<dialog id="viewer" aria-label="Release viewer">
+  <div class="viewer">
+    <div class="vbar">
+      <div class="vcount d" id="vcount" aria-live="polite"></div>
+      <button class="vbtn" id="vclose" type="button">Close</button>
+    </div>
+    <div class="vmain">
+      <div class="vcover"><img id="vimg" alt=""></div>
+      <div class="vinfo">
+        <p class="vtype d" id="vtype"></p>
+        <h2 class="vtitle" id="vtitle"></h2>
+        <iframe class="vplayer" id="vplayer" title="Bandcamp player" allow="autoplay" loading="lazy" seamless></iframe>
+        <div class="vtext" id="vtext"></div>
+        <a class="vlink" id="vlink" target="_blank" rel="noopener">Listen or buy on Bandcamp</a>
+        <div class="vnav">
+          <button class="vbtn" id="vprev" type="button">Prev</button>
+          <button class="vbtn" id="vnext" type="button">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  /* ------------------------------------------------------------------
+     THE RELEASE LIST
+     - Releases appear in this order. Add new releases at the TOP.
+     - The count is automatic.
+     - kind:  "album" for an EP or LP, "track" for a single
+     - id:    the number in Bandcamp's embed code for that release
+     - art:   the cover's code, like "a3767658632" (from the image link)
+     - path:  the page address after provisionshiphop.bandcamp.com
+     ------------------------------------------------------------------ */
+  const BC = 'https://provisionshiphop.bandcamp.com';
+  const releases = [
+    {"title": "Self Help", "type": "Single", "date": "January 18, 2024", "short": "Jan 2024", "kind": "track", "id": 2920861691, "art": "a3767658632", "path": "/track/self-help", "notes": ["Featuring A-F-R-O & Hughie! (AKA Mr. MFN' eXquire).", "Beats by Es-K.", "Mixed & mastered by Matt Scott for Scott Sound in Vermont."]},
+    {"title": "Million Dollar Advance", "type": "Single", "date": "September 4, 2023", "short": "Sep 2023", "kind": "track", "id": 85151945, "art": "a1353823257", "path": "/track/million-dollar-advance", "notes": ["Featuring A-F-R-O & Hughie! (fka Mr. MFN' eXquire).", "Beats by SKYWISE.", "Mixed/Mastered by Matt Scott for Scott Sound.", "Exec. Produced by Garrett Heaney for Provisions."]},
+    {"title": "Don't Matter EP", "type": "EP", "date": "August 4, 2023", "short": "Aug 2023", "kind": "album", "id": 1198272114, "art": "a0990662394", "path": "/album/dont-matter-ep", "notes": ["5 tracks.", "Produced by Pajama Sam.", "Mixed and mastered by Krohme and Matt Scott."]},
+    {"title": "Inner G EP", "type": "EP", "date": "April 9, 2023", "short": "Apr 2023", "kind": "album", "id": 2221835684, "art": "a2927919312", "path": "/album/inner-g-ep", "notes": ["4 tracks.", "All beats produced by Pajama Sam.", "Mixed/Mastered by Krohme."]},
+    {"title": "Mind Pressure", "type": "Single", "date": "January 27, 2023", "short": "Jan 2023", "kind": "track", "id": 3924002425, "art": "a1162674530", "path": "/track/mind-pressure", "notes": ["Mavstar X Subtex (Prod. Pajama Sam)."]},
+    {"title": "Footprints", "type": "Single", "date": "November 18, 2022", "short": "Nov 2022", "kind": "track", "id": 1659816149, "art": "a3259760186", "path": "/track/footprints", "notes": ["Lyrics: Wombaticus Rex & Subtex.", "Produced by Pajama Sam.", "Mix/Mastered by Matt Scott for Scott Sound."]},
+    {"title": "GTFO of Work", "type": "Single", "date": "November 18, 2022", "short": "Nov 2022", "kind": "track", "id": 2226325071, "art": "a2328848935", "path": "/track/gtfo-of-work", "notes": ["Lyrics by A-F-R-O (All Flows Reach Out) and Wombaticus Rex.", "Produced by Pajama Sam.", "Mix/Mastered by Matt Scott for Scott Sound."]},
+    {"title": "End of Times", "type": "Single", "date": "October 10, 2022", "short": "Oct 2022", "kind": "track", "id": 1769945453, "art": "a1064382561", "path": "/track/end-of-times", "notes": ["Feat. Pajama Sam, A-F-R-O + Subtex.", "Mixed and mastered by Pajama Sam.", "Executively produced by Garrett Heaney for Provisions."]},
+    {"title": "Know Thyself LP", "type": "LP", "date": "February 22, 2022", "short": "Feb 2022", "kind": "album", "id": 1506449673, "art": "a3979759530", "path": "/album/know-thyself-lp", "notes": ["22 tracks. Know Thyself is the debut recording project of Provisions Hip Hop. The title track was produced by Louis Mackey and features Godforbid, Mr. Muthafuckin' eXquire and A-F-R-O. The 21-track album includes 8 producers and 11 emcees.", "Beats by Louis Mackey, Pajama Sam, Stresselbee, 8-BZA, Elder Orange, Quandary and JL (r.i.p. homie).", "Raps by A-F-R-O, Kool A.D., Mr. Muthafuckin' eXquire, Godforbid, Thirstin Howl III, Defcee, Louis Mackey, Nahte Renmus, Teece Luvv, Subtex, Ocho Phono.", "Mixed and mastered by Skysplitter in Burlington, VT.", "Executively produced by Auto Heaney."]}
+  ];
+
+  const grid = document.getElementById('grid');
+  document.getElementById('total').textContent = releases.length;
+  const cover = function (r, size) { return 'https://f4.bcbits.com/img/' + r.art + '_' + size + '.jpg'; };
+
+  releases.forEach(function (r, i) {
+    const a = document.createElement('a');
+    a.className = 'cell'; a.href = BC + r.path; a.dataset.i = i;
+    a.setAttribute('aria-label', r.title + ', ' + r.type + ', ' + r.short);
+    const c = document.createElement('span'); c.className = 'cover';
+    const im = document.createElement('img');
+    im.src = cover(r, 5); im.alt = 'Cover art for ' + r.title; im.width = 700; im.height = 700;
+    im.loading = i < 6 ? 'eager' : 'lazy'; im.decoding = 'async';
+    c.appendChild(im);
+    const cap = document.createElement('span'); cap.className = 'cap';
+    const row = document.createElement('span'); row.className = 'meta-row';
+    const k = document.createElement('span'); k.className = 'kind'; k.textContent = r.type;
+    const d = document.createElement('span'); d.textContent = r.short;
+    row.appendChild(k); row.appendChild(d);
+    const t = document.createElement('span'); t.className = 'ttl'; t.textContent = r.title;
+    cap.appendChild(row); cap.appendChild(t);
+    a.appendChild(c); a.appendChild(cap);
+    grid.appendChild(a);
+  });
+
+  const dlg = document.getElementById('viewer');
+  let cur = 0, opener = null;
+  const el = function (id) { return document.getElementById(id); };
+
+  function show(i) {
+    cur = (i + releases.length) % releases.length;
+    const r = releases[cur];
+    el('vimg').src = cover(r, 10); el('vimg').alt = 'Cover art for ' + r.title;
+    el('vtype').textContent = r.type;
+    el('vtitle').textContent = r.title;
+    el('vcount').textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(releases.length).padStart(2, '0');
+    const p = el('vplayer');
+    const base = 'https://bandcamp.com/EmbeddedPlayer/' + r.kind + '=' + r.id + '/size=large/bgcol=000000/linkcol=6fe3ff/';
+    if (r.kind === 'album') { p.src = base + 'tracklist=true/artwork=small/transparent=true/'; p.style.height = '472px'; }
+    else { p.src = base + 'tracklist=false/artwork=small/transparent=true/'; p.style.height = '120px'; }
+    const t = el('vtext'); t.textContent = '';
+    const dt = document.createElement('p'); dt.className = 'vdate'; dt.textContent = 'Released ' + r.date; t.appendChild(dt);
+    r.notes.forEach(function (n) { const q = document.createElement('p'); q.textContent = n; t.appendChild(q); });
+    el('vlink').href = BC + r.path;
+    el('vlink').setAttribute('aria-label', 'Listen or buy ' + r.title + ' on Bandcamp (opens in a new tab)');
+    dlg.querySelector('.vinfo').scrollTop = 0;
+  }
+  function open(i, a) {
+    opener = a || null; show(i);
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  grid.querySelectorAll('.cell').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault(); open(Number(a.dataset.i), a);
+    });
+  });
+  el('vclose').addEventListener('click', function () { dlg.close(); });
+  el('vprev').addEventListener('click', function () { show(cur - 1); });
+  el('vnext').addEventListener('click', function () { show(cur + 1); });
+  dlg.addEventListener('close', function () {
+    el('vplayer').src = 'about:blank';          /* stop the music */
+    document.documentElement.style.overflow = '';
+    if (opener) opener.focus();
+  });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+  });
+</script>
+
+<dialog id="menu" aria-label="Site menu">
+  <div class="menu-inner">
+    <div class="menu-bar">
+      <div class="mt">Menu</div>
+      <button class="menu-close" id="menu-close" type="button">Close</button>
+    </div>
+    <!-- To add a page later, copy one of the <li> blocks below. -->
+    <ul class="menu-list">
+      <li><a href="./"><span class="nm">Home</span><span class="ds">Start here</span></a></li>
+      <li><a href="resume.html"><span class="nm">Resume</span><span class="ds">Experience and skills</span></a></li>
+      <li><a href="art.html"><span class="nm">Art</span><span class="ds">Illustration and prints</span></a></li>
+      <li><a href="music.html" aria-current="page"><span class="nm">Music</span><span class="ds">You are here</span></a></li>
+    </ul>
+    <div class="menu-foot">
+      <a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a>
+      <div class="walker-slot"><div class="walker"><svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <g class="la"><rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/></g>
+      <g class="lb"><rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/></g>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg></div></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('menu');
+  var fixed = document.getElementById('menu-fixed');
+  var last = null;
+  function openMenu(btn) {
+    last = btn;
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  document.querySelectorAll('.menu-btn').forEach(function (b) {
+    b.addEventListener('click', function () { openMenu(b); });
+  });
+  document.getElementById('menu-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('close', function () {
+    document.documentElement.style.overflow = '';
+    var target = last && last.offsetParent !== null && last.getAttribute('aria-hidden') !== 'true' ? last : document.querySelector('.gator-link');
+    if (target) target.focus();
+  });
+  /* show the small floating button once the hero has scrolled away */
+  var hero = document.querySelector('header');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      var away = !e[0].isIntersecting;
+      fixed.classList.toggle('show', away);
+      fixed.setAttribute('aria-hidden', away ? 'false' : 'true');
+      fixed.tabIndex = away ? 0 : -1;
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+
+<script>
+/* the gator walks to the word you pick, bites it, then the page loads */
+(function () {
+  var dlg = document.getElementById('menu');
+  if (!dlg) return;
+  var list = dlg.querySelector('.menu-list');
+  var walker = dlg.querySelector('.walker');
+  var slot = dlg.querySelector('.walker-slot');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var busy = false, anim = null, crumbs = [], timers = [];
+
+  function reset() {
+    busy = false;
+    timers.forEach(clearTimeout); timers = [];
+    if (anim) { anim.cancel(); anim = null; }
+    walker.classList.remove('walking', 'biting');
+    walker.style.cssText = '';
+    slot.style.height = '';
+    list.classList.remove('busy');
+    dlg.querySelectorAll('.nm').forEach(function (n) { n.classList.remove('b1', 'b2'); });
+    crumbs.forEach(function (c) { c.remove(); }); crumbs = [];
+  }
+  function spray(x, y) {
+    for (var i = 0; i < 7; i++) {
+      var c = document.createElement('i');
+      c.className = 'crumb'; c.style.left = x + 'px'; c.style.top = y + 'px';
+      dlg.appendChild(c); crumbs.push(c);
+      var dx = (Math.random() - 0.7) * 160, dy = (Math.random() - 0.5) * 140;
+      c.animate([{ transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+                 { transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + (Math.random() * 360) + 'deg)', opacity: 0 }],
+                { duration: 600 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
+    }
+  }
+  function go(a) {
+    busy = true; list.classList.add('busy');
+    var nm = a.querySelector('.nm');
+    var r0 = walker.getBoundingClientRect();
+    slot.style.height = r0.height + 'px';
+    walker.style.position = 'fixed';
+    walker.style.left = r0.left + 'px'; walker.style.top = r0.top + 'px';
+    walker.style.width = r0.width + 'px'; walker.style.margin = '0';
+    walker.style.zIndex = '50'; walker.style.transformOrigin = '0 0';
+    var S = window.innerWidth < 640 ? 1.1 : 1.7, mx = r0.width * (10 / 660), my = r0.height * (91 / 170);
+    var w = nm.getBoundingClientRect();
+    var tx = w.right - w.height * 0.1, ty = w.top + w.height * 0.52;
+    var dx = tx - r0.left - S * mx, dy = ty - r0.top - S * my;
+    var dur = Math.max(650, Math.min(1100, Math.hypot(dx, dy) * 0.9));
+    walker.classList.add('walking');
+    anim = walker.animate(
+      [{ transform: 'translate(0,0) scale(1)' }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + S + ')' }],
+      { duration: dur, easing: 'cubic-bezier(.45,.05,.35,1)', fill: 'forwards' });
+    anim.onfinish = function () {
+      walker.classList.remove('walking'); walker.classList.add('biting');
+      timers.push(setTimeout(function () { nm.classList.add('b1'); spray(tx, ty); }, 280));
+      timers.push(setTimeout(function () { nm.classList.add('b2'); spray(tx, ty); }, 700));
+      timers.push(setTimeout(function () {
+        if (a.getAttribute('aria-current') === 'page') dlg.close();
+        else window.location.href = a.href;
+      }, 1000));
+    };
+  }
+  dlg.querySelectorAll('.menu-list a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      if (reduce.matches) return;
+      e.preventDefault();
+      if (!busy) go(a);
+    });
+  });
+  dlg.addEventListener('close', reset);
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { if (dlg.open) dlg.close(); reset(); }
+  });
+})();
+</script>
+</body>
+</html>
