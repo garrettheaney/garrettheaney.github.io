@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dogen and Soto Zen – Garrett Heaney</title>
+<meta name="description" content="An overview of Soto Zen and Dogen, with a guide to telling genuine dharma from theatre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;800&display=swap" rel="stylesheet">
+<style>
+:root{--gator:#3ddc5a;--pale:#000;--bg:#000;--rule:#6fe3ff;--ink:#fff;--display:"Archivo Black",Impact,"Arial Black","Helvetica Neue",Arial,sans-serif;--text:"Archivo","Helvetica Neue",Arial,sans-serif;--pad:clamp(1rem,4vw,3rem);--line:2px}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:4rem}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:clamp(1.05rem,1.4vw,1.25rem);font-weight:500;line-height:1.4;-webkit-font-smoothing:antialiased}
+main{max-width:90rem;margin:0 auto;border:var(--line) solid var(--rule)}
+a{color:inherit}
+a:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
+.d{font-family:var(--display);font-weight:900;font-synthesis:none;text-transform:uppercase}
+.rip{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;transform:scale(0);opacity:1;background:radial-gradient(circle,rgba(111,227,255,.34) 0,rgba(111,227,255,.14) 45%,transparent 70%);animation:ripple 1.2s cubic-bezier(.2,.6,.3,1) forwards}
+@keyframes ripple{to{transform:scale(1);opacity:0}}
+/* bar */
+.bar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;overflow-x:auto;scrollbar-width:none}
+.bar a{flex:none;padding:.9rem 1.3rem;text-decoration:none;font-family:var(--display);text-transform:uppercase;font-size:.95rem;border-right:1px solid var(--rule);transition:background .4s}
+.bar a.home{background:var(--ink);color:var(--bg)}
+.bar a:hover{background:rgba(111,227,255,.14)}
+.bar a.on{box-shadow:inset 0 -4px 0 var(--rule)}
+/* hero */
+header{position:relative;padding:var(--pad);border-bottom:var(--line) solid var(--rule);overflow:hidden}
+.rings{position:absolute;right:calc(var(--pad)*-1);top:50%;width:clamp(16rem,42vw,34rem);aspect-ratio:1;margin-top:calc(clamp(16rem,42vw,34rem)/-2);pointer-events:none}
+.rings i{position:absolute;inset:0;border:2px solid var(--rule);border-radius:50%;opacity:0;animation:ring 10s ease-out infinite}
+.rings i:nth-child(2){animation-delay:2s}.rings i:nth-child(3){animation-delay:4s}.rings i:nth-child(4){animation-delay:6s}.rings i:nth-child(5){animation-delay:8s}
+@keyframes ring{0%{transform:scale(.05);opacity:.9}100%{transform:scale(1);opacity:0}}
+.top{font-size:clamp(1rem,2.2vw,1.8rem);line-height:1.05;margin:0 0 clamp(4rem,12vw,10rem);max-width:60%;position:relative}
+h1{font-size:clamp(3.5rem,20vw,19rem);line-height:.8;letter-spacing:-.045em;margin:0;position:relative}
+/* sections */
+section{border-bottom:var(--line) solid var(--rule)}
+.sh{padding:var(--pad) var(--pad) 1rem}
+h2{font-size:clamp(2.2rem,8vw,7rem);line-height:.88;letter-spacing:-.04em;margin:0 0 1rem}
+.sum{margin:0;font-weight:800;max-width:40rem}
+ul.o{list-style:none;margin:0;padding:0}
+ul.o>li{border-top:1px solid var(--rule);padding:1.2rem var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:.4rem 2rem;transition:background .5s}
+ul.o>li:hover{background:rgba(111,227,255,.07)}
+ul.o strong{font-family:var(--display);font-weight:900;font-synthesis:none;text-transform:uppercase;font-size:clamp(1.1rem,2vw,1.6rem);line-height:1}
+ul.o ul{list-style:none;margin:0;padding:0}
+ul.o ul li{padding:.15rem 0 .15rem 1.4rem;position:relative}
+ul.o ul li::before{content:"";position:absolute;left:0;top:.62em;width:.6rem;height:.6rem;background:var(--rule);transition:transform .4s}
+ul.o>li:hover ul li::before{transform:rotate(45deg) scale(.8)}
+.try{border-top:1px solid var(--rule);padding:var(--pad);background:var(--ink);color:var(--bg)}
+.try h3{margin:0 0 .5rem;font-size:clamp(1.4rem,3vw,2.4rem);line-height:.95}
+.try p{margin:0;font-weight:800;max-width:38rem}
+footer{padding:var(--pad);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;font-size:clamp(.9rem,1.6vw,1.2rem)}
+@media(max-width:46rem){.top{max-width:100%}ul.o>li{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rings i{animation:none;opacity:.35;transform:scale(.5)}.rings i:nth-child(odd){transform:scale(.9)}.ripple{display:none}}
+
+/* ---- gator menu (from home page) ---- */
+  .gator-link { position: absolute; top: var(--pad); right: var(--pad); width: clamp(9rem, 32vw, 28rem); }
+  .gator { display: block; width: 100%; height: auto; color: var(--gator); }
+  .jaw { transform-origin: 150px 100px; animation: chomp 3.4s ease-in-out infinite; }
+  @keyframes chomp {
+    0%, 52%, 100% { transform: rotate(0deg); }
+    8%  { transform: rotate(-17deg); }
+    16% { transform: rotate(0deg); }
+    24% { transform: rotate(-17deg); }
+    32% { transform: rotate(0deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .jaw { animation: none; } }
+
+  /* ---------- menu (gator button + full-screen overlay) ---------- */
+  .menu-btn { appearance: none; background: none; border: 0; padding: 0; font: inherit; color: var(--gator); cursor: pointer; text-align: right; }
+  .gator-link.menu-btn { display: block; }
+  .menu-label {
+    display: block; margin-top: 0.35rem; text-align: right; color: var(--rule);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem); letter-spacing: 0.04em;
+  }
+  .menu-btn:hover .menu-label { color: var(--ink); }
+  .menu-fixed {
+    position: fixed; top: 0; right: 0; z-index: 30;
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--bg); color: var(--gator);
+    border: 0; border-left: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    padding: 0.45rem 0.95rem; text-align: left;
+    transform: translateY(-101%); transition: transform 0.25s ease;
+  }
+  .menu-fixed.show { transform: none; }
+  .menu-fixed svg { width: 5.2rem; height: auto; display: block; }
+  .menu-fixed .t {
+    color: var(--ink); font-family: var(--display); font-weight: 900; font-synthesis: none;
+    text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.04em;
+  }
+  .menu-fixed:hover, .menu-fixed:focus-visible { background: var(--ink); }
+  .menu-fixed:hover .t, .menu-fixed:focus-visible .t { color: var(--bg); }
+  @media (prefers-reduced-motion: reduce) { .menu-fixed { transition: none; } }
+
+  #menu {
+    width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none;
+    margin: 0; padding: 0; border: 0; background: var(--bg); color: var(--ink); overflow: hidden;
+  }
+  #menu::backdrop { background: #000; }
+  #menu[open] { animation: menuIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  @keyframes menuIn { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+  @media (prefers-reduced-motion: reduce) { #menu[open] { animation: none; } }
+  .menu-inner {
+    max-width: 90rem; height: 100%; margin: 0 auto; display: flex; flex-direction: column;
+    border: var(--line) solid var(--rule);
+  }
+  .menu-bar { display: flex; justify-content: space-between; align-items: stretch; border-bottom: 1px solid var(--rule); }
+  .menu-bar .mt {
+    padding: 0.8rem var(--pad); display: flex; align-items: center;
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .menu-close {
+    appearance: none; background: transparent; color: var(--ink); border: 0; border-left: 1px solid var(--rule);
+    cursor: pointer; padding: 0.8rem clamp(1rem, 3vw, 2rem);
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: clamp(0.9rem, 1.6vw, 1.3rem);
+  }
+  .menu-close:hover { background: var(--ink); color: var(--bg); }
+  .menu-list { list-style: none; margin: 0; padding: 0; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .menu-list li { flex: 1; min-height: 0; border-bottom: 1px solid var(--rule); display: flex; }
+  .menu-list a {
+    flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 0 var(--pad); text-decoration: none; color: var(--ink); min-height: 0;
+  }
+  .menu-list .nm {
+    font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase;
+    font-size: min(15vw, 17vh); line-height: 0.9; letter-spacing: -0.04em;
+  }
+  .menu-list .ds { display: flex; align-items: center; gap: 0.9rem; font-weight: 800; text-align: right; text-transform: uppercase; font-size: clamp(0.8rem, 1.2vw, 1rem); max-width: 14rem; }
+  .menu-list .ds::after { content: ""; flex: none; width: 1.2rem; height: 1.2rem; background: var(--rule); }
+  .menu-list a[aria-current="page"] .ds { color: var(--rule); }
+  .menu-list a:hover, .menu-list a:focus-visible { background: var(--ink); color: var(--bg); outline: 0; }
+  .menu-list a[aria-current="page"]:hover .ds, .menu-list a[aria-current="page"]:focus-visible .ds { color: var(--bg); }
+  .menu-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem var(--pad); }
+  .menu-foot a { font-family: var(--display); font-weight: 900; font-synthesis: none; text-transform: uppercase; font-size: clamp(0.85rem, 1.5vw, 1.2rem); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .menu-foot a:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+  .menu-foot svg { width: clamp(6.5rem, 14vw, 11rem); height: auto; display: block; color: var(--gator); }
+  @media (max-width: 40rem) {
+    .menu-list .ds { display: none; }
+    .menu-list .nm { font-size: min(16vw, 14vh); }
+  }
+
+  /* ---------- gator walks over and bites the word you pick ---------- */
+  .walker-slot { flex: none; width: clamp(6.5rem, 14vw, 11rem); }
+  .walker { width: 100%; will-change: transform; }
+  .menu-foot .walker svg { width: 100%; height: auto; display: block; color: var(--gator); transform-origin: 50% 100%; }
+  .walker.walking svg { animation: waddle 0.26s ease-in-out infinite alternate; }
+  @keyframes waddle { from { transform: rotate(-2.5deg) translateY(0); } to { transform: rotate(2.5deg) translateY(-5px); } }
+  .walker.walking .la { animation: step 0.26s ease-in-out infinite alternate; }
+  .walker.walking .lb { animation: step 0.26s ease-in-out infinite alternate-reverse; }
+  @keyframes step { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+  .walker.walking .jaw { animation: none; }
+  .walker.biting .jaw { animation: bite 0.42s ease-in-out 2; }
+  @keyframes bite { 0% { transform: rotate(0deg); } 35% { transform: rotate(-24deg); } 70%, 100% { transform: rotate(0deg); } }
+  .menu-list.busy { pointer-events: none; }
+  .menu-list .nm.b1 {
+    -webkit-mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+            mask-image: radial-gradient(circle at 100% 34%, transparent 0.3em, #000 0.305em);
+  }
+  .menu-list .nm.b2 {
+    -webkit-mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+            mask-image: radial-gradient(circle at calc(100% + 0.02em) 34%, transparent 0.42em, #000 0.425em), radial-gradient(circle at calc(100% - 0.06em) 78%, transparent 0.34em, #000 0.345em);
+    -webkit-mask-composite: source-in;
+            mask-composite: intersect;
+  }
+  .crumb { position: fixed; z-index: 60; width: 0.65rem; height: 0.65rem; background: var(--rule); pointer-events: none; }
+  @media print { .menu-btn, .menu-fixed, #menu { display: none !important; } }
+
+.bar::after{content:"";flex:0 0 9rem}
+.rings{top:auto;bottom:-6rem;margin-top:0}
+
+/* ---- timeline ---- */
+.tl{border-top:1px solid var(--rule);padding:var(--pad);overflow-x:auto}
+.tl svg{display:block;min-width:1300px;width:100%;height:auto}
+.tl .ln{stroke:var(--rule);stroke-width:1;opacity:.5}
+.tl .lt{fill:var(--rule);font-family:var(--display);font-size:15px;text-transform:uppercase}
+.tl .a{fill:var(--ink);font-family:var(--display);font-size:14px;text-transform:uppercase}
+.tl .b{fill:var(--ink);font-family:var(--text);font-size:13px;font-weight:500;opacity:.85}
+.tl .bar1{fill:var(--rule)}
+.tl .gap{stroke:var(--rule);stroke-width:3;stroke-dasharray:7 6;fill:none}
+.tl .mk{fill:var(--bg);stroke:var(--rule);stroke-width:3;transition:fill .4s}
+.tl .ev{cursor:default}
+.tl .ev:hover .mk,.tl .ev:hover .bar1{fill:var(--ink)}
+.tl .dg{fill:var(--ink);stroke:var(--rule);stroke-width:3}
+.tl .ax{stroke:var(--ink);stroke-width:1}
+.tl .tk{fill:var(--ink);font-family:var(--text);font-size:12px;font-weight:800}
+.hint{padding:0 var(--pad) 1rem;font-size:.9rem;opacity:.75}
+/* ---- pull quotes ---- */
+.pq{margin:0;padding:var(--pad);background:var(--ink);color:var(--bg);border-top:var(--line) solid var(--rule)}
+.pq p{margin:0;font-family:var(--display);font-weight:900;font-synthesis:none;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,3.2rem);line-height:.98;letter-spacing:-.03em;max-width:60rem}
+.pq cite{display:block;margin-top:1rem;font-style:normal;font-weight:800;font-size:.95rem}
+.two{display:grid;grid-template-columns:1fr 1fr}
+.two .pq{border-right:1px solid var(--bg)}
+.two .pq:last-child{border-right:0}
+.two .pq p{font-size:clamp(1.2rem,2.4vw,2rem)}
+@media(max-width:46rem){.two{grid-template-columns:1fr}.two .pq{border-right:0;border-bottom:1px solid var(--bg)}}
+.note{padding:1rem var(--pad);border-top:1px solid var(--rule);font-size:.92rem;opacity:.8}
+</style>
+</head>
+<body>
+<button class="menu-btn menu-fixed" id="menu-fixed" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Open menu" aria-hidden="true" tabindex="-1"><svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/>
+      <rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg><span class="t">Menu</span></button>
+<main>
+<nav class="bar" aria-label="Sections">
+<a class="home" href="./">Home</a>
+<a class="rip" href="#origins">Origins</a>
+<a class="rip" href="#dogen">Dogen</a>
+<a class="rip" href="#soto">Soto Zen</a>
+<a class="rip" href="#shobogenzo">Shōbōgenzō</a>
+<a class="rip" href="#discernment">Discernment</a>
+<a class="rip" href="#begin">Begin</a>
+</nav>
+<header class="rip">
+    <button class="gator-link menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Open menu"><svg class="gator" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/>
+      <rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg><span class="menu-label">Menu</span></button>
+<div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<p class="top d">Soto Zen. The Shōbōgenzō. How to tell the real thing.</p>
+<h1 class="d">Dogen</h1>
+</header>
+
+<section id="origins">
+<div class="sh"><h2 class="d">Origins</h2><p class="sum">Every school claims the Buddha. Only the timeline shows how far each one stands from him.</p></div>
+<div class="tl"><svg viewBox="0 0 1560 545" role="img" aria-labelledby="tt td" xmlns="http://www.w3.org/2000/svg">
+<title id="tt">Timeline of Buddhism from the Buddha to Dogen</title>
+<desc id="td">The Buddha lived and died, about 250 years passed by memory alone, then Ashoka's inscriptions and the written Pali Canon appeared. Mahayana, Chan and Zen, Vajrayana and Dzogchen followed, ending with Dogen in the 13th century.</desc>
+<text class="lt" x="40" y="44">The early teachings</text>
+<line class="ln" x1="40" x2="1500" y1="120" y2="120"/>
+<g class="ev"><rect class="bar1" x="40" y="111" width="64" height="18"/>
+<text class="a" x="40" y="80">Buddha lives</text><text class="b" x="40" y="97">563–483 BCE (traditional)</text></g>
+<g class="ev"><circle class="mk" cx="104" cy="120" r="9"/>
+<text class="a" x="96" y="160">Death</text><text class="b" x="96" y="177">c. 483 BCE · parinirvana</text></g>
+<g class="ev"><path class="gap" d="M116 120 H278"/>
+<text class="a" x="124" y="212">About 250 years</text><text class="b" x="124" y="229">Carried by memory and recitation</text></g>
+<g class="ev"><circle class="mk" cx="290" cy="120" r="9"/>
+<text class="a" x="286" y="80">Ashoka’s inscriptions</text><text class="b" x="286" y="97">c. 250 BCE · first written traces</text></g>
+<g class="ev"><rect class="mk" x="458" y="111" width="18" height="18"/>
+<text class="a" x="459" y="160">Pali Canon written</text><text class="b" x="459" y="177">c. 29 BCE · Sri Lanka</text></g>
+
+<text class="lt" x="40" y="194">Mahayana, then Chan and Zen</text>
+<line class="ln" x1="40" x2="1500" y1="270" y2="270"/>
+<g class="ev"><rect class="bar1" x="410" y="261" width="240" height="18"/>
+<text class="a" x="410" y="230">Mahayana emerges</text><text class="b" x="410" y="247">c. 100 BCE – 200 CE</text></g>
+<g class="ev"><circle class="mk" cx="660" cy="270" r="9"/>
+<text class="a" x="654" y="308">Nagarjuna</text><text class="b" x="654" y="325">c. 150–250 · emptiness</text></g>
+<g class="ev"><circle class="mk" cx="906" cy="270" r="9"/>
+<text class="a" x="902" y="230">Bodhidharma</text><text class="b" x="902" y="247">c. 520 · Chan reaches China</text></g>
+<g class="ev"><circle class="mk" cx="1030" cy="270" r="9"/>
+<text class="a" x="1026" y="308">Huineng</text><text class="b" x="1026" y="325">638–713 · Sixth Ancestor</text></g>
+<g class="ev"><circle class="mk" cx="1161" cy="270" r="9"/>
+<text class="a" x="1179" y="308">Dongshan</text><text class="b" x="1179" y="325">807–869 · root of Caodong (Soto)</text></g>
+<g class="ev"><rect class="dg" x="1450" y="256" width="43" height="28"/>
+<text class="a" x="1510" y="230" text-anchor="end">Dogen</text><text class="b" x="1510" y="247" text-anchor="end">1200–1253 · carries Soto to Japan</text></g>
+
+<text class="lt" x="40" y="344">Vajrayana and Dzogchen</text>
+<line class="ln" x1="40" x2="1500" y1="420" y2="420"/>
+<g class="ev"><rect class="bar1" x="970" y="411" width="80" height="18"/>
+<text class="a" x="1060" y="380" text-anchor="end">Vajrayana tantras</text><text class="b" x="1060" y="397" text-anchor="end">c. 600–700 · India</text></g>
+<g class="ev"><circle class="mk" cx="1114" cy="420" r="9"/>
+<text class="a" x="1110" y="458">Buddhism enters Tibet</text><text class="b" x="1110" y="475">c. 780 · Padmasambhava, Samye</text></g>
+<g class="ev"><rect class="bar1" x="1090" y="411" width="240" height="18" style="opacity:.6"/>
+<text class="a" x="1194" y="380">Dzogchen</text><text class="b" x="1194" y="397">c. 8th–11th century · Tibet, Nyingma</text></g>
+
+<line class="ax" x1="40" x2="1500" y1="505" y2="505"/>
+<g><line class="ax" x1="90" x2="90" y1="498" y2="512"/><text class="tk" x="90" y="530" text-anchor="middle">500 BCE</text>
+<line class="ax" x1="490" x2="490" y1="498" y2="512"/><text class="tk" x="490" y="530" text-anchor="middle">0</text>
+<line class="ax" x1="890" x2="890" y1="498" y2="512"/><text class="tk" x="890" y="530" text-anchor="middle">500 CE</text>
+<line class="ax" x1="1290" x2="1290" y1="498" y2="512"/><text class="tk" x="1290" y="530" text-anchor="middle">1000 CE</text></g>
+</svg></div>
+<p class="hint">Scroll sideways on small screens. Dates are approximate and traditional where noted. Scale is proportional.</p>
+<ul class="o">
+<li class="rip"><strong>The Buddha</strong><ul><li>Traditional dates are 563–483 BCE; many scholars now place his death closer to 400 BCE</li><li>He taught for about forty-five years and wrote nothing down</li></ul></li>
+<li class="rip"><strong>The long silence</strong><ul><li>For roughly 250 years the teachings lived in memory, recited by monastic communities</li><li>The earliest datable written traces are Ashoka’s stone inscriptions, around 250 BCE</li><li>The Pali Canon was committed to writing in Sri Lanka around 29 BCE, nearly 450 years after the death</li><li>Every later school is built on an oral record that was written down late</li></ul></li>
+<li class="rip"><strong>Mahayana</strong><ul><li>New sutras appear from about the first century BCE, stressing emptiness and the bodhisattva path</li><li>Nagarjuna gives the philosophy its sharpest form</li></ul></li>
+<li class="rip"><strong>Chan, then Zen</strong><ul><li>Bodhidharma is the traditional founder in China; Huineng the pivotal later ancestor</li><li>The Caodong line, from Dongshan, becomes Soto in Japan</li></ul></li>
+<li class="rip"><strong>Vajrayana and Dzogchen</strong><ul><li>Tantric methods develop in India from about the seventh century and move to Tibet</li><li>Dzogchen is the Nyingma school’s view of natural awareness</li><li>These are real lineages with real depth; the question this page asks is about presentation and conduct, not about whether they are genuine</li></ul></li>
+</ul>
+</section>
+
+<section id="dogen">
+<div class="sh"><h2 class="d">Dogen</h2><p class="sum">A monk who crossed the sea to find one verified teacher, then spent his life refusing to turn that into a brand.</p></div>
+<ul class="o">
+<li class="rip"><strong>Early life</strong><ul><li>Born in Kyoto in 1200 into the aristocracy, and orphaned young</li><li>Ordained on Mount Hiei in the Tendai school</li><li>Left with one nagging question: if everyone already has buddha-nature, why practice?</li></ul></li>
+<li class="rip"><strong>The journey</strong><ul><li>Studied at Kennin-ji, then sailed to China in 1223</li><li>Visited many monasteries and was unimpressed by teachers who had titles but not clarity</li><li>Met Rujing at Tiantong and trained under him</li></ul></li>
+<li class="rip"><strong>The turning point</strong><ul><li>In 1225, during intensive sitting, he experienced the dropping away of body and mind</li><li>Rujing confirmed it, and Dogen received transmission</li></ul></li>
+<li class="rip"><strong>Return and work</strong><ul><li>Came back to Japan in 1227 with a single message: just sit</li><li>Taught near Kyoto, then founded Eihei-ji in the mountains in 1244</li><li>Wrote the Shōbōgenzō in vernacular Japanese rather than classical Chinese</li><li>Died in 1253, aged 53</li></ul></li>
+</ul>
+</section>
+
+<blockquote class="pq"><p>Learning the way means learning the self. Learning the self means letting it go. Letting it go, you are verified by everything that arises.</p><cite>Genjōkōan · paraphrased, not a translation</cite></blockquote>
+
+<section id="soto">
+<div class="sh"><h2 class="d">Soto Zen</h2><p class="sum">The practice is the point. Nothing is being earned.</p></div>
+<ul class="o">
+<li class="rip"><strong>Shikantaza</strong><ul><li>Just sitting, with no object, no technique to master and no state to reach</li><li>Upright posture, open attention, thoughts allowed to come and go</li></ul></li>
+<li class="rip"><strong>Practice and realization are one</strong><ul><li>Sitting is not a means to awakening later; it is awakening being expressed now</li><li>This undoes the whole market for levels, stages and attainments</li></ul></li>
+<li class="rip"><strong>Buddha-nature is impermanence</strong><ul><li>Not a hidden essence inside you waiting to be discovered</li><li>The changing, passing world is itself what buddha-nature is</li></ul></li>
+<li class="rip"><strong>All of life is training</strong><ul><li>Cooking, cleaning, bowing, eating, and sleeping are practiced with the same care as sitting</li><li>Monastic forms exist to make ordinary conduct exact</li></ul></li>
+<li class="rip"><strong>Lineage</strong><ul><li>Teacher to student, face to face, in an unbroken line verified by the teachers themselves</li><li>From Dongshan through Dogen and Keizan, who spread Soto widely in Japan</li></ul></li>
+</ul>
+</section>
+
+<section id="shobogenzo">
+<div class="sh"><h2 class="d">Shōbōgenzō</h2><p class="sum">The Treasury of the True Dharma Eye. Dogen’s main work, written between 1231 and 1253.</p></div>
+<ul class="o">
+<li class="rip"><strong>What it is</strong><ul><li>A collection of essays and talks, usually printed as 75 or 95 fascicles</li><li>Dense, poetic, and deliberately difficult; it plays with language to break habits of thought</li></ul></li>
+<li class="rip"><strong>Genjōkōan</strong><ul><li>The best entry point: practice, the self, delusion and awakening in a few pages</li></ul></li>
+<li class="rip"><strong>Busshō</strong><ul><li>Buddha-nature, reread as impermanence rather than a permanent inner essence</li></ul></li>
+<li class="rip"><strong>Uji</strong><ul><li>Being-time: each moment is the whole of existence, not a step toward something else</li></ul></li>
+<li class="rip"><strong>Gyōji</strong><ul><li>Continuous practice, as the activity of the buddhas rather than a path toward them</li></ul></li>
+<li class="rip"><strong>Shoakumakusa</strong><ul><li>Not doing harm, understood as how awakening shows up in conduct</li></ul></li>
+<li class="rip"><strong>Kesa kudoku</strong><ul><li>The robe and the transmission behind it, and why lineage must be real</li></ul></li>
+</ul>
+<div class="two">
+<blockquote class="pq"><p>Impermanence is not an obstacle to buddha-nature. It is buddha-nature.</p><cite>Busshō · paraphrased</cite></blockquote>
+<blockquote class="pq"><p>Practice is not a road to awakening. It is awakening, taking place.</p><cite>Bendōwa and Genjōkōan · paraphrased</cite></blockquote>
+</div>
+<p class="note">Every quotation on this page is a paraphrase in my own words, not a translation. Read a full translation for the real texts.</p>
+</section>
+
+<section id="discernment">
+<div class="sh"><h2 class="d">Discernment</h2><p class="sum">Dogen did not want a brand. He wanted verified practice. These are tests drawn from his emphasis, and they apply to any teacher or center.</p></div>
+<ul class="o">
+<li class="rip"><strong>1. Can you trace the transmission?</strong><ul><li>Dogen crossed an ocean to find a teacher whose lineage he could verify</li><li>Look for: named teachers, known lineage, ordination by recognized authorities</li><li>Warning sign: self-made titles, invented ranks, or lineages that begin with the founder</li></ul></li>
+<li class="rip"><strong>2. Is there a goal being sold?</strong><ul><li>Shikantaza has no gaining idea</li><li>Look for: sitting without promises</li><li>Warning sign: levels, initiations, stages of attainment, or rapid results</li></ul></li>
+<li class="rip"><strong>3. Do the precepts bind the teacher too?</strong><ul><li>Ethics are not a beginner’s rule; they are how awakening behaves</li><li>Look for: teachers who are accountable and answerable to others</li><li>Warning sign: harm excused as higher wisdom, or a teacher above the rules</li></ul></li>
+<li class="rip"><strong>4. Is ordinary life the practice?</strong><ul><li>Soto training is cooking, cleaning, and exact manners</li><li>Look for: plain work done carefully</li><li>Warning sign: regalia, pageantry, and ceremony that outshine the daily conduct behind them</li></ul></li>
+<li class="rip"><strong>5. Is authority examined or worshipped?</strong><ul><li>Dogen tested teachers before trusting them, and he expected students to do the same</li><li>Look for: openness to questions and criticism</li><li>Warning sign: devotion treated as the path, and doubters pushed out</li></ul></li>
+</ul>
+<blockquote class="pq"><p>The robe and the teaching pass from a true teacher to a true student. You cannot award them to yourself.</p><cite>Kesa kudoku · paraphrase of the theme</cite></blockquote>
+
+<ul class="o">
+<li class="rip"><strong>A pattern to recognize: the invented kingdom</strong><ul><li>A new institution presented as an ancient tradition, with meditation set inside royal or warrior imagery</li><li>Invented titles, court ritual, and a king-like figure at the center</li><li>Leadership passed within one family rather than through verified teacher-to-student transmission</li><li>Devotion to the leader treated as the path itself</li><li>When independent investigations later documented misconduct, the structure had protected its leaders instead of checking them</li><li>Individual students may still find real value in such a place; the concern is the structure, not the people in it</li></ul></li>
+<li class="rip"><strong>No school is exempt</strong><ul><li>Soto in the West has had its own crises of abused authority</li><li>The tests above apply equally to Soto centers; the label is never the proof</li></ul></li>
+</ul>
+<p class="note">This is a point of view, built from Dogen’s emphasis. It is not a verdict on any individual or group.</p>
+</section>
+
+<section id="begin">
+<div class="sh"><h2 class="d">Begin</h2><p class="sum">Dogen’s own advice would be to stop reading and sit.</p></div>
+<ul class="o">
+<li class="rip"><strong>Sit</strong><ul><li>Face a wall, upright, eyes lowered, twenty minutes</li><li>No goal. When you notice you have drifted into thought, just come back</li></ul></li>
+<li class="rip"><strong>Read</strong><ul><li>Start with Genjōkōan, then Busshō and Uji</li><li>Full English translations of the Shōbōgenzō exist, including ones by Kazuaki Tanahashi and by Gudo Nishijima with Chris Cross</li></ul></li>
+<li class="rip"><strong>Test Dogen too</strong><ul><li>He asked for verified practice, not belief</li><li>Sit for a while and see for yourself</li></ul></li>
+</ul>
+</section>
+
+<footer class="d"><a href="./">Garrett Heaney</a><span>Vermont</span></footer>
+</main>
+
+<dialog id="menu" aria-label="Site menu">
+  <div class="menu-inner">
+    <div class="menu-bar">
+      <div class="mt">Menu</div>
+      <button class="menu-close" id="menu-close" type="button">Close</button>
+    </div>
+    <!-- To add a page later, copy one of the <li> blocks below. -->
+    <ul class="menu-list">
+      <li><a href="./"><span class="nm">Home</span><span class="ds">Back to start</span></a></li>
+      <li><a href="resume.html"><span class="nm">Resume</span><span class="ds">Experience and skills</span></a></li>
+      <li><a href="art.html"><span class="nm">Art</span><span class="ds">Illustration and prints</span></a></li>
+      <li><a href="music.html"><span class="nm">Music</span><span class="ds">Provisions Hip Hop</span></a></li>
+      <li><a href="mind.html" aria-current="page"><span class="nm">Mind</span><span class="ds">You are here</span></a></li>
+    </ul>
+    <div class="menu-foot">
+      <a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a>
+      <div class="walker-slot"><div class="walker"><svg class="mini" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
+      <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
+      <path d="M243,61 L243,45 Q243,36 256,36 Q269,36 269,45 L269,61 Z"/>
+      <path d="M279,62 L279,46 Q279,36 292,36 Q305,36 305,46 L305,62 Z"/>
+      <path d="M315,62 L315,46 Q315,37 328,37 Q341,37 341,46 L341,62 Z"/>
+      <path d="M351,63 L351,47 Q351,38 364,38 Q377,38 377,47 L377,63 Z"/>
+      <path d="M391,66 L391,50 Q391,41 404,41 Q417,41 417,50 L417,66 Z"/>
+      <path d="M433,71 L433,55 Q433,46 446,46 Q459,46 459,55 L459,71 Z"/>
+      <path d="M150,54 L380,58 L500,72 L600,90 Q654,102 654,112 Q654,122 600,121 L500,116 Q440,125 380,125 L190,125 Q150,125 150,108 Z"/>
+      <polygon points="10,60 100,56 150,40 168,52 168,86 10,86"/>
+      <g class="jaw"><polygon points="10,96 150,96 150,110 100,112 10,104"/><polygon points="34,97 46,97 40,87"/><polygon points="58,97 70,97 64,87"/><polygon points="82,97 94,97 88,87"/><polygon points="106,97 118,97 112,87"/><polygon points="130,97 142,97 136,87"/></g>
+      <g class="la"><rect x="172" y="110" width="32" height="40"/>
+      <rect x="150" y="142" width="54" height="14"/></g>
+      <g class="lb"><rect x="310" y="110" width="32" height="40"/>
+      <rect x="288" y="142" width="54" height="14"/></g>
+      <rect x="126" y="48" width="18" height="18" style="fill:var(--bg)"/>
+      <rect x="132" y="54" width="6" height="6"/>
+      <rect x="22" y="64" width="10" height="8" style="fill:var(--bg)"/>
+      <rect x="10" y="86" width="158" height="10" style="fill:var(--bg)"/>
+      <polygon points="20,86 36,86 28,96"/>
+      <polygon points="44,86 60,86 52,96"/>
+      <polygon points="68,86 84,86 76,96"/>
+      <polygon points="92,86 108,86 100,96"/>
+      <polygon points="116,86 132,86 124,96"/>
+    </svg></div></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('menu');
+  var fixed = document.getElementById('menu-fixed');
+  var last = null;
+  function openMenu(btn) {
+    last = btn;
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  document.querySelectorAll('.menu-btn').forEach(function (b) {
+    b.addEventListener('click', function () { openMenu(b); });
+  });
+  document.getElementById('menu-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('close', function () {
+    document.documentElement.style.overflow = '';
+    var target = last && last.offsetParent !== null && last.getAttribute('aria-hidden') !== 'true' ? last : document.querySelector('.gator-link');
+    if (target) target.focus();
+  });
+  /* show the small floating button once the hero has scrolled away */
+  var hero = document.querySelector('header');
+  if (hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      var away = !e[0].isIntersecting;
+      fixed.classList.toggle('show', away);
+      fixed.setAttribute('aria-hidden', away ? 'false' : 'true');
+      fixed.tabIndex = away ? 0 : -1;
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+</script>
+
+<script>
+/* the gator walks to the word you pick, bites it, then the page loads */
+(function () {
+  var dlg = document.getElementById('menu');
+  if (!dlg) return;
+  var list = dlg.querySelector('.menu-list');
+  var walker = dlg.querySelector('.walker');
+  var slot = dlg.querySelector('.walker-slot');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var busy = false, anim = null, crumbs = [], timers = [];
+
+  function reset() {
+    busy = false;
+    timers.forEach(clearTimeout); timers = [];
+    if (anim) { anim.cancel(); anim = null; }
+    walker.classList.remove('walking', 'biting');
+    walker.style.cssText = '';
+    slot.style.height = '';
+    list.classList.remove('busy');
+    dlg.querySelectorAll('.nm').forEach(function (n) { n.classList.remove('b1', 'b2'); });
+    crumbs.forEach(function (c) { c.remove(); }); crumbs = [];
+  }
+  function spray(x, y) {
+    for (var i = 0; i < 7; i++) {
+      var c = document.createElement('i');
+      c.className = 'crumb'; c.style.left = x + 'px'; c.style.top = y + 'px';
+      dlg.appendChild(c); crumbs.push(c);
+      var dx = (Math.random() - 0.7) * 160, dy = (Math.random() - 0.5) * 140;
+      c.animate([{ transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+                 { transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(' + (Math.random() * 360) + 'deg)', opacity: 0 }],
+                { duration: 600 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
+    }
+  }
+  function go(a) {
+    busy = true; list.classList.add('busy');
+    var nm = a.querySelector('.nm');
+    var r0 = walker.getBoundingClientRect();
+    slot.style.height = r0.height + 'px';
+    walker.style.position = 'fixed';
+    walker.style.left = r0.left + 'px'; walker.style.top = r0.top + 'px';
+    walker.style.width = r0.width + 'px'; walker.style.margin = '0';
+    walker.style.zIndex = '50'; walker.style.transformOrigin = '0 0';
+    var S = window.innerWidth < 640 ? 1.1 : 1.7, mx = r0.width * (10 / 660), my = r0.height * (91 / 170);
+    var w = nm.getBoundingClientRect();
+    var tx = w.right - w.height * 0.1, ty = w.top + w.height * 0.52;
+    var dx = tx - r0.left - S * mx, dy = ty - r0.top - S * my;
+    var dur = Math.max(650, Math.min(1100, Math.hypot(dx, dy) * 0.9));
+    walker.classList.add('walking');
+    anim = walker.animate(
+      [{ transform: 'translate(0,0) scale(1)' }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + S + ')' }],
+      { duration: dur, easing: 'cubic-bezier(.45,.05,.35,1)', fill: 'forwards' });
+    anim.onfinish = function () {
+      walker.classList.remove('walking'); walker.classList.add('biting');
+      timers.push(setTimeout(function () { nm.classList.add('b1'); spray(tx, ty); }, 280));
+      timers.push(setTimeout(function () { nm.classList.add('b2'); spray(tx, ty); }, 700));
+      timers.push(setTimeout(function () {
+        if (a.getAttribute('aria-current') === 'page') dlg.close();
+        else window.location.href = a.href;
+      }, 1000));
+    };
+  }
+  dlg.querySelectorAll('.menu-list a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      if (reduce.matches) return;
+      e.preventDefault();
+      if (!busy) go(a);
+    });
+  });
+  dlg.addEventListener('close', reset);
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { if (dlg.open) dlg.close(); reset(); }
+  });
+})();
+</script>
+<script>
+(function(){
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function ripple(el,e){
+ if(reduce)return;
+ var r=el.getBoundingClientRect(),d=Math.max(r.width,r.height)*2.2,s=document.createElement('span');
+ s.className='ripple';s.style.width=s.style.height=d+'px';
+ s.style.left=(e.clientX-r.left-d/2)+'px';s.style.top=(e.clientY-r.top-d/2)+'px';
+ el.appendChild(s);setTimeout(function(){s.remove()},1300);
+}
+document.querySelectorAll('.rip').forEach(function(el){
+ el.addEventListener('pointerenter',function(e){ripple(el,e)});
+ el.addEventListener('pointerdown',function(e){ripple(el,e)});
+});
+var links=[].slice.call(document.querySelectorAll('.bar a.rip')),map={};
+links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(en){
+  if(en.isIntersecting&&map[en.target.id]){links.forEach(function(a){a.classList.remove('on')});map[en.target.id].classList.add('on')}
+ })},{rootMargin:'-15% 0px -70% 0px'});
+ document.querySelectorAll('section[id]').forEach(function(s){io.observe(s)});
+}
+})();
+</script>
+</body>
+</html>
