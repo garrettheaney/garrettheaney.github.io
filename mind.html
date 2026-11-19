@@ -4,15 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dogen and the Shōbōgenzō – Garrett Heaney</title>
+<meta name="theme-color" content="#fbf9fd">
 <meta name="description" content="Dogen and the Shōbōgenzō: a full outline, and how I use it to keep my mind clear.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;800&display=swap" rel="stylesheet">
 <style>
-:root{--gator:#3ddc5a;--pale:#000;--bg:#000;--rule:#6fe3ff;--ink:#fff;--display:"Archivo Black",Impact,"Arial Black","Helvetica Neue",Arial,sans-serif;--text:"Archivo","Helvetica Neue",Arial,sans-serif;--pad:clamp(1rem,4vw,3rem);--line:2px}
+:root{--gator:#1f9a3d;--pale:#fbf9fd;--bg:#fbf9fd;--rule:#7a2bb8;--ink:#1f1030;--inv:#4a1275;--blossom:#ecd3fa;--blossom2:#b86ee0;--twig:#3d1f55;--flk:188,206,228;--display:"Archivo Black",Impact,"Arial Black","Helvetica Neue",Arial,sans-serif;--text:"Archivo","Helvetica Neue",Arial,sans-serif;--pad:clamp(1rem,4vw,3rem);--line:2px}
+#menu,.menu-fixed{--bg:#000;--ink:#fff;--rule:#6fe3ff;--gator:#3ddc5a}
+::selection{background:var(--rule);color:#fff}
 *{box-sizing:border-box}
 html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:4rem}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:clamp(1.05rem,1.4vw,1.25rem);font-weight:500;line-height:1.4;-webkit-font-smoothing:antialiased}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--text);font-size:clamp(1.05rem,1.4vw,1.25rem);font-weight:500;line-height:1.4;-webkit-font-smoothing:antialiased}
 main{max-width:90rem;margin:0 auto;border:var(--line) solid var(--rule)}
 a{color:inherit}
 a:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
@@ -22,16 +25,16 @@ a:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
 .lite,.glow{position:relative;isolation:isolate}
 .lite::before,.glow::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s;
 background:
-radial-gradient(circle 30rem at var(--mx,50%) var(--my,50%),rgba(255,255,255,calc(var(--f,0)*.8)) 0,rgba(111,227,255,calc(var(--f,0)*.75)) 16%,rgba(111,227,255,calc(var(--f,0)*.32)) 45%,transparent 72%),
-radial-gradient(circle 20rem at var(--mx,50%) var(--my,50%),rgba(111,227,255,.4) 0,rgba(111,227,255,.16) 45%,transparent 72%)}
+radial-gradient(circle 30rem at var(--mx,50%) var(--my,50%),rgba(236,211,250,calc(var(--f,0)*.95)) 0,rgba(150,70,220,calc(var(--f,0)*.7)) 16%,rgba(150,70,220,calc(var(--f,0)*.3)) 45%,transparent 72%),
+radial-gradient(circle 20rem at var(--mx,50%) var(--my,50%),rgba(150,70,220,.3) 0,rgba(150,70,220,.12) 45%,transparent 72%)}
 .lite.lit::before{opacity:1;animation:flash .9s cubic-bezier(.2,.6,.3,1)}
 @keyframes flash{0%{--f:0}10%{--f:1}100%{--f:0}}
 @media(hover:hover){.lite:hover::before,.glow:hover::before{opacity:1}.lite:active::before{--f:.55}}
 /* bar */
 .bar{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;overflow-x:auto;scrollbar-width:none}
 .bar a{flex:none;padding:.9rem 1.3rem;text-decoration:none;font-family:var(--display);text-transform:uppercase;font-size:.95rem;border-right:1px solid var(--rule);transition:background .4s}
-.bar a.home{background:var(--ink);color:var(--bg)}
-@media(hover:hover){.bar a:hover{background:rgba(111,227,255,.2)}}
+.bar a.home{background:var(--inv);color:var(--bg)}
+@media(hover:hover){.bar a:hover{background:rgba(150,70,220,.16)}}
 .bar a.on{box-shadow:inset 0 -4px 0 var(--rule)}
 /* hero */
 header{position:relative;padding:var(--pad);border-bottom:var(--line) solid var(--rule);overflow:hidden}
@@ -48,13 +51,13 @@ h2{font-size:clamp(2.2rem,8vw,7rem);line-height:.88;letter-spacing:-.04em;margin
 .sum{margin:0;font-weight:800;max-width:40rem}
 ul.o{list-style:none;margin:0;padding:0}
 ul.o>li{border-top:1px solid var(--rule);padding:1.2rem var(--pad);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:.4rem 2rem;transition:background .5s}
-@media(hover:hover){ul.o>li:hover{background:rgba(111,227,255,.1)}}
+@media(hover:hover){ul.o>li:hover{background:rgba(150,70,220,.09)}}
 ul.o strong{font-family:var(--display);font-weight:900;font-synthesis:none;text-transform:uppercase;font-size:clamp(1.1rem,2vw,1.6rem);line-height:1}
 ul.o ul{list-style:none;margin:0;padding:0}
 ul.o ul li{padding:.15rem 0 .15rem 1.4rem;position:relative}
-ul.o ul li::before{content:"";position:absolute;left:0;top:.62em;width:.6rem;height:.6rem;background:var(--rule);transition:transform .4s}
-@media(hover:hover){ul.o>li:hover ul li::before{transform:rotate(45deg) scale(.8)}}
-.try{border-top:1px solid var(--rule);padding:var(--pad);background:var(--ink);color:var(--bg)}
+ul.o ul li::before{content:"";position:absolute;left:0;top:.4em;width:1rem;height:1rem;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cg fill='%237a2bb8' stroke='%237a2bb8' stroke-width='7'%3E%3Ccircle cy='-25' r='20' transform='rotate(0)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(72)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(144)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(216)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(288)'/%3E%3C/g%3E%3Cg fill='%23ecd3fa'%3E%3Ccircle cy='-25' r='20' transform='rotate(0)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(72)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(144)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(216)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='9' fill='%23b86ee0'/%3E%3Ccircle r='3.5' fill='%237a2bb8'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .5s}
+@media(hover:hover){ul.o>li:hover ul li::before{transform:rotate(72deg) scale(1.15)}}
+.try{border-top:1px solid var(--rule);padding:var(--pad);background:var(--inv);color:var(--bg)}
 .try h3{margin:0 0 .5rem;font-size:clamp(1.4rem,3vw,2.4rem);line-height:.95}
 .try p{margin:0;font-weight:800;max-width:38rem}
 footer{padding:var(--pad);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;font-size:clamp(.9rem,1.6vw,1.2rem)}
@@ -179,12 +182,40 @@ footer{padding:var(--pad);display:flex;flex-wrap:wrap;justify-content:space-betw
 .bar::after{content:"";flex:0 0 9rem}
 .rings{top:auto;bottom:-6rem;margin-top:0}
 
+
+/* ---- snow + plum blossom ---- */
+body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none;will-change:transform}
+body::before{top:-600px;left:0;right:-600px;bottom:0;background-size:600px 600px;background-image:
+radial-gradient(circle 6px at 90px 130px,rgba(186,120,235,.55),transparent),
+radial-gradient(circle 7px at 400px 380px,rgba(var(--flk),.85),transparent),
+radial-gradient(circle 5px at 250px 520px,rgba(186,120,235,.5),transparent),
+radial-gradient(circle 6px at 500px 60px,rgba(var(--flk),.8),transparent),
+radial-gradient(circle 4px at 40px 330px,rgba(var(--flk),.75),transparent);animation:snowA 80s linear infinite}
+body::after{top:-300px;left:0;right:-300px;bottom:0;background-size:300px 300px;background-image:
+radial-gradient(circle 3px at 60px 80px,rgba(var(--flk),.95),transparent),
+radial-gradient(circle 2.5px at 200px 220px,rgba(var(--flk),.9),transparent),
+radial-gradient(circle 3px at 140px 10px,rgba(186,120,235,.5),transparent),
+radial-gradient(circle 2px at 270px 130px,rgba(var(--flk),.9),transparent);animation:snowB 24s linear infinite}
+@keyframes snowA{to{transform:translate(-600px,600px)}}
+@keyframes snowB{to{transform:translate(-300px,300px)}}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
+@media print{body::before,body::after{display:none}}
+.bl-s{fill:var(--rule);stroke:var(--rule);stroke-width:7}
+.bl-p{fill:var(--blossom)}
+.bl-c{fill:var(--blossom2)}
+.bl-d{fill:var(--rule)}
+.branch{position:absolute;top:0;left:0;width:min(58%,40rem);height:auto;pointer-events:none;overflow:visible}
+.branch .tw{fill:none;stroke:var(--twig);stroke-linecap:round}
+.branch .bud{fill:var(--blossom2);stroke:var(--rule);stroke-width:2}
+h2.d::after{content:"";display:inline-block;width:.4em;height:.4em;margin-left:.2em;vertical-align:.1em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cg fill='%237a2bb8' stroke='%237a2bb8' stroke-width='7'%3E%3Ccircle cy='-25' r='20' transform='rotate(0)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(72)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(144)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(216)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(288)'/%3E%3C/g%3E%3Cg fill='%23ecd3fa'%3E%3Ccircle cy='-25' r='20' transform='rotate(0)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(72)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(144)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(216)'/%3E%3Ccircle cy='-25' r='20' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='9' fill='%23b86ee0'/%3E%3Ccircle r='3.5' fill='%237a2bb8'/%3E%3C/svg%3E") center/contain no-repeat}
+.wheel .hubflower{pointer-events:none}
+
 /* ---- fascicle outline ---- */
 .ctl{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:0 var(--pad) 1.2rem}
 .ctl input{flex:1 1 14rem;min-width:0;background:var(--bg);color:var(--ink);border:2px solid var(--rule);padding:.7rem .9rem;font:inherit;border-radius:0}
 .ctl input::placeholder{color:var(--ink);opacity:.55}
 .ctl button{background:var(--bg);color:var(--ink);border:2px solid var(--rule);padding:.7rem 1rem;font-family:var(--display);text-transform:uppercase;font-size:.85rem;cursor:pointer;border-radius:0;transition:background .4s,color .4s}
-@media(hover:hover){.ctl button:hover{background:var(--ink);color:var(--bg)}}
+@media(hover:hover){.ctl button:hover{background:var(--inv);color:var(--bg)}}
 .ctl button:focus-visible,.ctl input:focus-visible{outline:3px solid var(--rule);outline-offset:2px}
 #count{font-size:.9rem;opacity:.75}
 .ph{padding:1.5rem var(--pad) .8rem;border-top:var(--line) solid var(--rule)}
@@ -196,8 +227,8 @@ details.f>summary{list-style:none;cursor:pointer;display:grid;grid-template-colu
 details.f>summary::-webkit-details-marker{display:none}
 details.f>summary::after{content:"+";font-family:var(--display);justify-self:end;transition:transform .4s}
 details.f[open]>summary::after{content:"\2013"}
-details.f[open]>summary{background:rgba(111,227,255,.09)}
-@media(hover:hover){details.f>summary:hover{background:rgba(111,227,255,.14)}}
+details.f[open]>summary{background:rgba(150,70,220,.08)}
+@media(hover:hover){details.f>summary:hover{background:rgba(150,70,220,.13)}}
 details.f>summary:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
 .f .n{opacity:.6;font-size:.95rem}
 .f .rt{font-size:clamp(1rem,1.8vw,1.35rem);line-height:1.05}
@@ -206,7 +237,7 @@ details.f>summary:focus-visible{outline:4px solid var(--rule);outline-offset:-4p
 details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
 @keyframes openb{from{opacity:0;transform:translateY(-.6rem)}to{opacity:1;transform:none}}
 .f .body p{margin:0 0 1rem;max-width:44rem}
-.f .lesson{background:var(--ink);color:var(--bg);padding:1rem 1.2rem;font-weight:800;margin:0 0 1.4rem;max-width:44rem}
+.f .lesson{background:var(--inv);color:var(--bg);padding:1rem 1.2rem;font-weight:800;margin:0 0 1.4rem;max-width:44rem}
 .f .lesson .d{display:block;font-size:.8rem;margin-bottom:.3rem;opacity:.7}
 .f .qs{margin:1.4rem 0;max-width:44rem}
 .f .qs .lab{display:block;font-size:.8rem;opacity:.65;margin-bottom:.4rem}
@@ -231,8 +262,8 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
 .tile .num{font-size:clamp(3rem,8vw,7rem);line-height:.8}
 .tile .nm{font-size:clamp(1rem,2vw,1.5rem);line-height:1}
 .tile .sm{font-weight:500;opacity:.85}
-@media(hover:hover){.tile:hover{background:rgba(111,227,255,.16)}}
-.tile.on{background:var(--ink);color:var(--bg)}
+@media(hover:hover){.tile:hover{background:rgba(150,70,220,.14)}}
+.tile.on{background:var(--inv);color:var(--bg)}
 .tile:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
 .tpanel{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1.5rem 3rem;padding:var(--pad);border-top:1px solid var(--rule);animation:openb .7s cubic-bezier(.2,.6,.3,1) both}
 .tpanel[hidden],.pp[hidden]{display:none}
@@ -254,18 +285,18 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
 .wheel .nd circle{fill:var(--bg);stroke:var(--rule);stroke-width:3;transition:fill .4s,stroke-width .3s}
 .wheel .nd .n{fill:var(--ink);font-family:var(--display);font-size:24px;text-anchor:middle;dominant-baseline:central;pointer-events:none;transition:fill .4s}
 .wheel .nd .l{fill:var(--ink);font-family:var(--display);font-size:19px;text-transform:uppercase;pointer-events:none}
-@media(hover:hover){.wheel .nd:hover circle{fill:rgba(111,227,255,.4);stroke-width:5;filter:drop-shadow(0 0 10px rgba(111,227,255,.85))}}
+@media(hover:hover){.wheel .nd:hover circle{fill:rgba(150,70,220,.35);stroke-width:5;filter:drop-shadow(0 0 10px rgba(150,70,220,.8))}}
 .wheel .nd.lit circle{animation:ndflash .9s cubic-bezier(.2,.6,.3,1)}
 .wheel .nd.lit .n{animation:ndtxt .9s cubic-bezier(.2,.6,.3,1)}
-@keyframes ndflash{from{fill:#fff;stroke-width:10;filter:drop-shadow(0 0 22px rgba(111,227,255,1)) drop-shadow(0 0 8px #fff)}}
-@keyframes ndtxt{from{fill:var(--bg)}}
-.wheel .nd:focus-visible circle{stroke:#fff;stroke-width:6}
-.wheel .nd.on circle{fill:var(--ink)}
+@keyframes ndflash{from{fill:var(--blossom);stroke-width:10;filter:drop-shadow(0 0 22px rgba(150,70,220,1)) drop-shadow(0 0 8px var(--blossom))}}
+@keyframes ndtxt{from{fill:var(--inv)}}
+.wheel .nd:focus-visible circle{stroke:var(--ink);stroke-width:6}
+.wheel .nd.on circle{fill:var(--inv)}
 .wheel .nd.on .n{fill:var(--bg)}
 .ppanel{padding:var(--pad);border-left:1px solid var(--rule)}
 .pp{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
 .pp .tag{display:flex;gap:.6rem;align-items:center;margin:0 0 .8rem;font-weight:800;font-size:.9rem}
-.pp .tag .d{background:var(--ink);color:var(--bg);padding:.1rem .6rem}
+.pp .tag .d{background:var(--inv);color:var(--bg);padding:.1rem .6rem}
 .pp h3{font-size:clamp(1.8rem,4vw,3rem);line-height:.9;margin:0 0 .4rem;letter-spacing:-.03em}
 .pp .pali{opacity:.7;font-style:italic;margin:0 0 1rem}
 .pp p{max-width:34rem}
@@ -300,6 +331,7 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
       <polygon points="92,86 108,86 100,96"/>
       <polygon points="116,86 132,86 124,96"/>
     </svg><span class="t">Menu</span></button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="blossom" viewBox="-50 -50 100 100"><g class="bl-s"><circle cy="-25" r="20"/><circle cy="-25" r="20" transform="rotate(72)"/><circle cy="-25" r="20" transform="rotate(144)"/><circle cy="-25" r="20" transform="rotate(216)"/><circle cy="-25" r="20" transform="rotate(288)"/></g><g class="bl-p"><circle cy="-25" r="20"/><circle cy="-25" r="20" transform="rotate(72)"/><circle cy="-25" r="20" transform="rotate(144)"/><circle cy="-25" r="20" transform="rotate(216)"/><circle cy="-25" r="20" transform="rotate(288)"/></g><circle class="bl-c" r="9"/><g class="bl-d"><circle r="3"/><circle cx="0" cy="-15" r="2.2"/><circle cx="14.3" cy="-4.6" r="2.2"/><circle cx="8.8" cy="12.1" r="2.2"/><circle cx="-8.8" cy="12.1" r="2.2"/><circle cx="-14.3" cy="-4.6" r="2.2"/></g></symbol></svg>
 <main>
 <nav class="bar" aria-label="Sections">
 <a class="home" href="./">Home</a>
@@ -338,6 +370,7 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
       <polygon points="116,86 132,86 124,96"/>
     </svg><span class="menu-label">Menu</span></button>
 <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<svg class="branch" viewBox="0 0 640 170" aria-hidden="true" focusable="false"><path class="tw" stroke-width="6" d="M-10 16 C80 8 140 44 230 52 C320 60 380 52 450 82 C510 108 580 112 650 104"/><path class="tw" stroke-width="4" d="M230 52 C242 90 236 120 256 148"/><path class="tw" stroke-width="3.5" d="M140 38 C150 18 168 8 190 6"/><path class="tw" stroke-width="3.5" d="M380 56 C396 34 424 24 456 16"/><path class="tw" stroke-width="4" d="M450 82 C458 112 452 134 470 152"/><path class="tw" stroke-width="3" d="M520 106 C530 126 548 134 566 130"/><circle class="bud" cx="330" cy="70" r="5"/><circle class="bud" cx="515" cy="100" r="4"/><circle class="bud" cx="410" cy="30" r="4.5"/><circle class="bud" cx="600" cy="100" r="5"/><circle class="bud" cx="20" cy="14" r="5"/><g transform="translate(60 22) rotate(0)"><use href="#blossom" x="-22.0" y="-22.0" width="44" height="44"/></g><g transform="translate(140 38) rotate(20)"><use href="#blossom" x="-19.0" y="-19.0" width="38" height="38"/></g><g transform="translate(190 8) rotate(40)"><use href="#blossom" x="-17.0" y="-17.0" width="34" height="34"/></g><g transform="translate(232 54) rotate(10)"><use href="#blossom" x="-28.0" y="-28.0" width="56" height="56"/></g><g transform="translate(256 148) rotate(30)"><use href="#blossom" x="-22.0" y="-22.0" width="44" height="44"/></g><g transform="translate(380 56) rotate(15)"><use href="#blossom" x="-23.0" y="-23.0" width="46" height="46"/></g><g transform="translate(456 16) rotate(50)"><use href="#blossom" x="-19.0" y="-19.0" width="38" height="38"/></g><g transform="translate(450 84) rotate(5)"><use href="#blossom" x="-29.0" y="-29.0" width="58" height="58"/></g><g transform="translate(470 152) rotate(25)"><use href="#blossom" x="-20.0" y="-20.0" width="40" height="40"/></g><g transform="translate(570 112) rotate(35)"><use href="#blossom" x="-22.0" y="-22.0" width="44" height="44"/></g><g transform="translate(100 26) rotate(60)"><use href="#blossom" x="-12.0" y="-12.0" width="24" height="24"/></g><g transform="translate(325 60) rotate(12)"><use href="#blossom" x="-13.0" y="-13.0" width="26" height="26"/></g></svg>
 <h1 class="d">Mind</h1>
 </header>
 
@@ -362,7 +395,7 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
 <section id="path">
 <div class="sh"><h2 class="d">The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
 <div class="pathwrap"><div class="wheel"><svg viewBox="-390 -340 780 680" role="group" aria-label="Eightfold path wheel" xmlns="http://www.w3.org/2000/svg">
-<circle class="outer" r="318"/><circle class="rim" r="205"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="-205.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="-145.0"/><line class="spoke" x1="0" y1="0" x2="205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="205.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="-205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="-145.0"/><circle class="hub" r="46"/><circle class="hub" r="14" style="fill:var(--rule)"/><g class="nd on" tabindex="0" role="button" aria-pressed="true" aria-label="Right view" data-i="0"><circle cx="0.0" cy="-205.0" r="31"/><text class="n" x="0.0" y="-205.0">1</text><text class="l" x="0.0" y="-274.0" text-anchor="middle" dominant-baseline="middle">View</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right intention" data-i="1"><circle cx="145.0" cy="-145.0" r="31"/><text class="n" x="145.0" y="-145.0">2</text><text class="l" x="189.5" y="-189.5" text-anchor="start" dominant-baseline="middle">Intention</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right speech" data-i="2"><circle cx="205.0" cy="0.0" r="31"/><text class="n" x="205.0" y="0.0">3</text><text class="l" x="268.0" y="0.0" text-anchor="start" dominant-baseline="middle">Speech</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right action" data-i="3"><circle cx="145.0" cy="145.0" r="31"/><text class="n" x="145.0" y="145.0">4</text><text class="l" x="189.5" y="189.5" text-anchor="start" dominant-baseline="middle">Action</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right livelihood" data-i="4"><circle cx="0.0" cy="205.0" r="31"/><text class="n" x="0.0" y="205.0">5</text><text class="l" x="0.0" y="286.0" text-anchor="middle" dominant-baseline="middle">Livelihood</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right effort" data-i="5"><circle cx="-145.0" cy="145.0" r="31"/><text class="n" x="-145.0" y="145.0">6</text><text class="l" x="-189.5" y="189.5" text-anchor="end" dominant-baseline="middle">Effort</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right mindfulness" data-i="6"><circle cx="-205.0" cy="0.0" r="31"/><text class="n" x="-205.0" y="0.0">7</text><text class="l" x="-268.0" y="0.0" text-anchor="end" dominant-baseline="middle">Mindfulness</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right concentration" data-i="7"><circle cx="-145.0" cy="-145.0" r="31"/><text class="n" x="-145.0" y="-145.0">8</text><text class="l" x="-189.5" y="-189.5" text-anchor="end" dominant-baseline="middle">Concentration</text></g></svg></div><div class="ppanel" aria-live="polite"><article class="pp">
+<circle class="outer" r="318"/><circle class="rim" r="205"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="-205.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="-145.0"/><line class="spoke" x1="0" y1="0" x2="205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="205.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="-205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="-145.0"/><circle class="hub" r="46"/><use class="hubflower" href="#blossom" x="-34" y="-34" width="68" height="68"/><g class="nd on" tabindex="0" role="button" aria-pressed="true" aria-label="Right view" data-i="0"><circle cx="0.0" cy="-205.0" r="31"/><text class="n" x="0.0" y="-205.0">1</text><text class="l" x="0.0" y="-274.0" text-anchor="middle" dominant-baseline="middle">View</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right intention" data-i="1"><circle cx="145.0" cy="-145.0" r="31"/><text class="n" x="145.0" y="-145.0">2</text><text class="l" x="189.5" y="-189.5" text-anchor="start" dominant-baseline="middle">Intention</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right speech" data-i="2"><circle cx="205.0" cy="0.0" r="31"/><text class="n" x="205.0" y="0.0">3</text><text class="l" x="268.0" y="0.0" text-anchor="start" dominant-baseline="middle">Speech</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right action" data-i="3"><circle cx="145.0" cy="145.0" r="31"/><text class="n" x="145.0" y="145.0">4</text><text class="l" x="189.5" y="189.5" text-anchor="start" dominant-baseline="middle">Action</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right livelihood" data-i="4"><circle cx="0.0" cy="205.0" r="31"/><text class="n" x="0.0" y="205.0">5</text><text class="l" x="0.0" y="286.0" text-anchor="middle" dominant-baseline="middle">Livelihood</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right effort" data-i="5"><circle cx="-145.0" cy="145.0" r="31"/><text class="n" x="-145.0" y="145.0">6</text><text class="l" x="-189.5" y="189.5" text-anchor="end" dominant-baseline="middle">Effort</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right mindfulness" data-i="6"><circle cx="-205.0" cy="0.0" r="31"/><text class="n" x="-205.0" y="0.0">7</text><text class="l" x="-268.0" y="0.0" text-anchor="end" dominant-baseline="middle">Mindfulness</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right concentration" data-i="7"><circle cx="-145.0" cy="-145.0" r="31"/><text class="n" x="-145.0" y="-145.0">8</text><text class="l" x="-189.5" y="-189.5" text-anchor="end" dominant-baseline="middle">Concentration</text></g></svg></div><div class="ppanel" aria-live="polite"><article class="pp">
 <p class="tag"><span class="d">1</span><span>Wisdom</span></p>
 <h3 class="d">Right View</h3><p class="pali">Samma ditthi</p>
 <p>Seeing things as they are: the four truths, impermanence, and cause and effect. Right view is the map the rest of the path depends on.</p>
