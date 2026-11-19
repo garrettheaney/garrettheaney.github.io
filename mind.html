@@ -212,6 +212,55 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
  .f .body{padding-left:var(--pad)}
 }
 @media(prefers-reduced-motion:reduce){details.f[open] .body{animation:none}}
+
+/* ---- compact header ---- */
+.hdr{min-height:clamp(11rem,26vw,18rem)}
+.hdr h1{font-size:clamp(2rem,6vw,4.5rem);line-height:.9;letter-spacing:-.04em;margin:clamp(3.5rem,10vw,8rem) 0 0}
+/* ---- four truths ---- */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule)}
+.tile{appearance:none;background:var(--bg);color:var(--ink);border:0;border-right:1px solid var(--rule);text-align:left;cursor:pointer;padding:1.4rem var(--pad) 1.6rem;font:inherit;display:flex;flex-direction:column;gap:.3rem;transition:background .5s,color .5s;min-width:0}
+.tile:last-child{border-right:0}
+.tile .num{font-size:clamp(3rem,8vw,7rem);line-height:.8}
+.tile .nm{font-size:clamp(1rem,2vw,1.5rem);line-height:1}
+.tile .sm{font-weight:500;opacity:.85}
+.tile:hover{background:rgba(111,227,255,.12)}
+.tile.on{background:var(--ink);color:var(--bg)}
+.tile:focus-visible{outline:4px solid var(--rule);outline-offset:-4px}
+.tpanel{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1.5rem 3rem;padding:var(--pad);border-top:1px solid var(--rule);animation:openb .7s cubic-bezier(.2,.6,.3,1) both}
+.tpanel[hidden],.pp[hidden]{display:none}
+.tpanel .txt p{margin:0 0 1rem;font-size:1.15em;max-width:38rem}
+.box{border:1px solid var(--rule);padding:.8rem 1rem;margin:0 0 .8rem;font-size:.95rem}
+.box strong{display:block;font-family:var(--display);text-transform:uppercase;font-size:.8rem;margin-bottom:.25rem;color:var(--rule)}
+.box a{color:var(--rule);text-underline-offset:3px}
+.box a:hover{color:var(--ink)}
+/* ---- eightfold wheel ---- */
+.pathwrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-top:1px solid var(--rule)}
+.wheel{padding:1rem var(--pad)}
+.wheel svg{display:block;width:100%;height:auto;max-height:82vh}
+.wheel .outer{fill:none;stroke:var(--rule);stroke-width:1.5;stroke-dasharray:3 11;opacity:.6;transform-origin:0 0;animation:spin 140s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wheel .rim{fill:none;stroke:var(--rule);stroke-width:3}
+.wheel .spoke{stroke:var(--rule);stroke-width:2;opacity:.65}
+.wheel .hub{fill:var(--bg);stroke:var(--rule);stroke-width:3}
+.wheel .nd{cursor:pointer;outline:none}
+.wheel .nd circle{fill:var(--bg);stroke:var(--rule);stroke-width:3;transition:fill .4s,stroke-width .3s}
+.wheel .nd .n{fill:var(--ink);font-family:var(--display);font-size:24px;text-anchor:middle;dominant-baseline:central;pointer-events:none;transition:fill .4s}
+.wheel .nd .l{fill:var(--ink);font-family:var(--display);font-size:19px;text-transform:uppercase;pointer-events:none}
+.wheel .nd:hover circle{fill:rgba(111,227,255,.28)}
+.wheel .nd:focus-visible circle{stroke:#fff;stroke-width:6}
+.wheel .nd.on circle{fill:var(--ink)}
+.wheel .nd.on .n{fill:var(--bg)}
+.ppanel{padding:var(--pad);border-left:1px solid var(--rule)}
+.pp{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
+.pp .tag{display:flex;gap:.6rem;align-items:center;margin:0 0 .8rem;font-weight:800;font-size:.9rem}
+.pp .tag .d{background:var(--ink);color:var(--bg);padding:.1rem .6rem}
+.pp h3{font-size:clamp(1.8rem,4vw,3rem);line-height:.9;margin:0 0 .4rem;letter-spacing:-.03em}
+.pp .pali{opacity:.7;font-style:italic;margin:0 0 1rem}
+.pp p{max-width:34rem}
+@media(max-width:60rem){.tiles{grid-template-columns:repeat(2,1fr)}.tile:nth-child(2){border-right:0}.tile:nth-child(-n+2){border-bottom:1px solid var(--rule)}.tpanel{grid-template-columns:1fr}.pathwrap{grid-template-columns:1fr}.ppanel{border-left:0;border-top:1px solid var(--rule)}}
+.ring-click{position:fixed;width:16px;height:16px;border:2px solid var(--rule);border-radius:50%;pointer-events:none;z-index:60;transform:translate(-50%,-50%) scale(0);animation:ringc 1.4s ease-out forwards}
+@keyframes ringc{to{transform:translate(-50%,-50%) scale(30);opacity:0}}
+@media(prefers-reduced-motion:reduce){.wheel .outer,.tpanel,.pp{animation:none}}
 </style>
 </head>
 <body>
@@ -241,16 +290,18 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
       <polygon points="92,86 108,86 100,96"/>
       <polygon points="116,86 132,86 124,96"/>
     </svg><span class="t">Menu</span></button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="water" filterUnits="objectBoundingBox" x="-0.01" y="-0.004" width="1.02" height="1.008" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-color="rgb(128,128,128)" flood-opacity="1" result="neutral"/><feImage id="wmap" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"/><feMerge result="field"><feMergeNode in="neutral"/><feMergeNode in="map"/></feMerge><feDisplacementMap in="SourceGraphic" in2="field" scale="46" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <main>
 <nav class="bar" aria-label="Sections">
 <a class="home" href="./">Home</a>
-<a class="rip" href="#why">Why</a>
+<a class="rip" href="#truths">Truths</a>
+<a class="rip" href="#path">Path</a>
 <a class="rip" href="#dogen">Dogen</a>
 <a class="rip" href="#thread">Thread</a>
 <a class="rip" href="#shobogenzo">Shōbōgenzō</a>
 <a class="rip" href="#practice">Practice</a>
 </nav>
-<header class="rip">
+<header class="rip hdr">
     <button class="gator-link menu-btn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Open menu"><svg class="gator" viewBox="0 0 660 170" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M171,60 L171,44 Q171,35 184,35 Q197,35 197,44 L197,60 Z"/>
       <path d="M207,60 L207,44 Q207,35 220,35 Q233,35 233,44 L233,60 Z"/>
@@ -278,18 +329,79 @@ details.f[open] .body{animation:openb .6s cubic-bezier(.2,.6,.3,1) both}
       <polygon points="116,86 132,86 124,96"/>
     </svg><span class="menu-label">Menu</span></button>
 <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-<p class="top d">The Shōbōgenzō. Authenticity and discernment. How I keep my mind clear.</p>
-<h1 class="d">Dogen</h1>
+<h1 class="d">Mind</h1>
 </header>
 
-<section id="why">
-<div class="sh"><h2 class="d">Why this page</h2><p class="sum">A working page, not a shrine. This is how I keep my mind clear.</p></div>
-<ul class="o">
-<li class="rip"><strong>What it is</strong><ul><li>My notes on the practice and the text I use to keep my head clear</li><li>I sit, I read a little Dogen, and I go back to work</li></ul></li>
-<li class="rip"><strong>Why Dogen</strong><ul><li>He crossed the sea to find one teacher he could verify, and tested before he trusted</li><li>He refused to turn practice into a brand, a ladder, or a performance</li><li>For me the Shōbōgenzō is the authentic expression of the dharma, and this page works from that</li></ul></li>
-<li class="rip"><strong>Why it strengthens the work</strong><ul><li>Sitting steadies attention for professional work</li><li>The text trains discernment, which I need in art and in business: telling what is real from what is only performed</li><li>With no gaining idea, I can make things without needing them to prove me</li></ul></li>
-<li class="rip"><strong>The running thread</strong><ul><li>Almost every fascicle asks one question in different clothing: is this the real thing, or a description of it?</li><li>Each entry below ends with a Discernment line that names where that question shows up</li></ul></li>
-</ul>
+<section id="truths">
+<div class="sh"><h2 class="d">Four noble truths</h2><p class="sum">The Buddha’s first teaching: a diagnosis, a cause, a cure, and a method. Tap a truth.</p></div>
+<div class="tiles" role="tablist" aria-label="The four noble truths"><button type="button" class="tile rip on" role="tab" id="tt0" aria-controls="tp0" aria-selected="true"><span class="num d">1</span><span class="nm d">Dukkha</span><span class="sm">There is suffering</span></button><button type="button" class="tile rip" role="tab" id="tt1" aria-controls="tp1" aria-selected="false"><span class="num d">2</span><span class="nm d">Samudaya</span><span class="sm">Craving is the cause</span></button><button type="button" class="tile rip" role="tab" id="tt2" aria-controls="tp2" aria-selected="false"><span class="num d">3</span><span class="nm d">Nirodha</span><span class="sm">It can end</span></button><button type="button" class="tile rip" role="tab" id="tt3" aria-controls="tp3" aria-selected="false"><span class="num d">4</span><span class="nm d">Magga</span><span class="sm">There is a path</span></button></div>
+<div class="tpanel" role="tabpanel" id="tp0" aria-labelledby="tt0">
+<div class="txt"><p>Life as it is ordinarily lived is unsatisfactory. Birth, aging, sickness, and death cannot be avoided, and neither can losing what we love or meeting what we dislike. Even pleasant things pass.</p><p>This is a diagnosis, not gloom. The Buddha starts by asking for an honest look at what is actually happening.</p></div>
+<div class="side"><p class="box"><strong>At work</strong>Name the real problem, the overload or the fear, before trying to fix anything.</p><p class="box"><strong>In Dogen</strong>Birth and death are not an enemy. Meet each one completely. <a href="#f-shoji">Shōji</a>, <a href="#f-zenki">Zenki</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tt1" hidden>
+<div class="txt"><p>Suffering arises from craving: for pleasure, for continued existence, and for things to be other than they are. Underneath it sits ignorance of how things work, including the sense of a separate self that has to be defended and fed.</p></div>
+<div class="side"><p class="box"><strong>At work</strong>Notice what you are reaching for, whether approval, certainty, or control, when work starts to hurt.</p><p class="box"><strong>In Dogen</strong>The mind cannot be got, and flowers fall while we cling to them. <a href="#f-shin-fukatoku">Shin fukatoku</a>, <a href="#f-genjokoan">Genjōkōan</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tt2" hidden>
+<div class="txt"><p>When craving is let go completely, suffering ceases. That freedom is called nirvana. It does not mean annihilation. It means no longer being run by grasping, and the Buddha taught that it can be realized in this life.</p></div>
+<div class="side"><p class="box"><strong>At work</strong>Even a small release of grasping, a draft finished and left alone, shows that the grip can loosen.</p><p class="box"><strong>In Dogen</strong>Studying the self is forgetting the self. Throw body and mind into the buddha’s house. <a href="#f-genjokoan">Genjōkōan</a>, <a href="#f-shoji">Shōji</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tt3" hidden>
+<div class="txt"><p>The way out is the Noble Eightfold Path, a training in wisdom, ethical conduct, and concentration. It is something you do, not something you believe, and it is meant to be tested in daily life.</p></div>
+<div class="side"><p class="box"><strong>At work</strong>Treat it as a daily training and check results in conduct, not in how it feels.</p><p class="box"><strong>In Dogen</strong>The path is the buddhas’ own practice, and sitting is the gate. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a>, <a href="#f-bendowa">Bendōwa</a></p></div>
+</div>
+</section>
+
+<section id="path">
+<div class="sh"><h2 class="d">The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
+<div class="pathwrap"><div class="wheel"><svg viewBox="-390 -340 780 680" role="group" aria-label="Eightfold path wheel" xmlns="http://www.w3.org/2000/svg">
+<circle class="outer" r="318"/><circle class="rim" r="205"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="-205.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="-145.0"/><line class="spoke" x1="0" y1="0" x2="205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="0.0" y2="205.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="145.0"/><line class="spoke" x1="0" y1="0" x2="-205.0" y2="0.0"/><line class="spoke" x1="0" y1="0" x2="-145.0" y2="-145.0"/><circle class="hub" r="46"/><circle class="hub" r="14" style="fill:var(--rule)"/><g class="nd on" tabindex="0" role="button" aria-pressed="true" aria-label="Right view" data-i="0"><circle cx="0.0" cy="-205.0" r="31"/><text class="n" x="0.0" y="-205.0">1</text><text class="l" x="0.0" y="-274.0" text-anchor="middle" dominant-baseline="middle">View</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right intention" data-i="1"><circle cx="145.0" cy="-145.0" r="31"/><text class="n" x="145.0" y="-145.0">2</text><text class="l" x="189.5" y="-189.5" text-anchor="start" dominant-baseline="middle">Intention</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right speech" data-i="2"><circle cx="205.0" cy="0.0" r="31"/><text class="n" x="205.0" y="0.0">3</text><text class="l" x="268.0" y="0.0" text-anchor="start" dominant-baseline="middle">Speech</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right action" data-i="3"><circle cx="145.0" cy="145.0" r="31"/><text class="n" x="145.0" y="145.0">4</text><text class="l" x="189.5" y="189.5" text-anchor="start" dominant-baseline="middle">Action</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right livelihood" data-i="4"><circle cx="0.0" cy="205.0" r="31"/><text class="n" x="0.0" y="205.0">5</text><text class="l" x="0.0" y="286.0" text-anchor="middle" dominant-baseline="middle">Livelihood</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right effort" data-i="5"><circle cx="-145.0" cy="145.0" r="31"/><text class="n" x="-145.0" y="145.0">6</text><text class="l" x="-189.5" y="189.5" text-anchor="end" dominant-baseline="middle">Effort</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right mindfulness" data-i="6"><circle cx="-205.0" cy="0.0" r="31"/><text class="n" x="-205.0" y="0.0">7</text><text class="l" x="-268.0" y="0.0" text-anchor="end" dominant-baseline="middle">Mindfulness</text></g><g class="nd" tabindex="0" role="button" aria-pressed="false" aria-label="Right concentration" data-i="7"><circle cx="-145.0" cy="-145.0" r="31"/><text class="n" x="-145.0" y="-145.0">8</text><text class="l" x="-189.5" y="-189.5" text-anchor="end" dominant-baseline="middle">Concentration</text></g></svg></div><div class="ppanel" aria-live="polite"><article class="pp">
+<p class="tag"><span class="d">1</span><span>Wisdom</span></p>
+<h3 class="d">Right View</h3><p class="pali">Samma ditthi</p>
+<p>Seeing things as they are: the four truths, impermanence, and cause and effect. Right view is the map the rest of the path depends on.</p>
+<p class="box"><strong>At work</strong>Look at the real situation before deciding. Do not work from a flattering picture.</p>
+<p class="box"><strong>In Dogen</strong>Do not deny cause and effect. <a href="#f-jinshin-inga">Jinshin inga</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">2</span><span>Wisdom</span></p>
+<h3 class="d">Right Intention</h3><p class="pali">Samma sankappa</p>
+<p>The resolve behind your actions: letting go of grasping, goodwill toward others, and harmlessness.</p>
+<p class="box"><strong>At work</strong>Ask what the work is for and who it serves.</p>
+<p class="box"><strong>In Dogen</strong>Awaken for the sake of others, not for reputation. <a href="#f-hotsu-bodai-shin">Hotsu bodai shin</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">3</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Speech</h3><p class="pali">Samma vaca</p>
+<p>Speaking truthfully, kindly, without divisiveness, and without idle chatter.</p>
+<p class="box"><strong>At work</strong>Say what is true, plainly. Keep promises. Say less.</p>
+<p class="box"><strong>In Dogen</strong>Express the way from your own realization, and do not waste time in idle talk. <a href="#f-dotoku">Dōtoku</a>, <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">4</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Action</h3><p class="pali">Samma kammanta</p>
+<p>Acting without killing, stealing, or harmful sexual conduct. In practice, doing no harm with the body.</p>
+<p class="box"><strong>At work</strong>Do no harm in how you make and deliver things. Keep to agreements.</p>
+<p class="box"><strong>In Dogen</strong>Not doing evil is how awakening acts. <a href="#f-shoaku-makusa">Shoaku makusa</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">5</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Livelihood</h3><p class="pali">Samma ajiva</p>
+<p>Earning a living in a way that does not harm beings or rely on deceit.</p>
+<p class="box"><strong>At work</strong>Choose and run work you can stand behind. No deception for money.</p>
+<p class="box"><strong>In Dogen</strong>Want little, be content, and treat everyday matters as the way. <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a>, <a href="#f-kajo">Kajō</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">6</span><span>Concentration</span></p>
+<h3 class="d">Right Effort</h3><p class="pali">Samma vayama</p>
+<p>Preventing unwholesome states, letting them go, cultivating wholesome ones, and sustaining them. Steady effort, neither forced nor slack.</p>
+<p class="box"><strong>At work</strong>Show up steadily. Avoid the burst-and-collapse cycle.</p>
+<p class="box"><strong>In Dogen</strong>Continuous practice, unbroken and unadvertised. <a href="#f-gyoji">Gyōji</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">7</span><span>Concentration</span></p>
+<h3 class="d">Right Mindfulness</h3><p class="pali">Samma sati</p>
+<p>Staying aware of the body, feelings, mind, and the objects of mind from moment to moment, without reacting.</p>
+<p class="box"><strong>At work</strong>One task at a time, with attention in the hands.</p>
+<p class="box"><strong>In Dogen</strong>The four foundations of mindfulness are the buddhas’ own practice. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a></p>
+</article><article class="pp" hidden>
+<p class="tag"><span class="d">8</span><span>Concentration</span></p>
+<h3 class="d">Right Concentration</h3><p class="pali">Samma samadhi</p>
+<p>Unifying and settling the mind. In the early texts this is described as the four absorptions. In Dogen it is zazen.</p>
+<p class="box"><strong>At work</strong>Protect a long block of uninterrupted attention before the day’s demands arrive.</p>
+<p class="box"><strong>In Dogen</strong>Sitting upright is the king of concentrations. <a href="#f-zazen-gi">Zazen gi</a>, <a href="#f-zanmai-o-zanmai">Zanmai ō zanmai</a></p>
+</article></div></div>
 </section>
 
 <section id="dogen">
@@ -1357,6 +1469,65 @@ document.addEventListener('click',function(e){
  if(a){var el=document.getElementById(a.getAttribute('href').slice(1));if(el){el.hidden=false;el.open=true}}
 });
 upd();openHash();
+})();
+</script>
+<script>
+(function(){
+/* truths + wheel */
+var tiles=[].slice.call(document.querySelectorAll('.tile')),tps=[].slice.call(document.querySelectorAll('.tpanel'));
+function selT(i){tiles.forEach(function(t,k){t.classList.toggle('on',k===i);t.setAttribute('aria-selected',k===i?'true':'false')});tps.forEach(function(p,k){p.hidden=k!==i})}
+tiles.forEach(function(t,i){t.addEventListener('click',function(){selT(i)})});
+var nds=[].slice.call(document.querySelectorAll('.wheel .nd')),pps=[].slice.call(document.querySelectorAll('.pp'));
+function selP(i){nds.forEach(function(n,k){n.classList.toggle('on',k===i);n.setAttribute('aria-pressed',k===i?'true':'false')});pps.forEach(function(p,k){p.hidden=k!==i})}
+nds.forEach(function(n,i){
+ n.addEventListener('click',function(){selP(i)});
+ n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selP(i)}});
+});
+/* water */
+var main=document.querySelector('main'),fe=document.getElementById('wmap');
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ua=navigator.userAgent,safari=/safari/i.test(ua)&&!/chrome|crios|chromium|android|edg|fxios/i.test(ua);
+var ok=!reduce&&!safari&&fe&&window.CSS&&CSS.supports('filter','url(#water)');
+var rips=[],raf=0,cv=document.createElement('canvas'),cx=cv.getContext('2d'),SC=4,DUR=2800,SPEED=330,LAM=70,SIG=120;
+function stop(){main.style.filter='';main.style.willChange='';raf=0}
+function frame(now){
+ rips=rips.filter(function(r){return now-r.t0<DUR});
+ if(!rips.length){stop();return}
+ var rect=main.getBoundingClientRect(),vw=window.innerWidth,vh=window.innerHeight;
+ var W=Math.max(24,Math.ceil(vw/SC)),H=Math.max(24,Math.ceil(vh/SC));
+ if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H}
+ var img=cx.createImageData(W,H),d=img.data,n=rips.length,i,j,k;
+ var info=rips.map(function(r){var t=(now-r.t0)/1000;return{x:r.x+rect.left,y:r.y+rect.top,rad:SPEED*t,amp:Math.exp(-1.25*t)}});
+ for(j=0;j<H;j++){for(i=0;i<W;i++){
+  var vx=i*SC+SC/2,vy=j*SC+SC/2,mx=0,my=0;
+  for(k=0;k<n;k++){
+   var f=info[k],dx=vx-f.x,dy=vy-f.y,dist=Math.sqrt(dx*dx+dy*dy)+0.001,ph=dist-f.rad;
+   if(ph>SIG*3||ph<-SIG*3)continue;
+   var env=Math.exp(-(ph*ph)/(2*SIG*SIG)),mag=f.amp*Math.sin(6.2831853*ph/LAM)*env/(1+dist/380);
+   mx+=dx/dist*mag;my+=dy/dist*mag;
+  }
+  if(mx>1)mx=1;else if(mx<-1)mx=-1;if(my>1)my=1;else if(my<-1)my=-1;
+  var p=(j*W+i)*4;d[p]=128+127*mx;d[p+1]=128+127*my;d[p+2]=128;d[p+3]=255;
+ }}
+ cx.putImageData(img,0,0);
+ var url=cv.toDataURL();
+ fe.setAttribute('x',-rect.left);fe.setAttribute('y',-rect.top);fe.setAttribute('width',vw);fe.setAttribute('height',vh);
+ fe.setAttribute('href',url);fe.setAttributeNS('http://www.w3.org/1999/xlink','href',url);
+ raf=requestAnimationFrame(frame);
+}
+function drop(e){
+ if(e.button&&e.button!==0)return;
+ if(e.target.closest&&e.target.closest('dialog,.menu-btn'))return;
+ if(ok){
+  var rect=main.getBoundingClientRect();
+  rips.push({x:e.clientX-rect.left,y:e.clientY-rect.top,t0:performance.now()});
+  if(rips.length>4)rips.shift();
+  if(!raf){main.style.willChange='filter';main.style.filter='url(#water)';raf=requestAnimationFrame(frame)}
+ }else if(!reduce){
+  var s=document.createElement('span');s.className='ring-click';s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';document.body.appendChild(s);setTimeout(function(){s.remove()},1500);
+ }
+}
+document.addEventListener('pointerdown',drop,true);
 })();
 </script>
 </body>
