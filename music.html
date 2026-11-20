@@ -205,6 +205,8 @@ dialog#viewer::backdrop{background:#fff}
 .vdate{font-weight:700;color:var(--mute)}
 .vlink{display:inline-block;border:2px solid var(--blue);background:var(--blue);color:#fff;border-radius:2rem;padding:.55rem 1.2rem;font-weight:700;text-decoration:none}
 .vlink:hover{background:#fff;color:var(--blue)}
+.vtune{font:inherit;font-weight:700;cursor:pointer;margin-right:.6rem}
+.vhint{margin:.6rem 0 0;color:var(--mute);font-size:.92rem;max-width:34rem}
 .vnav{display:flex;gap:.6rem;margin-top:1.4rem}.vnav .vbtn{flex:1}
 @media(max-width:48rem){.vmain{display:block;overflow-y:auto}.vcover{max-height:55vh}.vcover img{max-height:48vh}.vinfo{overflow:visible}}
 .links{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0 0;padding:0;list-style:none}
@@ -411,7 +413,8 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
       <div class="vinfo">
         <p class="vtype" id="vtype"></p>
         <h2 class="vtitle" id="vtitle"></h2>
-        <iframe class="vplayer" id="vplayer" title="Bandcamp player" allow="autoplay" loading="lazy" seamless></iframe>
+        <button class="vlink vtune" id="vtune" type="button">Tune the cab radio</button>
+        <p class="vhint">Plays in the radio at the top of the page, so you can close this and keep browsing.</p>
         <div class="vtext" id="vtext"></div>
         <a class="vlink" id="vlink" target="_blank" rel="noopener">Listen or buy on Bandcamp</a>
         <div class="vnav"><button class="vbtn" id="vprev" type="button">Prev</button><button class="vbtn" id="vnext" type="button">Next</button></div>
@@ -419,6 +422,7 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
     </div>
   </div>
 </dialog>
+<script src="radio.js"></script>
 <script>
 (function(){
 var html=document.documentElement, body=document.body;
@@ -616,6 +620,7 @@ if(links.length&&'IntersectionObserver' in window){
     {"title": "Know Thyself LP", "type": "LP", "date": "February 22, 2022", "short": "Feb 2022", "kind": "album", "id": 1506449673, "art": "a3979759530", "path": "/album/know-thyself-lp", "notes": ["22 tracks. Know Thyself is the debut recording project of Provisions Hip Hop. The title track was produced by Louis Mackey and features Godforbid, Mr. Muthafuckin' eXquire and A-F-R-O. The 21-track album includes 8 producers and 11 emcees.", "Beats by Louis Mackey, Pajama Sam, Stresselbee, 8-BZA, Elder Orange, Quandary and JL (r.i.p. homie).", "Raps by A-F-R-O, Kool A.D., Mr. Muthafuckin' eXquire, Godforbid, Thirstin Howl III, Defcee, Louis Mackey, Nahte Renmus, Teece Luvv, Subtex, Ocho Phono.", "Mixed and mastered by Skysplitter in Burlington, VT.", "Executively produced by Auto Heaney."]}
   ];
 
+  if (window.radio) window.radio.setList(releases);
   const grid = document.getElementById('grid');
   document.getElementById('total').textContent = releases.length;
   const cover = function (r, size) { return 'https://f4.bcbits.com/img/' + r.art + '_' + size + '.jpg'; };
@@ -651,10 +656,6 @@ if(links.length&&'IntersectionObserver' in window){
     el('vtype').textContent = r.type;
     el('vtitle').textContent = r.title;
     el('vcount').textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(releases.length).padStart(2, '0');
-    const p = el('vplayer');
-    const base = 'https://bandcamp.com/EmbeddedPlayer/' + r.kind + '=' + r.id + '/size=large/bgcol=ffffff/linkcol=003da5/';
-    if (r.kind === 'album') { p.src = base + 'tracklist=true/artwork=small/transparent=true/'; p.style.height = '472px'; }
-    else { p.src = base + 'tracklist=false/artwork=small/transparent=true/'; p.style.height = '120px'; }
     const t = el('vtext'); t.textContent = '';
     const dt = document.createElement('p'); dt.className = 'vdate'; dt.textContent = 'Released ' + r.date; t.appendChild(dt);
     r.notes.forEach(function (n) { const q = document.createElement('p'); q.textContent = n; t.appendChild(q); });
@@ -674,10 +675,10 @@ if(links.length&&'IntersectionObserver' in window){
     });
   });
   el('vclose').addEventListener('click', function () { dlg.close(); });
+  el('vtune').addEventListener('click', function () { if (window.radio) { window.radio.tune(cur); dlg.close(); } });
   el('vprev').addEventListener('click', function () { show(cur - 1); });
   el('vnext').addEventListener('click', function () { show(cur + 1); });
   dlg.addEventListener('close', function () {
-    el('vplayer').src = 'about:blank';          /* stop the music */
     document.documentElement.style.overflow = '';
     if (opener) opener.focus();
   });
