@@ -371,64 +371,17 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 .mason .num{font-size:.95rem}
 .mason .ttl{font-size:1rem}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
-#board{--bd:10px;position:fixed;inset:0;z-index:800;background:linear-gradient(#fafbfb,#eceff1 70%,#e1e5e8);color:var(--ink);font-family:var(--dots);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
-#board.open{opacity:1;visibility:visible;transition:opacity .25s}
-#board::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--red);z-index:1}
-#board :focus-visible{outline-color:var(--ink)}
-.bscreen{position:absolute;inset:var(--bd);overflow:hidden;border-radius:.5rem;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;background:repeating-linear-gradient(90deg,rgba(20,23,26,.06) 0 2px,transparent 2px 96px),repeating-linear-gradient(0deg,rgba(20,23,26,.045) 0 2px,transparent 2px 64px),#f1f3f4;box-shadow:inset 0 0 0 2px rgba(20,23,26,.25)}
-.bscreen.grab{cursor:grabbing}
-#bimg{position:absolute;left:50%;top:50%;max-width:none;background:#fff;transform-origin:50% 50%;will-change:transform;-webkit-user-drag:none;box-shadow:0 0 0 1px rgba(20,23,26,.5),0 18px 50px -14px rgba(20,23,26,.55)}
-.hud{position:absolute;z-index:5;transition:opacity .35s}
-#board.idle .hud{opacity:0;pointer-events:none}
-.bled,.bdock,.bclock{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid var(--ink);box-shadow:0 10px 24px -12px rgba(20,23,26,.5)}
-.bled{left:calc(var(--bd) + .7rem);top:calc(var(--bd) + .7rem);max-width:calc(100% - 22rem);display:flex;align-items:center;gap:.8rem;padding:.4rem 1rem .4rem .45rem;border-radius:1.2rem}
-.bled .bul{width:2rem;height:2rem;font-size:.9rem;font-family:var(--sans)}
-.bled .lc{flex:none;color:var(--red);letter-spacing:.08em}
-.bled .ld{min-width:0;font-size:clamp(1.1rem,2vw,1.6rem);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bled .ls{flex:none;font-size:.85rem;color:var(--mute);white-space:nowrap}
-.bled .lst{flex:none;font:700 .7rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--green);white-space:nowrap;animation:bk 1.6s steps(1) infinite}
-@keyframes bk{50%{opacity:.3}}
-@media(prefers-reduced-motion:reduce){.bled .lst{animation:none}}
-.btr{right:calc(var(--bd) + .7rem);top:calc(var(--bd) + .7rem);display:flex;align-items:center;gap:.5rem}
-.bclock{height:2.4rem;padding:0 .9rem;display:grid;place-items:center;border-radius:2rem;font-size:1.1rem;letter-spacing:.08em}
-.bbtn{appearance:none;flex:none;height:2.4rem;padding:0 .9rem;border:2px solid var(--ink);border-radius:2rem;background:rgba(255,255,255,.92);color:var(--ink);font:700 .8rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
-.bbtn:hover{background:var(--ink);color:#fff}
-.bbtn.sq{width:2.4rem;padding:0;font-size:1.4rem;line-height:1}
-.bnav{top:50%;transform:translateY(-50%);width:3rem;height:5rem;display:grid;place-items:center;padding:0;border:2px solid var(--ink);border-radius:.8rem;background:rgba(255,255,255,.92);color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
-.bnav:hover{background:var(--ink);color:#fff}
-.bnav svg{width:1.4rem;height:1.4rem;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.bnav.l{left:calc(var(--bd) + .7rem)}.bnav.r{right:calc(var(--bd) + .7rem)}
-.bdock{left:50%;bottom:calc(var(--bd) + .7rem);transform:translateX(-50%);width:min(60rem,calc(100% - 2 * var(--bd) - 1.4rem));display:grid;gap:.2rem;padding:.3rem .8rem .55rem;border-radius:1.2rem}
-.broute{display:flex;align-items:center;gap:1rem}
-.rscroll{flex:1;min-width:0;position:relative;overflow-x:auto;scrollbar-width:none}
-.rscroll::-webkit-scrollbar{display:none}
-.rin{display:flex;align-items:center;width:max-content;padding:.3rem 1rem;background:linear-gradient(var(--red),var(--red)) 0 50%/100% 6px no-repeat}
-.stp{appearance:none;flex:none;width:30px;height:30px;display:grid;place-items:center;padding:0;border:0;background:transparent;cursor:pointer}
-.stp i{display:block;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--ink);transition:all .2s}
-.stp.pass i{background:var(--ink)}
-.stp.on i{width:22px;height:22px;background:var(--red);border:4px solid #fff;box-shadow:0 0 0 3px var(--ink)}
-.rnext{flex:none;max-width:38%;font-size:clamp(.9rem,1.5vw,1.15rem);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rnext small{font:700 .64rem var(--sans);letter-spacing:.12em;color:var(--mute);margin-right:.6rem}
-.bzoom{display:flex;align-items:center;gap:.6rem}
-input.zr{-webkit-appearance:none;appearance:none;flex:1;min-width:6rem;height:1.8rem;margin:0;background:transparent;cursor:pointer}
-input.zr::-webkit-slider-runnable-track{height:.5rem;border-radius:.3rem;background:#cfd4d8}
-input.zr::-moz-range-track{height:.5rem;border-radius:.3rem;background:#cfd4d8}
-input.zr::-webkit-slider-thumb{-webkit-appearance:none;width:1rem;height:1.7rem;margin-top:-.6rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,var(--red) 38% 62%,#c8cdd1 62%)}
-input.zr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,#DA291C 38% 62%,#c8cdd1 62%)}
-.zread{min-width:6.5rem;text-align:right;font-size:1.1rem;letter-spacing:.06em}
-@media(max-width:46rem){
-  .bled{max-width:calc(100% - 9rem)}.bled .ls,.bclock{display:none}
-  .bnav{width:2.4rem;height:3.8rem}
-  .zread{min-width:4.4rem;font-size:.95rem}.rnext{display:none}
-  .bbtn{padding:0 .6rem}
-}
-
-
-/* viewer: station-bullet navigation */
-.bnav{width:3.6rem;height:3.6rem;border-radius:50%;background:var(--red);color:#fff;border:.32rem solid #fff;box-shadow:0 0 0 3px var(--ink);transition:background .2s,transform .2s}
-.bnav:hover{background:var(--ink);color:#fff;transform:translateY(-50%) scale(1.06)}
-.bnav svg{width:1.3rem;height:1.3rem;stroke-width:3.4}
-@media(max-width:46rem){.bnav{width:2.8rem;height:2.8rem;border-width:.25rem}}
+#board{position:fixed;inset:0;z-index:800;background:#fff;display:none}
+#board.open{display:block}
+#bimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none;user-select:none}
+.bb{position:absolute;display:grid;place-items:center;width:3.6rem;height:3.6rem;padding:0;border-radius:50%;background:var(--red);color:#fff;border:.32rem solid #fff;box-shadow:0 0 0 3px var(--ink);cursor:pointer}
+.bb:hover,.bb:focus-visible{background:var(--ink);outline:none}
+.bb svg{width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.bprev{left:1.2rem;top:50%;margin-top:-1.8rem}
+.bnext{right:1.2rem;top:50%;margin-top:-1.8rem}
+.bclose{right:1.2rem;top:1.2rem;background:var(--ink);width:3rem;height:3rem}
+.bclose:hover,.bclose:focus-visible{background:var(--red)}
+@media(max-width:46rem){.bb{width:2.8rem;height:2.8rem;border-width:.25rem}.bprev,.bnext{margin-top:-1.4rem}.bprev{left:.6rem}.bnext{right:.6rem}.bclose{width:2.5rem;height:2.5rem;right:.6rem;top:.6rem}}
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -475,21 +428,10 @@ input.zr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:
 <footer class="f"><span>&copy; Garrett Heaney</span><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></footer>
 <div class="sr" id="live" aria-live="polite"></div>
 <div id="board" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
-  <div class="bscreen" id="bscreen"><img id="bimg" alt="" draggable="false"></div>
-  <div class="hud bled"><span class="bul r">R</span><span class="lc" id="bCar"></span><span class="ld" id="bDest"></span><span class="ls" id="bSize"></span><span class="lst">Boarding</span></div>
-  <div class="hud btr"><span class="bclock" id="bclock">00:00:00</span><button class="bbtn" id="bfs" type="button">Fullscreen</button><button class="bbtn" id="bclose" type="button">Close</button></div>
-  <button class="hud bnav l" id="bprev" type="button" aria-label="Previous piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
-  <button class="hud bnav r" id="bnext" type="button" aria-label="Next piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
-  <div class="hud bdock" title="Wheel or pinch to zoom, drag to pan, double-click for 1:1, arrow keys change car, Esc to close">
-    <div class="broute"><div class="rscroll" id="rscroll" role="group" aria-label="Route. Choose a piece."></div><div class="rnext" id="rnext"></div></div>
-    <div class="bzoom">
-      <button class="bbtn" id="zFit" type="button">Fit</button><button class="bbtn" id="z11" type="button">1:1</button>
-      <button class="bbtn sq" id="zOut" type="button" aria-label="Zoom out">&minus;</button>
-      <input class="zr" id="zr" type="range" min="0" max="1000" value="0" aria-label="Zoom">
-      <button class="bbtn sq" id="zIn" type="button" aria-label="Zoom in">+</button>
-      <span class="zread" id="zread">FIT</span>
-    </div>
-  </div>
+  <img id="bimg" alt="" draggable="false">
+  <button class="bb bprev" id="bprev" type="button" aria-label="Previous piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
+  <button class="bb bnext" id="bnext" type="button" aria-label="Next piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
+  <button class="bb bclose" id="bclose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
 </div>
 
 <script>
@@ -753,236 +695,50 @@ if(links.length&&'IntersectionObserver' in window){
     const n = document.createElement('span'); n.className = 'num'; n.textContent = 'R-' + pad2(i + 1);
     const t = document.createElement('span'); t.className = 'ttl'; t.textContent = w.title || 'Untitled';
     cp.appendChild(n); cp.appendChild(t); c.appendChild(f); c.appendChild(cp);
-    c.addEventListener('click', function () { openBoard(i, im.getBoundingClientRect()); });
+    c.addEventListener('click', function () { openBoard(i); });
     mason.appendChild(c); cells.push(c); imgs.push(im);
   });
 
-  /* ===== departure board viewer ===== */
-    const board = $('board'), bscreen = $('bscreen'), bimg = $('bimg'), rscroll = $('rscroll'), rnext = $('rnext'), zr = $('zr'), zread = $('zread');
-  const bCar = $('bCar'), bDest = $('bDest'), bSize = $('bSize'), bclock = $('bclock'), bfs = $('bfs');
-  let bOpen = false, bi = 0, nw = 1, nh = 1, bs = 1, btx = 0, bty = 0, sw = 1, sh = 1, fitS = 1, actS = 1, sMin = 1, sMax = 4, tw = null, clk = null, prevFocus = null;
-  const dpr = () => window.devicePixelRatio || 1;
-  const stps = [], rin = document.createElement('div'); rin.className = 'rin';
-  works.forEach(function (w, i) {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'stp'; b.tabIndex = -1;
-    b.setAttribute('aria-label', (w.title || 'Untitled') + ', car ' + (i + 1));
-    b.appendChild(document.createElement('i'));
-    b.addEventListener('click', function () { showPiece(i, null, i > bi ? 1 : -1); });
-    rin.appendChild(b); stps.push(b);
-  });
-  rscroll.appendChild(rin);
-
-  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  function flip(el, text) {
-    text = String(text).toUpperCase(); clearInterval(el._t);
-    if (reduce) { el.textContent = text; return; }
-    let k = 0; const steps = 10;
-    el._t = setInterval(function () {
-      k++; if (k >= steps) { el.textContent = text; clearInterval(el._t); return; }
-      const n = Math.floor(text.length * k / steps); let o = '';
-      for (let j = 0; j < text.length; j++) { const c = text[j]; o += (j < n || !/[A-Z0-9]/.test(c)) ? c : CH[(Math.random() * CH.length) | 0]; }
-      el.textContent = o;
-    }, 45);
-  }
-  function measure() {
-    sw = bscreen.clientWidth; sh = bscreen.clientHeight;
-    fitS = Math.min((sw - 6) / nw, (sh - 6) / nh); actS = 1 / dpr();
-    sMin = Math.min(fitS, actS); sMax = Math.max(fitS, actS) * 4;
-  }
-  function layoutImg() {
-    bimg.style.width = nw + 'px'; bimg.style.height = nh + 'px';
-    bimg.style.marginLeft = (-nw / 2) + 'px'; bimg.style.marginTop = (-nh / 2) + 'px';
-  }
-  function clampT(s, tx, ty) {
-    const mx = Math.max(0, (nw * s - sw) / 2), my = Math.max(0, (nh * s - sh) / 2);
-    return [Math.max(-mx, Math.min(mx, tx)), Math.max(-my, Math.min(my, ty))];
-  }
-  function apply() {
-    bimg.style.transform = 'translate(' + btx + 'px,' + bty + 'px) scale(' + bs + ')';
-    const t = sMax > sMin ? Math.log(bs / sMin) / Math.log(sMax / sMin) : 0;
-    zr.value = Math.round(Math.max(0, Math.min(1, t)) * 1000);
-    zread.textContent = (Math.abs(bs - fitS) < fitS * 0.004 ? 'FIT ' : '') + Math.round(bs * dpr() * 100) + '%';
-    bimg.style.imageRendering = bs * dpr() >= 3 ? 'pixelated' : 'auto';
-  }
-  function setView(s, tx, ty) {
-    s = Math.max(sMin, Math.min(sMax, s)); const c = clampT(s, tx, ty);
-    bs = s; btx = c[0]; bty = c[1]; apply();
-  }
-  function tstep(now) {
-    if (!tw) return;
-    const k = Math.min(1, (now - tw.t0) / tw.d), e = 1 - Math.pow(1 - k, 3);
-    bs = tw.f.s * Math.pow(tw.t.s / tw.f.s, e);
-    btx = tw.f.x + (tw.t.x - tw.f.x) * e; bty = tw.f.y + (tw.t.y - tw.f.y) * e;
-    apply();
-    if (k < 1) requestAnimationFrame(tstep); else tw = null;
-  }
-  function tweenTo(s, tx, ty, dur, fit) {
-    s = Math.max(sMin, Math.min(sMax, s)); const c = clampT(s, tx, ty);
-    if (reduce || !dur) { tw = null; bs = s; btx = c[0]; bty = c[1]; apply(); return; }
-    tw = { f: { s: bs, x: btx, y: bty }, t: { s: s, x: c[0], y: c[1] }, t0: performance.now(), d: dur, fit: !!fit };
-    requestAnimationFrame(tstep);
-  }
-  function zoomAt(s2, px, py) {
-    tw = null; s2 = Math.max(sMin, Math.min(sMax, s2)); const k = s2 / bs;
-    setView(s2, px - (px - btx) * k, py - (py - bty) * k);
-  }
-  function zoomBy(f) { const s2 = Math.max(sMin, Math.min(sMax, bs * f)); tweenTo(s2, btx * s2 / bs, bty * s2 / bs, 260); }
-
-  function showPiece(i, rect, dir) {
-    tw = null; bi = mod(i, N); const mine = bi, w = works[bi];
-    nw = w.w || 800; nh = w.h || 800;
-    bimg.alt = w.alt || w.title || '';
-    bimg.src = imgs[bi].getAttribute('src') || w.thumb;
-    layoutImg(); measure();
-    flip(bCar, 'R-' + pad2(bi + 1)); flip(bDest, w.title || 'Untitled');
-    flip(bSize, nw + ' x ' + nh + ' PX');
-    rnext.textContent = ''; const sm = document.createElement('small'); sm.textContent = 'Next stop';
-    rnext.appendChild(sm); rnext.appendChild(document.createTextNode(works[(bi + 1) % N].title || 'Untitled'));
-    stps.forEach(function (b, j) { b.classList.toggle('on', j === bi); b.classList.toggle('pass', j < bi); });
-    const sb = stps[bi];
-    rscroll.scrollTo({ left: sb.offsetLeft - rscroll.clientWidth / 2 + 15, behavior: reduce ? 'auto' : 'smooth' });
-    S.tick();
-    if (rect) {
-      const br = bscreen.getBoundingClientRect();
-      bs = Math.min(rect.width / nw, rect.height / nh);
-      btx = rect.left + rect.width / 2 - br.left - sw / 2; bty = rect.top + rect.height / 2 - br.top - sh / 2;
-      apply(); tweenTo(fitS, 0, 0, 480, true);
-    } else {
-      bs = fitS; btx = (dir || 0) * sw * 0.3; bty = 0; apply(); tweenTo(fitS, 0, 0, 380, true);
-      if (bimg.animate && !reduce) bimg.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
-    }
-    const f = new Image();
-    f.onload = function () {
-      if (!bOpen || bi !== mine) return;
-      const wasFit = Math.abs(bs - fitS) < fitS * 0.004, ratio = nw / f.naturalWidth;
-      nw = f.naturalWidth; nh = f.naturalHeight; bimg.src = f.src; layoutImg(); measure();
-      flip(bSize, nw + ' x ' + nh + ' PX');
-      if (tw) { if (tw.fit) { tw.t.s = fitS; tw.t.x = 0; tw.t.y = 0; } bs *= ratio; }
-      else if (wasFit) { bs = fitS; btx = bty = 0; } else { bs *= ratio; setView(bs, btx, bty); }
-      apply();
-    };
-    f.src = w.src;
+  /* ===== basic full-screen viewer ===== */
+  const board = $('board'), bimg = $('bimg'), live = document.createElement('div');
+  let bOpen = false, bi = 0, prevFocus = null;
+  function show(i) {
+    bi = mod(i, N); const w = works[bi];
+    bimg.alt = w.alt || w.title || ''; bimg.src = w.src;
     new Image().src = works[mod(bi + 1, N)].src; new Image().src = works[mod(bi - 1, N)].src;
   }
-  function openBoard(i, rect) {
+  function openBoard(i) {
     if (bOpen) return;
-    bOpen = true; touched(); prevFocus = document.activeElement;
+    bOpen = true; prevFocus = document.activeElement;
     board.classList.add('open'); board.setAttribute('aria-hidden', 'false');
-    enterFS(); wake();
-    showPiece(i, rect, 0);
-    
-    const tick = function () { const d = new Date(); bclock.textContent = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds()); };
-    tick(); clk = setInterval(tick, 1000);
-    $('bclose').focus(); S.open();
+    document.documentElement.style.overflow = 'hidden';
+    show(i); $('bclose').focus(); S.open();
   }
   function closeBoard() {
     if (!bOpen) return;
-    board.classList.remove('open'); board.setAttribute('aria-hidden', 'true');
-    bOpen = false; tw = null; clearInterval(clk); clearTimeout(idleT);
-    if (fsEl() === board) leaveFS();
-    if (cells[bi]) { cells[bi].scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); prevFocus = cells[bi]; }
-    if (prevFocus && prevFocus.focus) prevFocus.focus({ preventScroll: true });
-    S.tick();
+    bOpen = false; board.classList.remove('open'); board.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = ''; bimg.removeAttribute('src');
+    cells[bi].scrollIntoView({ block: 'center' }); cells[bi].focus({ preventScroll: true });
   }
-
+  $('bprev').addEventListener('click', function () { show(bi - 1); S.tick(); });
+  $('bnext').addEventListener('click', function () { show(bi + 1); S.tick(); });
   $('bclose').addEventListener('click', closeBoard);
-  $('bprev').addEventListener('click', function () { showPiece(bi - 1, null, -1); });
-  $('bnext').addEventListener('click', function () { showPiece(bi + 1, null, 1); });
-  $('zFit').addEventListener('click', function () { tweenTo(fitS, 0, 0, 350, true); });
-  $('z11').addEventListener('click', function () { const s2 = Math.max(sMin, Math.min(sMax, actS)); tweenTo(s2, btx * s2 / bs, bty * s2 / bs, 350); });
-  $('zIn').addEventListener('click', function () { zoomBy(1.5); });
-  $('zOut').addEventListener('click', function () { zoomBy(1 / 1.5); });
-  zr.addEventListener('input', function () { zoomAt(sMin * Math.pow(sMax / sMin, zr.value / 1000), 0, 0); });
-
-  bscreen.addEventListener('wheel', function (e) {
-    e.preventDefault();
-    const r = bscreen.getBoundingClientRect();
-    const f = Math.exp(-e.deltaY * (e.deltaMode === 1 ? 0.05 : 0.0015) * (e.ctrlKey ? 3 : 1));
-    zoomAt(bs * f, e.clientX - r.left - sw / 2, e.clientY - r.top - sh / 2);
-  }, { passive: false });
-  bscreen.addEventListener('dblclick', function (e) {
-    if (e.target.closest('button')) return;
-    const r = bscreen.getBoundingClientRect(), px = e.clientX - r.left - sw / 2, py = e.clientY - r.top - sh / 2;
-    if (bs > fitS * 1.05) { tweenTo(fitS, 0, 0, 380, true); return; }
-    const s2 = Math.max(sMin, Math.min(sMax, actS > fitS * 1.05 ? actS : fitS * 2.5)), k = s2 / bs;
-    tweenTo(s2, px - (px - btx) * k, py - (py - bty) * k, 380);
-  });
-  const ptrs = new Map(); let pinch = null, sgl = null;
-  bscreen.addEventListener('pointerdown', function (e) {
-    if (e.target.closest('button')) return;
-    tw = null; ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
-    try { bscreen.setPointerCapture(e.pointerId); } catch (_) {}
-    bscreen.classList.add('grab');
-    if (ptrs.size === 1) sgl = { x: e.clientX, y: e.clientY };
-    else { sgl = null; const a = [...ptrs.values()]; pinch = { d: Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y) || 1, s: bs }; }
-  });
-  bscreen.addEventListener('pointermove', function (e) {
-    const p = ptrs.get(e.pointerId); if (!p) return;
-    const dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY;
-    if (ptrs.size === 2 && pinch) {
-      const a = [...ptrs.values()], r = bscreen.getBoundingClientRect();
-      zoomAt(pinch.s * Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y) / pinch.d, (a[0].x + a[1].x) / 2 - r.left - sw / 2, (a[0].y + a[1].y) / 2 - r.top - sh / 2);
-    } else if (ptrs.size === 1) setView(bs, btx + dx, bty + dy);
-  });
-  function bup(e) {
-    if (!ptrs.has(e.pointerId)) return;
-    ptrs.delete(e.pointerId); pinch = null;
-    if (!ptrs.size) {
-      bscreen.classList.remove('grab');
-      if (sgl && bs <= fitS * 1.02) {
-        const dx = e.clientX - sgl.x;
-        if (Math.abs(dx) > 70 && Math.abs(e.clientY - sgl.y) < 80) showPiece(bi + (dx < 0 ? 1 : -1), null, dx < 0 ? 1 : -1);
-      }
-      sgl = null;
-    }
-  }
-  bscreen.addEventListener('pointerup', bup); bscreen.addEventListener('pointercancel', bup);
   document.addEventListener('keydown', function (e) {
     if (!bOpen || e.altKey || e.ctrlKey || e.metaKey) return;
-    wake();
-    const tg = e.target.tagName;
     if (e.key === 'Escape') { e.preventDefault(); closeBoard(); }
-    else if (e.key === 'ArrowRight' && tg !== 'INPUT') { e.preventDefault(); showPiece(bi + 1, null, 1); }
-    else if (e.key === 'ArrowLeft' && tg !== 'INPUT') { e.preventDefault(); showPiece(bi - 1, null, -1); }
-    else if (e.key === '+' || e.key === '=') zoomBy(1.5);
-    else if (e.key === '-') zoomBy(1 / 1.5);
-    else if (e.key === '0') tweenTo(fitS, 0, 0, 350, true);
-    else if (e.key === '1' && tg !== 'INPUT') $('z11').click();
+    else if (e.key === 'ArrowRight') { e.preventDefault(); show(bi + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); show(bi - 1); }
     else if (e.key === 'Tab') {
-      const f = [].slice.call(board.querySelectorAll('button:not([tabindex="-1"]),input')), a = f[0], z = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
-      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+      const f = [$('bprev'), $('bnext'), $('bclose')], k = f.indexOf(document.activeElement);
+      e.preventDefault(); f[(k + (e.shiftKey ? 2 : 1)) % 3].focus();
     }
   });
-  function relayout() {
-    if (!bOpen) return;
-    const was = Math.abs(bs - fitS) < fitS * 0.004; measure();
-    if (tw && tw.fit) { tw.t.s = fitS; tw.t.x = 0; tw.t.y = 0; }
-    else if (was) { bs = fitS; btx = bty = 0; } else setView(bs, btx, bty);
-    apply();
-  }
-  window.addEventListener('resize', relayout);
-
-  /* fullscreen + auto-hiding hud */
-  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
-  const canFS = !!(board.requestFullscreen || board.webkitRequestFullscreen);
-  function enterFS() { if (!canFS) return; try { const r = board.requestFullscreen ? board.requestFullscreen({ navigationUI: 'hide' }) : board.webkitRequestFullscreen(); if (r && r.catch) r.catch(function () {}); } catch (_) {} }
-  function leaveFS() { try { const r = document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen(); if (r && r.catch) r.catch(function () {}); } catch (_) {} }
-  bfs.hidden = !canFS;
-  bfs.addEventListener('click', function () { if (fsEl() === board) leaveFS(); else enterFS(); });
-  function fsChange() { bfs.textContent = fsEl() === board ? 'Exit full' : 'Fullscreen'; relayout(); setTimeout(relayout, 150); }
-  document.addEventListener('fullscreenchange', fsChange); document.addEventListener('webkitfullscreenchange', fsChange);
-  let idleT = null;
-  function wake() {
-    board.classList.remove('idle'); clearTimeout(idleT);
-    idleT = setTimeout(function () {
-      if (!bOpen) return;
-      if (board.querySelector('.hud:hover,.hud:focus-within')) { wake(); return; }
-      board.classList.add('idle');
-    }, 2800);
-  }
-  ['pointermove', 'pointerdown', 'wheel', 'touchstart'].forEach(function (t) { board.addEventListener(t, wake, { passive: true }); });
-
+  let sx = null;
+  board.addEventListener('pointerdown', function (e) { if (!e.target.closest('button')) sx = e.clientX; });
+  board.addEventListener('pointerup', function (e) {
+    if (sx === null) return; const dx = e.clientX - sx; sx = null;
+    if (Math.abs(dx) > 60) show(bi + (dx < 0 ? 1 : -1));
+  });
 })();
 </script>
 </body>
