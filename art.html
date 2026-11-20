@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
 <script>(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('d-open')}catch(e){}})();</script>
 <style>
 :root{
@@ -64,11 +64,13 @@ a{color:inherit;text-underline-offset:3px}
 /* doors */
 #doors{position:fixed;inset:0;z-index:1000;pointer-events:none;overflow:hidden;--dl:var(--door-line,var(--line))}
 .door{position:absolute;top:0;bottom:0;width:50.3%;will-change:transform;
-  background:linear-gradient(to bottom,transparent 0 76%,var(--dl) 76% 82%,transparent 82%),linear-gradient(90deg,#c4cacf,#e9ecee 12%,#dde1e4 60%,#c9cfd3)}
+  background:linear-gradient(to bottom,transparent 0 78%,var(--dl) 78% 84%,transparent 84%),linear-gradient(#fff,#f3f4f5);
+  box-shadow:inset 0 0 0 4px #2b2f33,inset 0 0 0 11px #fff,inset 0 0 0 14px #b9bfc4}
 .door.l{left:0;transform:translateX(-102%)}.door.r{right:0;transform:translateX(102%)}
-.door::before{content:"";position:absolute;top:13%;height:46%;left:20%;right:20%;border-radius:.5rem;border:.45rem solid #8d969c;background:linear-gradient(170deg,#eef5fa,#aebfcb 70%);box-shadow:inset 0 0 18px rgba(0,0,0,.18)}
-.door::after{content:"";position:absolute;top:0;bottom:0;width:1.1rem;background:linear-gradient(90deg,#111,#2b2f32 50%,#111)}
-.door.l::after{right:0}.door.r::after{left:0}
+.door::before{content:"";position:absolute;top:12%;height:47%;left:19%;right:19%;border-radius:.5rem;border:3px solid #2b2f33;background:linear-gradient(170deg,#fff,#e4eaee 75%);box-shadow:0 0 0 8px #fff,0 0 0 11px #b9bfc4}
+.door::after{content:"";position:absolute;top:0;bottom:0;width:1.1rem}
+.door.l::after{right:0;background:linear-gradient(90deg,#fff 0 30%,#2b2f33 30% 38%,#b9bfc4 38% 62%,#2b2f33 62%)}
+.door.r::after{left:0;background:linear-gradient(90deg,#2b2f33 0 38%,#b9bfc4 38% 62%,#2b2f33 62% 70%,#fff 70%)}
 .dlcd{position:absolute;left:50%;top:4%;transform:translateX(-50%);z-index:2;background:#0b0c0d;border-radius:.6rem;padding:.55rem 1.2rem;box-shadow:0 0 0 3px #2a2e31,0 8px 24px rgba(0,0,0,.35);opacity:0;overflow:hidden;white-space:nowrap}
 .dlcd .t{font-family:var(--dots);font-size:clamp(1rem,3.4vw,1.6rem);letter-spacing:.08em;color:#ffb347;text-shadow:0 0 8px rgba(255,170,60,.6);text-transform:uppercase}
 @keyframes dcl{from{transform:translateX(-102%)}to{transform:translateX(0)}}
@@ -362,72 +364,78 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 @media print{.top,#menu,#doors,.strip,.nextstop,.rail{display:none!important}}
 
 
-/* ===== ART: THE RED LINE TRAIN GALLERY ===== */
+/* ===== ART: THE RED LINE TRAIN GALLERY (zen) ===== */
 html:has(body.p-art),body.p-art{overflow:hidden;height:100%}
-.stage{--tz:3.4rem;--bz:6.9rem;position:relative;height:calc(100vh - var(--hdr));height:calc(100dvh - var(--hdr));overflow:hidden;background:linear-gradient(#fafbfb,#eceff1 70%,#e1e5e8);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+body.p-art{--zen:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;--washi:#f4f0e8;--sumi:#1d1c1a;--hair:rgba(29,28,26,.22)}
+.stage{--tz:5.2rem;--bz:7.6rem;position:relative;height:calc(100vh - var(--hdr));height:calc(100dvh - var(--hdr));overflow:hidden;background:linear-gradient(#f6f3ec,#efeadf 72%,#e6e0d3);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;font-family:var(--zen)}
 .stage.grab{cursor:grabbing}
 .wall{position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(ellipse 150px 16px at 50% 0,rgba(124,135,142,.22),transparent 70%) 0 0/380px 34px repeat-x,
-  repeating-linear-gradient(90deg,rgba(20,23,26,.06) 0 2px,transparent 2px 96px),
-  repeating-linear-gradient(0deg,rgba(20,23,26,.045) 0 2px,transparent 2px 64px)}
-.wall::after{content:"";position:absolute;left:0;right:0;top:calc(var(--tz) - .85rem);height:.4rem;background:var(--red)}
+  radial-gradient(circle 9rem at 80% 30%,rgba(218,41,28,.10) 97%,transparent 100%),
+  repeating-linear-gradient(90deg,rgba(29,28,26,.028) 0 1px,transparent 1px 7px),
+  linear-gradient(transparent calc(100% - 9rem),rgba(29,28,26,.05))}
 .train{position:absolute;left:0;right:0;top:var(--tz);bottom:var(--bz)}
-.car{position:absolute;left:0;top:0;padding:12px 12px 30px;border-radius:18px 18px 8px 8px;background:linear-gradient(#f0f3f5,#cdd3d7 50%,#b3bbc1);box-shadow:0 16px 30px -12px rgba(20,23,26,.4),inset 0 0 0 2px rgba(255,255,255,.55);will-change:transform}
-.car::before{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;background:var(--red);border-radius:0 0 8px 8px}
-.car::after{content:"";position:absolute;left:100%;width:30px;top:24%;bottom:14%;background:repeating-linear-gradient(90deg,#14171a 0 4px,#2d3237 4px 8px)}
-.panel{width:100%;height:100%;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px rgba(20,23,26,.4)}
+.car{position:absolute;left:0;top:0;border-radius:26px 26px 7px 7px/30px 30px 7px 7px;background:linear-gradient(#fbfbfa 0,#eceeef 35%,#dcdfe1 100%);box-shadow:0 0 0 1.5px #3a3f43,inset 0 0 0 1px rgba(255,255,255,.9),0 22px 26px -20px rgba(29,28,26,.45);will-change:transform}
+.car::after{content:"";position:absolute;left:100%;width:34px;top:20%;bottom:16%;background:repeating-linear-gradient(90deg,#26292c 0 3px,#4b5156 3px 6px);border-radius:3px}
+.roof{position:absolute;left:18%;right:18%;top:-8px;height:10px;border-radius:7px 7px 0 0;background:linear-gradient(#b6bcc0,#8f969b);box-shadow:0 0 0 1.5px #3a3f43}
+.stripe{position:absolute;left:0;right:0;bottom:22px;height:11px;background:var(--red)}
+.skirt{position:absolute;left:0;right:0;bottom:0;height:22px;border-radius:0 0 7px 7px;background:linear-gradient(#60666a,#3b4044)}
+.dr{position:absolute;top:34px;bottom:44px;width:54px;background:#fff;border:2px solid #2b2f33;border-radius:3px;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px #bcc2c6}
+.dr.l{left:10px}.dr.r{right:10px}
+.dr::before{content:"";position:absolute;top:8%;height:42%;left:20%;right:20%;border:2px solid #2b2f33;border-radius:3px;background:linear-gradient(170deg,#fff,#dfe6ea)}
+.dr::after{content:"";position:absolute;left:calc(50% - 1px);top:0;bottom:0;width:2px;background:#2b2f33}
+.win{position:absolute;display:flex;flex-direction:column}
+.panel{flex:1;min-height:0;background:#fff;padding:9px;border:5px solid #34383c;border-radius:12px;box-shadow:inset 0 0 0 1px #c3c8cc,0 0 0 1px #fff;overflow:hidden;cursor:zoom-in;transition:box-shadow .4s}
+.panel:hover,.panel:focus-visible{box-shadow:inset 0 0 0 1px #c3c8cc,0 0 0 1px #fff,0 0 0 3px rgba(218,41,28,.55)}
 .panel img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
-.plate{position:absolute;left:14px;right:14px;bottom:9px;display:flex;justify-content:space-between;gap:1rem;font:13px/1 var(--dots);letter-spacing:.08em;text-transform:uppercase;color:#14171a;white-space:nowrap;overflow:hidden}
-.plate b{color:var(--red);font-weight:400}
+.cap{display:flex;justify-content:space-between;gap:1rem;padding:7px 3px 0;font:600 .76rem/1 var(--zen);letter-spacing:.14em;text-transform:uppercase;color:#33373a;white-space:nowrap;overflow:hidden}
+.cap b{color:var(--red);font-weight:600}
 .truck{position:absolute;bottom:-17px;width:104px;height:24px;z-index:-1;background:radial-gradient(circle at 22px 15px,#1a1d20 0 8px,#8a949a 8px 10px,transparent 10.5px),radial-gradient(circle at 82px 15px,#1a1d20 0 8px,#8a949a 8px 10px,transparent 10.5px),linear-gradient(#25292d,#25292d) 12px 0/80px 9px no-repeat}
 .truck.l{left:9%}.truck.r{right:9%}
-.platform{position:absolute;left:0;right:0;bottom:0;height:calc(var(--bz) - 12px);background:linear-gradient(#dde1e4,#c3c9cd);z-index:3;pointer-events:none}
-.platform::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:radial-gradient(circle,#ffe36b 0 2.4px,transparent 3px) 0 0/12px 12px,#d9ab00}
-.stage .tag{position:absolute;left:var(--pad);top:.5rem;margin:0;z-index:6;background:var(--ink);cursor:default}
-.stage .next{position:absolute;right:var(--pad);top:.5rem;z-index:6;display:inline-flex;align-items:center;gap:.5rem;padding:.2rem .9rem .2rem .25rem;border-radius:2rem;background:#fff;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;cursor:pointer}
-.stage .next .bul{width:1.6rem;height:1.6rem;font-size:.75rem}
-.hint2{position:absolute;left:50%;top:.75rem;transform:translateX(-50%);z-index:6;margin:0;color:var(--mute);font-size:.82rem;letter-spacing:.04em;white-space:nowrap;transition:opacity .6s;pointer-events:none}
+.platform{position:absolute;left:0;right:0;bottom:0;height:calc(var(--bz) - 12px);background:linear-gradient(#e2dccd,#d3ccba);z-index:3;pointer-events:none;border-top:1px solid var(--hair)}
+.platform::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:radial-gradient(circle,#b9a97a 0 2px,transparent 2.6px) 0 0/14px 10px,#e9dfc0;opacity:.85}
+.stage .tag{position:absolute;left:var(--pad);top:1.4rem;margin:0;z-index:6;background:none;color:var(--sumi);padding:0 0 .45rem;border-radius:0;border-bottom:1px solid var(--sumi);font:400 .74rem var(--zen);letter-spacing:.2em;text-transform:uppercase;cursor:default;gap:.7rem}
+.stage .tag .bul{width:1.35rem;height:1.35rem;font-size:.62rem}
+.stage .next{position:absolute;right:var(--pad);top:1.2rem;z-index:6;display:inline-flex;align-items:center;gap:.6rem;padding:.35rem 1rem .35rem .4rem;border-radius:2rem;background:transparent;border:1px solid var(--hair);color:var(--sumi);text-decoration:none;font:400 .8rem var(--zen);letter-spacing:.14em;cursor:pointer;transition:background .3s,border-color .3s}
+.stage .next:hover{background:#fff;border-color:var(--sumi)}
+.stage .next .bul{width:1.4rem;height:1.4rem;font-size:.68rem}
+.hint2{position:absolute;left:50%;top:1.45rem;transform:translateX(-50%);z-index:6;margin:0;color:#6b685f;font:400 .76rem var(--zen);letter-spacing:.2em;white-space:nowrap;transition:opacity .6s;pointer-events:none}
 .stage.used .hint2{opacity:0}
-@media(max-width:60rem){.hint2{display:none}}
-.deck{position:absolute;left:50%;bottom:.8rem;transform:translateX(-50%);z-index:7;display:flex;align-items:center;gap:.9rem;width:max-content;max-width:calc(100% - 1rem);padding:.55rem .8rem;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid var(--ink);border-radius:1.2rem;box-shadow:0 10px 26px -10px rgba(20,23,26,.45);color:var(--ink);cursor:default}
-.deck :focus-visible{outline-color:var(--ink)}
-.gl{position:relative;width:15rem;min-width:0;background:#f1f3f4;border-radius:.6rem;padding:.35rem .7rem;box-shadow:inset 0 0 0 2px #cfd4d8;overflow:hidden;font-family:var(--dots);text-transform:uppercase;color:var(--ink);line-height:1.25}
-.gl::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(241,243,244,.55) 38%,transparent 40%);background-size:3px 3px}
-.gl .a{display:flex;justify-content:space-between;gap:.5rem;font-size:.78rem;color:var(--red);white-space:nowrap}
-.gl .t{font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kb{appearance:none;flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;padding:0;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.kb svg{width:1.1rem;height:1.1rem;fill:currentColor}
-.kb:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.kb[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#000}
-.kb.brake{color:#fff;width:auto;padding:0 1rem;border-radius:2rem;background:var(--red);border-color:var(--red);font:700 .82rem var(--sans);letter-spacing:.08em}
-.kb.brake:hover{background:#fff;color:var(--red)}
-.lv{display:grid;gap:.1rem;width:9rem;flex:none}
-.lv label{font:700 .66rem var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+@media(max-width:64rem){.hint2{display:none}}
+.deck{position:absolute;left:50%;bottom:.9rem;transform:translateX(-50%);z-index:7;display:flex;align-items:center;gap:.8rem;width:max-content;max-width:calc(100% - 1rem);padding:.5rem .9rem;background:rgba(246,243,236,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--sumi);border-radius:.4rem;box-shadow:0 18px 30px -22px rgba(29,28,26,.6);color:var(--sumi);cursor:default}
+.deck :focus-visible{outline-color:var(--sumi)}
+.gl{position:relative;width:14rem;min-width:0;padding:.1rem .9rem .1rem .1rem;border-right:1px solid var(--hair);overflow:hidden;font-family:var(--zen);color:var(--sumi);line-height:1.3}
+.gl .a{display:flex;justify-content:space-between;gap:.5rem;font-size:.7rem;letter-spacing:.16em;color:var(--red);white-space:nowrap}
+.gl .t{font-size:1.05rem;font-weight:600;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kb{appearance:none;flex:none;width:2.5rem;height:2.5rem;display:grid;place-items:center;padding:0;border-radius:50%;border:1px solid var(--sumi);background:transparent;color:var(--sumi);cursor:pointer;transition:background .25s,color .25s}
+.kb svg{width:1rem;height:1rem;fill:currentColor}
+.kb:hover{background:var(--sumi);color:#fff}
+.kb[aria-pressed="true"]{background:var(--sumi);color:#fff}
+.kb.brake{color:var(--red);width:auto;padding:0 1rem;border-radius:2rem;border-color:var(--red);font:600 .72rem var(--zen);letter-spacing:.2em}
+.kb.brake:hover{background:var(--red);color:#fff}
+.lv{display:grid;gap:.1rem;width:8.5rem;flex:none}
+.lv label{font:400 .66rem var(--zen);letter-spacing:.18em;text-transform:uppercase;color:#6b685f;display:flex;justify-content:space-between}
 input.thr{-webkit-appearance:none;appearance:none;width:100%;height:1.8rem;margin:0;background:transparent;cursor:pointer}
-input.thr::-webkit-slider-runnable-track{height:.6rem;border-radius:.3rem;background:linear-gradient(90deg,var(--orange) var(--f,0%),#cfd4d8 var(--f,0%))}
-input.thr::-moz-range-track{height:.6rem;border-radius:.3rem;background:linear-gradient(90deg,var(--orange) var(--f,0%),#cfd4d8 var(--f,0%))}
-input.thr::-webkit-slider-thumb{-webkit-appearance:none;width:1rem;height:1.7rem;margin-top:-.55rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,var(--red) 38% 62%,#c8cdd1 62%)}
-input.thr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,#DA291C 38% 62%,#c8cdd1 62%)}
-.dkt{appearance:none;flex:none;border:0;background:transparent;color:var(--mute);font:700 .7rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:.3rem}
-.dkt:hover{color:var(--ink)}
+input.thr::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--sumi) var(--f,0%),#c9c3b4 var(--f,0%))}
+input.thr::-moz-range-track{height:2px;background:linear-gradient(90deg,#1d1c1a var(--f,0%),#c9c3b4 var(--f,0%))}
+input.thr::-webkit-slider-thumb{-webkit-appearance:none;width:.9rem;height:.9rem;margin-top:-.45rem;border-radius:50%;border:1px solid var(--sumi);background:var(--red)}
+input.thr::-moz-range-thumb{width:.8rem;height:.8rem;border-radius:50%;border:1px solid #1d1c1a;background:#DA291C}
+.dkt{appearance:none;flex:none;border:0;background:transparent;color:#6b685f;font:400 .68rem var(--zen);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;padding:.3rem}
+.dkt:hover{color:var(--sumi)}
 .stage.min .deck>*:not(.dkt){display:none}
 .stage.min .deck{padding:.3rem .7rem}
+.enl{appearance:none;display:inline-flex;align-items:center;gap:.5rem;flex:none;height:2.5rem;padding:0 1.1rem 0 .9rem;border-radius:2rem;border:1px solid var(--sumi);background:var(--sumi);color:#fff;font:600 .72rem var(--zen);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s}
+.enl svg{width:.95rem;height:.95rem;fill:currentColor;flex:none}
+.enl:hover{background:transparent;color:var(--sumi)}
 @media(max-width:40rem){
-  .stage{--bz:9.8rem}
+  .stage{--bz:10rem}
   .deck{flex-wrap:wrap;justify-content:center;gap:.5rem .6rem;width:calc(100% - 1rem)}
-  .gl{flex:1 1 100%;width:auto}
-  .lv{width:6.5rem}
-  .stage .tag{font-size:.8rem}.stage .next span.tx{display:none}
-  .stage .next{padding:.2rem}
+  .gl{flex:1 1 100%;width:auto;border-right:0;border-bottom:1px solid var(--hair);padding-bottom:.4rem}
+  .lv{width:6rem}
+  .stage .tag{font-size:.64rem}.stage .next span.tx{display:none}.stage .next{padding:.3rem}
   .stage.min{--bz:6.9rem}
 }
 
-/* ===== ENLARGE + FULLSCREEN LIGHT BOARD VIEWER ===== */
-.enl{appearance:none;display:inline-flex;align-items:center;gap:.4rem;height:2.2rem;padding:0 .85rem 0 .7rem;border-radius:2rem;border:2px solid #fff;background:var(--green);color:#fff;font:700 .72rem var(--sans);letter-spacing:.09em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 12px rgba(20,23,26,.35);transition:background .2s,color .2s,border-color .2s}
-.enl svg{width:1rem;height:1rem;fill:currentColor;flex:none}
-.enl:hover{background:#fff;color:var(--green);border-color:var(--green)}
-.car .enl{position:absolute;top:20px;right:20px;z-index:3}
-.deck .enl{height:2.6rem;flex:none}
+/* ===== VIEWER ===== */
 #board{--bd:10px;position:fixed;inset:0;z-index:800;background:linear-gradient(#fafbfb,#eceff1 70%,#e1e5e8);color:var(--ink);font-family:var(--dots);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
 #board.open{opacity:1;visibility:visible;transition:opacity .25s}
 #board::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--red);z-index:1}
@@ -480,6 +488,22 @@ input.zr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:
   .bbtn{padding:0 .6rem}
 }
 
+
+/* zen viewer overrides */
+#board{background:linear-gradient(#f6f3ec,#ebe6da);font-family:var(--zen)}
+#board::before{height:2px}
+.bscreen{background:#ece7dc;box-shadow:inset 0 0 0 1px var(--hair);border-radius:.3rem}
+#bimg{box-shadow:0 0 0 1px rgba(29,28,26,.25),0 24px 60px -24px rgba(29,28,26,.5)}
+.bled,.bdock,.bclock{background:rgba(246,243,236,.93);border:1px solid var(--sumi);border-radius:.4rem;box-shadow:0 14px 26px -20px rgba(29,28,26,.6)}
+.bled .ld{font-weight:600;letter-spacing:.08em}.bled .lc{letter-spacing:.16em}
+.bled .lst{color:var(--red);font-family:var(--zen);letter-spacing:.2em}
+.bbtn,.bnav{background:rgba(246,243,236,.93);border:1px solid var(--sumi);font-family:var(--zen);font-weight:600;letter-spacing:.16em}
+.bbtn:hover,.bnav:hover{background:var(--sumi);color:#fff}
+.bnav svg{stroke-width:2}
+.rin{background:linear-gradient(var(--red),var(--red)) 0 50%/100% 3px no-repeat}
+.stp.on i{box-shadow:0 0 0 2px var(--sumi);border-width:3px}
+.rnext small{font-family:var(--zen)}
+@media print{.stage{display:none}}
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -507,9 +531,9 @@ input.zr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:
 </div>
 <main class="stage" id="stage"><h1 class="sr">Art &ndash; Auto Heaney</h1>
 <div class="wall" aria-hidden="true"></div>
-<p class="eyebrow tag"><span class="bul r">R</span>Red Line &middot; Art &middot; Auto Heaney</p>
+<p class="eyebrow tag"><span class="bul r">R</span>Red Line &middot; 美術 &middot; Auto Heaney</p>
 <a class="next" href="music.html" data-k="blue" data-n="Music"><span class="bul b">B</span><span class="tx">Next stop: Music</span><span aria-hidden="true">&rarr;</span></a>
-<p class="hint2" aria-hidden="true">Drag the train &middot; scroll &middot; or take the throttle</p>
+<p class="hint2" aria-hidden="true">Drag the train &middot; tap a piece to enlarge &middot; or take the throttle</p>
 <div class="train" id="train" role="region" aria-label="Gallery train. Each car carries one piece of art."></div>
 <div class="platform" aria-hidden="true"></div>
 <div class="deck" role="group" aria-label="Conductor controls">
@@ -519,7 +543,7 @@ input.zr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:
   <button class="kb brake" id="bBrake" type="button">BRAKE</button>
   <button class="kb" id="bR" type="button" aria-label="Train moves right" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></button>
   <button class="kb" id="bNext" type="button" aria-label="Next car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 5H18v14h-2.4zM4 5v14l10.5-7z"/></svg></button>
-  <button class="enl" id="bEnl" type="button" aria-label="Enlarge this piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2.4H6.4V10H4zM20 4v6h-2.4V6.4H14V4zM4 20v-6h2.4v3.6H10V20zM20 20h-6v-2.4h3.6V14H20z"/></svg>Enlarge</button>
+  <button class="enl" id="bEnl" type="button" aria-label="Enlarge the piece at the centre"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2.4H6.4V10H4zM20 4v6h-2.4V6.4H14V4zM4 20v-6h2.4v3.6H10V20zM20 20h-6v-2.4h3.6V14H20z"/></svg>Enlarge</button>
   <div class="lv"><label for="thr"><span>Throttle</span><span id="thrv">OFF</span></label><input class="thr" id="thr" type="range" min="0" max="10" step="1" value="2"></div>
   <button class="dkt" id="dkt" type="button" aria-expanded="true" aria-controls="stage">Hide</button>
 </div>
@@ -724,71 +748,72 @@ if(links.length&&'IntersectionObserver' in window){
      THE GALLERY LIST
      - Pieces appear in this order. Add new pieces at the TOP.
      - Numbers (01, 02, ...) and the total are automatic.
-     - file:  the image's filename (same name in art/full and art/thumb)
+     - file:  the image's filename (same name in art/full and art/thumb, .jpg)
      - w, h:  the original width and height in pixels. Optional, but
               landscape pieces (wide) get a double-width tile when given.
      ------------------------------------------------------------------ */
   const works = [
-    { file: "4-sides.webp", title: "4 Sides", alt: "An astronaut figure sitting on gray blocks among white flowers on black, with the word Heaney down the side", w: 5074, h: 3300 },
-    { file: "victory-yellow.webp", title: "Victory (Yellow)", alt: "A figure in a white suit with arms raised on a yellow background", w: 2407, h: 3159 },
-    { file: "victory.webp", title: "Victory", alt: "A line drawing of a figure in a white suit with arms raised", w: 2407, h: 3159 },
-    { file: "heaney-car.webp", title: "Heaney Car", alt: "An astronaut figure standing in front of a white van on a gray street, with the word heaney", w: 3300, h: 3300 },
-    { file: "heaney-car-tall.webp", title: "Heaney Car (Tall)", alt: "An astronaut figure standing in front of a white van on a gray street, tall poster version", w: 3300, h: 4520 },
-    { file: "shark-whale.webp", title: "Shark Whale", alt: "A teal whale shark beneath the word heaney on black", w: 3300, h: 3073 },
-    { file: "shark-whale-light.webp", title: "Shark Whale (Light)", alt: "A blue whale shark with white spots on white", w: 3300, h: 2550 },
-    { file: "whale.webp", title: "Whale", alt: "A blue whale on white", w: 3164, h: 2408 },
-    { file: "orca-navy.webp", title: "Orca (Navy)", alt: "A navy blue orca on white", w: 3300, h: 2550 },
-    { file: "orca.webp", title: "Orca", alt: "A black and white orca", w: 3300, h: 2550 },
-    { file: "blue-seal.webp", title: "Blue Seal", alt: "A white seal on a blue background", w: 2854, h: 2550 },
-    { file: "seal.webp", title: "Seal", alt: "A gray seal on white", w: 2854, h: 2550 },
-    { file: "seal-outline.webp", title: "Seal (Outline)", alt: "A line drawing of a seal on white", w: 1427, h: 1275 },
-    { file: "penguin.webp", title: "Penguin", alt: "A black and white penguin on white", w: 2550, h: 3300 },
-    { file: "duck.webp", title: "Duck", alt: "A duck with a dark head, white body and yellow bill", w: 3300, h: 2550 },
-    { file: "pigeon.webp", title: "Pigeon", alt: "A gray pigeon with a teal collar on white", w: 3600, h: 3601 },
-    { file: "ahquarium.webp", title: "Ahquarium", alt: "A glass fish tank full of whales and fish, with pigeons standing beside it", w: 5100, h: 3300 },
-    { file: "dark-clouds-blue.webp", title: "Dark Clouds (Blue)", alt: "Yellow houses with flowers and dark clouds under a blue sky", w: 4513, h: 3021 },
-    { file: "dark-clouds.webp", title: "Dark Clouds", alt: "Yellow houses with flowers and dark clouds on white", w: 4666, h: 3228 },
-    { file: "cup-of-coffee.webp", title: "Cup of Coffee", alt: "A coffee mug with the words World's Best and Provisions", w: 2550, h: 2550 },
-    { file: "jordan-cat-birds.webp", title: "Jordan Cat Birds", alt: "A black cat on a mossy path with pigeons and a Jordan logo", w: 5100, h: 3287 },
-    { file: "01-selfie.webp", title: "Selfie", alt: "A yellow-faced figure with a square head in a gray suit and tie", w: 500, h: 636 },
-    { file: "02-archimedes-the-bird.webp", title: "Archimedes the Bird", alt: "Illustrated kitchen wall of cabinets and appliances with a small bird", w: 1799, h: 1436 },
-    { file: "03-crocodile.webp", title: "Crocodile", alt: "A figure in a black t-shirt and green cap in front of a purple city under a cyan sky", w: 500, h: 662 },
-    { file: "04-eights.webp", title: "Eights", alt: "Black figure-eight shapes and dots scattered across a gray field", w: 5087, h: 3296 },
-    { file: "05-pursuit-of-peace.webp", title: "Pursuit of Peace", alt: "Blue mountains above water with bunting strung across the top", w: 900, h: 1199 },
-    { file: "06-good-cop.webp", title: "Good Cop", alt: "A figure in a beanie and blue sweater beside the words Be Good", w: 500, h: 666 },
-    { file: "07-fridge.webp", title: "Fridge", alt: "Overhead view of a kitchen with appliances and a vinyl record on the floor", w: 500, h: 719 },
-    { file: "08-lover.webp", title: "Lover", alt: "A figure in a white knit hat and red sweater on a white background", w: 500, h: 666 },
-    { file: "09-dee-brown.webp", title: "Dee Brown", alt: "A basketball player mid-dunk beside the hoop on a gray background", w: 2308, h: 3400 },
-    { file: "10-airplanes.webp", title: "Airplanes", alt: "A flock of paper airplanes on an orange background", w: 752, h: 600 },
-    { file: "11-expander.webp", title: "Expander", alt: "A black balloon with pink hearts floating above small gray buildings", w: 500, h: 679 },
-    { file: "12-megaman.webp", title: "Megaman", alt: "A robot in an astronaut helmet on black with the word Heaney", w: 500, h: 691 },
-    { file: "13-belles-lettres.webp", title: "Belles Lettres", alt: "Cursive text reading belles lettres over blue water", w: 700, h: 494 },
-    { file: "14-players.webp", title: "Players", alt: "Three tall rounded figures in blue and green with red circles", w: 500, h: 634 },
-    { file: "15-blockface.webp", title: "Blockface", alt: "A circular map of blue rectangles and dotted lines", w: 500, h: 666 },
-    { file: "16-meet-and-greet.webp", title: "Meet and Greet", alt: "A figure in a cap holding a bamboo plant under a black sky", w: 500, h: 660 },
-    { file: "17-business-casual.webp", title: "Business Casual", alt: "A figure working at a table in front of gray hills and a small boat", w: 500, h: 386 },
-    { file: "18-critical-mass.webp", title: "Critical Mass", alt: "A dense crowd of small figures in pink and blue", w: 500, h: 411 },
-    { file: "19-cityscape-magenta.webp", title: "Cityscape (Magenta)", alt: "Tall red and white towers in a stylized skyline", w: 300, h: 507 },
-    { file: "20-sink-it.webp", title: "Sink It", alt: "A tangled green and blue landscape with a yellow figure and water", w: 500, h: 425 },
-    { file: "21-girl.webp", title: "Girl", alt: "A child in a yellow raincoat with a red heart standing on a shore", w: 300, h: 440 },
-    { file: "22-forrest-wu.webp", title: "Forrest Wu", alt: "A figure in blue standing in a snowy field of bare trees with black mountains behind", w: 500, h: 500 },
-    { file: "23-auto-heaney-lp.webp", title: "Auto Heaney LP", alt: "Four panels of kitchen scenes with the name Auto Heaney down the side", w: 500, h: 500 },
-    { file: "24-shoulders-of-giants.webp", title: "Standing on the Shoulders of Giants", alt: "A small figure pointing in front of a skyline under the word Standing", w: 500, h: 406 },
-    { file: "25-write.webp", title: "Write", alt: "A figure writing the word write on a brick wall", w: 500, h: 415 },
-    { file: "26-good-boi.webp", title: "Good Boi", alt: "A dog in a speech bubble asking who's a good boi, on a gray circle", w: 500, h: 489 },
-    { file: "27-moebi-heaney.webp", title: "Moebi Heaney", alt: "Two purple rockets shooting beams downward against a dark sky", w: 500, h: 385 },
-    { file: "28-soda-right.webp", title: "Soda Right", alt: "Kitchen appliances in blue and gray tones", w: 500, h: 323 },
-    { file: "29-subview.webp", title: "Subview", alt: "A round window view of a blue underwater scene with small fish", w: 500, h: 372 },
-    { file: "30-my-noodles-are-dope.webp", title: "My Noodles Are Dope", alt: "A plate of yellow noodles with chopsticks on a green square", w: 500, h: 489 },
-    { file: "31-butterflies.webp", title: "Butterflies", alt: "White butterflies scattered across a green field", w: 1048, h: 639 },
-    { file: "32-golden-section-spectrum.webp", title: "Golden Section Spectrum", alt: "Blue and green geometric triangles and a quarter circle", w: 500, h: 355 },
-    { file: "33-heaney-1-3.webp", title: "Untitled", alt: "A bright green field of small circular patterns", w: 500, h: 400 },
-    { file: "34-court.webp", title: "Court", alt: "Teal brushstroke figures on white", w: 600, h: 873 },
-    { file: "35-one-of-ten-million.webp", title: "1 of 10,000,000", alt: "Stacked red geometric stripes on white with a red dot and the text Heaney 1/10000000", w: 500, h: 735 },
-    { file: "37-apple.webp", title: "Untitled", alt: "A single red apple on white", w: 450, h: 655 },
-    { file: "38-lemons.webp", title: "Untitled", alt: "A glass filled with lemons", w: 400, h: 618 },
-    { file: "39-cubes.webp", title: "Untitled", alt: "Stacked blue cubes patterned with tiny marks", w: 333, h: 415 },
-    { file: "40-bandit-masks.webp", title: "Bandit Masks", alt: "A bandit mask poster priced at five dollars", w: 500, h: 646 }
+    { file: "4-sides.jpg", title: "4 Sides", alt: "An astronaut figure sitting on gray blocks among white flowers on black, with the word Heaney down the side", w: 5074, h: 3300 },
+    { file: "victory-yellow.jpg", title: "Victory (Yellow)", alt: "A figure in a white suit with arms raised on a yellow background", w: 2407, h: 3159 },
+    { file: "victory.jpg", title: "Victory", alt: "A line drawing of a figure in a white suit with arms raised", w: 2407, h: 3159 },
+    { file: "heaney-car.jpg", title: "Heaney Car", alt: "An astronaut figure standing in front of a white van on a gray street, with the word heaney", w: 3300, h: 3300 },
+    { file: "heaney-car-tall.jpg", title: "Heaney Car (Tall)", alt: "An astronaut figure standing in front of a white van on a gray street, tall poster version", w: 3300, h: 4520 },
+    { file: "shark-whale.jpg", title: "Shark Whale", alt: "A teal whale shark beneath the word heaney on black", w: 3300, h: 3073 },
+    { file: "shark-whale-light.jpg", title: "Shark Whale (Light)", alt: "A blue whale shark with white spots on white", w: 3300, h: 2550 },
+    { file: "whale.jpg", title: "Whale", alt: "A blue whale on white", w: 3164, h: 2408 },
+    { file: "orca-navy.jpg", title: "Orca (Navy)", alt: "A navy blue orca on white", w: 3300, h: 2550 },
+    { file: "orca.jpg", title: "Orca", alt: "A black and white orca", w: 3300, h: 2550 },
+    { file: "blue-seal.jpg", title: "Blue Seal", alt: "A white seal on a blue background", w: 2854, h: 2550 },
+    { file: "seal.jpg", title: "Seal", alt: "A gray seal on white", w: 2854, h: 2550 },
+    { file: "seal-outline.jpg", title: "Seal (Outline)", alt: "A line drawing of a seal on white", w: 1427, h: 1275 },
+    { file: "penguin.jpg", title: "Penguin", alt: "A black and white penguin on white", w: 2550, h: 3300 },
+    { file: "duck.jpg", title: "Duck", alt: "A duck with a dark head, white body and yellow bill", w: 3300, h: 2550 },
+    { file: "pigeon.jpg", title: "Pigeon", alt: "A gray pigeon with a teal collar on white", w: 3600, h: 3601 },
+    { file: "pigeon-print.jpg", title: "Pigeon (Print)", alt: "A gray pigeon with red and green neck stripes and striped legs on white", w: 1122, h: 1465 },
+    { file: "ahquarium.jpg", title: "Ahquarium", alt: "A glass fish tank full of whales and fish, with pigeons standing beside it", w: 5100, h: 3300 },
+    { file: "dark-clouds-blue.jpg", title: "Dark Clouds (Blue)", alt: "Yellow houses with flowers and dark clouds under a blue sky", w: 4513, h: 3021 },
+    { file: "dark-clouds.jpg", title: "Dark Clouds", alt: "Yellow houses with flowers and dark clouds on white", w: 4666, h: 3228 },
+    { file: "cup-of-coffee.jpg", title: "Cup of Coffee", alt: "A coffee mug with the words World's Best and Provisions", w: 2550, h: 2550 },
+    { file: "jordan-cat-birds.jpg", title: "Jordan Cat Birds", alt: "A black cat on a mossy path with pigeons and a Jordan logo", w: 5100, h: 3287 },
+    { file: "01-selfie.jpg", title: "Selfie", alt: "A yellow-faced figure with a square head in a gray suit and tie", w: 500, h: 636 },
+    { file: "02-archimedes-the-bird.jpg", title: "Archimedes the Bird", alt: "Illustrated kitchen wall of cabinets and appliances with a small bird", w: 1799, h: 1436 },
+    { file: "03-crocodile.jpg", title: "Crocodile", alt: "A figure in a black t-shirt and green cap in front of a purple city under a cyan sky", w: 500, h: 662 },
+    { file: "04-eights.jpg", title: "Eights", alt: "Black figure-eight shapes and dots scattered across a gray field", w: 3200, h: 2073 },
+    { file: "05-pursuit-of-peace.jpg", title: "Pursuit of Peace", alt: "Blue mountains above water with bunting strung across the top", w: 900, h: 1199 },
+    { file: "06-good-cop.jpg", title: "Good Cop", alt: "A figure in a beanie and blue sweater beside the words Be Good", w: 500, h: 666 },
+    { file: "07-fridge.jpg", title: "Fridge", alt: "Overhead view of a kitchen with appliances and a vinyl record on the floor", w: 500, h: 719 },
+    { file: "08-lover.jpg", title: "Lover", alt: "A figure in a white knit hat and red sweater on a white background", w: 500, h: 666 },
+    { file: "09-dee-brown.jpg", title: "Dee Brown", alt: "A basketball player mid-dunk beside the hoop on a gray background", w: 2172, h: 3200 },
+    { file: "10-airplanes.jpg", title: "Airplanes", alt: "A flock of paper airplanes on an orange background", w: 752, h: 600 },
+    { file: "11-expander.jpg", title: "Expander", alt: "A black balloon with pink hearts floating above small gray buildings", w: 500, h: 679 },
+    { file: "12-megaman.jpg", title: "Megaman", alt: "A robot in an astronaut helmet on black with the word Heaney", w: 500, h: 691 },
+    { file: "13-belles-lettres.jpg", title: "Belles Lettres", alt: "Cursive text reading belles lettres over blue water", w: 3200, h: 2285 },
+    { file: "14-players.jpg", title: "Players", alt: "Three tall rounded figures in blue and green with red circles", w: 500, h: 634 },
+    { file: "15-blockface.jpg", title: "Blockface", alt: "A circular map of blue rectangles and dotted lines", w: 500, h: 666 },
+    { file: "16-meet-and-greet.jpg", title: "Meet and Greet", alt: "A figure in a cap holding a bamboo plant under a black sky", w: 500, h: 660 },
+    { file: "17-business-casual.jpg", title: "Business Casual", alt: "A figure working at a table in front of gray hills and a small boat", w: 500, h: 386 },
+    { file: "18-critical-mass.jpg", title: "Critical Mass", alt: "A dense crowd of small figures in pink and blue", w: 500, h: 411 },
+    { file: "19-cityscape-magenta.jpg", title: "Cityscape (Magenta)", alt: "Tall red and white towers in a stylized skyline", w: 300, h: 507 },
+    { file: "20-sink-it.jpg", title: "Sink It", alt: "A tangled green and blue landscape with a yellow figure and water", w: 500, h: 425 },
+    { file: "21-girl.jpg", title: "Girl", alt: "A child in a yellow raincoat with a red heart standing on a shore", w: 300, h: 440 },
+    { file: "22-forrest-wu.jpg", title: "Forrest Wu", alt: "A figure in blue standing in a snowy field of bare trees with black mountains behind", w: 500, h: 500 },
+    { file: "23-auto-heaney-lp.jpg", title: "Auto Heaney LP", alt: "Four panels of kitchen scenes with the name Auto Heaney down the side", w: 500, h: 500 },
+    { file: "24-shoulders-of-giants.jpg", title: "Standing on the Shoulders of Giants", alt: "A small figure pointing in front of a skyline under the word Standing", w: 500, h: 406 },
+    { file: "25-write.jpg", title: "Write", alt: "A figure writing the word write on a brick wall", w: 500, h: 415 },
+    { file: "26-good-boi.jpg", title: "Good Boi", alt: "A dog in a speech bubble asking who's a good boi, on a gray circle", w: 500, h: 489 },
+    { file: "27-moebi-heaney.jpg", title: "Moebi Heaney", alt: "Two purple rockets shooting beams downward against a dark sky", w: 500, h: 385 },
+    { file: "28-soda-right.jpg", title: "Soda Right", alt: "Kitchen appliances in blue and gray tones", w: 500, h: 323 },
+    { file: "29-subview.jpg", title: "Subview", alt: "A round window view of a blue underwater scene with small fish", w: 500, h: 372 },
+    { file: "30-my-noodles-are-dope.jpg", title: "My Noodles Are Dope", alt: "A plate of yellow noodles with chopsticks on a green square", w: 500, h: 489 },
+    { file: "31-butterflies.jpg", title: "Butterflies", alt: "White butterflies scattered across a green field", w: 1048, h: 639 },
+    { file: "32-golden-section-spectrum.jpg", title: "Golden Section Spectrum", alt: "Blue and green geometric triangles and a quarter circle", w: 500, h: 355 },
+    { file: "33-heaney-1-3.jpg", title: "Untitled", alt: "A bright green field of small circular patterns", w: 500, h: 400 },
+    { file: "34-court.jpg", title: "Court", alt: "Teal brushstroke figures on white", w: 600, h: 873 },
+    { file: "35-one-of-ten-million.jpg", title: "1 of 10,000,000", alt: "Stacked red geometric stripes on white with a red dot and the text Heaney 1/10000000", w: 500, h: 735 },
+    { file: "37-apple.jpg", title: "Untitled", alt: "A single red apple on white", w: 450, h: 655 },
+    { file: "38-lemons.jpg", title: "Untitled", alt: "A glass filled with lemons", w: 400, h: 618 },
+    { file: "39-cubes.jpg", title: "Untitled", alt: "Stacked blue cubes patterned with tiny marks", w: 333, h: 415 },
+    { file: "40-bandit-masks.jpg", title: "Bandit Masks", alt: "A bandit mask poster priced at five dollars", w: 500, h: 646 }
   ];
   works.forEach(function (w) {
     w.src = 'art/full/' + w.file;
@@ -799,42 +824,58 @@ if(links.length&&'IntersectionObserver' in window){
   const stage = document.getElementById('stage'), train = document.getElementById('train');
   const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   const S = window.GHsnd || { tick: function () {}, open: function () {} };
-  const N = works.length, GAP = 30, PX = 12, PT = 12, PB = 30;
-  const cars = [], imgs = [], st = [], offs = [], wd = [];
+  const N = works.length, GAP = 34, PT = 30, PB = 66, DW = 54, DM = 10, DP = 16, PG = 14;
+  const imgs = [], st = [], panels = [], wins = [], pw = [], po = [], cof = [];
+  const cars = [], grp = [], coff = [], cwd = [];
   let L = 0, vw = 0, ch = 0, maxW = 0, cur = 0;
   const pad2 = n => String(n).padStart(2, '0');
   const mod = (a, b) => ((a % b) + b) % b;
+  const mk = (t, c) => { const e = document.createElement(t); if (c) e.className = c; return e; };
 
   works.forEach(function (w, i) {
-    const c = document.createElement('div'); c.className = 'car';
-    c.setAttribute('role', 'group');
-    c.setAttribute('aria-label', (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
-    const p = document.createElement('div'); p.className = 'panel';
-    const im = document.createElement('img');
+    const win = mk('div', 'win'), p = mk('div', 'panel'), im = mk('img');
+    p.dataset.i = i; p.setAttribute('role', 'button'); p.tabIndex = 0;
+    p.setAttribute('aria-label', 'Enlarge ' + (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
     im.alt = w.alt || w.title || ''; im.decoding = 'async'; im.draggable = false;
     p.appendChild(im);
-    const pl = document.createElement('div'); pl.className = 'plate';
-    const b = document.createElement('b'); b.textContent = 'R-' + pad2(i + 1);
-    const sp = document.createElement('span'); sp.textContent = w.title || 'Untitled';
-    pl.appendChild(b); pl.appendChild(sp);
-    c.appendChild(p); c.appendChild(pl);
-    const eb = document.createElement('button'); eb.type = 'button'; eb.className = 'enl';
-    eb.setAttribute('aria-label', 'Enlarge ' + (w.title || 'Untitled'));
-    eb.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v2.4H6.4V10H4zM20 4v6h-2.4V6.4H14V4zM4 20v-6h2.4v3.6H10V20zM20 20h-6v-2.4h3.6V14H20z"/></svg><span>Enlarge</span>';
-    eb.addEventListener('click', function () { openBoard(i, p.getBoundingClientRect()); });
-    c.appendChild(eb);
-    ['l', 'r'].forEach(function (s) { const t = document.createElement('i'); t.className = 'truck ' + s; c.appendChild(t); });
-    train.appendChild(c); cars.push(c); imgs.push(im); st.push(0);
+    const cp = mk('div', 'cap'), b = mk('b'), sp = mk('span');
+    b.textContent = 'R-' + pad2(i + 1); sp.textContent = w.title || 'Untitled';
+    cp.appendChild(b); cp.appendChild(sp);
+    win.appendChild(p); win.appendChild(cp);
+    p.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); openBoard(i, p.getBoundingClientRect()); }
+    });
+    wins.push(win); panels.push(p); imgs.push(im); st.push(0);
   });
+  const cx = i => coff[cof[i]] + po[i] + pw[i] / 2;
 
+  /* build the train: portrait pieces share a car in pairs when they fit */
   function layout() {
     vw = stage.clientWidth; ch = train.clientHeight;
-    const ih = ch - PT - PB; L = 0; maxW = 0;
-    works.forEach(function (w, i) {
-      const ar = (w.w && w.h) ? w.w / w.h : 1;
-      wd[i] = Math.round(Math.min(vw * 0.96, Math.max(220, ih * ar + 2 * PX)));
-      offs[i] = L; L += wd[i] + GAP; maxW = Math.max(maxW, wd[i]);
-      cars[i].style.width = wd[i] + 'px'; cars[i].style.height = ch + 'px';
+    const ih = ch - PT - PB, avail = Math.floor(vw * 0.96) - 2 * (DM + DW + DP);
+    const nat = works.map(w => Math.max(140, Math.round(ih * ((w.w && w.h) ? w.w / w.h : 1))));
+    const por = k => works[k] && works[k].w && works[k].h / works[k].w > 1.15;
+    const groups = []; let i = 0;
+    while (i < N) {
+      if (i + 1 < N && por(i) && por(i + 1) && nat[i] + nat[i + 1] + PG <= avail) { groups.push([i, i + 1]); i += 2; }
+      else { groups.push([i]); i++; }
+    }
+    train.textContent = ''; cars.length = grp.length = coff.length = cwd.length = 0; L = 0; maxW = 0;
+    groups.forEach(function (g) {
+      const c = mk('div', 'car'); c.setAttribute('role', 'group');
+      ['roof', 'stripe', 'skirt'].forEach(k => c.appendChild(mk('div', k)));
+      ['l', 'r'].forEach(s => { c.appendChild(mk('div', 'dr ' + s)); c.appendChild(mk('i', 'truck ' + s)); });
+      let x = DM + DW + DP;
+      g.forEach(function (k) {
+        const w = Math.min(nat[k], avail); pw[k] = w; po[k] = x; cof[k] = cars.length;
+        const el = wins[k]; el.style.left = x + 'px'; el.style.top = PT + 'px'; el.style.width = w + 'px'; el.style.height = (ih + 26) + 'px';
+        c.appendChild(el); x += w + PG;
+      });
+      const W = x - PG + DP + DW + DM;
+      c.style.width = W + 'px'; c.style.height = ch + 'px';
+      c.setAttribute('aria-label', g.map(k => works[k].title || 'Untitled').join(' and '));
+      coff.push(L); cwd.push(W); grp.push(g); L += W + GAP; maxW = Math.max(maxW, W);
+      train.appendChild(c); cars.push(c);
     });
   }
   function ensure(i, lv) {
@@ -868,23 +909,22 @@ if(links.length&&'IntersectionObserver' in window){
   }
   function render() {
     let best = 0, bd = 1e9;
-    for (let i = 0; i < N; i++) {
-      const p = mod(offs[i] - x + vw / 2 + maxW + GAP, L) - maxW - GAP;
-      const c = cars[i];
-      c.style.transform = 'translate3d(' + p.toFixed(1) + 'px,0,0)';
-      const vis = p < vw + 40 && p + wd[i] > -40;
-      c.style.visibility = vis ? 'visible' : 'hidden';
-      const d = Math.abs(p + wd[i] / 2 - vw / 2); if (d < bd) { bd = d; best = i; }
-      if (p < vw * 1.5 && p + wd[i] > -vw * 0.5) ensure(i, 2);
-      else if (p < vw * 3 && p + wd[i] > -vw * 2) ensure(i, 1);
-      else if (st[i] === 2) { imgs[i].src = works[i].thumb; st[i] = 1; }
+    for (let c = 0; c < cars.length; c++) {
+      const p = mod(coff[c] - x + vw / 2 + maxW + GAP, L) - maxW - GAP, W = cwd[c], car = cars[c];
+      car.style.transform = 'translate3d(' + p.toFixed(1) + 'px,0,0)';
+      car.style.visibility = (p < vw + 40 && p + W > -40) ? 'visible' : 'hidden';
+      const lv = (p < vw * 1.5 && p + W > -vw * 0.5) ? 2 : (p < vw * 3 && p + W > -vw * 2) ? 1 : 0;
+      grp[c].forEach(function (k) {
+        if (lv === 2) ensure(k, 2); else if (lv === 1) ensure(k, 1); else if (st[k] === 2) { imgs[k].src = works[k].thumb; st[k] = 1; }
+        const d = Math.abs(p + po[k] + pw[k] / 2 - vw / 2); if (d < bd) { bd = d; best = k; }
+      });
     }
     if (best !== cur) setCur(best);
   }
   function goTo(i) {
     i = mod(i, N); touched();
     throttle = 0; ui(); v = 0;
-    const c = offs[i] + wd[i] / 2, k = Math.round((x - c) / L), to = c + k * L;
+    const c = cx(i), k = Math.round((x - c) / L), to = c + k * L;
     if (reduce) { x = to; glide = null; render(); arrived(); return; }
     glide = { from: x, to: to, t0: performance.now(), d: Math.min(1800, 600 + Math.abs(to - x) * 0.3) };
   }
@@ -917,7 +957,7 @@ if(links.length&&'IntersectionObserver' in window){
   stage.addEventListener('pointerdown', function (e) {
     if (e.button > 0 || e.target.closest('.deck,.tag,.next,a,button,input')) return;
     drag = true; glide = null; moved = 0; lx = e.clientX; lt = performance.now(); v = 0;
-    tapCar = e.target.closest('.car'); touched(); stage.classList.add('grab');
+    tapCar = e.target.closest('.panel'); touched(); stage.classList.add('grab');
     try { stage.setPointerCapture(e.pointerId); } catch (_) {}
   });
   stage.addEventListener('pointermove', function (e) {
@@ -928,7 +968,7 @@ if(links.length&&'IntersectionObserver' in window){
   function up() {
     if (!drag) return;
     drag = false; stage.classList.remove('grab');
-    if (moved < 6 && tapCar) { goTo(cars.indexOf(tapCar)); return; }
+    if (moved < 6 && tapCar) { openBoard(+tapCar.dataset.i, tapCar.getBoundingClientRect()); return; }
     if (performance.now() - lt > 90) v = 0;
     v = Math.max(-4000, Math.min(4000, v));
   }
@@ -1092,7 +1132,7 @@ if(links.length&&'IntersectionObserver' in window){
     if (prevFocus && prevFocus.focus) prevFocus.focus({ preventScroll: true });
     S.tick();
   }
-  function enlargeCurrent() { openBoard(cur, cars[cur].firstChild.getBoundingClientRect()); }
+  function enlargeCurrent() { openBoard(cur, panels[cur].getBoundingClientRect()); }
 
   $('bEnl').addEventListener('click', enlargeCurrent);
   $('bclose').addEventListener('click', closeBoard);
@@ -1196,10 +1236,10 @@ if(links.length&&'IntersectionObserver' in window){
   let rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { layout(); glide = null; x = offs[cur] + wd[cur] / 2; render(); }, 120);
+    rt = setTimeout(function () { layout(); glide = null; x = cx(cur); render(); }, 120);
   });
 
-  layout(); x = offs[0] + wd[0] / 2; setCur(0); ui(); render();
+  layout(); x = cx(0); setCur(0); ui(); render();
   requestAnimationFrame(function (t) { last = t; frame(t); });
 
 </script>
