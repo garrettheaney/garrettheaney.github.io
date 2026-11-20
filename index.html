@@ -247,26 +247,26 @@ dialog#viewer::backdrop{background:#fff}
 @media(max-width:40rem){.stops a{grid-template-columns:1fr}.stops .what{text-align:left;max-width:none}}
 /* say hello: subway car */
 .hello{margin:clamp(2.5rem,6vw,5rem) auto 0;max-width:92rem;padding:0 var(--pad)}
-.sc{position:relative;padding-bottom:2.2rem;--pnl:clamp(2.4rem,5vw,3.6rem)}
+.sc{position:relative;padding-bottom:2.2rem;--pnl:clamp(3.4rem,7vw,5.2rem)}
 .sc-shell{position:relative;z-index:1;overflow:hidden;border:3px solid var(--ink);border-radius:2rem 2rem .9rem .9rem;background:#fff;padding-bottom:.6rem}
 .sc-shell::before{content:"";display:block;height:.7rem;background:#fff;border-bottom:3px solid var(--ink)}
 .sc-dest{position:relative;width:fit-content;max-width:calc(100% - 2rem);margin:1rem auto 0;display:flex;align-items:baseline;gap:1rem;background:#0b0c0d;border-radius:.6rem;padding:.5rem 1.3rem;box-shadow:0 0 0 3px #2a2e31;overflow:hidden;white-space:nowrap}
 .sc-dest::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(0,0,0,.55) 38%,transparent 40%);background-size:3px 3px;mix-blend-mode:multiply}
 .sc-now{font-family:var(--dots);font-size:.85rem;letter-spacing:.08em;color:#c98a2e;text-transform:uppercase}
 .hello h2{margin:0;font-family:var(--dots);font-weight:400;font-size:clamp(1.15rem,3.6vw,2.2rem);line-height:1.1;letter-spacing:.08em;color:#ffb347;text-shadow:0 0 8px rgba(255,170,60,.6);text-transform:uppercase}
-.sc-row{position:relative;display:grid;grid-template-columns:clamp(4rem,9vw,7rem) minmax(0,1.5fr) minmax(0,1fr) clamp(4rem,9vw,7rem);gap:clamp(.6rem,1.4vw,1.1rem);margin:1rem .8rem .6rem}
+.sc-row{--dw:clamp(4rem,9vw,7rem);--gap:clamp(.6rem,1.4vw,1.1rem);position:relative;display:grid;grid-template-columns:var(--dw) minmax(0,1.5fr) minmax(0,1fr) var(--dw);gap:var(--gap);margin:1rem .8rem .6rem}
 .sc-row::after{content:"";position:absolute;z-index:2;left:-.8rem;right:-.8rem;bottom:calc(var(--pnl)/2 - .35rem);height:.7rem;pointer-events:none;background:linear-gradient(90deg,var(--orange) 0 25%,var(--red) 25% 50%,var(--blue) 50% 75%,var(--green) 75%)}
 .sc-door{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:#111;border:.2rem solid #111;border-radius:.4rem;min-height:clamp(11rem,20vw,16rem)}
 .sc-door .lf{position:relative;background:#fff}
-.sc-door .lf::before{content:"";position:absolute;top:.5rem;bottom:calc(var(--pnl) + .3rem);left:16%;right:16%;border-radius:.35rem;border:.3rem solid var(--ink);background:linear-gradient(170deg,#eef5fa,#aebfcb 70%);box-shadow:inset 0 0 12px rgba(0,0,0,.18)}
-.sc-win{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:.35rem;margin-bottom:var(--pnl);padding:clamp(1rem,2.4vw,1.8rem);min-height:clamp(8rem,15vw,12rem);border-radius:1rem;border:.45rem solid var(--ink);background:linear-gradient(170deg,#eef5fa,#aebfcb 70%);box-shadow:inset 0 0 18px rgba(0,0,0,.18);color:var(--ink);text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s}
-.sc-win::before{content:"";position:absolute;top:-20%;bottom:-20%;left:58%;width:16%;transform:skewX(-18deg);background:rgba(255,255,255,.32);pointer-events:none}
-.sc-win:hover,.sc-win:focus-visible{transform:translateY(-2px);border-color:var(--ink);box-shadow:inset 0 0 18px rgba(0,0,0,.18),0 12px 26px -14px var(--ink)}
+.sc-door .lf::before{content:"";position:absolute;top:.5rem;bottom:calc(var(--pnl) + .3rem);left:16%;right:16%;border-radius:.35rem;border:.3rem solid var(--ink);background:#dcdfe1}
+.sc-win{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:.35rem;margin-bottom:var(--pnl);padding:clamp(1rem,2.4vw,1.8rem);min-height:clamp(8rem,15vw,12rem);border-radius:1rem;border:.45rem solid var(--ink);background:#dcdfe1;color:var(--ink);text-decoration:none;transition:transform .3s,box-shadow .3s,border-color .3s}
+.sc-win:hover,.sc-win:focus-visible{transform:translateY(-2px);border-color:var(--ink);box-shadow:0 12px 26px -14px var(--ink)}
 .sc-k{position:relative;font-weight:700;font-size:.95rem;color:var(--mute)}
 .sc-v{position:relative;font-weight:700;letter-spacing:-.03em;line-height:1.05;overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:3px;text-underline-offset:5px;transition:text-decoration-color .25s}
 .sc-win:hover .sc-v,.sc-win:focus-visible .sc-v{text-decoration-color:var(--ink)}
 .sc-win.m .sc-v{font-size:clamp(1.05rem,2.6vw,2.3rem)}
 .sc-win.p .sc-v{font-size:clamp(1.3rem,2.8vw,2.2rem)}
+.sc-gfx{position:absolute;z-index:3;left:calc(var(--dw) + var(--gap));right:calc(var(--dw) + var(--gap));bottom:.1rem;height:calc(var(--pnl) + .5rem);width:calc(100% - 2 * (var(--dw) + var(--gap)));pointer-events:none;overflow:visible}
 .sc-under{position:relative;z-index:1;height:.9rem;margin:-3px 1.2rem 0;background:#2b2f32;border:3px solid var(--ink);border-top:0;border-radius:0 0 .6rem .6rem}
 .sc-truck{position:absolute;z-index:0;bottom:.4rem;display:flex;gap:clamp(.4rem,1.2vw,.9rem)}
 .sc-truck.a{left:12%}.sc-truck.b{right:12%}
@@ -277,7 +277,7 @@ dialog#viewer::backdrop{background:#fff}
 @media(prefers-reduced-motion:reduce){.sc:hover .sc-w{animation:none}.sc-win{transition:none}.sc-win:hover,.sc-win:focus-visible{transform:none}}
 @media(max-width:46rem){
   .sc-now{display:none}
-  .sc-row{grid-template-columns:3.2rem minmax(0,1fr) 3.2rem}
+  .sc-row{--dw:3.2rem;grid-template-columns:var(--dw) minmax(0,1fr) var(--dw)}
   .sc-door.a{grid-column:1;grid-row:1/3}.sc-door.b{grid-column:3;grid-row:1/3}
   .sc-win.m{grid-column:2;grid-row:1;margin-bottom:0}.sc-win.p{grid-column:2;grid-row:2}
 }
@@ -443,6 +443,24 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
         <div class="sc-door a" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
         <a class="sc-win m" href="mailto:garrettheaney@gmail.com" data-k="ink" data-n="Email"><span class="sc-k">Email</span><span class="sc-v">garrettheaney@gmail.com</span></a>
         <a class="sc-win p" href="tel:+18025577974" data-k="ink" data-n="Phone"><span class="sc-k">Phone</span><span class="sc-v">802.557.7974</span></a>
+        <svg class="sc-gfx" viewBox="0 0 440 110" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+          <g stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 98 C90 84 200 104 330 90" fill="none" stroke="#14171a" stroke-width="13"/>
+            <path d="M14 98 C90 84 200 104 330 90" fill="none" stroke="#003DA5" stroke-width="7"/>
+            <g transform="rotate(-5 80 60)">
+              <text x="28" y="80" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="86" style="fill:#003DA5;stroke:#14171a;stroke-width:9;paint-order:stroke">GH</text>
+              <text x="22" y="74" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="86" style="fill:#ED8B00;stroke:#14171a;stroke-width:7;paint-order:stroke">GH</text>
+            </g>
+            <g transform="rotate(4 240 60)">
+              <text x="208" y="72" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="52" style="fill:#00843D;stroke:#14171a;stroke-width:7;paint-order:stroke">VT</text>
+            </g>
+            <path d="M372 18 l9 22 24 2 -19 15 7 23 -21 -13 -21 13 7 -23 -19 -15 24 -2z" style="fill:#DA291C;stroke:#14171a;stroke-width:5" transform="translate(97 20) scale(.8)"/>
+            <path d="M52 84 v20 M86 82 v14 M126 80 v24" stroke="#ED8B00" stroke-width="5" fill="none"/>
+            <circle cx="52" cy="106" r="3.5" fill="#ED8B00"/><circle cx="126" cy="106" r="3.5" fill="#ED8B00"/>
+            <path d="M236 80 v16" stroke="#00843D" stroke-width="4" fill="none"/><circle cx="236" cy="99" r="3" fill="#00843D"/>
+            <circle cx="190" cy="26" r="2.5" fill="#14171a"/><circle cx="352" cy="62" r="2" fill="#14171a"/><circle cx="196" cy="94" r="2" fill="#DA291C"/>
+          </g>
+        </svg>
         <div class="sc-door b" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
       </div>
     </div>
