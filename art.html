@@ -361,6 +361,67 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band,.map.go .ln path.route{animation:none}.tpanel,.pp,details.f[open] .body{animation:none}}
 @media print{.top,#menu,#doors,.strip,.nextstop,.rail{display:none!important}}
 
+
+/* ===== ART: THE RED LINE TRAIN GALLERY ===== */
+html:has(body.p-art),body.p-art{overflow:hidden;height:100%}
+.stage{--tz:3.4rem;--bz:6.9rem;position:relative;height:calc(100vh - var(--hdr));height:calc(100dvh - var(--hdr));overflow:hidden;background:linear-gradient(#fafbfb,#eceff1 70%,#e1e5e8);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.stage.grab{cursor:grabbing}
+.wall{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(ellipse 150px 16px at 50% 0,rgba(124,135,142,.22),transparent 70%) 0 0/380px 34px repeat-x,
+  repeating-linear-gradient(90deg,rgba(20,23,26,.06) 0 2px,transparent 2px 96px),
+  repeating-linear-gradient(0deg,rgba(20,23,26,.045) 0 2px,transparent 2px 64px)}
+.wall::after{content:"";position:absolute;left:0;right:0;top:calc(var(--tz) - .85rem);height:.4rem;background:var(--red)}
+.train{position:absolute;left:0;right:0;top:var(--tz);bottom:var(--bz)}
+.car{position:absolute;left:0;top:0;padding:12px 12px 30px;border-radius:18px 18px 8px 8px;background:linear-gradient(#f0f3f5,#cdd3d7 50%,#b3bbc1);box-shadow:0 16px 30px -12px rgba(20,23,26,.4),inset 0 0 0 2px rgba(255,255,255,.55);will-change:transform}
+.car::before{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;background:var(--red);border-radius:0 0 8px 8px}
+.car::after{content:"";position:absolute;left:100%;width:30px;top:24%;bottom:14%;background:repeating-linear-gradient(90deg,#14171a 0 4px,#2d3237 4px 8px)}
+.panel{width:100%;height:100%;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px rgba(20,23,26,.4)}
+.panel img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}
+.plate{position:absolute;left:14px;right:14px;bottom:9px;display:flex;justify-content:space-between;gap:1rem;font:13px/1 var(--dots);letter-spacing:.08em;text-transform:uppercase;color:#14171a;white-space:nowrap;overflow:hidden}
+.plate b{color:var(--red);font-weight:400}
+.truck{position:absolute;bottom:-17px;width:104px;height:24px;z-index:-1;background:radial-gradient(circle at 22px 15px,#1a1d20 0 8px,#8a949a 8px 10px,transparent 10.5px),radial-gradient(circle at 82px 15px,#1a1d20 0 8px,#8a949a 8px 10px,transparent 10.5px),linear-gradient(#25292d,#25292d) 12px 0/80px 9px no-repeat}
+.truck.l{left:9%}.truck.r{right:9%}
+.platform{position:absolute;left:0;right:0;bottom:0;height:calc(var(--bz) - 12px);background:linear-gradient(#dde1e4,#c3c9cd);z-index:3;pointer-events:none}
+.platform::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:radial-gradient(circle,#ffe36b 0 2.4px,transparent 3px) 0 0/12px 12px,#d9ab00}
+.stage .tag{position:absolute;left:var(--pad);top:.5rem;margin:0;z-index:6;background:var(--ink);cursor:default}
+.stage .next{position:absolute;right:var(--pad);top:.5rem;z-index:6;display:inline-flex;align-items:center;gap:.5rem;padding:.2rem .9rem .2rem .25rem;border-radius:2rem;background:#fff;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;cursor:pointer}
+.stage .next .bul{width:1.6rem;height:1.6rem;font-size:.75rem}
+.hint2{position:absolute;left:50%;top:.75rem;transform:translateX(-50%);z-index:6;margin:0;color:var(--mute);font-size:.82rem;letter-spacing:.04em;white-space:nowrap;transition:opacity .6s;pointer-events:none}
+.stage.used .hint2{opacity:0}
+@media(max-width:60rem){.hint2{display:none}}
+.deck{position:absolute;left:50%;bottom:.8rem;transform:translateX(-50%);z-index:7;display:flex;align-items:center;gap:.9rem;width:max-content;max-width:calc(100% - 1rem);padding:.55rem .8rem;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid var(--ink);border-radius:1.2rem;box-shadow:0 10px 26px -10px rgba(20,23,26,.45);color:var(--ink);cursor:default}
+.deck :focus-visible{outline-color:var(--ink)}
+.gl{position:relative;width:15rem;min-width:0;background:#f1f3f4;border-radius:.6rem;padding:.35rem .7rem;box-shadow:inset 0 0 0 2px #cfd4d8;overflow:hidden;font-family:var(--dots);text-transform:uppercase;color:var(--ink);line-height:1.25}
+.gl::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(241,243,244,.55) 38%,transparent 40%);background-size:3px 3px}
+.gl .a{display:flex;justify-content:space-between;gap:.5rem;font-size:.78rem;color:var(--red);white-space:nowrap}
+.gl .t{font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kb{appearance:none;flex:none;width:2.6rem;height:2.6rem;display:grid;place-items:center;padding:0;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kb svg{width:1.1rem;height:1.1rem;fill:currentColor}
+.kb:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.kb[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#000}
+.kb.brake{color:#fff;width:auto;padding:0 1rem;border-radius:2rem;background:var(--red);border-color:var(--red);font:700 .82rem var(--sans);letter-spacing:.08em}
+.kb.brake:hover{background:#fff;color:var(--red)}
+.lv{display:grid;gap:.1rem;width:9rem;flex:none}
+.lv label{font:700 .66rem var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+input.thr{-webkit-appearance:none;appearance:none;width:100%;height:1.8rem;margin:0;background:transparent;cursor:pointer}
+input.thr::-webkit-slider-runnable-track{height:.6rem;border-radius:.3rem;background:linear-gradient(90deg,var(--orange) var(--f,0%),#cfd4d8 var(--f,0%))}
+input.thr::-moz-range-track{height:.6rem;border-radius:.3rem;background:linear-gradient(90deg,var(--orange) var(--f,0%),#cfd4d8 var(--f,0%))}
+input.thr::-webkit-slider-thumb{-webkit-appearance:none;width:1rem;height:1.7rem;margin-top:-.55rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,var(--red) 38% 62%,#c8cdd1 62%)}
+input.thr::-moz-range-thumb{width:1rem;height:1.7rem;border-radius:.35rem;border:2px solid #14171a;background:linear-gradient(90deg,#c8cdd1 0 38%,#DA291C 38% 62%,#c8cdd1 62%)}
+.dkt{appearance:none;flex:none;border:0;background:transparent;color:var(--mute);font:700 .7rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:.3rem}
+.dkt:hover{color:var(--ink)}
+.stage.min .deck>*:not(.dkt){display:none}
+.stage.min .deck{padding:.3rem .7rem}
+@media(max-width:40rem){
+  .stage{--bz:9.8rem}
+  .deck{flex-wrap:wrap;justify-content:center;gap:.5rem .6rem;width:calc(100% - 1rem)}
+  .gl{flex:1 1 100%;width:auto}
+  .lv{width:6.5rem}
+  .stage .tag{font-size:.8rem}.stage .next span.tx{display:none}
+  .stage .next{padding:.2rem}
+  .stage.min{--bz:6.9rem}
+}
+
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -386,34 +447,27 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 </ul>
 <div class="mfoot"><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></div>
 </div>
-<main class="route" id="content"><div class="rail" aria-hidden="true"><div class="rail-fill"></div></div><header class="hero stop-hero">
-  <p class="eyebrow"><span class="bul r">R</span>Red Line &middot; Art</p>
-  <h1>Art</h1>
-  <div class="band"></div>
-  <p class="lede">I create art under the alias <b>Auto Heaney</b>.</p>
-  <p class="hint"><b id="total">0</b> pieces. Select any one to view it larger.</p>
-</header>
-<section class="stop" id="gallery" aria-label="Gallery">
-  <div class="sh"><h2 class="sign"><span class="bul line">&bull;</span>Gallery</h2></div>
-  <div class="grid art" id="grid"></div>
-  <noscript><p class="block-note">This gallery needs JavaScript turned on.</p></noscript>
-</section>
-<aside class="nextstop" aria-label="Next stop"><small>Next stop</small>
-<a class="big" href="music.html" data-k="blue" data-n="Music"><span class="bul b">B</span>Music<span class="arr" aria-hidden="true">&rarr;</span></a>
-<div class="others"><a href="./" data-k="ink" data-n="Home" style="--c:var(--ink)"><span class="bul k">T</span>Home</a><a href="resume.html" data-k="orange" data-n="Resume" style="--c:var(--orange)"><span class="bul o">O</span>Resume</a><a href="practice.html" data-k="green" data-n="Practice" style="--c:var(--green)"><span class="bul g">G</span>Practice</a></div></aside></main>
-<footer class="f"><span>Garrett Heaney &middot; Vermont</span><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></footer>
-<dialog id="viewer" aria-label="Artwork viewer">
-  <div class="viewer">
-    <div class="vbar"><div class="vcount" id="vcount" aria-live="polite"></div><button class="vbtn" id="vclose" type="button">Close</button></div>
-    <div class="vstage" id="vstage">
-      <button class="vbtn prev" id="vprev" type="button" aria-label="Previous piece">Prev</button>
-      <figure class="vfig"><img id="vimg" alt=""></figure>
-      <button class="vbtn next" id="vnext" type="button" aria-label="Next piece">Next</button>
-      <div class="mnav"><button class="vbtn" id="mprev" type="button">Prev</button><button class="vbtn" id="mnext" type="button">Next</button></div>
-    </div>
-    <div class="vcap" id="vcap"></div>
-  </div>
-</dialog>
+<main class="stage" id="stage"><h1 class="sr">Art &ndash; Auto Heaney</h1>
+<div class="wall" aria-hidden="true"></div>
+<p class="eyebrow tag"><span class="bul r">R</span>Red Line &middot; Art &middot; Auto Heaney</p>
+<a class="next" href="music.html" data-k="blue" data-n="Music"><span class="bul b">B</span><span class="tx">Next stop: Music</span><span aria-hidden="true">&rarr;</span></a>
+<p class="hint2" aria-hidden="true">Drag the train &middot; scroll &middot; or take the throttle</p>
+<div class="train" id="train" role="region" aria-label="Gallery train. Each car carries one piece of art."></div>
+<div class="platform" aria-hidden="true"></div>
+<div class="deck" role="group" aria-label="Conductor controls">
+  <div class="gl"><div class="a"><span id="lnum">00/00</span><span id="lstate">STOPPED</span></div><div class="t" id="ltitle">&nbsp;</div></div>
+  <button class="kb" id="bPrev" type="button" aria-label="Previous car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2.4v14H6zM20 5v14L9.5 12z"/></svg></button>
+  <button class="kb" id="bL" type="button" aria-label="Train moves left" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 5v14L5 12z"/></svg></button>
+  <button class="kb brake" id="bBrake" type="button">BRAKE</button>
+  <button class="kb" id="bR" type="button" aria-label="Train moves right" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></button>
+  <button class="kb" id="bNext" type="button" aria-label="Next car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 5H18v14h-2.4zM4 5v14l10.5-7z"/></svg></button>
+  <div class="lv"><label for="thr"><span>Throttle</span><span id="thrv">OFF</span></label><input class="thr" id="thr" type="range" min="0" max="10" step="1" value="2"></div>
+  <button class="dkt" id="dkt" type="button" aria-expanded="true" aria-controls="stage">Hide</button>
+</div>
+<div class="sr" id="live" aria-live="polite"></div>
+<noscript><p style="position:absolute;top:5rem;left:2rem;color:var(--ink);z-index:9">This gallery needs JavaScript turned on.</p></noscript>
+</main>
+
 <script>
 (function(){
 var html=document.documentElement, body=document.body;
@@ -450,6 +504,7 @@ var snd={
   open:function(){beep(659,0,.22,.045);beep(880,.18,.34,.045)},
   tick:function(){beep(1500,0,.02,.012,'square')}
 };
+window.GHsnd=snd;
 var sb=document.querySelector('.snd');
 function paintSnd(){if(!sb)return;sb.setAttribute('aria-pressed',on?'true':'false');sb.setAttribute('aria-label',on?'Sound on. Turn sound off':'Sound off. Turn sound on')}
 if(sb){paintSnd();sb.addEventListener('click',function(){
@@ -664,83 +719,176 @@ if(links.length&&'IntersectionObserver' in window){
     w.thumb = 'art/thumb/' + w.file;
   });
 
-  const grid = document.getElementById('grid');
-  document.getElementById('total').textContent = works.length;
+
+  const stage = document.getElementById('stage'), train = document.getElementById('train');
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const S = window.GHsnd || { tick: function () {}, open: function () {} };
+  const N = works.length, GAP = 30, PX = 12, PT = 12, PB = 30;
+  const cars = [], imgs = [], st = [], offs = [], wd = [];
+  let L = 0, vw = 0, ch = 0, maxW = 0, cur = 0;
+  const pad2 = n => String(n).padStart(2, '0');
+  const mod = (a, b) => ((a % b) + b) % b;
+
   works.forEach(function (w, i) {
-    const a = document.createElement('a');
-    a.className = 'cell' + (w.w && w.h && w.w / w.h >= 1.25 ? ' wide' : '');
-    a.href = w.src;
-    a.dataset.i = i;
-    const frame = document.createElement('span'); frame.className = 'frame';
+    const c = document.createElement('div'); c.className = 'car';
+    c.setAttribute('role', 'group');
+    c.setAttribute('aria-label', (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
+    const p = document.createElement('div'); p.className = 'panel';
     const im = document.createElement('img');
-    im.src = w.thumb; im.alt = w.alt || w.title || '';
-    im.loading = i < 6 ? 'eager' : 'lazy'; im.decoding = 'async';
-    frame.appendChild(im);
-    const cap = document.createElement('span'); cap.className = 'cap';
-    const num = document.createElement('span'); num.className = 'num';
-    num.textContent = String(i + 1).padStart(2, '0');
-    const ttl = document.createElement('span'); ttl.className = 'ttl';
-    ttl.textContent = w.title || 'Untitled';
-    cap.appendChild(num); cap.appendChild(ttl);
-    a.appendChild(frame); a.appendChild(cap);
-    grid.appendChild(a);
+    im.alt = w.alt || w.title || ''; im.decoding = 'async'; im.draggable = false;
+    p.appendChild(im);
+    const pl = document.createElement('div'); pl.className = 'plate';
+    const b = document.createElement('b'); b.textContent = 'R-' + pad2(i + 1);
+    const sp = document.createElement('span'); sp.textContent = w.title || 'Untitled';
+    pl.appendChild(b); pl.appendChild(sp);
+    c.appendChild(p); c.appendChild(pl);
+    ['l', 'r'].forEach(function (s) { const t = document.createElement('i'); t.className = 'truck ' + s; c.appendChild(t); });
+    train.appendChild(c); cars.push(c); imgs.push(im); st.push(0);
   });
 
-  const dlg = document.getElementById('viewer');
-  const img = document.getElementById('vimg');
-  const cap = document.getElementById('vcap');
-  const count = document.getElementById('vcount');
-  let cur = 0, opener = null;
-
-  function show(i) {
-    cur = (i + works.length) % works.length;
-    const w = works[cur];
-    img.src = w.src;
-    img.alt = w.alt;
-    cap.textContent = w.title;
-    count.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(works.length).padStart(2, '0');
-    const nxt = new Image(); nxt.src = works[(cur + 1) % works.length].src;
-    const prv = new Image(); prv.src = works[(cur - 1 + works.length) % works.length].src;
-  }
-  function open(i, el) {
-    opener = el || null;
-    show(i);
-    if (typeof dlg.showModal === 'function') dlg.showModal();
-    else dlg.setAttribute('open', '');
-    document.documentElement.style.overflow = 'hidden';
-  }
-  function close() { dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
-
-  document.querySelectorAll('.cell').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
-      e.preventDefault();
-      open(Number(a.dataset.i), a);
+  function layout() {
+    vw = stage.clientWidth; ch = train.clientHeight;
+    const ih = ch - PT - PB; L = 0; maxW = 0;
+    works.forEach(function (w, i) {
+      const ar = (w.w && w.h) ? w.w / w.h : 1;
+      wd[i] = Math.round(Math.min(vw * 0.96, Math.max(220, ih * ar + 2 * PX)));
+      offs[i] = L; L += wd[i] + GAP; maxW = Math.max(maxW, wd[i]);
+      cars[i].style.width = wd[i] + 'px'; cars[i].style.height = ch + 'px';
     });
+  }
+  function ensure(i, lv) {
+    if (lv >= 1 && st[i] < 1) { imgs[i].src = works[i].thumb; st[i] = 1; }
+    if (lv >= 2 && st[i] < 2) {
+      st[i] = 2;
+      const m = new Image();
+      m.onload = function () { if (st[i] === 2) imgs[i].src = works[i].src; };
+      m.src = works[i].src;
+    }
+  }
+
+  const lnum = document.getElementById('lnum'), ltitle = document.getElementById('ltitle'), lstate = document.getElementById('lstate');
+  const thr = document.getElementById('thr'), thrv = document.getElementById('thrv'), live = document.getElementById('live');
+  const bL = document.getElementById('bL'), bR = document.getElementById('bR');
+  let x = 0, v = 0, throttle = reduce ? 0 : 2, lastT = 2, sgn = 1, drag = false, glide = null, lastState = '';
+  const speedFor = t => t ? 15 * Math.pow(t, 1.8) : 0;
+  const touched = () => stage.classList.add('used');
+
+  function setCur(b) {
+    cur = b;
+    lnum.textContent = pad2(b + 1) + '/' + pad2(N);
+    ltitle.textContent = works[b].title || 'Untitled';
+    if (Math.abs(v) > 20) S.tick();
+  }
+  function ui() {
+    thr.value = throttle; thr.style.setProperty('--f', (throttle * 10) + '%');
+    thrv.textContent = throttle ? 'NOTCH ' + throttle : 'OFF';
+    bL.setAttribute('aria-pressed', throttle > 0 && sgn > 0 ? 'true' : 'false');
+    bR.setAttribute('aria-pressed', throttle > 0 && sgn < 0 ? 'true' : 'false');
+  }
+  function render() {
+    let best = 0, bd = 1e9;
+    for (let i = 0; i < N; i++) {
+      const p = mod(offs[i] - x + vw / 2 + maxW + GAP, L) - maxW - GAP;
+      const c = cars[i];
+      c.style.transform = 'translate3d(' + p.toFixed(1) + 'px,0,0)';
+      const vis = p < vw + 40 && p + wd[i] > -40;
+      c.style.visibility = vis ? 'visible' : 'hidden';
+      const d = Math.abs(p + wd[i] / 2 - vw / 2); if (d < bd) { bd = d; best = i; }
+      if (p < vw * 1.5 && p + wd[i] > -vw * 0.5) ensure(i, 2);
+      else if (p < vw * 3 && p + wd[i] > -vw * 2) ensure(i, 1);
+      else if (st[i] === 2) { imgs[i].src = works[i].thumb; st[i] = 1; }
+    }
+    if (best !== cur) setCur(best);
+  }
+  function goTo(i) {
+    i = mod(i, N); touched();
+    throttle = 0; ui(); v = 0;
+    const c = offs[i] + wd[i] / 2, k = Math.round((x - c) / L), to = c + k * L;
+    if (reduce) { x = to; glide = null; render(); arrived(); return; }
+    glide = { from: x, to: to, t0: performance.now(), d: Math.min(1800, 600 + Math.abs(to - x) * 0.3) };
+  }
+  function arrived() {
+    live.textContent = 'Stopped at ' + (works[cur].title || 'Untitled') + ', ' + (cur + 1) + ' of ' + N;
+    S.open();
+  }
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (glide) {
+      const k = (now - glide.t0) / glide.d;
+      if (k >= 1) { x = glide.to; glide = null; x = mod(x, L); render(); arrived(); }
+      else { const e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; x = glide.from + (glide.to - glide.from) * e; }
+    } else if (!drag) {
+      const vt = sgn * speedFor(throttle);
+      v += (vt - v) * (1 - Math.exp(-dt * (vt === 0 ? 2.2 : 1.4)));
+      if (vt === 0 && Math.abs(v) < 0.5) v = 0;
+      x += v * dt; x = mod(x, L);
+    }
+    render();
+    const s = glide ? 'ARRIVING' : drag ? 'MANUAL' : (throttle === 0 ? (Math.abs(v) < 4 ? 'STOPPED' : 'BRAKING') : (sgn > 0 ? '<< ' : '>> ') + 'NOTCH ' + throttle);
+    if (s !== lastState) { lstate.textContent = s; lastState = s; }
+    requestAnimationFrame(frame);
+  }
+
+  /* drag, tap and wheel */
+  let lx = 0, lt = 0, moved = 0, tapCar = null;
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.button > 0 || e.target.closest('.deck,.tag,.next,a,button,input')) return;
+    drag = true; glide = null; moved = 0; lx = e.clientX; lt = performance.now(); v = 0;
+    tapCar = e.target.closest('.car'); touched(); stage.classList.add('grab');
+    try { stage.setPointerCapture(e.pointerId); } catch (_) {}
   });
-  document.getElementById('vclose').addEventListener('click', close);
-  document.getElementById('vprev').addEventListener('click', function () { show(cur - 1); });
-  document.getElementById('vnext').addEventListener('click', function () { show(cur + 1); });
-  document.getElementById('mprev').addEventListener('click', function () { show(cur - 1); });
-  document.getElementById('mnext').addEventListener('click', function () { show(cur + 1); });
-  dlg.addEventListener('close', function () {
-    document.documentElement.style.overflow = '';
-    if (opener) opener.focus();
+  stage.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    const now = performance.now(), dx = e.clientX - lx, dt = Math.max(1, now - lt) / 1000;
+    moved += Math.abs(dx); x -= dx; v = v * 0.6 + (-dx / dt) * 0.4; lx = e.clientX; lt = now;
   });
-  dlg.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+  function up() {
+    if (!drag) return;
+    drag = false; stage.classList.remove('grab');
+    if (moved < 6 && tapCar) { goTo(cars.indexOf(tapCar)); return; }
+    if (performance.now() - lt > 90) v = 0;
+    v = Math.max(-4000, Math.min(4000, v));
+  }
+  stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+  stage.addEventListener('wheel', function (e) {
+    e.preventDefault(); glide = null; touched();
+    x += (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY) * (e.deltaMode === 1 ? 32 : 1);
+  }, { passive: false });
+
+  /* conductor controls */
+  function setT(t) { throttle = Math.max(0, Math.min(10, t)); if (throttle) lastT = throttle; glide = null; touched(); ui(); }
+  thr.addEventListener('input', function () { setT(+thr.value); });
+  bL.addEventListener('click', function () { sgn = 1; setT(throttle || lastT); });
+  bR.addEventListener('click', function () { sgn = -1; setT(throttle || lastT); });
+  document.getElementById('bBrake').addEventListener('click', function () { setT(0); });
+  document.getElementById('bPrev').addEventListener('click', function () { goTo(cur - 1); });
+  document.getElementById('bNext').addEventListener('click', function () { goTo(cur + 1); });
+  const dkt = document.getElementById('dkt');
+  dkt.addEventListener('click', function () {
+    const m = stage.classList.toggle('min');
+    dkt.textContent = m ? 'Controls' : 'Hide'; dkt.setAttribute('aria-expanded', m ? 'false' : 'true');
+    layout(); render();
+  });
+  document.addEventListener('keydown', function (e) {
+    const menu = document.getElementById('menu');
+    if ((menu && !menu.hidden) || e.altKey || e.ctrlKey || e.metaKey) return;
+    const tg = e.target.tagName;
+    if (e.key === 'ArrowRight' && tg !== 'INPUT') { e.preventDefault(); goTo(cur + 1); }
+    else if (e.key === 'ArrowLeft' && tg !== 'INPUT') { e.preventDefault(); goTo(cur - 1); }
+    else if (e.key === 'ArrowUp' && tg !== 'INPUT') { e.preventDefault(); setT(throttle + 1); }
+    else if (e.key === 'ArrowDown' && tg !== 'INPUT') { e.preventDefault(); setT(throttle - 1); }
+    else if (e.key === ' ' && tg !== 'INPUT' && tg !== 'BUTTON' && tg !== 'A') { e.preventDefault(); setT(throttle ? 0 : lastT); }
   });
 
-  /* swipe */
-  let sx = null;
-  const stage = document.getElementById('vstage');
-  stage.addEventListener('pointerdown', function (e) { sx = e.clientX; });
-  stage.addEventListener('pointerup', function (e) {
-    if (sx === null) return;
-    const dx = e.clientX - sx; sx = null;
-    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+  let rt = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { layout(); glide = null; x = offs[cur] + wd[cur] / 2; render(); }, 120);
   });
+
+  layout(); x = offs[0] + wd[0] / 2; setCur(0); ui(); render();
+  requestAnimationFrame(function (t) { last = t; frame(t); });
 
 </script>
 </body>
