@@ -247,7 +247,7 @@ dialog#viewer::backdrop{background:#fff}
 @media(max-width:40rem){.stops a{grid-template-columns:1fr}.stops .what{text-align:left;max-width:none}}
 /* say hello: subway car */
 .hello{margin:clamp(2.5rem,6vw,5rem) auto 0;max-width:92rem;padding:0 var(--pad)}
-.sc{position:relative;padding-bottom:2.2rem;--pnl:clamp(3.4rem,7vw,5.2rem)}
+.sc{position:relative;padding-bottom:2.2rem;--pnl:clamp(2.4rem,5vw,3.6rem)}
 .sc-shell{position:relative;z-index:1;overflow:hidden;border:3px solid var(--ink);border-radius:2rem 2rem .9rem .9rem;background:#fff;padding-bottom:.6rem}
 .sc-shell::before{content:"";display:block;height:.7rem;background:#fff;border-bottom:3px solid var(--ink)}
 .sc-dest{position:relative;width:fit-content;max-width:calc(100% - 2rem);margin:1rem auto 0;display:flex;align-items:baseline;gap:1rem;background:#0b0c0d;border-radius:.6rem;padding:.5rem 1.3rem;box-shadow:0 0 0 3px #2a2e31;overflow:hidden;white-space:nowrap}
@@ -266,7 +266,6 @@ dialog#viewer::backdrop{background:#fff}
 .sc-win:hover .sc-v,.sc-win:focus-visible .sc-v{text-decoration-color:var(--ink)}
 .sc-win.m .sc-v{font-size:clamp(1.05rem,2.6vw,2.3rem)}
 .sc-win.p .sc-v{font-size:clamp(1.3rem,2.8vw,2.2rem)}
-.sc-gfx{position:absolute;z-index:3;left:calc(var(--dw) + var(--gap));right:calc(var(--dw) + var(--gap));bottom:.1rem;height:calc(var(--pnl) + .5rem);width:calc(100% - 2 * (var(--dw) + var(--gap)));pointer-events:none;overflow:visible}
 .sc-under{position:relative;z-index:1;height:.9rem;margin:-3px 1.2rem 0;background:#2b2f32;border:3px solid var(--ink);border-top:0;border-radius:0 0 .6rem .6rem}
 .sc-truck{position:absolute;z-index:0;bottom:.4rem;display:flex;gap:clamp(.4rem,1.2vw,.9rem)}
 .sc-truck.a{left:12%}.sc-truck.b{right:12%}
@@ -443,24 +442,6 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
         <div class="sc-door a" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
         <a class="sc-win m" href="mailto:garrettheaney@gmail.com" data-k="ink" data-n="Email"><span class="sc-k">Email</span><span class="sc-v">garrettheaney@gmail.com</span></a>
         <a class="sc-win p" href="tel:+18025577974" data-k="ink" data-n="Phone"><span class="sc-k">Phone</span><span class="sc-v">802.557.7974</span></a>
-        <svg class="sc-gfx" viewBox="0 0 440 110" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-          <g stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 98 C90 84 200 104 330 90" fill="none" stroke="#14171a" stroke-width="13"/>
-            <path d="M14 98 C90 84 200 104 330 90" fill="none" stroke="#003DA5" stroke-width="7"/>
-            <g transform="rotate(-5 80 60)">
-              <text x="28" y="80" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="86" style="fill:#003DA5;stroke:#14171a;stroke-width:9;paint-order:stroke">GH</text>
-              <text x="22" y="74" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="86" style="fill:#ED8B00;stroke:#14171a;stroke-width:7;paint-order:stroke">GH</text>
-            </g>
-            <g transform="rotate(4 240 60)">
-              <text x="208" y="72" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-style="italic" font-size="52" style="fill:#00843D;stroke:#14171a;stroke-width:7;paint-order:stroke">VT</text>
-            </g>
-            <path d="M372 18 l9 22 24 2 -19 15 7 23 -21 -13 -21 13 7 -23 -19 -15 24 -2z" style="fill:#DA291C;stroke:#14171a;stroke-width:5" transform="translate(97 20) scale(.8)"/>
-            <path d="M52 84 v20 M86 82 v14 M126 80 v24" stroke="#ED8B00" stroke-width="5" fill="none"/>
-            <circle cx="52" cy="106" r="3.5" fill="#ED8B00"/><circle cx="126" cy="106" r="3.5" fill="#ED8B00"/>
-            <path d="M236 80 v16" stroke="#00843D" stroke-width="4" fill="none"/><circle cx="236" cy="99" r="3" fill="#00843D"/>
-            <circle cx="190" cy="26" r="2.5" fill="#14171a"/><circle cx="352" cy="62" r="2" fill="#14171a"/><circle cx="196" cy="94" r="2" fill="#DA291C"/>
-          </g>
-        </svg>
         <div class="sc-door b" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
       </div>
     </div>
