@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Shippori+Mincho+B1:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Shippori+Mincho+B1:wght@800&display=swap" rel="stylesheet">
 <script>(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('d-open')}catch(e){}})();</script>
 <style>
 :root{
@@ -382,6 +382,59 @@ ul.o ul.bk li{display:flex;justify-content:space-between;gap:1rem;border-top:1px
 ul.o ul.poi li{display:flex;gap:.8rem;align-items:center}ul.o ul.poi .hk{font-size:.8em}
 ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var(--mist);border-radius:.3rem .9rem .9rem .3rem;padding:.8rem 1rem;font-weight:700;margin:.3rem 0 .6rem}ul.o ul li.pq::before{display:none}.pq .lab{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:.3rem}
 .auth{padding:.4rem var(--pad) 1.2rem 0;max-width:46rem}.auth p{margin:0 0 1rem;font-size:1.08em}
+
+/* refresh: reading type, one measure, signage headings */
+:root{--read:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;--m:38rem}
+section.stop{padding-bottom:clamp(2rem,6vw,5rem)}
+.sh{padding-top:clamp(2.5rem,6vw,5rem)}
+h2.sign{font-size:clamp(2rem,5.4vw,4rem);letter-spacing:-.035em;gap:.9rem;padding:.35rem 1.4rem .35rem .5rem;border-radius:1rem}
+.lede,.sum,.ph p,.note{font-family:var(--read)}
+.lede{font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.4;max-width:34rem}
+.sum{font-size:clamp(1.15rem,1.8vw,1.4rem);font-style:italic;line-height:1.45;max-width:36rem}
+.tpanel .txt p,.pp>p:not(.tag):not(.pali):not(.box),.f .body>p:not(.lesson):not(.disc),.auth p{font-family:var(--read);font-size:clamp(1.15rem,1.5vw,1.3rem);line-height:1.65;max-width:var(--m);margin:0 0 1.15em;text-wrap:pretty}
+.pp .pali{font-family:var(--read);font-size:1.2rem}
+.box{font-size:1rem;line-height:1.5}
+.auth{max-width:none;padding-bottom:2rem}.auth p{font-size:clamp(1.25rem,1.9vw,1.5rem);max-width:40rem}
+.auth p:first-child::first-letter{float:left;font:700 4.4em/.78 var(--sans);letter-spacing:-.05em;color:var(--green);padding:.06em .1em 0 0}
+.note{font-size:1rem;max-width:44rem}
+/* bio plates */
+.id{display:grid;grid-template-columns:minmax(0,21rem) minmax(0,1fr);gap:1.2rem clamp(1.5rem,4vw,3rem);align-items:end;margin:.8rem var(--pad) 1rem 0;padding:clamp(1.2rem,3vw,2rem);border:2px solid var(--ink);border-top:.7rem solid var(--green);border-radius:1.4rem}
+.id h3{margin:0;font-size:clamp(2rem,4.4vw,3.2rem);line-height:.95;letter-spacing:-.045em}
+.id .yr{display:block;margin-top:.6rem;font:400 1.05rem var(--dots);letter-spacing:.1em;color:var(--green)}
+.id dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.9rem 1.5rem}
+.id dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:700}
+.id dd{margin:.1rem 0 0;font-weight:700;line-height:1.25}
+.id>p{grid-column:1/-1;margin:0;border-top:1px solid var(--rule);padding-top:.9rem;font:italic clamp(1.15rem,1.8vw,1.4rem)/1.4 var(--read);color:var(--mute)}
+@media(max-width:52rem){.id{grid-template-columns:1fr}}
+/* lists: fixed label column, one reading measure */
+ul.o{counter-reset:o}
+ul.o>li{counter-increment:o;grid-template-columns:minmax(10rem,14rem) minmax(0,var(--m));gap:.6rem clamp(1.5rem,5vw,4rem);padding:1.6rem var(--pad) 1.6rem 0}
+ul.o>li>strong{font-size:clamp(1.3rem,2.2vw,1.8rem);line-height:1.05;letter-spacing:-.035em}
+ul.o>li>strong::before{content:counter(o,decimal-leading-zero);display:block;font:400 .8rem var(--dots);letter-spacing:.12em;color:var(--green);margin-bottom:.5rem}
+ul.o ul li{font-family:var(--read);font-size:clamp(1.12rem,1.4vw,1.25rem);line-height:1.55;padding:.3rem 0 .3rem 1.5rem}
+ul.o ul li::before{top:.62em}
+ul.o ul li.pq{font-size:1.3rem;font-style:italic;font-weight:500;line-height:1.4;padding:.8rem 1rem}
+.pq .lab{font-family:var(--sans);font-style:normal}
+ul.o ul.bk li{font-family:var(--sans);font-size:1rem;line-height:1.3;padding:.35rem 0}
+ul.o ul.poi li{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:0 1.2rem;align-items:baseline;border-top:1px solid var(--rule);padding:.9rem 0}
+ul.o ul.poi li:first-child{border-top:0;padding-top:.2rem}
+ul.o ul.poi li b{grid-column:1;grid-row:1;font:700 1.5rem/1 var(--sans);letter-spacing:-.03em}
+ul.o ul.poi li i{grid-column:1;grid-row:2;font:italic 1rem var(--read);color:var(--mute)}
+ul.o ul.poi li span{grid-column:2;grid-row:1/3}
+ul.o ul.poi li.pn{display:block}
+@media(max-width:46rem){ul.o>li{grid-template-columns:1fr}ul.o ul.poi li{grid-template-columns:6rem minmax(0,1fr)}}
+/* fascicles */
+.ph{padding-top:2rem;border-top-width:.5rem}.ph h3{font-size:clamp(1.8rem,4.2vw,3.2rem);letter-spacing:-.04em}
+.ph p{font-style:italic;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.45}
+details.f>summary{padding-top:1.1rem;padding-bottom:1.1rem}
+.f .rt{font-size:clamp(1.3rem,2.5vw,2rem);letter-spacing:-.035em}
+.f .et{font-family:var(--read);font-style:italic;font-size:1.1rem}
+.f .n{width:2.6rem;height:2.6rem;font-size:.85rem}
+.f .body{padding-top:.8rem;padding-bottom:3rem;max-width:none}
+.f .lesson{font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.25;letter-spacing:-.02em;max-width:var(--m);padding:1.1rem 1.4rem;border-radius:1.1rem}
+.f .qs{max-width:var(--m)}
+.f .qs blockquote{font:italic 500 clamp(1.25rem,2vw,1.5rem)/1.4 var(--read);border-left-width:.35rem;padding-left:1.2rem}
+.f .disc{font-family:var(--read);font-size:1.08rem;line-height:1.55;max-width:var(--m)}
 </style>
 </head>
 <body class="p-practice" data-name="Practice" data-line-name="Green Line" data-next="Home">
@@ -411,12 +464,12 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
   <p class="eyebrow"><span class="bul g">G</span>Green Line &middot; Practice</p>
   <h1>Practice</h1>
   <div class="band"></div>
-  <span class="seal big" lang="ja" aria-hidden="true">道元</span>
+  
   <p class="lede">Dogen, the Shōbōgenzō and the four noble truths, Brad Warner, and the discipline of telling truth from delusion.</p>
   
 </header><nav class="strip" aria-label="Sections">
 <a href="#truths">Truths</a><a href="#path">Path</a><a href="#dogen">Dogen</a><a href="#brad">Brad Warner</a><a href="#authenticity">Authenticity</a><a href="#shobogenzo">Shōbōgenzō</a></nav><section id="truths" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">諦</span>Four noble truths</h2><p class="sum">The Buddha’s first teaching: a diagnosis, a cause, a cure, and a method. Tap a truth.</p></div>
+<div class="sh"><h2 class="sign"><span class="bul line">1</span>Four noble truths</h2><p class="sum">The Buddha’s first teaching: a diagnosis, a cause, a cure, and a method. Tap a truth.</p></div>
 <div class="tiles" role="tablist" aria-label="The four noble truths"><button type="button" class="tile lite on" role="tab" id="tt0" aria-controls="tp0" aria-selected="true"><span class="num d">1</span><span class="nm d">Dukkha</span><span class="sm">There is suffering</span></button><button type="button" class="tile lite" role="tab" id="tt1" aria-controls="tp1" aria-selected="false"><span class="num d">2</span><span class="nm d">Samudaya</span><span class="sm">Craving is the cause</span></button><button type="button" class="tile lite" role="tab" id="tt2" aria-controls="tp2" aria-selected="false"><span class="num d">3</span><span class="nm d">Nirodha</span><span class="sm">It can end</span></button><button type="button" class="tile lite" role="tab" id="tt3" aria-controls="tp3" aria-selected="false"><span class="num d">4</span><span class="nm d">Magga</span><span class="sm">There is a path</span></button></div>
 <div class="tpanel" role="tabpanel" id="tp0" aria-labelledby="tt0">
 <div class="txt"><p>Life as it is ordinarily lived is unsatisfactory. Birth, aging, sickness, and death cannot be avoided, and neither can losing what we love or meeting what we dislike. Even pleasant things pass.</p><p>This is a diagnosis, not gloom. The Buddha starts by asking for an honest look at what is actually happening.</p></div>
@@ -434,7 +487,7 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
 </section>
 
 <section id="path" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">道</span>The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
+<div class="sh"><h2 class="sign"><span class="bul line">2</span>The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
 <div class="pathwrap"><div class="wheel"><svg viewBox="-430 -340 860 680" role="group" aria-label="Eightfold path drawn as a circle line with eight stations" xmlns="http://www.w3.org/2000/svg">
 <circle r="318" fill="none" stroke="#d9dde0" stroke-width="2" stroke-dasharray="3 11"/>
 <path class="seg g1" d="M0.0,-205.0 A205,205 0 0 1 145.0,-145.0"/><path class="seg g2" d="M205.0,0.0 A205,205 0 0 1 145.0,145.0"/><path class="seg g2" d="M145.0,145.0 A205,205 0 0 1 0.0,205.0"/><path class="seg g3" d="M-145.0,145.0 A205,205 0 0 1 -205.0,0.0"/><path class="seg g3" d="M-205.0,0.0 A205,205 0 0 1 -145.0,-145.0"/><path class="seg tr" d="M145.0,-145.0 A205,205 0 0 1 205.0,0.0"/><path class="seg tr" d="M0.0,205.0 A205,205 0 0 1 -145.0,145.0"/><path class="seg tr" d="M-145.0,-145.0 A205,205 0 0 1 0.0,-205.0"/>
@@ -492,9 +545,9 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
 </section>
 
 <section id="dogen" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">元</span>Dogen</h2><p class="sum">A monk who refused to take anything on trust, including his own experience.</p></div>
+<div class="sh"><h2 class="sign"><span class="bul line">3</span>Dogen</h2><p class="sum">A monk who refused to take anything on trust, including his own experience.</p></div>
+<div class="id"><div><h3>Eihei Dōgen</h3><span class="yr">1200 – 1253</span></div><dl><div><dt>Born</dt><dd>Kyoto</dd></div><div><dt>School</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Rujing</dd></div><div><dt>Temple</dt><dd>Eihei-ji, 1244</dd></div><div><dt>Major work</dt><dd>Shōbōgenzō</dd></div></dl><p>Founder of Sōtō Zen in Japan.</p></div>
 <ul class="o">
-<li class="glow fig"><strong>Eihei Dōgen<br><small>1200–1253</small></strong><div class="tabrow"><div class="tab" role="group"><svg viewBox="0 0 200 200" role="img" aria-label="Illustration of Dogen seated in zazen"><circle cx="100" cy="104" r="86" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="520 40" opacity=".55"/><circle cx="100" cy="58" r="17" fill="#fff"/><path d="M100 78C74 82 56 112 46 158h108c-10-46-28-76-54-80z" fill="#fff"/><path d="M62 160c-8-10 4-26 38-26s46 16 38 26z" fill="#00843D" opacity=".28"/><ellipse cx="100" cy="138" rx="15" ry="9" fill="#fff" stroke="#00843D" stroke-width="3"/><path d="M100 80c-4 20-10 40-30 74M100 80c12 24 28 44 30 74" fill="none" stroke="#00843D" stroke-width="3" stroke-linecap="round"/><path d="M52 160h96" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg></div><div class="seals"><span class="seal" lang="ja" aria-hidden="true">道元</span><p>Founder of Sōtō Zen in Japan. Seal: his name, read Dōgen.</p></div></div></li>
 <li class="glow"><strong>Early life</strong><ul><li>Born in Kyoto in 1200 into the aristocracy, and orphaned young</li><li>Ordained on Mount Hiei in the Tendai school</li><li>Left with one nagging question: if everyone already has buddha-nature, why practice?</li></ul></li>
 <li class="glow"><strong>The journey</strong><ul><li>Studied at Kennin-ji, then sailed to China in 1223</li><li>Visited monasteries and was unimpressed by teachers who had titles but not clarity</li><li>Met Rujing at Tiantong and trained under him</li></ul></li>
 <li class="glow"><strong>The turning point</strong><ul><li>In 1225, during intensive sitting, he experienced the dropping away of body and mind</li><li>Rujing confirmed it, and Dogen received transmission</li></ul></li>
@@ -504,9 +557,9 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
 </section>
 
 <section id="brad" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">禅</span>Shout-out: Brad Warner</h2><p class="sum">A plain-spoken way into Dogen, from a hardcore punk bassist turned Sōtō Zen priest.</p></div>
+<div class="sh"><h2 class="sign"><span class="bul line">4</span>Shout-out: Brad Warner</h2><p class="sum">A plain-spoken way into Dogen, from a hardcore punk bassist turned Sōtō Zen priest.</p></div>
+<div class="id"><div><h3>Brad Warner</h3><span class="yr">b. 1964</span></div><dl><div><dt>Born</dt><dd>Hamilton, Ohio</dd></div><div><dt>Tradition</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Gudō Wafu Nishijima</dd></div><div><dt>Also</dt><dd>Bassist, Zero Defex</dd></div><div><dt>Online</dt><dd><a href="https://hardcorezen.info" target="_blank" rel="noopener">hardcorezen.info</a></dd></div></dl><p>American Sōtō Zen priest, author, blogger and filmmaker.</p></div>
 <ul class="o">
-<li class="glow fig"><strong>Brad Warner</strong><div class="tabrow"><div class="tab" role="group"><svg viewBox="0 0 200 200" role="img" aria-label="Line drawing crest of a figure in a rabbit-ear hood, glasses and a leather jacket in front of a city skyline" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="100" r="88"/><circle cx="100" cy="100" r="80" stroke-width="1.5" opacity=".6"/><path d="M28 150V128h14v-18h12v22h10v-30h14v38M126 150v-34h12v-14h14v26h10v-16h10v32" opacity=".55" stroke-width="3"/><path d="M82 62C70 40 66 24 74 22c10-2 20 20 22 42M118 62c12-22 20-34 12-38-10-4-22 18-24 40"/><path d="M84 66c0-8 6-12 16-12s16 4 16 12v24c0 12-6 20-16 20s-16-8-16-20z"/><circle cx="92" cy="84" r="6"/><circle cx="108" cy="84" r="6"/><path d="M98 84h4M95 98h10"/><path d="M82 112l-22 12c-6 4-10 12-10 22v8M118 112l22 12c6 4 10 12 10 22v8"/><path d="M82 112l12 34 6-30 6 30 12-34M100 116v62" opacity=".8"/><path d="M62 178h76" opacity=".6"/></svg></div><dl class="facts"><dt>Born</dt><dd>1964, Hamilton, Ohio</dd><dt>Tradition</dt><dd>Sōtō Zen</dd><dt>Teacher</dt><dd>Gudō Wafu Nishijima</dd><dt>Also</dt><dd>Bassist, Zero Defex</dd><dt>Online</dt><dd><a href="https://hardcorezen.info" target="_blank" rel="noopener">hardcorezen.info</a></dd></dl></div></li>
 <li class="glow"><strong>Punk first</strong><ul><li>American Sōtō Zen priest, author, blogger and filmmaker</li><li>Came up in the hardcore scene around Akron and Kent, Ohio</li><li>Played bass in Zero Defex as a teenager, and still plays with the band on and off</li></ul></li>
 <li class="glow"><strong>Japan and Nishijima</strong><ul><li>Began practice in Ohio under Tim McCarthy</li><li>Moved to Japan in 1993 and worked for Tsuburaya Productions, the studio behind Ultraman</li><li>Trained under Gudō Wafu Nishijima, who ordained him and made him a dharma heir around 1999 to 2000</li></ul></li>
 <li class="glow"><strong>Teaching</strong><ul><li><em>Hardcore Zen</em> came out in 2003, growing out of the blog of the same name</li><li>Returned to the United States in 2004 and began teaching</li><li>Led Dogen Sangha International from 2007, and later started Dogen Sangha Los Angeles</li><li>A documentary, <em>Brad Warner’s Hardcore Zen</em>, premiered in 2013</li></ul></li>
@@ -517,7 +570,7 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
 </section>
 
 <section id="authenticity" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">誠</span>Authenticity</h2><p class="sum">Telling truth from delusion in everything, the self included.</p></div>
+<div class="sh"><h2 class="sign"><span class="bul line">5</span>Authenticity</h2><p class="sum">Telling truth from delusion in everything, the self included.</p></div>
 <div class="auth">
 <p>Authenticity in Dogen is not a personal brand or a feeling of being genuine. It is the ongoing work of discerning what is true from what is delusion, in teachers, in teachings, and above all in yourself. The self is the hardest case, because the mind is a theater: it stages a lead character, writes the script as it goes, and sells the production as reality. Sitting still is how you start to notice the stage, the lighting and the audience, and that the one watching is also part of the play.</p>
 <p>Delusion is not a flaw to be ashamed of. It is the default setting, and the Shōbōgenzō keeps asking for the same discipline: check the claim, check the result, check who is doing the checking.</p>
@@ -525,7 +578,7 @@ ul.o ul li.pq{display:block;border-left:.45rem solid var(--green);background:var
 <ul class="o">
 <li class="glow"><strong>Truth and delusion</strong><ul><li>Both show up in every situation, so discernment is never finished</li><li>Test a claim by its consequences in conduct, not by how convincing it feels</li><li><a href="#f-genjokoan">Genjōkōan</a>: carrying the self forward to verify things is delusion, and letting things come forward is awakening</li></ul></li>
 <li class="glow"><strong>The theater of mind</strong><ul><li>The story of “me” is performed continuously, and feels most real when it is loudest</li><li>The sense of having arrived is one more scene, which is why it counts as a warning</li><li><a href="#f-muchu-setsumu">Muchū setsumu</a> (a dream within a dream), <a href="#f-kuge">Kūge</a> (sky flowers), <a href="#f-gabyo">Gabyō</a> (painted cakes)</li></ul></li>
-<li class="glow"><strong>The three poisons</strong><ul class="poi"><li><span class="hk" lang="ja" aria-hidden="true">貪</span> <b>Greed</b> (<i>ton</i>): reaching for more, and for the version of yourself that has it</li><li><span class="hk" lang="ja" aria-hidden="true">瞋</span> <b>Anger</b> (<i>shin</i>): pushing away whatever threatens the performance</li><li><span class="hk" lang="ja" aria-hidden="true">癡</span> <b>Delusion</b> (<i>chi</i>): not seeing any of this, and not seeing that you are not seeing it</li><li>Dogen lists purity of intention among the gates that wear the three poisons down: <a href="#f-ippyakuhachi-homyo-mon">Ippyakuhachi hōmyō mon</a>, with <a href="#f-shoaku-makusa">Shoaku makusa</a> on not doing harm</li></ul></li>
+<li class="glow"><strong>The three poisons</strong><ul class="poi"><li><b>Greed</b><i>ton</i><span>Reaching for more, and for the version of yourself that has it.</span></li><li><b>Anger</b><i>shin</i><span>Pushing away whatever threatens the performance.</span></li><li><b>Delusion</b><i>chi</i><span>Not seeing any of this, and not seeing that you are not seeing it.</span></li><li class="pn">Dogen lists purity of intention among the gates that wear the three poisons down: <a href="#f-ippyakuhachi-homyo-mon">Ippyakuhachi hōmyō mon</a>, with <a href="#f-shoaku-makusa">Shoaku makusa</a> on not doing harm.</li></ul></li>
 <li class="glow"><strong>Compassion for the poisoned</strong><ul><li class="pq"><span class="lab">Dogen, paraphrased from Bodaisatta shishobo</span>Speak to beings the way you would to a baby in your care. Praise those with virtue, and pity those without it.</li><li>Read against the poisons, that points one way: most people caught in greed, anger and delusion cannot see them, and cannot see that they are suffering. Blame treats a blind spot as a choice. Pity treats it as the condition it is.</li><li>That includes you, which is why the same pity applies to your own mind</li></ul></li>
 </ul>
 <div class="ph"><h3 class="d">How it runs through the work</h3><p>The same discernment, traced fascicle by fascicle.</p></div>
