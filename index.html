@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
 <script>(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('d-open')}catch(e){}})();</script>
 <style>
 :root{
@@ -47,7 +47,7 @@ a{color:inherit;text-underline-offset:3px}
 .top .grow{flex:1}
 .lcd{position:relative;display:flex;align-items:center;gap:.55rem;background:#0b0c0d;border-radius:.5rem;padding:.35rem .7rem;min-width:min(17rem,46vw);height:2.4rem;overflow:hidden;box-shadow:inset 0 0 0 2px #2a2e31}
 .lcd .lb{flex:none;width:.95rem;height:.95rem;border-radius:50%;background:var(--hover,var(--line));transition:background .45s}
-.lcd .lt{font-family:var(--dots);font-size:1.02rem;letter-spacing:.06em;color:#ffb347;text-shadow:0 0 6px rgba(255,170,60,.6);white-space:nowrap;text-transform:uppercase;overflow:hidden;text-overflow:clip}
+.lcd .lt{font-family:var(--dots);font-size:1.02rem;letter-spacing:.06em;color:#eef0f1;text-shadow:0 0 6px rgba(255,255,255,.35);white-space:nowrap;text-transform:uppercase;overflow:hidden;text-overflow:clip}
 .lcd::after,.dlcd::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(0,0,0,.55) 38%,transparent 40%);background-size:3px 3px;mix-blend-mode:multiply}
 .snd,.mbtn,.mclose{appearance:none;font:inherit;cursor:pointer;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:2rem;height:2.4rem;transition:background .25s,color .25s}
 .snd{width:2.4rem;display:grid;place-items:center;padding:0}
@@ -361,6 +361,66 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band,.map.go .ln path.route{animation:none}.tpanel,.pp,details.f[open] .body{animation:none}}
 @media print{.top,#menu,#doors,.strip,.nextstop,.rail{display:none!important}}
 
+/* ===== hello train ===== */
+.hello.on .mail,.hello.on .phone{display:none}
+.hello .in.tr-on{border-left-color:var(--ink)}
+.scene{position:relative;overflow-x:auto;overflow-y:hidden;border-radius:1rem;margin-top:.9rem;--spd:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 2px,transparent 2px 64px),repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 42px),linear-gradient(#232a30,#0f1214);scrollbar-color:#7C878E #14171a}
+.scene.run{overflow-x:hidden}
+.scene::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:calc(var(--spd)*.8);background:repeating-linear-gradient(0deg,rgba(255,255,255,.1) 0 1px,transparent 1px 11px)}
+.lane{position:relative;width:max-content;min-width:100%;padding:3.2rem 0 2.6rem}
+.lane::before{content:"ハロー  HELLO";position:absolute;left:1.2rem;top:.8rem;font:1rem var(--dots);letter-spacing:.12em;color:#fff;background:#0b0c0d;border:2px solid #3a4046;border-radius:.4rem;padding:.2rem .7rem}
+.ground{position:absolute;left:0;right:0;bottom:0;height:2.6rem;background:linear-gradient(#e8b800 0 .9rem,#1a1d20 .9rem)}
+.ground::before{content:"";position:absolute;inset:0 0 auto;height:.9rem;background:radial-gradient(circle,#b88f00 0 22%,transparent 24%) 0 0/.9rem .9rem}
+.ground::after{content:"";position:absolute;left:0;right:0;top:1.3rem;height:.35rem;background:#8d969c;box-shadow:0 .55rem 0 #8d969c}
+.train{position:relative;display:flex;align-items:flex-end;font-size:16px;width:max-content;will-change:transform;cursor:pointer;margin-bottom:.1em}
+@media(max-width:40rem){.train{font-size:13px}}
+.car,.cabw{position:relative;flex:none;height:10em}
+.car{width:15em;margin-right:.3em}
+.car>*{position:absolute}
+.car .bd{inset:1.1em 0;background:linear-gradient(#fbfcfc,#e3e7ea 65%,#c6ccd0);border-radius:.6em .6em .3em .3em;box-shadow:inset 0 -.15em 0 rgba(0,0,0,.12)}
+.car .rf{left:.3em;right:.3em;top:.15em;height:1.4em;background:linear-gradient(#eef1f3,#cfd5d9);border-radius:1em 1em 0 0;display:grid;place-items:center}
+.led{font:.62em var(--dots);letter-spacing:.1em;color:#fff;background:#0b0c0d;padding:.18em .9em;border-radius:.3em;box-shadow:0 0 0 .13em #3a4046;white-space:nowrap}
+.car .win{left:3.3em;right:3.3em;top:1.9em;height:3.1em;border-radius:.45em;background:linear-gradient(165deg,#34495a,#0d151b);box-shadow:0 0 0 .14em #aab3b9}
+.car .win::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.2) 38%,transparent 46%,transparent 62%,rgba(255,255,255,.1) 66%,transparent 72%)}
+.car .st{left:0;right:0;top:5.2em;height:.5em;background:var(--c);box-shadow:0 .75em 0 -.18em #14171a}
+.car .dr{top:1.7em;width:2.5em;height:6.8em;background:linear-gradient(90deg,#cfd6da,#eef1f3 50%,#cfd6da);border:.12em solid #99a3a9;border-radius:.35em}
+.car .dr::before{content:"";position:absolute;left:.4em;right:.4em;top:.35em;height:2.6em;border-radius:.3em;background:linear-gradient(165deg,#34495a,#0d151b)}
+.car .dr::after{content:"";position:absolute;left:50%;top:3.6em;bottom:.3em;width:.12em;background:#99a3a9}
+.car .dr.a{left:.55em}.car .dr.b{right:.55em}
+.car .gf{left:0;top:0;width:15em;height:10em;pointer-events:none;z-index:3}
+.car .un{left:.4em;right:.4em;bottom:0;height:1.3em;background:#25292c;border-radius:.2em .2em .5em .5em}
+.car .un i{position:absolute;bottom:-.1em;width:1.7em;height:1.7em;border-radius:50%;background:radial-gradient(#8d969c 0 25%,#14171a 27%);border:.18em solid #3a4046}
+.car .un i:first-child{left:1.5em}.car .un i:last-child{right:1.5em}
+.pl{left:3.5em;top:6.05em;width:8em;height:2.4em;z-index:5;display:flex;align-items:center;gap:.55em;padding:0 .7em 0 .4em;border-radius:.5em;background:#14171a;color:#fff;text-decoration:none;border-bottom:.28em solid var(--c);box-shadow:0 .2em .5em rgba(0,0,0,.3);transition:transform .2s,background .2s}
+.pl:hover,.pl:focus-visible{transform:translateY(-.15em) scale(1.03);background:#000}
+.pl .ic{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--c);color:var(--oc,#fff);display:grid;place-items:center}
+.pl .ic svg{width:1.05em;height:1.05em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.pl b{display:block;font-size:.95em;line-height:1.05}
+.pl small{display:block;font-size:.58em;color:#c5cbcf;line-height:1.2;margin-top:.15em;white-space:nowrap}
+.po{top:1.15em;width:3.6em;height:4.75em;z-index:5;background:#fff;padding:.22em;border-radius:.1em;transform:rotate(var(--r,0deg));box-shadow:.1em .2em .45em rgba(0,0,0,.4);display:block;transition:transform .2s}
+.po:hover,.po:focus-visible{transform:rotate(0) scale(1.18);z-index:8}
+.po::before{content:"";position:absolute;left:50%;top:-.45em;width:1.5em;height:.8em;margin-left:-.75em;background:rgba(237,220,160,.85);transform:rotate(-4deg)}
+.po img{width:100%;height:100%;object-fit:cover;display:block}
+.po .ph{position:absolute;inset:.22em;display:grid;place-items:center;text-align:center;font:1.35em/1 'Rubik Spray Paint',Impact,sans-serif;color:#fff;background:radial-gradient(circle,rgba(0,0,0,.25) 0 20%,transparent 22%) 0 0/.5em .5em,linear-gradient(160deg,var(--c),#14171a)}
+.po.has .ph{display:none}
+.cabw{width:12.6em;margin-left:.1em;border:0;padding:0;background:none;font:inherit;cursor:pointer}
+.cabw svg{width:100%;height:100%;display:block;overflow:visible}
+.cabw:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.console{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem;margin-top:.8rem;padding:.85rem 1.1rem;border-radius:1rem;background:#0f1214;color:#fff}
+.console .gauge{font:1.6rem var(--dots);letter-spacing:.06em;min-width:8.5rem;background:#000;border-radius:.5rem;padding:.2rem .7rem;box-shadow:inset 0 0 0 2px #2a2e31;color:#eef0f1}
+.console .gauge small{font-size:.55em;margin-left:.3em;color:#9aa3a8}
+.console label{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase}
+.console input[type=range]{width:min(11rem,38vw);accent-color:#ED8B00}
+.console .nt{font:1.1rem var(--dots);min-width:2.2rem}
+.cbtn{appearance:none;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:#fff;background:#2b3136;border:2px solid #4a5258;border-radius:2rem;padding:.45rem 1.1rem;transition:background .2s;touch-action:manipulation;user-select:none}
+.cbtn:hover{background:#3a4147}
+.cbtn.brk{background:#a81f15;border-color:#DA291C}.cbtn.brk.on,.cbtn.brk:active{background:#DA291C}
+.cbtn.go{background:#00843D;border-color:#00a34d}
+.thint{margin:.7rem 0 0;color:var(--mute);font-size:.92rem}
+.thint b{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.scene::after{display:none}}
+
 </style>
 </head>
 <body class="p-home" data-name="Home" data-line-name="" data-next="Resume">
@@ -579,6 +639,133 @@ if(links.length&&'IntersectionObserver' in window){
   })},{rootMargin:'-20% 0px -70% 0px'});
   document.querySelectorAll('section[id]').forEach(function(s){io.observe(s)});
 }
+})();
+
+/* ---------- hello train ---------- */
+(function(){
+var hello=document.querySelector('.hello'),inn=hello&&hello.querySelector('.in');
+if(!inn)return;
+/* EDIT HERE: swap placeholder URLs for your own profiles. Artwork posters are pulled automatically from art.html; add paths to ART_OVERRIDE to force specific images. */
+var ART_OVERRIDE=[];
+var CONTACTS=[
+ {n:'Email',jp:'メール',s:'garrettheaney@gmail.com',u:'mailto:garrettheaney@gmail.com',c:'#ED8B00',oc:'#000',ic:'<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/>'},
+ {n:'Telephone',jp:'電話',s:'802.557.7974',u:'tel:+18025577974',c:'#DA291C',ic:'<path d="M6.5 3.5h3l1.5 4-2 1.3a11 11 0 0 0 5.2 5.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/>'},
+ {n:'Signal',jp:'シグナル',s:'Message me on Signal',u:'https://signal.me/#p/+18025577974',c:'#3A76F0',ic:'<path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5z"/>'},
+ {n:'Facebook',jp:'フェイスブック',s:'Find me on Facebook',u:'https://www.facebook.com/',c:'#1877F2',ic:'<path d="M14 21v-8h2.7l.5-3.2H14V7.6c0-.9.4-1.6 1.7-1.6h1.6V3.2A18 18 0 0 0 15 3c-2.4 0-4 1.5-4 4.1v2.7H8.3V13H11v8z"/>'},
+ {n:'Instagram',jp:'インスタ',s:'Follow along',u:'https://www.instagram.com/',c:'#E1306C',ic:'<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".8"/>'},
+ {n:'YouTube',jp:'ユーチューブ',s:'Watch videos',u:'https://www.youtube.com/',c:'#FF2020',ic:'<rect x="2.5" y="6" width="19" height="12" rx="3.5"/><path d="M10 9.3v5.4l4.7-2.7z"/>'},
+ {n:'Bandcamp',jp:'バンドキャンプ',s:'Listen to Provisions',u:'https://bandcamp.com/',c:'#1DA0C3',oc:'#000',ic:'<path d="M2.5 17.5L8 6.5h13.5L16 17.5z"/>'}
+];
+var POSTERS={0:['L',-3],2:['R',2.5],3:['L',3],5:['R',-2.5],6:['L',-2]};
+var WORDS=['ZEN','HELLO','GH','PRESS','PROV','ART','HI-FI'],PAL=['#ff4fa3','#ffd400','#00e0c6','#a47bff','#ff7a1a'];
+function gf(i){
+  var a=PAL[i%5],b=PAL[(i+2)%5],d='';
+  [[22,66,14],[58,70,10],[96,62,16],[128,75,9]].forEach(function(p,k){d+='<path d="M'+(p[0]+(i*7+k*11)%9)+' '+p[1]+'v'+p[2]+'" stroke="'+(k%2?b:a)+'" stroke-width="2.2" stroke-linecap="round"/>'});
+  return '<svg class="gf" viewBox="0 0 150 100" aria-hidden="true"><g font-family="\'Rubik Spray Paint\',Impact,sans-serif" paint-order="stroke" stroke="#14171a" stroke-width="2.2" stroke-linejoin="round"><text x="'+(i%2?10:6)+'" y="72" font-size="40" fill="'+a+'" transform="rotate(-4 40 60)">'+WORDS[i]+'</text><text x="104" y="86" font-size="19" fill="'+b+'" transform="rotate(7 110 80)">'+(i%2?'gh':'☮')+'</text></g>'+d+'<path d="M3 30c14-8 22 6 36-2" stroke="'+b+'" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".9"/></svg>';
+}
+function car(c,i){
+  var po=POSTERS[i],ph=po?'<a class="po" data-k="red" data-n="Art" href="art.html" style="left:'+(po[0]==='L'?'3.15em':'8.25em')+';--r:'+po[1]+'deg;--c:'+c.c+'" aria-label="Artwork poster. Open the Art page"><span class="ph">ART<br>展</span></a>':'';
+  var ext=/^https?:/.test(c.u)?' target="_blank" rel="noopener"':'';
+  return '<div class="car" style="--c:'+c.c+';--oc:'+(c.oc||'#fff')+'"><div class="bd"></div><div class="rf"><span class="led">'+c.jp+' '+c.n.toUpperCase()+'</span></div><div class="win"></div><i class="st"></i><i class="dr a"></i><i class="dr b"></i>'+gf(i)+'<div class="un"><i></i><i></i></div>'+ph+
+   '<a class="pl" href="'+c.u+'"'+ext+'><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+c.ic+'</svg></span><span><b>'+c.n+'</b><small>'+c.s+'</small></span></a></div>';
+}
+var cab='<button class="cabw" type="button" aria-label="Depart: start the train"><svg viewBox="0 0 126 100" aria-hidden="true"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfcfc"/><stop offset=".7" stop-color="#dde2e5"/><stop offset="1" stop-color="#b9c0c5"/></linearGradient><linearGradient id="cw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b556a"/><stop offset="1" stop-color="#0b1318"/></linearGradient></defs>'+
+ '<path d="M0 11H64C94 11 116 36 124 84V90H0Z" fill="url(#cg)" stroke="#aab3b9" stroke-width="1"/>'+
+ '<path d="M66 20C86 21 101 38 108 62H66Z" fill="url(#cw)"/><path d="M72 24c10 3 19 11 24 22" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>'+
+ '<rect x="8" y="22" width="46" height="26" rx="4" fill="url(#cw)"/><rect x="2" y="64" width="119" height="6" fill="#ED8B00"/><rect x="2" y="71" width="117" height="2.2" fill="#DA291C"/>'+
+ '<rect x="12" y="52" width="40" height="9" rx="1.5" fill="#0b0c0d"/><text x="32" y="59.3" font-family="DotGothic16,monospace" font-size="7" fill="#fff" text-anchor="middle" letter-spacing=".5">HELLO 発車</text>'+
+ '<path d="M70 11l6-7h22l8 7" stroke="#14171a" stroke-width="2" fill="none"/><ellipse cx="116" cy="78" rx="5" ry="3" fill="#fff6c8"/><circle cx="116" cy="78" r="9" fill="#fff6c8" opacity=".25"/>'+
+ '<text x="86" y="82" font-family="DotGothic16,monospace" font-size="6" fill="#14171a">クハ7000</text>'+
+ '<rect x="3" y="90" width="118" height="9" rx="2" fill="#25292c"/><circle cx="26" cy="96" r="8" fill="#8d969c" stroke="#3a4046" stroke-width="3"/><circle cx="96" cy="96" r="8" fill="#8d969c" stroke="#3a4046" stroke-width="3"/>'+
+ '<text x="8" y="86" font-family="\'Rubik Spray Paint\',Impact,sans-serif" font-size="13" fill="#ff4fa3" stroke="#14171a" stroke-width="1.4" paint-order="stroke" transform="rotate(-3 8 86)">TAKE OFF</text></svg></button>';
+var html5='<div class="scene" id="scene" role="group" aria-label="Contact train. Each car is a way to reach me."><div class="lane"><div class="ground"></div><div class="train" id="train">'+CONTACTS.slice().reverse().map(function(c,k){return car(c,CONTACTS.length-1-k)}).join('')+cab+'</div></div></div>'+
+ '<div class="console" role="group" aria-label="Train controls"><output class="gauge" id="gauge" aria-live="off">000<small>KM/H</small></output>'+
+ '<label for="thr">Throttle 力行 <input id="thr" type="range" min="0" max="5" step="1" value="0"><span class="nt" id="nt">N</span></label>'+
+ '<button class="cbtn brk" id="brk" type="button">Brake ブレーキ</button><button class="cbtn" id="horn" type="button">Horn</button><button class="cbtn go" id="stn" type="button">Station</button></div>'+
+ '<p class="thint"><b>Click the train to depart.</b> Use throttle and brake to drive it, then press Station to park. Every car is a way to reach me. Click a poster to see the art.</p>';
+inn.insertAdjacentHTML('beforeend',html5);hello.classList.add('on');inn.classList.add('tr-on');
+
+var scene=document.getElementById('scene'),train=document.getElementById('train'),thr=document.getElementById('thr'),nt=document.getElementById('nt'),gauge=document.getElementById('gauge'),brkB=document.getElementById('brk');
+var v=0,p=0,notch=0,brake=false,station=false,docked=true,raf=0,last=0,W=0,L=0,PX=11,rum=null,wait=0;
+function toEnd(){scene.scrollLeft=scene.scrollWidth}
+requestAnimationFrame(toEnd);window.addEventListener('load',toEnd);
+
+/* posters from the Art page */
+function applyArt(list){
+  var ps=[].slice.call(document.querySelectorAll('.po')),k=0;
+  list.slice(0,ps.length).forEach(function(u){
+    var im=new Image(),po=ps[k++];im.alt='';im.decoding='async';
+    im.onload=function(){po.appendChild(im);po.classList.add('has')};im.src=u;
+  });
+}
+var base=ART_OVERRIDE.length?Promise.resolve(ART_OVERRIDE):fetch('art.html').then(function(r){return r.ok?r.text():''}).then(function(t){
+  var out=[],d=new DOMParser().parseFromString(t,'text/html');
+  d.querySelectorAll('img').forEach(function(i){var u=i.getAttribute('src')||i.getAttribute('data-src');if(u)out.push(u)});
+  (t.match(/[\w\-.\/%]+\.(?:jpe?g|png|webp|gif|avif)/gi)||[]).forEach(function(u){out.push(u)});
+  return out.filter(function(u,i){return out.indexOf(u)===i&&!/logo|favicon|icon|sprite|avatar|cover|album/i.test(u)});
+}).catch(function(){return[]});
+base.then(applyArt);
+
+/* sound */
+function rumble(on_){
+  var c=ctx();if(!c)return;
+  if(on_&&!rum){try{var b=c.createBuffer(1,c.sampleRate*2,c.sampleRate),d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+    var s=c.createBufferSource();s.buffer=b;s.loop=true;var f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=220;var g=c.createGain();g.gain.value=0;
+    s.connect(f);f.connect(g);g.connect(c.destination);s.start();rum={s:s,g:g}}catch(e){}}
+  else if(!on_&&rum){try{rum.s.stop()}catch(e){}rum=null}
+}
+function honk(){beep(311,0,.6,.05,'sawtooth');beep(392,0,.6,.04,'sawtooth')}
+
+function measure(){W=scene.clientWidth;L=train.offsetWidth}
+function setNotch(n){notch=n;thr.value=n;nt.textContent=n?'P'+n:'N';thr.setAttribute('aria-valuetext',n?'Power '+n:'Neutral')}
+function render(){
+  train.style.transform=docked?'':'translate3d('+p.toFixed(1)+'px,'+(v>1?(Math.sin(performance.now()/38)*Math.min(v,90)/90*.9).toFixed(2):0)+'px,0)';
+  var k=Math.round(v);gauge.innerHTML=('00'+k).slice(-3)+'<small>KM/H</small>';
+  scene.style.setProperty('--spd',Math.min(1,v/110).toFixed(2));
+  if(rum)rum.g.gain.value=Math.min(.16,v/130*.16);
+}
+function frame(t){
+  var dt=Math.min(.05,(t-last)/1000||0);last=t;
+  if(wait>0){wait-=dt;render();raf=requestAnimationFrame(frame);return}
+  var C=L+W,pT=Math.min(0,W-L);
+  if(station){
+    var d=(((pT-p)%C)+C)%C;if(d>C-3)d=0;
+    var want=Math.min(110,Math.max(4,Math.sqrt(2*900*d)/PX));
+    if(v<want)v=Math.min(want,v+16*dt);else v=Math.max(want,v-55*dt);
+    p+=v*PX*dt;
+    if(d<=Math.max(2,v*PX*dt)||v<=0){station=false;v=0;setNotch(0);p=pT;park();return}
+  }else{
+    if(brake)v=Math.max(0,v-45*dt);
+    else if(notch>0){var tg=notch*26;if(v<tg)v=Math.min(tg,v+notch*2.6*dt);else v=Math.max(tg,v-5*dt)}
+    else v=Math.max(0,v-4*dt);
+    p+=v*PX*dt;
+  }
+  if(p>=W)p-=C;
+  render();
+  if(v<=0&&!station){render();raf=0;rumble(false);return}
+  raf=requestAnimationFrame(frame);
+}
+function run(){if(!raf){last=performance.now();raf=requestAnimationFrame(frame)}}
+function park(){
+  docked=true;scene.classList.remove('run');train.style.transform='';render();toEnd();raf=0;rumble(false);
+}
+function depart(){
+  if(docked){measure();var sl=scene.scrollLeft;scene.classList.add('run');scene.scrollLeft=0;p=-sl;docked=false;snd.close();honk&&setTimeout(honk,700);wait=1.1;if(notch<1)setNotch(3);rumble(true);run();return}
+  station=false;if(notch<1)setNotch(3);rumble(true);run();
+}
+train.addEventListener('click',function(e){if(e.target.closest('a'))return;depart()});
+thr.addEventListener('input',function(){setNotch(+thr.value);if(+thr.value>0){if(docked)depart();else{station=false;rumble(true);run()}}});
+function bOn(){brake=true;station=false;brkB.classList.add('on');if(!docked)run()}
+function bOff(){brake=false;brkB.classList.remove('on')}
+brkB.addEventListener('pointerdown',function(e){e.preventDefault();bOn()});
+['pointerup','pointerleave','pointercancel'].forEach(function(n){brkB.addEventListener(n,bOff)});
+brkB.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();bOn()}});
+brkB.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Enter')bOff()});
+document.getElementById('horn').addEventListener('click',honk);
+document.getElementById('stn').addEventListener('click',function(){
+  if(docked)return;measure();brake=false;setNotch(0);station=true;run();
+});
+window.addEventListener('resize',function(){if(docked)toEnd();else measure()});
 })();
 
 </script>
