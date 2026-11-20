@@ -453,6 +453,14 @@ ul.o ul li.pq{font-style:normal;font-weight:600;font-size:1.4rem;line-height:1.3
 ul.o ul.poi li i{font:500 1.05rem var(--sans)}
 .note{font-size:1.05rem;line-height:1.5}
 .box{font-size:1.08rem}
+
+/* standard word spacing, ragged right */
+body,body *{word-spacing:normal;text-align:left;text-justify:none;hyphens:manual}
+.tpanel .txt p,.pp>p,.f .body>p,.auth p,ul.o ul li{text-wrap:wrap}
+.ttl,.ds,.what,.books li span,ul.o ul.bk span,.lcd .lt{text-align:right}
+.mlist .ds,.stops .what{text-align:right}
+.hubt,.hubs{text-anchor:middle}
+@media(max-width:40rem){.stops .what{text-align:left}}
 </style>
 </head>
 <body class="p-practice" data-name="Practice" data-line-name="Green Line" data-next="Home">
