@@ -205,7 +205,7 @@ dialog#viewer::backdrop{background:#fff}
 .vdate{font-weight:700;color:var(--mute)}
 .vlink{display:inline-block;border:2px solid var(--blue);background:var(--blue);color:#fff;border-radius:2rem;padding:.55rem 1.2rem;font-weight:700;text-decoration:none}
 .vlink:hover{background:#fff;color:var(--blue)}
-.vtune{font:inherit;font-weight:700;cursor:pointer;margin-right:.6rem}
+.vtune{padding:.55rem 1.4rem;font:inherit;font-weight:700;cursor:pointer;margin-right:.6rem}
 .vhint{margin:.6rem 0 0;color:var(--mute);font-size:.92rem;max-width:34rem}
 .vnav{display:flex;gap:.6rem;margin-top:1.4rem}.vnav .vbtn{flex:1}
 @media(max-width:48rem){.vmain{display:block;overflow-y:auto}.vcover{max-height:55vh}.vcover img{max-height:48vh}.vinfo{overflow:visible}}
@@ -413,7 +413,7 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
       <div class="vinfo">
         <p class="vtype" id="vtype"></p>
         <h2 class="vtitle" id="vtitle"></h2>
-        <button class="vlink vtune" id="vtune" type="button">Tune the cab radio</button>
+        <button class="vlink vtune" id="vtune" type="button" aria-label="Play on the cab radio"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" style="display:block"><path d="M7 4.5v15l13-7.5z"/></svg></button>
         <p class="vhint">Plays in the radio at the top of the page, so you can close this and keep browsing.</p>
         <div class="vtext" id="vtext"></div>
         <a class="vlink" id="vlink" target="_blank" rel="noopener">Listen or buy on Bandcamp</a>
