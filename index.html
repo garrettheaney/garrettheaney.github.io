@@ -250,6 +250,7 @@ dialog#viewer::backdrop{background:#fff}
 .sc{position:relative;padding-bottom:2.2rem;--pnl:clamp(2.4rem,5vw,3.6rem)}
 .sc-shell{position:relative;z-index:1;overflow:hidden;border:3px solid var(--ink);border-radius:2rem 2rem .9rem .9rem;background:#fff;padding-bottom:.6rem}
 .sc-shell::before{content:"";display:block;height:.7rem;background:#fff;border-bottom:3px solid var(--ink)}
+.sc-win svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .sc-sign{position:relative;display:flex;align-items:stretch;margin:1rem .8rem 0;background:#0b0c0d;border-radius:.6rem;box-shadow:0 0 0 3px #2a2e31;overflow:hidden;font-family:var(--dots);text-transform:uppercase;letter-spacing:.08em;color:#ffb347;font-size:clamp(.95rem,1.9vw,1.45rem)}
 .sc-sign::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(0,0,0,.55) 38%,transparent 40%);background-size:3px 3px;mix-blend-mode:multiply}
 .hello h2{flex:none;display:flex;align-items:center;margin:0;padding:.55em 1.1em;font:inherit;font-weight:400;color:#c98a2e;text-shadow:0 0 6px rgba(201,138,46,.45)}
@@ -267,7 +268,7 @@ dialog#viewer::backdrop{background:#fff}
 .sc.open .sc-door .lf:first-child{transform:translateX(-88%)}
 .sc.open .sc-door .lf:last-child{transform:translateX(88%)}
 .sc-door .lf::before{content:"";position:absolute;top:.5rem;bottom:calc(var(--pnl) + .3rem);left:16%;right:16%;border-radius:.35rem;border:.3rem solid var(--ink);background:#dcdfe1}
-.sc-win{position:relative;overflow:hidden;margin-bottom:var(--pnl);min-height:clamp(7rem,13vw,10.5rem);border-radius:1rem;border:.45rem solid var(--ink);background:linear-gradient(115deg,rgba(255,255,255,.6) 0 14%,transparent 14% 22%,rgba(255,255,255,.4) 22% 26%,transparent 26%),linear-gradient(#e4e8ea,#c9d0d4)}
+.sc-win{position:relative;overflow:hidden;margin-bottom:var(--pnl);min-height:clamp(7rem,13vw,10.5rem);border-radius:1rem;border:.45rem solid var(--ink);background:#eef0f1}
 .sc-under{position:relative;z-index:1;height:.9rem;margin:-3px 1.2rem 0;background:#2b2f32;border:3px solid var(--ink);border-top:0;border-radius:0 0 .6rem .6rem}
 .sc-truck{position:absolute;z-index:0;bottom:.4rem;display:flex;gap:clamp(.4rem,1.2vw,.9rem)}
 .sc-truck.a{left:12%}.sc-truck.b{right:12%}
@@ -451,8 +452,21 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
       </div>
       <div class="sc-row">
         <div class="sc-door a" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
-        <div class="sc-win m" aria-hidden="true"></div>
-        <div class="sc-win p" aria-hidden="true"></div>
+        <div class="sc-win m" aria-hidden="true"><svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+<path d="M120 0V120"/>
+<circle cx="70" cy="34" r="11"/><path d="M59 33C60 21 80 20 81 33"/>
+<path d="M44 120C44 82 54 63 70 59C86 63 96 82 96 120"/><path d="M88 72C101 80 113 70 120 56"/><circle cx="120" cy="55" r="3"/>
+<circle cx="175" cy="40" r="11"/><path d="M164 38C164 22 186 22 186 38Z"/>
+<path d="M149 120C149 88 159 68 175 64C191 68 201 88 201 120"/><path d="M160 70L196 112"/>
+</svg></div>
+        <div class="sc-win p" aria-hidden="true"><svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+<circle cx="80" cy="52" r="11"/><path d="M69 50C70 38 90 38 91 50"/>
+<path d="M52 120C52 90 62 72 80 68C98 72 108 90 108 120"/>
+<path d="M60 94L86 86"/><path d="M100 94L90 86"/><path d="M72 80L86 86L100 80V98L86 104L72 98Z"/>
+<path d="M200 0V16"/><circle cx="200" cy="22" r="6"/>
+<circle cx="168" cy="46" r="11"/><circle cx="163" cy="46" r="3"/><circle cx="173" cy="46" r="3"/><path d="M166 46H170"/>
+<path d="M142 120C142 88 152 70 168 66C184 70 194 88 194 120"/><path d="M186 76C198 66 202 46 200 28"/>
+</svg></div>
         <div class="sc-door b" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
       </div>
     </div>
