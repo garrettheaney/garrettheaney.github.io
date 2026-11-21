@@ -461,9 +461,43 @@ body,body *{word-spacing:normal;text-align:left;text-justify:none;hyphens:manual
 .mlist .ds,.stops .what{text-align:right}
 .hubt,.hubs{text-anchor:middle}
 @media(max-width:40rem){.stops .what{text-align:left}}
+
+/* gallery of sections */
+.gal main.route{padding-left:var(--pad)}
+.gal .hero::before,.gal .stop::before,.gal .nextstop::before{display:none}
+.gal .hero{padding-bottom:clamp(1rem,2vw,1.6rem)}
+.cards{list-style:none;margin:0;padding:clamp(1rem,3vw,2rem) var(--pad) 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.2rem)}
+.cards li{grid-column:span 2;display:flex}
+.cards li:nth-child(n+4){grid-column:span 3}
+.card{--hc:var(--green);appearance:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer;width:100%;display:flex;flex-direction:column;padding:.8rem;border-radius:1.1rem;border:1px solid var(--rule);background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
+.card:hover,.card:focus-visible{border-color:var(--hc);box-shadow:0 10px 26px -14px var(--hc);transform:translateY(-2px)}
+.cov{display:grid;place-items:center;height:clamp(11rem,17vw,15rem);border-radius:.7rem;background:var(--mist);color:var(--ink);transition:color .35s,background .35s}
+.cov svg{width:clamp(5.5rem,9vw,7.5rem);height:auto;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.card:hover .cov,.card:focus-visible .cov{color:var(--hc);background:color-mix(in srgb,var(--hc) 9%,#fff)}
+.ct{display:flex;align-items:baseline;gap:.9rem;margin:1rem .2rem 0}
+.cn{font-family:var(--dots);font-size:1.15rem;color:var(--ink);transition:color .35s}
+.card:hover .cn,.card:focus-visible .cn{color:var(--hc)}
+.ch{font-weight:700;font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.035em;line-height:1.05}
+.cd{margin:.6rem .2rem .2rem;color:var(--mute);font-size:1.05rem;line-height:1.45;max-width:34rem}
+.cm{margin:auto .2rem 0;padding-top:1rem;font-weight:700;font-size:.95rem}
+@media(max-width:62rem){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.cards li,.cards li:nth-child(n+4){grid-column:span 1}.cards li:last-child{grid-column:span 2}}
+@media(max-width:36rem){.cards{grid-template-columns:1fr}.cards li:last-child{grid-column:span 1}}
+.gal #shobogenzo{margin-top:clamp(2rem,5vw,4rem);border-top:1px solid var(--rule)}
+/* full-window sections */
+dialog.sheet{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-top:.5rem solid var(--green);background:#fff;color:var(--ink);overflow-y:auto}
+dialog.sheet::backdrop{background:#fff}
+dialog.sheet[open]{animation:sheetin .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes sheetin{from{opacity:0;transform:translateY(1rem)}}
+.sbar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:.6rem var(--pad);background:rgba(255,255,255,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.scount{font-family:var(--dots);font-size:1.15rem}
+.sbody{max-width:76rem;margin:0 auto;padding:0 var(--pad) clamp(2rem,6vw,5rem)}
+.sbody .sh{padding-right:0}
+.sbody section.stop{padding-bottom:0}
+@media(prefers-reduced-motion:reduce){dialog.sheet[open]{animation:none}.card{transition:none}}
 </style>
+<noscript><style>dialog.sheet{display:block;position:static;width:auto;height:auto}.sbar,.gallery{display:none}</style></noscript>
 </head>
-<body class="p-practice" data-name="Practice" data-line-name="Green Line" data-next="Home">
+<body class="p-practice gal" data-name="Practice" data-line-name="Green Line" data-next="Home">
 <div id="doors" aria-hidden="true"><div class="door l"></div><div class="door r"></div><div class="dlcd" id="dlcd"><span class="t"></span></div></div>
 <a class="skip" href="#content">Skip to content</a>
 <header class="top">
@@ -486,140 +520,14 @@ body,body *{word-spacing:normal;text-align:left;text-justify:none;hyphens:manual
 </ul>
 <div class="mfoot"><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></div>
 </div>
-<main class="route" id="content"><div class="rail" aria-hidden="true"><div class="rail-fill"></div></div><header class="hero stop-hero">
+<main class="route" id="content"><header class="hero stop-hero">
   <p class="eyebrow"><span class="bul g">G</span>Green Line &middot; Practice</p>
   <h1>Practice</h1>
   <div class="band"></div>
   
   <p class="lede">Dogen, the Shōbōgenzō and the four noble truths, Brad Warner, and the discipline of telling truth from delusion.</p>
   
-</header><nav class="strip" aria-label="Sections">
-<a href="#truths">Truths</a><a href="#path">Path</a><a href="#dogen">Dogen</a><a href="#brad">Brad Warner</a><a href="#authenticity">Authenticity</a><a href="#shobogenzo">Shōbōgenzō</a></nav><section id="truths" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line">1</span>Four noble truths</h2><p class="sum">The Buddha’s first teaching: a diagnosis, a cause, a cure, and a method. Tap a truth.</p></div>
-<div class="tiles" role="tablist" aria-label="The four noble truths"><button type="button" class="tile lite on" role="tab" id="tt0" aria-controls="tp0" aria-selected="true"><span class="num d">1</span><span class="nm d">Dukkha</span><span class="sm">There is suffering</span></button><button type="button" class="tile lite" role="tab" id="tt1" aria-controls="tp1" aria-selected="false"><span class="num d">2</span><span class="nm d">Samudaya</span><span class="sm">Craving is the cause</span></button><button type="button" class="tile lite" role="tab" id="tt2" aria-controls="tp2" aria-selected="false"><span class="num d">3</span><span class="nm d">Nirodha</span><span class="sm">It can end</span></button><button type="button" class="tile lite" role="tab" id="tt3" aria-controls="tp3" aria-selected="false"><span class="num d">4</span><span class="nm d">Magga</span><span class="sm">There is a path</span></button></div>
-<div class="tpanel" role="tabpanel" id="tp0" aria-labelledby="tt0">
-<div class="txt"><p>Life as it is ordinarily lived is unsatisfactory. Birth, aging, sickness, and death cannot be avoided, and neither can losing what we love or meeting what we dislike. Even pleasant things pass.</p><p>This is a diagnosis, not gloom. The Buddha starts by asking for an honest look at what is actually happening.</p></div>
-<div class="side"><p class="box"><strong>In Practice</strong>Name the real problem, the overload or the fear, before trying to fix anything.</p><p class="box"><strong>In Dogen</strong>Birth and death are not an enemy. Meet each one completely. <a href="#f-shoji">Shōji</a>, <a href="#f-zenki">Zenki</a></p></div>
-</div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tt1" hidden>
-<div class="txt"><p>Suffering arises from craving: for pleasure, for continued existence, and for things to be other than they are. Underneath it sits ignorance of how things work, including the sense of a separate self that has to be defended and fed.</p></div>
-<div class="side"><p class="box"><strong>In Practice</strong>Notice what you are reaching for, whether approval, certainty, or control, when work starts to hurt.</p><p class="box"><strong>In Dogen</strong>The mind cannot be got, and flowers fall while we cling to them. <a href="#f-shin-fukatoku">Shin fukatoku</a>, <a href="#f-genjokoan">Genjōkōan</a></p></div>
-</div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tt2" hidden>
-<div class="txt"><p>When craving is let go completely, suffering ceases. That freedom is called nirvana. It does not mean annihilation. It means no longer being run by grasping, and the Buddha taught that it can be realized in this life.</p></div>
-<div class="side"><p class="box"><strong>In Practice</strong>Even a small release of grasping, a draft finished and left alone, shows that the grip can loosen.</p><p class="box"><strong>In Dogen</strong>Studying the self is forgetting the self. Throw body and mind into the buddha’s house. <a href="#f-genjokoan">Genjōkōan</a>, <a href="#f-shoji">Shōji</a></p></div>
-</div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tt3" hidden>
-<div class="txt"><p>The way out is the Noble Eightfold Path, a training in wisdom, ethical conduct, and concentration. It is something you do, not something you believe, and it is meant to be tested in daily life.</p></div>
-<div class="side"><p class="box"><strong>In Practice</strong>Treat it as a daily training and check results in conduct, not in how it feels.</p><p class="box"><strong>In Dogen</strong>The path is the buddhas’ own practice, and sitting is the gate. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a>, <a href="#f-bendowa">Bendōwa</a></p></div>
-</div>
-</section>
-
-<section id="path" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line">2</span>The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
-<div class="pathwrap"><div class="wheel"><svg viewBox="-430 -340 860 680" role="group" aria-label="Eightfold path drawn as a circle line with eight stations" xmlns="http://www.w3.org/2000/svg">
-<circle r="318" fill="none" stroke="#d9dde0" stroke-width="2" stroke-dasharray="3 11"/>
-<path class="seg g1" d="M0.0,-205.0 A205,205 0 0 1 145.0,-145.0"/><path class="seg g2" d="M205.0,0.0 A205,205 0 0 1 145.0,145.0"/><path class="seg g2" d="M145.0,145.0 A205,205 0 0 1 0.0,205.0"/><path class="seg g3" d="M-145.0,145.0 A205,205 0 0 1 -205.0,0.0"/><path class="seg g3" d="M-205.0,0.0 A205,205 0 0 1 -145.0,-145.0"/><path class="seg tr" d="M145.0,-145.0 A205,205 0 0 1 205.0,0.0"/><path class="seg tr" d="M0.0,205.0 A205,205 0 0 1 -145.0,145.0"/><path class="seg tr" d="M-145.0,-145.0 A205,205 0 0 1 0.0,-205.0"/>
-<circle class="hub" r="62"/><text class="hubt" y="2">Path</text><text class="hubs" y="26">8 stations</text>
-<g class="nd g1 on" tabindex="0" role="button" aria-pressed="true" aria-label="Right view" data-i="0"><circle cx="0.0" cy="-205.0" r="31"/><text class="n" x="0.0" y="-205.0">1</text><text class="l" x="0.0" y="-274.0" text-anchor="middle" dominant-baseline="middle">View</text></g><g class="nd g1" tabindex="0" role="button" aria-pressed="false" aria-label="Right intention" data-i="1"><circle cx="145.0" cy="-145.0" r="31"/><text class="n" x="145.0" y="-145.0">2</text><text class="l" x="189.5" y="-189.5" text-anchor="start" dominant-baseline="middle">Intention</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right speech" data-i="2"><circle cx="205.0" cy="0.0" r="31"/><text class="n" x="205.0" y="0.0">3</text><text class="l" x="256.0" y="0.0" text-anchor="start" dominant-baseline="middle">Speech</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right action" data-i="3"><circle cx="145.0" cy="145.0" r="31"/><text class="n" x="145.0" y="145.0">4</text><text class="l" x="189.5" y="189.5" text-anchor="start" dominant-baseline="middle">Action</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right livelihood" data-i="4"><circle cx="0.0" cy="205.0" r="31"/><text class="n" x="0.0" y="205.0">5</text><text class="l" x="0.0" y="286.0" text-anchor="middle" dominant-baseline="middle">Livelihood</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right effort" data-i="5"><circle cx="-145.0" cy="145.0" r="31"/><text class="n" x="-145.0" y="145.0">6</text><text class="l" x="-189.5" y="189.5" text-anchor="end" dominant-baseline="middle">Effort</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right mindfulness" data-i="6"><circle cx="-205.0" cy="0.0" r="31"/><text class="n" x="-205.0" y="0.0">7</text><text class="l" x="-256.0" y="0.0" text-anchor="end" dominant-baseline="middle">Mindfulness</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right concentration" data-i="7"><circle cx="-145.0" cy="-145.0" r="31"/><text class="n" x="-145.0" y="-145.0">8</text><text class="l" x="-189.5" y="-189.5" text-anchor="end" dominant-baseline="middle">Concentration</text></g></svg>
-<ul class="legend"><li><i style="background:var(--blue)"></i>Wisdom</li><li><i style="background:var(--orange)"></i>Ethical conduct</li><li><i style="background:var(--green)"></i>Concentration</li></ul></div><div class="ppanel" aria-live="polite"><article class="pp">
-<p class="tag g1"><span class="d">1</span><span>Wisdom</span></p>
-<h3 class="d">Right View</h3><p class="pali">Samma ditthi</p>
-<p>Seeing things as they are: the four truths, impermanence, and cause and effect. Right view is the map the rest of the path depends on.</p>
-<p class="box"><strong>In Practice</strong>Look at the real situation before deciding. Do not work from a flattering picture.</p>
-<p class="box"><strong>In Dogen</strong>Do not deny cause and effect. <a href="#f-jinshin-inga">Jinshin inga</a></p>
-</article><article class="pp" hidden>
-<p class="tag g1"><span class="d">2</span><span>Wisdom</span></p>
-<h3 class="d">Right Intention</h3><p class="pali">Samma sankappa</p>
-<p>The resolve behind your actions: letting go of grasping, goodwill toward others, and harmlessness.</p>
-<p class="box"><strong>In Practice</strong>Ask what the work is for and who it serves.</p>
-<p class="box"><strong>In Dogen</strong>Awaken for the sake of others, not for reputation. <a href="#f-hotsu-bodai-shin">Hotsu bodai shin</a></p>
-</article><article class="pp" hidden>
-<p class="tag g2"><span class="d">3</span><span>Ethical conduct</span></p>
-<h3 class="d">Right Speech</h3><p class="pali">Samma vaca</p>
-<p>Speaking truthfully, kindly, without divisiveness, and without idle chatter.</p>
-<p class="box"><strong>In Practice</strong>Say what is true, plainly. Keep promises. Say less.</p>
-<p class="box"><strong>In Dogen</strong>Express the way from your own realization, and do not waste time in idle talk. <a href="#f-dotoku">Dōtoku</a>, <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a></p>
-</article><article class="pp" hidden>
-<p class="tag g2"><span class="d">4</span><span>Ethical conduct</span></p>
-<h3 class="d">Right Action</h3><p class="pali">Samma kammanta</p>
-<p>Acting without killing, stealing, or harmful sexual conduct. In practice, doing no harm with the body.</p>
-<p class="box"><strong>In Practice</strong>Do no harm in how you make and deliver things. Keep to agreements.</p>
-<p class="box"><strong>In Dogen</strong>Not doing evil is how awakening acts. <a href="#f-shoaku-makusa">Shoaku makusa</a></p>
-</article><article class="pp" hidden>
-<p class="tag g2"><span class="d">5</span><span>Ethical conduct</span></p>
-<h3 class="d">Right Livelihood</h3><p class="pali">Samma ajiva</p>
-<p>Earning a living in a way that does not harm beings or rely on deceit.</p>
-<p class="box"><strong>In Practice</strong>Choose and run work you can stand behind. No deception for money.</p>
-<p class="box"><strong>In Dogen</strong>Want little, be content, and treat everyday matters as the way. <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a>, <a href="#f-kajo">Kajō</a></p>
-</article><article class="pp" hidden>
-<p class="tag g3"><span class="d">6</span><span>Concentration</span></p>
-<h3 class="d">Right Effort</h3><p class="pali">Samma vayama</p>
-<p>Preventing unwholesome states, letting them go, cultivating wholesome ones, and sustaining them. Steady effort, neither forced nor slack.</p>
-<p class="box"><strong>In Practice</strong>Show up steadily. Avoid the burst-and-collapse cycle.</p>
-<p class="box"><strong>In Dogen</strong>Continuous practice, unbroken and unadvertised. <a href="#f-gyoji">Gyōji</a></p>
-</article><article class="pp" hidden>
-<p class="tag g3"><span class="d">7</span><span>Concentration</span></p>
-<h3 class="d">Right Mindfulness</h3><p class="pali">Samma sati</p>
-<p>Staying aware of the body, feelings, mind, and the objects of mind from moment to moment, without reacting.</p>
-<p class="box"><strong>In Practice</strong>One task at a time, with attention in the hands.</p>
-<p class="box"><strong>In Dogen</strong>The four foundations of mindfulness are the buddhas’ own practice. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a></p>
-</article><article class="pp" hidden>
-<p class="tag g3"><span class="d">8</span><span>Concentration</span></p>
-<h3 class="d">Right Concentration</h3><p class="pali">Samma samadhi</p>
-<p>Unifying and settling the mind. In the early texts this is described as the four absorptions. In Dogen it is zazen.</p>
-<p class="box"><strong>In Practice</strong>Protect a long block of uninterrupted attention before the day’s demands arrive.</p>
-<p class="box"><strong>In Dogen</strong>Sitting upright is the king of concentrations. <a href="#f-zazen-gi">Zazen gi</a>, <a href="#f-zanmai-o-zanmai">Zanmai ō zanmai</a></p>
-</article></div></div>
-</section>
-
-<section id="dogen" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line">3</span>Dogen</h2><p class="sum">A monk who refused to take anything on trust, including his own experience.</p></div>
-<div class="id"><div><h3>Eihei Dōgen</h3><span class="yr">1200 – 1253</span></div><dl><div><dt>Born</dt><dd>Kyoto</dd></div><div><dt>School</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Rujing</dd></div><div><dt>Temple</dt><dd>Eihei-ji, 1244</dd></div><div><dt>Major work</dt><dd>Shōbōgenzō</dd></div></dl><p>Founder of Sōtō Zen in Japan.</p></div>
-<ul class="o">
-<li class="glow"><strong>Early life</strong><ul><li>Born in Kyoto in 1200 into the aristocracy, and orphaned young</li><li>Ordained on Mount Hiei in the Tendai school</li><li>Left with one nagging question: if everyone already has buddha-nature, why practice?</li></ul></li>
-<li class="glow"><strong>The journey</strong><ul><li>Studied at Kennin-ji, then sailed to China in 1223</li><li>Visited monasteries and was unimpressed by teachers who had titles but not clarity</li><li>Met Rujing at Tiantong and trained under him</li></ul></li>
-<li class="glow"><strong>The turning point</strong><ul><li>In 1225, during intensive sitting, he experienced the dropping away of body and mind</li><li>Rujing confirmed it, and Dogen received transmission</li></ul></li>
-<li class="glow"><strong>Return and work</strong><ul><li>Came back to Japan in 1227 with a single message: just sit</li><li>Taught near Kyoto, then founded Eihei-ji in the mountains in 1244</li><li>Died in 1253, aged 53</li></ul></li>
-<li class="glow"><strong>The Shōbōgenzō</strong><ul><li>Written between 1231 and 1253, in vernacular Japanese rather than classical Chinese</li><li>Dogen arranged a 75-fascicle collection and began a late collection of twelve</li><li>Modern editions run to 95 fascicles, counting variant versions and added texts</li></ul></li>
-</ul>
-</section>
-
-<section id="brad" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line">4</span>Shout-out: Brad Warner</h2><p class="sum">A plain-spoken way into Dogen, from a hardcore punk bassist turned Sōtō Zen priest.</p></div>
-<div class="id"><div><h3>Brad Warner</h3><span class="yr">b. 1964</span></div><dl><div><dt>Born</dt><dd>Hamilton, Ohio</dd></div><div><dt>Tradition</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Gudō Wafu Nishijima</dd></div><div><dt>Also</dt><dd>Bassist, Zero Defex</dd></div><div><dt>Online</dt><dd><a href="https://hardcorezen.info" target="_blank" rel="noopener">hardcorezen.info</a></dd></div></dl><p>American Sōtō Zen priest, author, blogger and filmmaker.</p></div>
-<ul class="o">
-<li class="glow"><strong>Punk first</strong><ul><li>American Sōtō Zen priest, author, blogger and filmmaker</li><li>Came up in the hardcore scene around Akron and Kent, Ohio</li><li>Played bass in Zero Defex as a teenager, and still plays with the band on and off</li></ul></li>
-<li class="glow"><strong>Japan and Nishijima</strong><ul><li>Began practice in Ohio under Tim McCarthy</li><li>Moved to Japan in 1993 and worked for Tsuburaya Productions, the studio behind Ultraman</li><li>Trained under Gudō Wafu Nishijima, who ordained him and made him a dharma heir around 1999 to 2000</li></ul></li>
-<li class="glow"><strong>Teaching</strong><ul><li><em>Hardcore Zen</em> came out in 2003, growing out of the blog of the same name</li><li>Returned to the United States in 2004 and began teaching</li><li>Led Dogen Sangha International from 2007, and later started Dogen Sangha Los Angeles</li><li>A documentary, <em>Brad Warner’s Hardcore Zen</em>, premiered in 2013</li></ul></li>
-<li class="glow"><strong>Why he’s here</strong><ul><li>He reads Dogen bluntly, in everyday English, with no incense</li><li><em>Sit Down and Shut Up</em> is a punk-rock commentary on the Shōbōgenzō, <a href="#f-genjokoan">Genjōkōan</a> among them</li><li><em>Don’t Be a Jerk</em> boils Dogen’s advice down to how you actually treat people</li><li>Allergic to mystique and spectacle, which fits <a href="#authenticity">Authenticity</a> below: the test is conduct, not costume</li></ul></li>
-<li class="glow"><strong>Books worth a look</strong><ul class="bk"><li><b>Hardcore Zen</b> <span>2003 &middot; memoir and primer</span></li><li><b>Sit Down and Shut Up</b> <span>2007 &middot; on Dogen’s Shōbōgenzō</span></li><li><b>Zen Wrapped in Karma Dipped in Chocolate</b> <span>2009</span></li><li><b>Sex, Sin, and Zen</b> <span>2010</span></li><li><b>There Is No God and He Is Always with You</b> <span>2013</span></li><li><b>Don’t Be a Jerk</b> <span>2016 &middot; practical advice from Dogen</span></li><li><b>It Came from Beyond Zen!</b> <span>2017</span></li><li><b>Letters to a Dead Friend About Zen</b> <span>2019</span></li></ul></li>
-</ul>
-<p class="note">Compiled from public bios and interviews. See his site for current details. As with any teacher, read the books and check the results in daily life.</p>
-</section>
-
-<section id="authenticity" class="stop">
-<div class="sh"><h2 class="sign"><span class="bul line">5</span>Authenticity</h2><p class="sum">Telling truth from delusion in everything, the self included.</p></div>
-<div class="auth">
-<p>Authenticity in Dogen is not a personal brand or a feeling of being genuine. It is the ongoing work of discerning what is true from what is delusion, in teachers, in teachings, and above all in yourself. The self is the hardest case, because the mind is a theater: it stages a lead character, writes the script as it goes, and sells the production as reality. Sitting still is how you start to notice the stage, the lighting and the audience, and that the one watching is also part of the play.</p>
-<p>Delusion is not a flaw to be ashamed of. It is the default setting, and the Shōbōgenzō keeps asking for the same discipline: check the claim, check the result, check who is doing the checking.</p>
-</div>
-<ul class="o">
-<li class="glow"><strong>Truth and delusion</strong><ul><li>Both show up in every situation, so discernment is never finished</li><li>Test a claim by its consequences in conduct, not by how convincing it feels</li><li><a href="#f-genjokoan">Genjōkōan</a>: carrying the self forward to verify things is delusion, and letting things come forward is awakening</li></ul></li>
-<li class="glow"><strong>The theater of mind</strong><ul><li>The story of “me” is performed continuously, and feels most real when it is loudest</li><li>The sense of having arrived is one more scene, which is why it counts as a warning</li><li><a href="#f-muchu-setsumu">Muchū setsumu</a> (a dream within a dream), <a href="#f-kuge">Kūge</a> (sky flowers), <a href="#f-gabyo">Gabyō</a> (painted cakes)</li></ul></li>
-<li class="glow"><strong>The three poisons</strong><ul class="poi"><li><b>Greed</b><i>ton</i><span>Reaching for more, and for the version of yourself that has it.</span></li><li><b>Anger</b><i>shin</i><span>Pushing away whatever threatens the performance.</span></li><li><b>Delusion</b><i>chi</i><span>Not seeing any of this, and not seeing that you are not seeing it.</span></li><li class="pn">Dogen lists purity of intention among the gates that wear the three poisons down: <a href="#f-ippyakuhachi-homyo-mon">Ippyakuhachi hōmyō mon</a>, with <a href="#f-shoaku-makusa">Shoaku makusa</a> on not doing harm.</li></ul></li>
-<li class="glow"><strong>Compassion for the poisoned</strong><ul><li class="pq"><span class="lab">Dogen, paraphrased from Bodaisatta shishobo</span>Speak to beings the way you would to a baby in your care. Praise those with virtue, and pity those without it.</li><li>Read against the poisons, that points one way: most people caught in greed, anger and delusion cannot see them, and cannot see that they are suffering. Blame treats a blind spot as a choice. Pity treats it as the condition it is.</li><li>That includes you, which is why the same pity applies to your own mind</li></ul></li>
-</ul>
-<div class="ph"><h3 class="d">How it runs through the work</h3><p>The same discernment, traced fascicle by fascicle.</p></div>
-<ul class="o">
-<li class="glow"><strong>Verified transmission</strong><ul><li>Real teaching passes between real people who can be checked</li><li><a href="#f-shisho">Shisho</a>, <a href="#f-menju">Menju</a>, <a href="#f-den-e">Den e</a>, <a href="#f-busso">Busso</a>, <a href="#f-jisho-zanmai">Jishō zanmai</a>, <a href="#f-yuibutsu-yobutsu">Yuibutsu yobutsu</a></li></ul></li>
-<li class="glow"><strong>Nothing sits above consequence</strong><ul><li>No attainment excuses harm, and states of absorption are not realization</li><li><a href="#f-dai-shugyo">Dai shugyō</a>, <a href="#f-jinshin-inga">Jinshin inga</a>, <a href="#f-sanji-go">Sanji gō</a>, <a href="#f-shoaku-makusa">Shoaku makusa</a>, <a href="#f-shizen-biku">Shizen biku</a></li></ul></li>
-<li class="glow"><strong>The plain over the spectacular</strong><ul><li>Powers, mystique, and displays are not the test; ordinary action is</li><li><a href="#f-jinzu">Jinzū</a>, <a href="#f-tashin-tsu">Tashin tsū</a>, <a href="#f-hakujushi">Hakujushi</a>, <a href="#f-mitsugo">Mitsugo</a>, <a href="#f-kajo">Kajō</a>, <a href="#f-kobutsushin">Kobutsushin</a></li></ul></li>
-<li class="glow"><strong>Honor what is real, ignore the title</strong><ul><li>Respect the dharma wherever it is found, and be accurate about what you criticize</li><li><a href="#f-raihai-tokuzui">Raihai tokuzui</a>, <a href="#f-henzan">Henzan</a>, <a href="#f-arakan">Arakan</a>, <a href="#f-butsudo">Butsudō</a>, <a href="#f-kankin">Kankin</a></li></ul></li>
-<li class="glow"><strong>Form carries the teaching</strong><ul><li>Exact forms and small acts are where a practice shows its seriousness</li><li><a href="#f-zazen-gi">Zazen gi</a>, <a href="#f-hou">Hou</a>, <a href="#f-senmen">Senmen</a>, <a href="#f-senjo">Senjō</a>, <a href="#f-kesa-kudoku">Kesa kudoku</a></li></ul></li>
-<li class="glow"><strong>Never finished</strong><ul><li>Awakening is not a throne to sit on, and the feeling of arrival is a warning</li><li><a href="#f-genjokoan">Genjōkōan</a>, <a href="#f-daigo">Daigo</a>, <a href="#f-bukkojoji">Bukkōjōji</a>, <a href="#f-gyoji">Gyōji</a>, <a href="#f-keisei-sanshoku">Keisei sanshoku</a></li></ul></li>
-</ul>
-</section>
-
-
-<section id="shobogenzo" class="stop">
+</header><section class="gallery" aria-label="Practice sections"><ul class="cards"><li><button type="button" class="card" data-open="truths" aria-haspopup="dialog"><span class="cov"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M71.9 24A34 34 0 1 0 82.8 58.8"/></svg></span><span class="ct"><span class="cn">01</span><span class="ch">Four noble truths</span></span><span class="cd">The Buddha’s first teaching as diagnosis, cause, cure, and method: Dukkha, Samudaya, Nirodha, and Magga, each read in practice and in Dogen.</span><span class="cm">Open section</span></button></li><li><button type="button" class="card" data-open="path" aria-haspopup="dialog"><span class="cov"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="34"/><circle cx="50" cy="50" r="9"/><path d="M59.0 50.0L84.0 50.0"/><path d="M56.4 56.4L74.0 74.0"/><path d="M50.0 59.0L50.0 84.0"/><path d="M43.6 56.4L26.0 74.0"/><path d="M41.0 50.0L16.0 50.0"/><path d="M43.6 43.6L26.0 26.0"/><path d="M50.0 41.0L50.0 16.0"/><path d="M56.4 43.6L74.0 26.0"/></svg></span><span class="ct"><span class="cn">02</span><span class="ch">The eightfold path</span></span><span class="cd">Right view through right concentration: the fourth truth as wisdom, ethical conduct, and concentration, drawn as a wheel with a reading for every spoke.</span><span class="cm">Open section</span></button></li><li><button type="button" class="card" data-open="dogen" aria-haspopup="dialog"><span class="cov"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle cx="50" cy="25" r="9"/><path d="M50 37C38 37 30 50 26 66C40 71 60 71 74 66C70 50 62 37 50 37Z"/><path d="M16 77C34 85 66 85 84 77"/></svg></span><span class="ct"><span class="cn">03</span><span class="ch">Dogen</span></span><span class="cd">A short life of the Sōtō founder, 1200 to 1253: his early life, the journey to China, the turning point, his return, and the writing of the Shōbōgenzō.</span><span class="cm">Open section</span></button></li><li><button type="button" class="card" data-open="brad" aria-haspopup="dialog"><span class="cov"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 20C61 34 61 54 50 68C39 54 39 34 50 20Z"/><path d="M50 68C66 66 80 56 84 40C68 40 54 50 50 68Z"/><path d="M50 68C34 66 20 56 16 40C32 40 46 50 50 68Z"/><path d="M32 82H68"/></svg></span><span class="ct"><span class="cn">04</span><span class="ch">Brad Warner</span></span><span class="cd">A profile of the hardcore punk bassist turned Sōtō Zen priest: his path through Japan and Nishijima, his teaching, and the books worth a look.</span><span class="cm">Open section</span></button></li><li><button type="button" class="card" data-open="authenticity" aria-haspopup="dialog"><span class="cov"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle cx="50" cy="36" r="20"/><path d="M22 68H78M32 78H68M42 88H58"/></svg></span><span class="ct"><span class="cn">05</span><span class="ch">Authenticity</span></span><span class="cd">Telling truth from delusion, the self included: the theater of mind, the three poisons, verified transmission, and why consequence outranks any title.</span><span class="cm">Open section</span></button></li></ul></section><section id="shobogenzo" class="stop">
 <div class="sh"><h2 class="sign"><span class="bul line hkb" lang="ja" aria-hidden="true">正</span>Shōbōgenzō</h2><p class="sum">The Treasury of the True Dharma Eye. A full outline, one entry per fascicle. Open any entry for the synopsis, the main lesson, and paraphrased lines.</p></div>
 <div class="ctl">
 <input id="find" type="search" placeholder="Filter by name" aria-label="Filter fascicles">
@@ -1448,6 +1356,126 @@ body,body *{word-spacing:normal;text-align:left;text-justify:none;hyphens:manual
 <a class="big" href="./" data-k="ink" data-n="Home"><span class="bul k">T</span>Home<span class="arr" aria-hidden="true">&rarr;</span></a>
 <div class="others"><a href="resume.html" data-k="orange" data-n="Resume" style="--c:var(--orange)"><span class="bul o">O</span>Resume</a><a href="art.html" data-k="red" data-n="Art" style="--c:var(--red)"><span class="bul r">R</span>Art</a><a href="music.html" data-k="blue" data-n="Music" style="--c:var(--blue)"><span class="bul b">B</span>Music</a></div></aside></main>
 <footer class="f"><span>Garrett Heaney &middot; Vermont</span><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></footer>
+<dialog class="sheet" id="sheet-truths" aria-label="Four noble truths"><div class="sbar"><span class="scount">01 / 05</span><button type="button" class="vbtn sclose" autofocus>Close</button></div><div class="sbody"><section id="truths" class="stop in">
+<div class="sh"><h2 class="sign"><span class="bul line">1</span>Four noble truths</h2><p class="sum">The Buddha’s first teaching: a diagnosis, a cause, a cure, and a method. Tap a truth.</p></div>
+<div class="tiles" role="tablist" aria-label="The four noble truths"><button type="button" class="tile lite on" role="tab" id="tt0" aria-controls="tp0" aria-selected="true"><span class="num d">1</span><span class="nm d">Dukkha</span><span class="sm">There is suffering</span></button><button type="button" class="tile lite" role="tab" id="tt1" aria-controls="tp1" aria-selected="false"><span class="num d">2</span><span class="nm d">Samudaya</span><span class="sm">Craving is the cause</span></button><button type="button" class="tile lite" role="tab" id="tt2" aria-controls="tp2" aria-selected="false"><span class="num d">3</span><span class="nm d">Nirodha</span><span class="sm">It can end</span></button><button type="button" class="tile lite" role="tab" id="tt3" aria-controls="tp3" aria-selected="false"><span class="num d">4</span><span class="nm d">Magga</span><span class="sm">There is a path</span></button></div>
+<div class="tpanel" role="tabpanel" id="tp0" aria-labelledby="tt0">
+<div class="txt"><p>Life as it is ordinarily lived is unsatisfactory. Birth, aging, sickness, and death cannot be avoided, and neither can losing what we love or meeting what we dislike. Even pleasant things pass.</p><p>This is a diagnosis, not gloom. The Buddha starts by asking for an honest look at what is actually happening.</p></div>
+<div class="side"><p class="box"><strong>In Practice</strong>Name the real problem, the overload or the fear, before trying to fix anything.</p><p class="box"><strong>In Dogen</strong>Birth and death are not an enemy. Meet each one completely. <a href="#f-shoji">Shōji</a>, <a href="#f-zenki">Zenki</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp1" aria-labelledby="tt1" hidden>
+<div class="txt"><p>Suffering arises from craving: for pleasure, for continued existence, and for things to be other than they are. Underneath it sits ignorance of how things work, including the sense of a separate self that has to be defended and fed.</p></div>
+<div class="side"><p class="box"><strong>In Practice</strong>Notice what you are reaching for, whether approval, certainty, or control, when work starts to hurt.</p><p class="box"><strong>In Dogen</strong>The mind cannot be got, and flowers fall while we cling to them. <a href="#f-shin-fukatoku">Shin fukatoku</a>, <a href="#f-genjokoan">Genjōkōan</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp2" aria-labelledby="tt2" hidden>
+<div class="txt"><p>When craving is let go completely, suffering ceases. That freedom is called nirvana. It does not mean annihilation. It means no longer being run by grasping, and the Buddha taught that it can be realized in this life.</p></div>
+<div class="side"><p class="box"><strong>In Practice</strong>Even a small release of grasping, a draft finished and left alone, shows that the grip can loosen.</p><p class="box"><strong>In Dogen</strong>Studying the self is forgetting the self. Throw body and mind into the buddha’s house. <a href="#f-genjokoan">Genjōkōan</a>, <a href="#f-shoji">Shōji</a></p></div>
+</div><div class="tpanel" role="tabpanel" id="tp3" aria-labelledby="tt3" hidden>
+<div class="txt"><p>The way out is the Noble Eightfold Path, a training in wisdom, ethical conduct, and concentration. It is something you do, not something you believe, and it is meant to be tested in daily life.</p></div>
+<div class="side"><p class="box"><strong>In Practice</strong>Treat it as a daily training and check results in conduct, not in how it feels.</p><p class="box"><strong>In Dogen</strong>The path is the buddhas’ own practice, and sitting is the gate. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a>, <a href="#f-bendowa">Bendōwa</a></p></div>
+</div>
+</section></div></dialog>
+<dialog class="sheet" id="sheet-path" aria-label="The eightfold path"><div class="sbar"><span class="scount">02 / 05</span><button type="button" class="vbtn sclose" autofocus>Close</button></div><div class="sbody"><section id="path" class="stop in">
+<div class="sh"><h2 class="sign"><span class="bul line">2</span>The eightfold path</h2><p class="sum">The fourth truth in practice: wisdom, ethical conduct, and concentration. Tap a spoke.</p></div>
+<div class="pathwrap"><div class="wheel"><svg viewBox="-430 -340 860 680" role="group" aria-label="Eightfold path drawn as a circle line with eight stations" xmlns="http://www.w3.org/2000/svg">
+<circle r="318" fill="none" stroke="#d9dde0" stroke-width="2" stroke-dasharray="3 11"/>
+<path class="seg g1" d="M0.0,-205.0 A205,205 0 0 1 145.0,-145.0"/><path class="seg g2" d="M205.0,0.0 A205,205 0 0 1 145.0,145.0"/><path class="seg g2" d="M145.0,145.0 A205,205 0 0 1 0.0,205.0"/><path class="seg g3" d="M-145.0,145.0 A205,205 0 0 1 -205.0,0.0"/><path class="seg g3" d="M-205.0,0.0 A205,205 0 0 1 -145.0,-145.0"/><path class="seg tr" d="M145.0,-145.0 A205,205 0 0 1 205.0,0.0"/><path class="seg tr" d="M0.0,205.0 A205,205 0 0 1 -145.0,145.0"/><path class="seg tr" d="M-145.0,-145.0 A205,205 0 0 1 0.0,-205.0"/>
+<circle class="hub" r="62"/><text class="hubt" y="2">Path</text><text class="hubs" y="26">8 stations</text>
+<g class="nd g1 on" tabindex="0" role="button" aria-pressed="true" aria-label="Right view" data-i="0"><circle cx="0.0" cy="-205.0" r="31"/><text class="n" x="0.0" y="-205.0">1</text><text class="l" x="0.0" y="-274.0" text-anchor="middle" dominant-baseline="middle">View</text></g><g class="nd g1" tabindex="0" role="button" aria-pressed="false" aria-label="Right intention" data-i="1"><circle cx="145.0" cy="-145.0" r="31"/><text class="n" x="145.0" y="-145.0">2</text><text class="l" x="189.5" y="-189.5" text-anchor="start" dominant-baseline="middle">Intention</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right speech" data-i="2"><circle cx="205.0" cy="0.0" r="31"/><text class="n" x="205.0" y="0.0">3</text><text class="l" x="256.0" y="0.0" text-anchor="start" dominant-baseline="middle">Speech</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right action" data-i="3"><circle cx="145.0" cy="145.0" r="31"/><text class="n" x="145.0" y="145.0">4</text><text class="l" x="189.5" y="189.5" text-anchor="start" dominant-baseline="middle">Action</text></g><g class="nd g2" tabindex="0" role="button" aria-pressed="false" aria-label="Right livelihood" data-i="4"><circle cx="0.0" cy="205.0" r="31"/><text class="n" x="0.0" y="205.0">5</text><text class="l" x="0.0" y="286.0" text-anchor="middle" dominant-baseline="middle">Livelihood</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right effort" data-i="5"><circle cx="-145.0" cy="145.0" r="31"/><text class="n" x="-145.0" y="145.0">6</text><text class="l" x="-189.5" y="189.5" text-anchor="end" dominant-baseline="middle">Effort</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right mindfulness" data-i="6"><circle cx="-205.0" cy="0.0" r="31"/><text class="n" x="-205.0" y="0.0">7</text><text class="l" x="-256.0" y="0.0" text-anchor="end" dominant-baseline="middle">Mindfulness</text></g><g class="nd g3" tabindex="0" role="button" aria-pressed="false" aria-label="Right concentration" data-i="7"><circle cx="-145.0" cy="-145.0" r="31"/><text class="n" x="-145.0" y="-145.0">8</text><text class="l" x="-189.5" y="-189.5" text-anchor="end" dominant-baseline="middle">Concentration</text></g></svg>
+<ul class="legend"><li><i style="background:var(--blue)"></i>Wisdom</li><li><i style="background:var(--orange)"></i>Ethical conduct</li><li><i style="background:var(--green)"></i>Concentration</li></ul></div><div class="ppanel" aria-live="polite"><article class="pp">
+<p class="tag g1"><span class="d">1</span><span>Wisdom</span></p>
+<h3 class="d">Right View</h3><p class="pali">Samma ditthi</p>
+<p>Seeing things as they are: the four truths, impermanence, and cause and effect. Right view is the map the rest of the path depends on.</p>
+<p class="box"><strong>In Practice</strong>Look at the real situation before deciding. Do not work from a flattering picture.</p>
+<p class="box"><strong>In Dogen</strong>Do not deny cause and effect. <a href="#f-jinshin-inga">Jinshin inga</a></p>
+</article><article class="pp" hidden>
+<p class="tag g1"><span class="d">2</span><span>Wisdom</span></p>
+<h3 class="d">Right Intention</h3><p class="pali">Samma sankappa</p>
+<p>The resolve behind your actions: letting go of grasping, goodwill toward others, and harmlessness.</p>
+<p class="box"><strong>In Practice</strong>Ask what the work is for and who it serves.</p>
+<p class="box"><strong>In Dogen</strong>Awaken for the sake of others, not for reputation. <a href="#f-hotsu-bodai-shin">Hotsu bodai shin</a></p>
+</article><article class="pp" hidden>
+<p class="tag g2"><span class="d">3</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Speech</h3><p class="pali">Samma vaca</p>
+<p>Speaking truthfully, kindly, without divisiveness, and without idle chatter.</p>
+<p class="box"><strong>In Practice</strong>Say what is true, plainly. Keep promises. Say less.</p>
+<p class="box"><strong>In Dogen</strong>Express the way from your own realization, and do not waste time in idle talk. <a href="#f-dotoku">Dōtoku</a>, <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a></p>
+</article><article class="pp" hidden>
+<p class="tag g2"><span class="d">4</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Action</h3><p class="pali">Samma kammanta</p>
+<p>Acting without killing, stealing, or harmful sexual conduct. In practice, doing no harm with the body.</p>
+<p class="box"><strong>In Practice</strong>Do no harm in how you make and deliver things. Keep to agreements.</p>
+<p class="box"><strong>In Dogen</strong>Not doing evil is how awakening acts. <a href="#f-shoaku-makusa">Shoaku makusa</a></p>
+</article><article class="pp" hidden>
+<p class="tag g2"><span class="d">5</span><span>Ethical conduct</span></p>
+<h3 class="d">Right Livelihood</h3><p class="pali">Samma ajiva</p>
+<p>Earning a living in a way that does not harm beings or rely on deceit.</p>
+<p class="box"><strong>In Practice</strong>Choose and run work you can stand behind. No deception for money.</p>
+<p class="box"><strong>In Dogen</strong>Want little, be content, and treat everyday matters as the way. <a href="#f-hachi-dainin-gaku">Hachi dainin gaku</a>, <a href="#f-kajo">Kajō</a></p>
+</article><article class="pp" hidden>
+<p class="tag g3"><span class="d">6</span><span>Concentration</span></p>
+<h3 class="d">Right Effort</h3><p class="pali">Samma vayama</p>
+<p>Preventing unwholesome states, letting them go, cultivating wholesome ones, and sustaining them. Steady effort, neither forced nor slack.</p>
+<p class="box"><strong>In Practice</strong>Show up steadily. Avoid the burst-and-collapse cycle.</p>
+<p class="box"><strong>In Dogen</strong>Continuous practice, unbroken and unadvertised. <a href="#f-gyoji">Gyōji</a></p>
+</article><article class="pp" hidden>
+<p class="tag g3"><span class="d">7</span><span>Concentration</span></p>
+<h3 class="d">Right Mindfulness</h3><p class="pali">Samma sati</p>
+<p>Staying aware of the body, feelings, mind, and the objects of mind from moment to moment, without reacting.</p>
+<p class="box"><strong>In Practice</strong>One task at a time, with attention in the hands.</p>
+<p class="box"><strong>In Dogen</strong>The four foundations of mindfulness are the buddhas’ own practice. <a href="#f-sanjushichihon-bodai-bunpo">Sanjūshichihon bodai bunpō</a></p>
+</article><article class="pp" hidden>
+<p class="tag g3"><span class="d">8</span><span>Concentration</span></p>
+<h3 class="d">Right Concentration</h3><p class="pali">Samma samadhi</p>
+<p>Unifying and settling the mind. In the early texts this is described as the four absorptions. In Dogen it is zazen.</p>
+<p class="box"><strong>In Practice</strong>Protect a long block of uninterrupted attention before the day’s demands arrive.</p>
+<p class="box"><strong>In Dogen</strong>Sitting upright is the king of concentrations. <a href="#f-zazen-gi">Zazen gi</a>, <a href="#f-zanmai-o-zanmai">Zanmai ō zanmai</a></p>
+</article></div></div>
+</section></div></dialog>
+<dialog class="sheet" id="sheet-dogen" aria-label="Dogen"><div class="sbar"><span class="scount">03 / 05</span><button type="button" class="vbtn sclose" autofocus>Close</button></div><div class="sbody"><section id="dogen" class="stop in">
+<div class="sh"><h2 class="sign"><span class="bul line">3</span>Dogen</h2><p class="sum">A monk who refused to take anything on trust, including his own experience.</p></div>
+<div class="id"><div><h3>Eihei Dōgen</h3><span class="yr">1200 – 1253</span></div><dl><div><dt>Born</dt><dd>Kyoto</dd></div><div><dt>School</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Rujing</dd></div><div><dt>Temple</dt><dd>Eihei-ji, 1244</dd></div><div><dt>Major work</dt><dd>Shōbōgenzō</dd></div></dl><p>Founder of Sōtō Zen in Japan.</p></div>
+<ul class="o">
+<li class="glow"><strong>Early life</strong><ul><li>Born in Kyoto in 1200 into the aristocracy, and orphaned young</li><li>Ordained on Mount Hiei in the Tendai school</li><li>Left with one nagging question: if everyone already has buddha-nature, why practice?</li></ul></li>
+<li class="glow"><strong>The journey</strong><ul><li>Studied at Kennin-ji, then sailed to China in 1223</li><li>Visited monasteries and was unimpressed by teachers who had titles but not clarity</li><li>Met Rujing at Tiantong and trained under him</li></ul></li>
+<li class="glow"><strong>The turning point</strong><ul><li>In 1225, during intensive sitting, he experienced the dropping away of body and mind</li><li>Rujing confirmed it, and Dogen received transmission</li></ul></li>
+<li class="glow"><strong>Return and work</strong><ul><li>Came back to Japan in 1227 with a single message: just sit</li><li>Taught near Kyoto, then founded Eihei-ji in the mountains in 1244</li><li>Died in 1253, aged 53</li></ul></li>
+<li class="glow"><strong>The Shōbōgenzō</strong><ul><li>Written between 1231 and 1253, in vernacular Japanese rather than classical Chinese</li><li>Dogen arranged a 75-fascicle collection and began a late collection of twelve</li><li>Modern editions run to 95 fascicles, counting variant versions and added texts</li></ul></li>
+</ul>
+</section></div></dialog>
+<dialog class="sheet" id="sheet-brad" aria-label="Brad Warner"><div class="sbar"><span class="scount">04 / 05</span><button type="button" class="vbtn sclose" autofocus>Close</button></div><div class="sbody"><section id="brad" class="stop in">
+<div class="sh"><h2 class="sign"><span class="bul line">4</span>Shout-out: Brad Warner</h2><p class="sum">A plain-spoken way into Dogen, from a hardcore punk bassist turned Sōtō Zen priest.</p></div>
+<div class="id"><div><h3>Brad Warner</h3><span class="yr">b. 1964</span></div><dl><div><dt>Born</dt><dd>Hamilton, Ohio</dd></div><div><dt>Tradition</dt><dd>Sōtō Zen</dd></div><div><dt>Teacher</dt><dd>Gudō Wafu Nishijima</dd></div><div><dt>Also</dt><dd>Bassist, Zero Defex</dd></div><div><dt>Online</dt><dd><a href="https://hardcorezen.info" target="_blank" rel="noopener">hardcorezen.info</a></dd></div></dl><p>American Sōtō Zen priest, author, blogger and filmmaker.</p></div>
+<ul class="o">
+<li class="glow"><strong>Punk first</strong><ul><li>American Sōtō Zen priest, author, blogger and filmmaker</li><li>Came up in the hardcore scene around Akron and Kent, Ohio</li><li>Played bass in Zero Defex as a teenager, and still plays with the band on and off</li></ul></li>
+<li class="glow"><strong>Japan and Nishijima</strong><ul><li>Began practice in Ohio under Tim McCarthy</li><li>Moved to Japan in 1993 and worked for Tsuburaya Productions, the studio behind Ultraman</li><li>Trained under Gudō Wafu Nishijima, who ordained him and made him a dharma heir around 1999 to 2000</li></ul></li>
+<li class="glow"><strong>Teaching</strong><ul><li><em>Hardcore Zen</em> came out in 2003, growing out of the blog of the same name</li><li>Returned to the United States in 2004 and began teaching</li><li>Led Dogen Sangha International from 2007, and later started Dogen Sangha Los Angeles</li><li>A documentary, <em>Brad Warner’s Hardcore Zen</em>, premiered in 2013</li></ul></li>
+<li class="glow"><strong>Why he’s here</strong><ul><li>He reads Dogen bluntly, in everyday English, with no incense</li><li><em>Sit Down and Shut Up</em> is a punk-rock commentary on the Shōbōgenzō, <a href="#f-genjokoan">Genjōkōan</a> among them</li><li><em>Don’t Be a Jerk</em> boils Dogen’s advice down to how you actually treat people</li><li>Allergic to mystique and spectacle, which fits <a href="#authenticity">Authenticity</a> below: the test is conduct, not costume</li></ul></li>
+<li class="glow"><strong>Books worth a look</strong><ul class="bk"><li><b>Hardcore Zen</b> <span>2003 &middot; memoir and primer</span></li><li><b>Sit Down and Shut Up</b> <span>2007 &middot; on Dogen’s Shōbōgenzō</span></li><li><b>Zen Wrapped in Karma Dipped in Chocolate</b> <span>2009</span></li><li><b>Sex, Sin, and Zen</b> <span>2010</span></li><li><b>There Is No God and He Is Always with You</b> <span>2013</span></li><li><b>Don’t Be a Jerk</b> <span>2016 &middot; practical advice from Dogen</span></li><li><b>It Came from Beyond Zen!</b> <span>2017</span></li><li><b>Letters to a Dead Friend About Zen</b> <span>2019</span></li></ul></li>
+</ul>
+<p class="note">Compiled from public bios and interviews. See his site for current details. As with any teacher, read the books and check the results in daily life.</p>
+</section></div></dialog>
+<dialog class="sheet" id="sheet-authenticity" aria-label="Authenticity"><div class="sbar"><span class="scount">05 / 05</span><button type="button" class="vbtn sclose" autofocus>Close</button></div><div class="sbody"><section id="authenticity" class="stop in">
+<div class="sh"><h2 class="sign"><span class="bul line">5</span>Authenticity</h2><p class="sum">Telling truth from delusion in everything, the self included.</p></div>
+<div class="auth">
+<p>Authenticity in Dogen is not a personal brand or a feeling of being genuine. It is the ongoing work of discerning what is true from what is delusion, in teachers, in teachings, and above all in yourself. The self is the hardest case, because the mind is a theater: it stages a lead character, writes the script as it goes, and sells the production as reality. Sitting still is how you start to notice the stage, the lighting and the audience, and that the one watching is also part of the play.</p>
+<p>Delusion is not a flaw to be ashamed of. It is the default setting, and the Shōbōgenzō keeps asking for the same discipline: check the claim, check the result, check who is doing the checking.</p>
+</div>
+<ul class="o">
+<li class="glow"><strong>Truth and delusion</strong><ul><li>Both show up in every situation, so discernment is never finished</li><li>Test a claim by its consequences in conduct, not by how convincing it feels</li><li><a href="#f-genjokoan">Genjōkōan</a>: carrying the self forward to verify things is delusion, and letting things come forward is awakening</li></ul></li>
+<li class="glow"><strong>The theater of mind</strong><ul><li>The story of “me” is performed continuously, and feels most real when it is loudest</li><li>The sense of having arrived is one more scene, which is why it counts as a warning</li><li><a href="#f-muchu-setsumu">Muchū setsumu</a> (a dream within a dream), <a href="#f-kuge">Kūge</a> (sky flowers), <a href="#f-gabyo">Gabyō</a> (painted cakes)</li></ul></li>
+<li class="glow"><strong>The three poisons</strong><ul class="poi"><li><b>Greed</b><i>ton</i><span>Reaching for more, and for the version of yourself that has it.</span></li><li><b>Anger</b><i>shin</i><span>Pushing away whatever threatens the performance.</span></li><li><b>Delusion</b><i>chi</i><span>Not seeing any of this, and not seeing that you are not seeing it.</span></li><li class="pn">Dogen lists purity of intention among the gates that wear the three poisons down: <a href="#f-ippyakuhachi-homyo-mon">Ippyakuhachi hōmyō mon</a>, with <a href="#f-shoaku-makusa">Shoaku makusa</a> on not doing harm.</li></ul></li>
+<li class="glow"><strong>Compassion for the poisoned</strong><ul><li class="pq"><span class="lab">Dogen, paraphrased from Bodaisatta shishobo</span>Speak to beings the way you would to a baby in your care. Praise those with virtue, and pity those without it.</li><li>Read against the poisons, that points one way: most people caught in greed, anger and delusion cannot see them, and cannot see that they are suffering. Blame treats a blind spot as a choice. Pity treats it as the condition it is.</li><li>That includes you, which is why the same pity applies to your own mind</li></ul></li>
+</ul>
+<div class="ph"><h3 class="d">How it runs through the work</h3><p>The same discernment, traced fascicle by fascicle.</p></div>
+<ul class="o">
+<li class="glow"><strong>Verified transmission</strong><ul><li>Real teaching passes between real people who can be checked</li><li><a href="#f-shisho">Shisho</a>, <a href="#f-menju">Menju</a>, <a href="#f-den-e">Den e</a>, <a href="#f-busso">Busso</a>, <a href="#f-jisho-zanmai">Jishō zanmai</a>, <a href="#f-yuibutsu-yobutsu">Yuibutsu yobutsu</a></li></ul></li>
+<li class="glow"><strong>Nothing sits above consequence</strong><ul><li>No attainment excuses harm, and states of absorption are not realization</li><li><a href="#f-dai-shugyo">Dai shugyō</a>, <a href="#f-jinshin-inga">Jinshin inga</a>, <a href="#f-sanji-go">Sanji gō</a>, <a href="#f-shoaku-makusa">Shoaku makusa</a>, <a href="#f-shizen-biku">Shizen biku</a></li></ul></li>
+<li class="glow"><strong>The plain over the spectacular</strong><ul><li>Powers, mystique, and displays are not the test; ordinary action is</li><li><a href="#f-jinzu">Jinzū</a>, <a href="#f-tashin-tsu">Tashin tsū</a>, <a href="#f-hakujushi">Hakujushi</a>, <a href="#f-mitsugo">Mitsugo</a>, <a href="#f-kajo">Kajō</a>, <a href="#f-kobutsushin">Kobutsushin</a></li></ul></li>
+<li class="glow"><strong>Honor what is real, ignore the title</strong><ul><li>Respect the dharma wherever it is found, and be accurate about what you criticize</li><li><a href="#f-raihai-tokuzui">Raihai tokuzui</a>, <a href="#f-henzan">Henzan</a>, <a href="#f-arakan">Arakan</a>, <a href="#f-butsudo">Butsudō</a>, <a href="#f-kankin">Kankin</a></li></ul></li>
+<li class="glow"><strong>Form carries the teaching</strong><ul><li>Exact forms and small acts are where a practice shows its seriousness</li><li><a href="#f-zazen-gi">Zazen gi</a>, <a href="#f-hou">Hou</a>, <a href="#f-senmen">Senmen</a>, <a href="#f-senjo">Senjō</a>, <a href="#f-kesa-kudoku">Kesa kudoku</a></li></ul></li>
+<li class="glow"><strong>Never finished</strong><ul><li>Awakening is not a throne to sit on, and the feeling of arrival is a warning</li><li><a href="#f-genjokoan">Genjōkōan</a>, <a href="#f-daigo">Daigo</a>, <a href="#f-bukkojoji">Bukkōjōji</a>, <a href="#f-gyoji">Gyōji</a>, <a href="#f-keisei-sanshoku">Keisei sanshoku</a></li></ul></li>
+</ul>
+</section></div></dialog>
+
 <script>
 (function(){
 var html=document.documentElement, body=document.body;
@@ -1660,6 +1688,33 @@ nds.forEach(function(n,i){
  n.addEventListener('click',function(){selP(i)});
  n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();selP(i);n.classList.remove('lit');void n.getBoundingClientRect();n.classList.add('lit');setTimeout(function(){n.classList.remove('lit')},1000)}});
 });
+})();
+</script>
+<script>
+(function(){
+var root=document.documentElement,cur=null,last=null;
+function openSheet(id){
+ var d=document.getElementById('sheet-'+id);if(!d||d.open)return;
+ if(cur)cur.close();
+ last=document.activeElement;d.showModal();d.scrollTop=0;root.style.overflow='hidden';cur=d;
+}
+[].forEach.call(document.querySelectorAll('.card'),function(c){
+ c.addEventListener('click',function(){openSheet(c.dataset.open);history.replaceState(null,'','#'+c.dataset.open)});
+});
+[].forEach.call(document.querySelectorAll('dialog.sheet'),function(d){
+ d.querySelector('.sclose').addEventListener('click',function(){d.close()});
+ d.addEventListener('close',function(){
+  root.style.overflow='';if(cur===d)cur=null;
+  if(location.hash==='#'+d.id.slice(6))history.replaceState(null,'',location.pathname+location.search);
+  if(last&&last.focus)last.focus();last=null;
+ });
+});
+document.addEventListener('click',function(e){
+ var a=e.target.closest&&e.target.closest('a[href^="#f-"]');
+ if(a&&cur){last=null;root.style.overflow='';cur.close()}
+},true);
+function fromHash(){var id=location.hash.slice(1);if(id&&document.getElementById('sheet-'+id))openSheet(id)}
+window.addEventListener('hashchange',fromHash);fromHash();
 })();
 </script>
 </body>
