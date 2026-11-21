@@ -288,6 +288,30 @@ dialog#viewer::backdrop{background:#fff}
   .sc-win{min-height:4.5rem}
   .sc-win.m{grid-column:2;grid-row:1;margin-bottom:0}.sc-win.p{grid-column:2;grid-row:2}
 }
+
+/* subway car: passengers + gentle ride */
+.sc-stage{position:relative}
+.sc-plat,.fx-in,.fx-out{display:none}
+.fx .sc-plat{display:block;position:relative;height:var(--plat-h,5rem);margin-top:.3rem;transition:opacity 1.4s ease}
+.fx .sc-plat::before{content:"";position:absolute;inset:0 calc(var(--pad)*-1);border-radius:.5rem .5rem 1.4rem 1.4rem;background:linear-gradient(var(--mist),#fff 130%)}
+.fx .sc-plat::after{content:"";position:absolute;top:0;left:calc(var(--pad)*-1);right:calc(var(--pad)*-1);height:.6rem;border-radius:.5rem .5rem 0 0;background:radial-gradient(circle,var(--ink) 0 1.5px,transparent 2px) 0 50%/12px 100% repeat-x,var(--silver)}
+.fx .fx-in{display:block;position:absolute;inset:0;z-index:3;pointer-events:none}
+.fx .fx-out{display:block;position:absolute;top:0;bottom:0;z-index:4;pointer-events:none;overflow:hidden}
+.fx .sc-win .pp{display:none}
+.fx-p{position:absolute;left:0;top:0;pointer-events:none;will-change:transform}
+.fx-p svg{display:block;overflow:visible}
+.fx-p .hl{fill:#fff;stroke:#fff;stroke-width:6.6;stroke-linecap:round;stroke-linejoin:round}
+.fx-p .ik{fill:#fff;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fx-p .n{fill:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-.36rem)}}
+@keyframes spinup{to{transform:rotate(360deg)}}
+@keyframes ties{to{background-position:0 0,-1.4rem 100%}}
+.sc.go .sc-shell,.sc.go .sc-under,.sc.go .sc-truck{animation:bob 4.6s cubic-bezier(.37,0,.63,1) .2s infinite}
+.sc.go .sc-w{animation:spinup 2.6s cubic-bezier(.5,0,.75,.5) both,spin 1.3s linear 2.6s infinite}
+.sc.go .sc-track{background:linear-gradient(var(--ink),var(--ink)) 0 0/100% .22rem no-repeat,repeating-linear-gradient(90deg,var(--silver) 0 .5rem,transparent .5rem 1.4rem) 0 100%/1.4rem .28rem repeat-x;animation:ties 1.6s linear infinite}
+.sc.go ~ .sc-plat{opacity:0}
+@media(prefers-reduced-motion:reduce){.sc.go *{animation:none!important}}
+@media print{.sc-plat,.fx-in,.fx-out{display:none!important}}
 footer.f.wide{max-width:92rem;margin-inline:auto}
 
 /* practice */
@@ -441,6 +465,7 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 <li style="--c:#00843D"><span class="bul g" aria-hidden="true">G</span><a href="practice.html" data-k="green" data-n="Practice"><span class="name">Practice</span><span class="what">Dogen on truth, discernment and authenticity</span></a></li>
 </ul>
 <section class="hello" aria-labelledby="hello-h">
+  <div class="sc-stage">
   <div class="sc">
     <div class="sc-truck a" aria-hidden="true"><span class="sc-w"></span><span class="sc-w"></span></div>
     <div class="sc-truck b" aria-hidden="true"><span class="sc-w"></span><span class="sc-w"></span></div>
@@ -454,24 +479,28 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
         <div class="sc-door a" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
         <div class="sc-win m" aria-hidden="true"><svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
 <path d="M120 0V120"/>
-<circle cx="70" cy="34" r="11"/><path d="M59 33C60 21 80 20 81 33"/>
+<g class="pp"><circle cx="70" cy="34" r="11"/><path d="M59 33C60 21 80 20 81 33"/>
 <path d="M44 120C44 82 54 63 70 59C86 63 96 82 96 120"/><path d="M88 72C101 80 113 70 120 56"/><circle cx="120" cy="55" r="3"/>
 <circle cx="175" cy="40" r="11"/><path d="M164 38C164 22 186 22 186 38Z"/>
-<path d="M149 120C149 88 159 68 175 64C191 68 201 88 201 120"/><path d="M160 70L196 112"/>
+<path d="M149 120C149 88 159 68 175 64C191 68 201 88 201 120"/><path d="M160 70L196 112"/></g>
 </svg></div>
         <div class="sc-win p" aria-hidden="true"><svg viewBox="0 0 240 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
-<circle cx="80" cy="52" r="11"/><path d="M69 50C70 38 90 38 91 50"/>
+<path d="M200 0V16"/><circle cx="200" cy="22" r="6"/>
+<g class="pp"><circle cx="80" cy="52" r="11"/><path d="M69 50C70 38 90 38 91 50"/>
 <path d="M52 120C52 90 62 72 80 68C98 72 108 90 108 120"/>
 <path d="M60 94L86 86"/><path d="M100 94L90 86"/><path d="M72 80L86 86L100 80V98L86 104L72 98Z"/>
-<path d="M200 0V16"/><circle cx="200" cy="22" r="6"/>
 <circle cx="168" cy="46" r="11"/><circle cx="163" cy="46" r="3"/><circle cx="173" cy="46" r="3"/><path d="M166 46H170"/>
-<path d="M142 120C142 88 152 70 168 66C184 70 194 88 194 120"/><path d="M186 76C198 66 202 46 200 28"/>
+<path d="M142 120C142 88 152 70 168 66C184 70 194 88 194 120"/><path d="M186 76C198 66 202 46 200 28"/></g>
 </svg></div>
         <div class="sc-door b" aria-hidden="true"><span class="lf"></span><span class="lf"></span></div>
       </div>
+      <div class="fx-in" aria-hidden="true"></div>
     </div>
     <div class="sc-under" aria-hidden="true"></div>
     <div class="sc-track" aria-hidden="true"></div>
+  </div>
+  <div class="sc-plat" aria-hidden="true"></div>
+  <div class="fx-out" aria-hidden="true"></div>
   </div>
 </section>
 </main>
@@ -636,9 +665,9 @@ window.addEventListener('scroll',req,{passive:true});window.addEventListener('re
 var map=document.querySelector('.map');
 if(map&&!reduce){[].forEach.call(map.querySelectorAll('path.route'),function(p){p.setAttribute('pathLength','1')});map.classList.add('go')}
 
-/* subway car doors open on arrival */
+/* subway car: riders get off, new riders board, then the train glides */
 var car=document.querySelector('.sc');
-if(car){
+function plainCar(){
   if(reduce||!('IntersectionObserver' in window)){car.classList.add('open')}
   else{
     new IntersectionObserver(function(es){es.forEach(function(en){
@@ -646,6 +675,201 @@ if(car){
       else car.classList.remove('open');
     })},{threshold:.4}).observe(car);
   }
+}
+function ride(){
+var NS='http://www.w3.org/2000/svg',st=car.parentNode,sh=car.querySelector('.sc-shell'),LI=st.querySelector('.fx-in'),LO=st.querySelector('.fx-out'),PL=st.querySelector('.sc-plat');
+var WN=[car.querySelector('.sc-win.m'),car.querySelector('.sc-win.p')],DR=[car.querySelector('.sc-door.a'),car.querySelector('.sc-door.b')];
+var M,S=1,SL=[],P=[],sched=[],riders=[],free=[],T=0,run=false,vis=false,raf=0,last=0,WALK=85;
+var ACC=[COL.orange,COL.red,COL.blue,COL.green];
+function rnd(a,b){return a+Math.random()*(b-a)}
+function pick(a){return a[Math.random()*a.length|0]}
+function f2(n){return Math.round(n*10)/10}
+function after(t,fn){sched.push({t:T+t,fn:fn})}
+function sv(tag,at,par){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);if(par)par.appendChild(e);return e}
+function rel(e,r){var x=0,y=0,n=e;while(n&&n!==r){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent;if(n&&n!==r){x+=n.clientLeft;y+=n.clientTop}}return{x:x,y:y}}
+function box(e){var o=rel(e,st);return{x:o.x+e.clientLeft,y:o.y+e.clientTop,w:e.clientWidth,h:e.clientHeight,r:Math.max(0,(parseFloat(getComputedStyle(e).borderTopLeftRadius)||0)-e.clientLeft)}}
+function rr(b){var x=b.x-M.ix,y=b.y-M.iy,w=b.w,h=b.h,r=Math.min(b.r,w/2,h/2);
+  return'M'+(x+r)+' '+y+'H'+(x+w-r)+'A'+r+' '+r+' 0 0 1 '+(x+w)+' '+(y+r)+'V'+(y+h-r)+'A'+r+' '+r+' 0 0 1 '+(x+w-r)+' '+(y+h)+'H'+(x+r)+'A'+r+' '+r+' 0 0 1 '+x+' '+(y+h-r)+'V'+(y+r)+'A'+r+' '+r+' 0 0 1 '+(x+r)+' '+y+'Z'}
+
+function layout(){
+  var w=WN.map(box),d=DR.map(box),Sw=Math.min(w[0].w/240,w[0].h/120),o=rel(sh,st),r;
+  S=Math.max(.5,Sw*.92);
+  st.style.setProperty('--plat-h',Math.round(Math.max(56,131*S*.6))+'px');
+  r=st.getBoundingClientRect();
+  M={w:st.offsetWidth,Sw:Sw,win:w,door:d,ix:o.x+sh.clientLeft,iy:o.y+sh.clientTop,fl:d[0].y+d[0].h-1.5,eL:Math.max(0,r.left),pt:PL.offsetTop,ph:PL.offsetHeight};
+  M.F=Math.min(M.fl-(w[1].y+w[1].h),40*Sw);
+  LO.style.left=-M.eL+'px';LO.style.right=-Math.max(0,document.documentElement.clientWidth-r.right)+'px';
+  LI.style.clipPath=LI.style.webkitClipPath='path("'+w.concat(d).map(rr).join('')+'")';
+  M.sz=[st.offsetWidth,st.offsetHeight];
+}
+function slots(){
+  var out=[];
+  WN.forEach(function(_,i){
+    var w=M.win[i],ox=w.x+(w.w-240*M.Sw)/2,y=w.y+w.h+M.F,pole=ox+120*M.Sw,strap=ox+200*M.Sw,sy=w.y+w.h-92*M.Sw;
+    function fx(f){return w.x+f*w.w}
+    var F=i?[[fx(.08)],[fx(.28)],[fx(.5)],[strap,1]]:[[fx(.09)],[pole-40*S,1],[pole+40*S,1],[fx(.91)]];
+    var B=i?[.19,.4,.63,.85]:[.27,.5,.78];
+    F.forEach(function(a){out.push({wi:i,x:a[0],y:y,k:1,r:a[1],tx:i?strap:pole,ty:i?sy:null})});
+    B.forEach(function(f){out.push({wi:i,x:fx(f),y:y-14*S,k:.88})});
+  });
+  return out;
+}
+
+/* people */
+function fig(p,h){
+  var g=sv('g',{'class':h?'hl':'ik'}),R={g:g},c=h?'#fff':p.cl,u,b;
+  R.l=[sv('path',{'class':'n'},g),sv('path',{'class':'n'},g)];
+  u=R.u=sv('g',{},g);b=R.b=sv('g',{},u);
+  if(p.pk)sv('rect',{x:-37,y:-88,width:16,height:32,rx:6,fill:c},b);
+  sv('path',{d:'M-24 -48C-24 -76 -13 -91 0 -96C13 -91 24 -76 24 -48Z'},u);
+  R.a=[sv('path',{'class':'n'},u),sv('path',{'class':'n'},u)];
+  sv('circle',{cy:-120,r:11},u);
+  if(p.hr==1)sv('path',{'class':'n',d:'M-12 -121C-11 -134 11 -134 12 -121'},u);
+  if(p.hr==2)sv('path',{d:'M-12 -122C-12 -138 12 -138 12 -122Z',fill:c},u);
+  if(p.hr==3){sv('path',{'class':'n',d:'M-12 -121C-11 -134 11 -134 12 -121'},u);sv('circle',{cy:-137,r:5.5},u)}
+  R.f=sv('g',{},u);
+  if(!h){sv('circle',{cx:3,cy:-121,r:1.5,fill:'#14171a',stroke:'none'},R.f);sv('circle',{cx:8.5,cy:-121,r:1.5,fill:'#14171a',stroke:'none'},R.f)}
+  return R;
+}
+function mk(x,y,k,ly){
+  var p={x:x,y:y,k:k,ly:ly,z:rnd(.95,1.05),fc:Math.random()<.5?1:-1,ph:rnd(0,6.28),m:0,t:rnd(0,9),br:rnd(0,6.28),q:[],cu:null,o:1,pose:'down',hd:[{x:-20,y:-37},{x:20,y:-37}],hr:Math.random()*4|0,pk:Math.random()<.3,cl:pick(ACC),ff:0};
+  var e=document.createElement('div'),s=document.createElementNS(NS,'svg');
+  e.className='fx-p';
+  e.style.cssText='left:'+-64*S+'px;top:'+-154*S+'px;width:'+128*S+'px;height:'+160*S+'px;transform-origin:'+64*S+'px '+154*S+'px';
+  s.setAttribute('viewBox','-64 -154 128 160');
+  p.H=fig(p,1);p.I=fig(p,0);s.appendChild(p.H.g);s.appendChild(p.I.g);e.appendChild(s);
+  (ly?LO:LI).appendChild(e);p.e=e;P.push(p);put(p);return p;
+}
+function put(p){
+  var ox=p.ly?-M.eL:M.ix,oy=p.ly?0:M.iy;
+  p.e.style.transform='translate3d('+f2(p.x-ox)+'px,'+f2(p.y-oy)+'px,0) scale('+(p.k*p.z).toFixed(3)+')';
+  p.e.style.opacity=p.o;p.e.style.zIndex=Math.round(p.y);
+}
+function kill(p){if(p.e.parentNode)p.e.parentNode.removeChild(p.e);var i=P.indexOf(p);if(i>-1)P.splice(i,1)}
+function sw(p,ly){p.ly=ly;(ly?LO:LI).appendChild(p.e)}
+function go(p,x,y,k,o){var s={x:x,y:y,k:k};if(o)for(var n in o)s[n]=o[n];p.q.push(s)}
+function arm(sx,sy,hx,hy,sd){
+  var dx=hx-sx,dy=hy-sy,d=Math.hypot(dx,dy)||1,L=46;
+  if(d>L*1.3){hx=sx+dx/d*L*1.3;hy=sy+dy/d*L*1.3;dx=hx-sx;dy=hy-sy;d=L*1.3}
+  var h=d>=L?0:Math.sqrt(L*L-d*d)/2,nx=-dy/d,ny=dx/d;
+  if(nx*sd<0){nx=-nx;ny=-ny}
+  return'M'+f2(sx)+' '+f2(sy)+'Q'+f2((sx+hx)/2+nx*h*1.4)+' '+f2((sy+hy)/2+ny*h*1.4)+' '+f2(hx)+' '+f2(hy);
+}
+function upd(p,dt){
+  var d0=dt,mv=0,g=0,c,i,sd,ph,sw_,t,h,m,ls=[],as=[];
+  p.t+=dt;
+  while(g++<6){
+    c=p.cu;
+    if(!c){c=p.cu=p.q.shift();if(!c)break}
+    if(c.fn){p.cu=null;c.fn(p);continue}
+    if(!c.i){c.i=1;c.x0=p.x;c.y0=p.y;c.k0=p.k;c.dx=c.x-p.x;c.dy=c.y-p.y;c.L=Math.hypot(c.dx,c.dy)||1;c.s=0;if(Math.abs(c.dx)>6)p.fc=c.dx>0?1:-1}
+    var rem=c.L-c.s,v=WALK*S*(c.ein?Math.min(1,.3+.7*c.s/c.ein):1)*(c.eout?Math.min(1,.25+.75*rem/c.eout):1),ds=Math.min(rem,v*dt),f;
+    c.s+=ds;f=c.s/c.L;p.x=c.x0+c.dx*f;p.y=c.y0+c.dy*f;p.k=c.k0+(c.k-c.k0)*f;p.ph+=ds/(70*S)*6.283;mv=1;
+    if(c.fi)p.o=Math.min(1,c.s/c.fi);
+    if(c.fo)p.o=Math.min(1,(c.L-c.s)/c.fo);
+    if(c.L-c.s<.01){p.cu=null;dt=0;continue}
+    break;
+  }
+  if(!P.length||P.indexOf(p)<0)return;
+  p.m+=(mv-p.m)*(1-Math.exp(-d0*10));m=p.m;
+  for(i=0;i<2;i++){
+    sd=i?1:-1;ph=p.ph+(i?Math.PI:0);
+    ls[i]='M'+sd*8+' -48L'+f2(sd*8+Math.sin(ph)*15*m)+' '+f2(-Math.max(0,Math.cos(ph))*5*m)+'l'+p.fc*6+' 0';
+    sw_=Math.sin(p.ph+(i?0:Math.PI))*13*m;
+    t={x:sd*20+sw_,y:-37-Math.abs(sw_)*.12};
+    if(m<.3){
+      if(p.pose=='cross')t={x:-sd*10,y:-60};
+      else if(p.pose=='reach'&&sd==p.rs){var q=S*p.k*p.z;t={x:(p.rt.x-p.x)/q,y:p.rt.y==null?-100:(p.rt.y-p.y)/q}}
+    }
+    h=p.hd[i];h.x+=(t.x-h.x)*(1-Math.exp(-d0*9));h.y+=(t.y-h.y)*(1-Math.exp(-d0*9));
+    as[i]=arm(sd*17,-80,h.x,h.y,sd);
+  }
+  var bob='translate(0 '+f2(-Math.abs(Math.sin(p.ph))*2.4*m+(1-m)*Math.sin(p.t*1.5+p.br)*.8)+')';
+  [p.H,p.I].forEach(function(R){
+    R.l[0].setAttribute('d',ls[0]);R.l[1].setAttribute('d',ls[1]);
+    R.a[0].setAttribute('d',as[0]);R.a[1].setAttribute('d',as[1]);
+    R.u.setAttribute('transform',bob);
+    if(p.ff!==p.fc){R.b.setAttribute('transform','scale('+p.fc+' 1)');R.f.setAttribute('transform','scale('+p.fc+' 1)')}
+  });
+  p.ff=p.fc;put(p);
+}
+function settle(p,s){
+  p.pose=s.r?'reach':pick(['down','cross','down']);
+  if(s.r){p.rs=s.tx>p.x?1:-1;p.rt={x:s.tx,y:s.ty}}
+  p.fc=Math.random()<.5?1:-1;
+}
+
+/* choreography */
+function door(i){var d=M.door[i];return d.x+d.w/2}
+function lane(j){return M.pt+M.ph*[.36,.58,.8][j]}
+function leave(p,i,cb){
+  var dx=door(i),n=i?-1:1,ya=lane(Math.random()<.5?0:1),sx=dx+n*(ya-M.fl)*.5,xe=M.w*(i?rnd(.6,.7):rnd(.3,.4));
+  if((xe-sx)*n<60*S)xe=sx+n*90*S;
+  go(p,dx,M.fl,1,{ein:18*S});
+  p.q.push({fn:function(){sw(p,1);cb()}});
+  go(p,sx,ya,1);go(p,xe,ya,1,{fo:110*S});
+  p.q.push({fn:kill});
+}
+function board(i,cb){
+  var c=free.filter(function(k){return SL[k].wi==i});if(!c.length)c=free;
+  var si=pick(c),sl,dx=door(i),n=i?-1:1,ya=lane(Math.random()<.5?1:2),sx=dx+n*(ya-M.fl)*.5,xs=M.w*(i?rnd(.58,.68):rnd(.32,.42)),p;
+  free.splice(free.indexOf(si),1);sl=SL[si];
+  if((xs-sx)*n<110*S)xs=sx+n*130*S;
+  p=mk(xs,ya,1,1);p.o=0;put(p);
+  go(p,sx,ya,1,{fi:70*S});go(p,dx,M.fl,1);
+  p.q.push({fn:function(){sw(p,0)}});
+  go(p,sl.x,sl.y,sl.k,{eout:30*S});
+  p.q.push({fn:function(){settle(p,sl);cb()}});
+}
+function boardAll(){
+  var left=12,k;
+  free=SL.map(function(_,i){return i});
+  for(k=0;k<12;k++)(function(k){after(k*.85+rnd(0,.2),function(){board(k%2,function(){if(--left==0)after(1.2,depart)})})})(k);
+}
+function depart(){
+  car.classList.remove('open');snd.close();
+  after(1.9,function(){car.classList.add('go')});
+}
+function seed(){
+  SL=slots();riders=[];
+  [1,3,4,10,8].forEach(function(i){var s=SL[i],p=mk(s.x,s.y,s.k,0);settle(p,s);riders.push(p)});
+}
+function relayout(){P.slice().forEach(kill);sched=[];T=0;layout();seed()}
+function tick(ts){
+  if(!run)return;
+  raf=requestAnimationFrame(tick);
+  var dt=last?Math.min(.05,(ts-last)/1000):.016,i;last=ts;T+=dt;
+  for(i=0;i<sched.length;){if(sched[i].t<=T){sched.splice(i,1)[0].fn()}else i++}
+  for(i=P.length-1;i>=0;i--)if(P[i])upd(P[i],dt);
+}
+function start(){
+  if(run)return;run=true;relayout();last=0;
+  after(.5,function(){car.classList.add('open');snd.open()});
+  after(1.6,function(){
+    var n=[0,0],left=riders.length;
+    riders.slice().sort(function(a,b){return Math.min(Math.abs(a.x-door(0)),Math.abs(a.x-door(1)))-Math.min(Math.abs(b.x-door(0)),Math.abs(b.x-door(1)))}).forEach(function(p){
+      var i=Math.abs(p.x-door(0))<Math.abs(p.x-door(1))?0:1;
+      after(n[i]++*.9+rnd(0,.3),function(){leave(p,i,function(){if(--left==0)after(.9,boardAll)})});
+    });
+  });
+  raf=requestAnimationFrame(tick);
+}
+function stop(){run=false;cancelAnimationFrame(raf);car.classList.remove('open','go');relayout()}
+
+st.classList.add('fx');relayout();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(!run)relayout()});
+new IntersectionObserver(function(es){es.forEach(function(en){
+  vis=en.isIntersecting;
+  if(en.intersectionRatio>=.4)start();else if(!en.isIntersecting)stop();
+})},{threshold:[0,.4]}).observe(st);
+new ResizeObserver(function(){
+  if(Math.abs(st.offsetWidth-M.sz[0])<2&&Math.abs(st.offsetHeight-M.sz[1])<2)return;
+  if(run){stop();if(vis)start()}else relayout();
+}).observe(st);
+}
+if(car){
+  var okClip=window.CSS&&CSS.supports&&CSS.supports('clip-path','path("M0 0H1V1Z")');
+  if(reduce||!('IntersectionObserver' in window)||!('ResizeObserver' in window)||!okClip)plainCar();else ride();
 }
 
 /* section strip highlight (practice) */
