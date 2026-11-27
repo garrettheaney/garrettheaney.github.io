@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Art – Garrett Heaney (Auto Heaney)</title>
+<title>Art (Brutal Two-Up test) – Garrett Heaney</title>
 <meta name="description" content="Art by Garrett Heaney under the alias Auto Heaney: illustration and drawings.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://garrettheaney.github.io/art.html">
@@ -377,19 +378,18 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 @media print{.top,#menu,#doors,.strip,.nextstop,.rail{display:none!important}}
 
 
-/* ===== ART: RED LINE GALLERY ===== */
-.mason{--gap:clamp(.9rem,1.8vw,1.5rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(15.5rem,100%),1fr));gap:var(--gap);padding:.8rem var(--pad) 0 0}
-.mason .cell{display:flex;flex-direction:column;width:100%;margin:0;padding:.65rem .65rem .85rem;border:1px solid var(--rule);border-radius:1rem;background:#fff;font:inherit;color:inherit;text-align:left;cursor:pointer;transform:none;box-shadow:none;transition:border-color .3s,background .3s}
-.mason .cell:hover,.mason .cell:focus-visible{transform:none;box-shadow:none;border-color:var(--line)}
-.mason .frame{flex:none;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;padding:9%;border-radius:.6rem;background:var(--mist);overflow:hidden}
-.mason .frame img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 1px 1px rgba(20,23,26,.12)) drop-shadow(0 8px 12px rgba(20,23,26,.12));opacity:0;transition:opacity .5s,transform .45s}
-.mason .frame img.in{opacity:1}
-.mason .cell:hover .frame img{transform:scale(1.03)}
-.mason .cap{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;margin:.8rem .3rem 0}
-.mason .ttl{order:-1;flex:1;min-width:0;text-align:left;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
-.mason .num{order:2;flex:none;font-size:.85rem;letter-spacing:.04em;color:var(--mute);filter:none;transition:color .3s}
-.mason .cell:hover .num,.mason .cell:focus-visible .num{color:var(--red)}
-@media(prefers-reduced-motion:reduce){.mason .frame img{transition:none}.mason .cell:hover .frame img{transform:none}}
+/* ===== ART: BRUTAL TWO-UP (test) ===== */
+.mason{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:.8rem var(--pad) 0 0;padding:0;border-top:4px solid var(--ink);border-left:4px solid var(--ink)}
+.mason .cell{position:relative;display:flex;flex-direction:column;margin:0;padding:0;border:0;border-radius:0;transform:none;box-shadow:none;transition:none;cursor:pointer;background:#fff;border-right:4px solid var(--ink);border-bottom:4px solid var(--ink)}
+.mason .cell:focus-visible{outline-offset:-6px}
+.mason .frame{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;padding:4%;border-radius:0;background:var(--mist)}
+.mason .frame img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;opacity:1;filter:none;transition:none}.mason .cell:hover .frame img{transform:none}
+.mason .cap{display:block;margin:0}
+.mason .num{position:absolute;left:0;top:0;padding:.1rem .8rem;background:var(--ink);color:#fff;font-size:clamp(1.6rem,4vw,2.8rem);line-height:1.1;filter:none;transition:none}
+.mason .ttl{display:block;padding:.7rem 1rem;background:var(--red);color:#fff;font-size:clamp(1.1rem,2.2vw,1.7rem);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;text-align:left}
+.mason .cell:hover .ttl,.mason .cell:focus-visible .ttl{background:var(--ink)}
+.mason .cell:hover .num,.mason .cell:focus-visible .num{background:var(--red)}
+@media(max-width:40rem){.mason{grid-template-columns:1fr}}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
 
 /* viewer (opens over the gallery; URL becomes ?piece=slug) */
@@ -719,7 +719,7 @@ if(links.length&&'IntersectionObserver' in window){
     const c = document.createElement('a'); c.href = w.href; c.className = 'cell';
     c.setAttribute('aria-label', 'View ' + (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
     const f = document.createElement('span'); f.className = 'frame';
-    const im = document.createElement('img'); im.src = w.thumb; im.alt = w.alt || w.title || '';
+    const im = document.createElement('img'); im.src = w.src; im.alt = w.alt || w.title || '';
     im.loading = 'lazy'; im.decoding = 'async'; im.draggable = false;
     if (w.w && w.h) { im.width = w.w; im.height = w.h; }
     f.appendChild(im);
