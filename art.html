@@ -379,26 +379,13 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 
 /* ===== ART: RED LINE GALLERY ===== */
 .mason{columns:3 17rem;column-gap:clamp(.7rem,1.6vw,1.2rem);padding:.6rem var(--pad) 0 0}
-.mason .cell{display:flex;width:100%;margin:0 0 clamp(.7rem,1.6vw,1.2rem);break-inside:avoid;font:inherit;color:inherit;text-align:left;cursor:zoom-in;appearance:none}
+.mason .cell{display:flex;width:100%;margin:0 0 clamp(.7rem,1.6vw,1.2rem);break-inside:avoid;font:inherit;color:inherit;text-align:left;cursor:pointer;appearance:none}
 .mason .frame{flex:none;display:block;background:var(--mist)}
 .mason .frame img{width:100%;height:auto;max-height:none;object-fit:cover}
 .mason .cap{margin-top:.7rem}
 .mason .num{font-size:.95rem}
 .mason .ttl{font-size:1rem}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
-#board{position:fixed;inset:0;z-index:800;background:#fff;display:none}
-#board.open{display:block}
-#btitle{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);z-index:2;max-width:calc(100% - 9rem);padding:.55rem 1.1rem;border-radius:2rem;background:#fff;color:var(--ink);border:2px solid var(--ink);font-weight:700;line-height:1.1;text-decoration:none;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#btitle:hover,#btitle:focus-visible{background:var(--ink);color:#fff;outline:none}
-#bimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none;user-select:none}
-.bb{position:absolute;display:grid;place-items:center;width:3.6rem;height:3.6rem;padding:0;border-radius:50%;background:var(--red);color:#fff;border:.32rem solid #fff;box-shadow:0 0 0 3px var(--ink);cursor:pointer}
-.bb:hover,.bb:focus-visible{background:var(--ink);outline:none}
-.bb svg{width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
-.bprev{left:1.2rem;top:50%;margin-top:-1.8rem}
-.bnext{right:1.2rem;top:50%;margin-top:-1.8rem}
-.bclose{right:1.2rem;top:1.2rem;background:var(--ink);width:3rem;height:3rem}
-.bclose:hover,.bclose:focus-visible{background:var(--red)}
-@media(max-width:46rem){.bb{width:2.8rem;height:2.8rem;border-width:.25rem}.bprev,.bnext{margin-top:-1.4rem}.bprev{left:.6rem}.bnext{right:.6rem}.bclose{width:2.5rem;height:2.5rem;right:.6rem;top:.6rem}}
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -444,13 +431,6 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 </main>
 <footer class="f"><span>&copy; Garrett Heaney</span><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></footer>
 <div class="sr" id="live" aria-live="polite"></div>
-<div id="board" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
-  <img id="bimg" alt="" draggable="false">
-  <a id="btitle" href="#" title="Right-click to copy link"></a>
-  <button class="bb bprev" id="bprev" type="button" aria-label="Previous piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></button>
-  <button class="bb bnext" id="bnext" type="button" aria-label="Next piece"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></button>
-  <button class="bb bclose" id="bclose" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
-</div>
 
 <script>
 (function(){
@@ -552,6 +532,7 @@ document.addEventListener('click',function(e){
   var a=e.target.closest&&e.target.closest('a[href]');
   if(!a||a.target==='_blank'||a.hasAttribute('download'))return;
   if(a.origin!==location.origin)return;
+  if(a.hasAttribute('data-plain'))return;
   var same=a.pathname.replace(/index\.html$/,'')===location.pathname.replace(/index\.html$/,'');
   if(same)return;
   if(reduce)return;
@@ -691,19 +672,24 @@ if(links.length&&'IntersectionObserver' in window){
     { file: "39-cubes.jpg", title: "Untitled", alt: "Stacked blue cubes patterned with tiny marks", w: 333, h: 415 },
     { file: "40-bandit-masks.jpg", title: "Bandit Masks", alt: "A bandit mask poster priced at five dollars", w: 500, h: 646 }
   ];
-  works.forEach(function (w) { w.src = 'art/full/' + w.file; w.thumb = 'art/thumb/' + w.file; w.slug = w.file.replace(/\.jpe?g$/i, '').replace(/^\d+-/, ''); w.url = 'https://garrettheaney.github.io/art/' + w.slug + '/'; });
-  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const S = window.GHsnd || { tick: function () {}, open: function () {} };
-  const N = works.length, cells = [], imgs = [];
+  works.forEach(function (w) { w.thumb = 'art/thumb/' + w.file; w.slug = w.file.replace(/\.jpe?g$/i, '').replace(/^\d+-/, ''); w.path = 'art/' + w.slug + '/'; });
+
+  /* old shared links like art.html#pigeon -> the real page */
+  (function () {
+    var h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return;
+    var k = works.findIndex(function (x) { return x.slug === h; });
+    if (k >= 0) location.replace(works[k].path);
+  })();
+
+  const N = works.length, cells = [];
   const pad2 = n => String(n).padStart(2, '0');
-  const mod = (a, b) => ((a % b) + b) % b;
   const $ = id => document.getElementById(id);
-  const touched = function () {};
   $('total').textContent = N;
   const mason = $('mason');
   works.forEach(function (w, i) {
-    const c = document.createElement('a'); c.href = w.url; c.className = 'cell';
-    c.setAttribute('aria-label', 'View ' + (w.title || 'Untitled') + ' full screen, ' + (i + 1) + ' of ' + N);
+    const c = document.createElement('a'); c.href = w.path; c.className = 'cell'; c.setAttribute('data-plain', '');
+    c.setAttribute('aria-label', 'View ' + (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
     const f = document.createElement('span'); f.className = 'frame';
     const im = document.createElement('img'); im.src = w.thumb; im.alt = w.alt || w.title || '';
     im.loading = 'lazy'; im.decoding = 'async'; im.draggable = false;
@@ -713,62 +699,18 @@ if(links.length&&'IntersectionObserver' in window){
     const n = document.createElement('span'); n.className = 'num'; n.textContent = 'R-' + pad2(i + 1);
     const t = document.createElement('span'); t.className = 'ttl'; t.textContent = w.title || 'Untitled';
     cp.appendChild(n); cp.appendChild(t); c.appendChild(f); c.appendChild(cp);
-    c.addEventListener('click', function (e) { if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); openBoard(i); });
-    c.addEventListener('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); openBoard(i); } });
-    mason.appendChild(c); cells.push(c); imgs.push(im);
+    mason.appendChild(c); cells.push(c);
   });
 
-  /* ===== basic full-screen viewer ===== */
-  const board = $('board'), bimg = $('bimg'), live = document.createElement('div');
-  let bOpen = false, bi = 0, prevFocus = null;
-  function show(i) {
-    bi = mod(i, N); const w = works[bi];
-    bimg.alt = w.alt || w.title || ''; bimg.src = w.src;
-    const bt = $('btitle'); bt.textContent = w.title || 'Untitled'; bt.href = w.url;
-    if (bOpen) { try { history.replaceState(null, '', '#' + w.slug); } catch (e) {} }
-    new Image().src = works[mod(bi + 1, N)].src; new Image().src = works[mod(bi - 1, N)].src;
-  }
-  function openBoard(i) {
-    if (bOpen) return;
-    bOpen = true; prevFocus = document.activeElement;
-    board.classList.add('open'); board.setAttribute('aria-hidden', 'false');
-    document.documentElement.style.overflow = 'hidden';
-    show(i); $('bclose').focus(); S.open();
-  }
-  function closeBoard() {
-    if (!bOpen) return;
-    bOpen = false; board.classList.remove('open'); board.setAttribute('aria-hidden', 'true');
-    document.documentElement.style.overflow = ''; bimg.removeAttribute('src');
-    if (works.some(function (x) { return '#' + x.slug === location.hash; })) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
-    cells[bi].scrollIntoView({ block: 'center' }); cells[bi].focus({ preventScroll: true });
-  }
-  $('bprev').addEventListener('click', function () { show(bi - 1); S.tick(); });
-  $('bnext').addEventListener('click', function () { show(bi + 1); S.tick(); });
-  $('bclose').addEventListener('click', closeBoard);
-  $('btitle').addEventListener('click', function (e) { e.preventDefault(); });
-  document.addEventListener('keydown', function (e) {
-    if (!bOpen || e.altKey || e.ctrlKey || e.metaKey) return;
-    if (e.key === 'Escape') { e.preventDefault(); closeBoard(); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); show(bi + 1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); show(bi - 1); }
-    else if (e.key === 'Tab') {
-      const f = [$('bprev'), $('bnext'), $('bclose'), $('btitle')], k = f.indexOf(document.activeElement);
-      e.preventDefault(); f[(k + (e.shiftKey ? 3 : 1)) % 4].focus();
+  /* coming back from a piece: land on the piece you just left */
+  try {
+    var last = sessionStorage.getItem('gh-art-last');
+    sessionStorage.removeItem('gh-art-last');
+    if (last && document.referrer.indexOf(location.origin + '/art/') === 0) {
+      var k = works.findIndex(function (x) { return x.slug === last; });
+      if (k >= 0) { cells[k].scrollIntoView({ block: 'center', behavior: 'instant' }); cells[k].focus({ preventScroll: true }); }
     }
-  });
-  function fromHash() {
-    const h = location.hash.slice(1); if (!h) return;
-    const k = works.findIndex(function (x) { return x.slug === h; });
-    if (k < 0) return;
-    if (bOpen) show(k); else openBoard(k);
-  }
-  window.addEventListener('hashchange', fromHash); fromHash();
-  let sx = null;
-  board.addEventListener('pointerdown', function (e) { if (!e.target.closest('button, a')) sx = e.clientX; });
-  board.addEventListener('pointerup', function (e) {
-    if (sx === null) return; const dx = e.clientX - sx; sx = null;
-    if (Math.abs(dx) > 60) show(bi + (dx < 0 ? 1 : -1));
-  });
+  } catch (e) {}
 })();
 </script>
 </body>
