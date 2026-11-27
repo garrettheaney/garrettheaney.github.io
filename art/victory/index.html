@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Victory – Art by Auto Heaney</title>
+<meta name="description" content="Victory by Auto Heaney (Garrett Heaney). A line drawing of a figure in a white suit with arms raised.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://garrettheaney.github.io/art/victory/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Garrett Heaney">
+<meta property="og:title" content="Victory – Art by Auto Heaney">
+<meta property="og:description" content="Victory by Auto Heaney (Garrett Heaney). A line drawing of a figure in a white suit with arms raised.">
+<meta property="og:url" content="https://garrettheaney.github.io/art/victory/">
+<meta property="og:image" content="https://garrettheaney.github.io/art/full/victory.jpg">
+<meta property="og:image:width" content="1372">
+<meta property="og:image:height" content="1800">
+<meta property="og:image:alt" content="A line drawing of a figure in a white suit with arms raised">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Victory – Art by Auto Heaney">
+<meta name="twitter:description" content="Victory by Auto Heaney (Garrett Heaney). A line drawing of a figure in a white suit with arms raised.">
+<meta name="twitter:image" content="https://garrettheaney.github.io/art/full/victory.jpg">
+<link rel="prefetch" as="image" href="../full/heaney-car.jpg">
+<link rel="prefetch" as="image" href="../full/victory-yellow.jpg">
+<style>:root{--red:#DA291C;--ink:#14171a;--rule:#d9dde0;--sans:"Helvetica Neue",Helvetica,"Nimbus Sans","Liberation Sans",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:#fff;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.board{position:fixed;inset:0;border-top:.5rem solid var(--red);background:#fff}
+#bimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none;user-select:none}
+h1{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);z-index:2;margin:0;max-width:calc(100% - 9rem);padding:.55rem 1.1rem;border-radius:2rem;background:#fff;color:var(--ink);border:2px solid var(--ink);font-size:1rem;font-weight:700;line-height:1.1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:default}
+.bb{position:absolute;display:grid;place-items:center;width:3.6rem;height:3.6rem;padding:0;border-radius:50%;background:var(--red);color:#fff;border:.32rem solid #fff;box-shadow:0 0 0 3px var(--ink);text-decoration:none}
+.bb:hover,.bb:focus-visible{background:var(--ink);outline:none}
+.bb svg{width:1.3rem;height:1.3rem;fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.bprev{left:1.2rem;top:50%;margin-top:-1.8rem}
+.bnext{right:1.2rem;top:50%;margin-top:-1.8rem}
+.bclose{right:1.2rem;top:1.2rem;background:var(--ink);width:3rem;height:3rem}
+.bclose:hover,.bclose:focus-visible{background:var(--red)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media(max-width:46rem){.bb{width:2.8rem;height:2.8rem;border-width:.25rem}.bprev,.bnext{margin-top:-1.4rem}.bprev{left:.6rem}.bnext{right:.6rem}.bclose{width:2.5rem;height:2.5rem;right:.6rem;top:.6rem}}</style>
+</head>
+<body data-slug="victory">
+<main class="board">
+<img id="bimg" src="../full/victory.jpg" alt="A line drawing of a figure in a white suit with arms raised" width="1372" height="1800" draggable="false">
+<h1>Victory</h1>
+<a class="bb bprev" href="../victory-yellow/" rel="prev" aria-label="Previous piece: Victory (Yellow)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></a>
+<a class="bb bnext" href="../heaney-car/" rel="next" aria-label="Next piece: Heaney Car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></a>
+<a class="bb bclose" href="../../art.html" aria-label="Back to gallery"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></a>
+</main>
+<script>(function(){
+var d=document,prev=d.querySelector('.bprev').getAttribute('href'),next=d.querySelector('.bnext').getAttribute('href');
+try{sessionStorage.setItem('gh-art-last',d.body.getAttribute('data-slug'))}catch(e){}
+d.addEventListener('keydown',function(e){
+  if(e.altKey||e.ctrlKey||e.metaKey)return;
+  if(e.key==='ArrowRight')location.href=next;
+  else if(e.key==='ArrowLeft')location.href=prev;
+  else if(e.key==='Escape')location.href=d.querySelector('.bclose').getAttribute('href');
+});
+var sx=null;
+d.addEventListener('pointerdown',function(e){if(!e.target.closest('a'))sx=e.clientX});
+d.addEventListener('pointerup',function(e){
+  if(sx===null)return;var dx=e.clientX-sx;sx=null;
+  if(Math.abs(dx)>60)location.href=dx<0?next:prev;
+});
+})();</script>
+</body>
+</html>
