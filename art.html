@@ -378,13 +378,18 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 
 
 /* ===== ART: RED LINE GALLERY ===== */
-.mason{columns:3 17rem;column-gap:clamp(.7rem,1.6vw,1.2rem);padding:.6rem var(--pad) 0 0}
-.mason .cell{display:flex;width:100%;margin:0 0 clamp(.7rem,1.6vw,1.2rem);break-inside:avoid;font:inherit;color:inherit;text-align:left;cursor:pointer;appearance:none}
-.mason .frame{flex:none;display:block;background:var(--mist)}
-.mason .frame img{width:100%;height:auto;max-height:none;object-fit:cover}
-.mason .cap{margin-top:.7rem}
-.mason .num{font-size:.95rem}
-.mason .ttl{font-size:1rem}
+.mason{--gap:clamp(.9rem,1.8vw,1.5rem);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(15.5rem,100%),1fr));gap:var(--gap);padding:.8rem var(--pad) 0 0}
+.mason .cell{display:flex;flex-direction:column;width:100%;margin:0;padding:.65rem .65rem .85rem;border:1px solid var(--rule);border-radius:1rem;background:#fff;font:inherit;color:inherit;text-align:left;cursor:pointer;transform:none;box-shadow:none;transition:border-color .3s,background .3s}
+.mason .cell:hover,.mason .cell:focus-visible{transform:none;box-shadow:none;border-color:var(--line)}
+.mason .frame{flex:none;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;padding:9%;border-radius:.6rem;background:var(--mist);overflow:hidden}
+.mason .frame img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 1px 1px rgba(20,23,26,.12)) drop-shadow(0 8px 12px rgba(20,23,26,.12));opacity:0;transition:opacity .5s,transform .45s}
+.mason .frame img.in{opacity:1}
+.mason .cell:hover .frame img{transform:scale(1.03)}
+.mason .cap{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;margin:.8rem .3rem 0}
+.mason .ttl{order:-1;flex:1;min-width:0;text-align:left;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.mason .num{order:2;flex:none;font-size:.85rem;letter-spacing:.04em;color:var(--mute);filter:none;transition:color .3s}
+.mason .cell:hover .num,.mason .cell:focus-visible .num{color:var(--red)}
+@media(prefers-reduced-motion:reduce){.mason .frame img{transition:none}.mason .cell:hover .frame img{transform:none}}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
 </style>
 </head>
@@ -695,6 +700,7 @@ if(links.length&&'IntersectionObserver' in window){
     im.loading = 'lazy'; im.decoding = 'async'; im.draggable = false;
     if (w.w && w.h) { im.width = w.w; im.height = w.h; }
     f.appendChild(im);
+    if (im.complete && im.naturalWidth) im.classList.add('in'); else { im.addEventListener('load', function () { im.classList.add('in'); }); im.addEventListener('error', function () { im.classList.add('in'); }); }
     const cp = document.createElement('span'); cp.className = 'cap';
     const n = document.createElement('span'); n.className = 'num'; n.textContent = 'R-' + pad2(i + 1);
     const t = document.createElement('span'); t.className = 'ttl'; t.textContent = w.title || 'Untitled';
