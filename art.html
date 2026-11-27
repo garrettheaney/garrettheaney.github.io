@@ -393,23 +393,21 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
 
 /* viewer (opens over the gallery; URL becomes ?piece=slug) */
-#board{position:fixed;inset:0;z-index:800;display:none;grid-template-rows:auto minmax(0,1fr) auto;height:100vh;height:100dvh;background:#fff}
+#board{position:fixed;inset:0;z-index:800;display:none;grid-template-rows:auto minmax(0,1fr);height:100vh;height:100dvh;background:var(--mist)}
 #board.open{display:grid}
-.btop{position:relative;display:flex;align-items:center;gap:.9rem;padding:.7rem var(--pad);background:#fff;border-bottom:1px solid var(--rule)}
-.bstripe{position:absolute;left:0;right:0;bottom:-1px;height:5px;background:var(--red)}
-.bcount{font-family:var(--dots);font-size:1.05rem;letter-spacing:.04em;white-space:nowrap}
-.bcount b{color:var(--red);font-weight:400}
-.bpill{appearance:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;height:2.4rem;padding:0 1.1rem;border:2px solid var(--ink);border-radius:2rem;background:#fff;color:var(--ink);font-weight:700;font-size:.95rem;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.btop{position:relative;display:flex;align-items:center;gap:.7rem;padding:.55rem clamp(.7rem,2vw,1.4rem);background:#fff;border-bottom:1px solid var(--rule)}
+.bstripe{position:absolute;left:0;right:0;bottom:-1px;height:4px;background:var(--red)}
+.bid{display:flex;align-items:baseline;gap:.8rem;flex:1;min-width:0}
+.bnum{flex:none;font-family:var(--dots);font-size:.95rem;letter-spacing:.06em;color:var(--red)}
+.btitle{margin:0;min-width:0;font-size:clamp(1.05rem,2vw,1.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bcount{flex:none;font-family:var(--dots);font-size:.95rem;letter-spacing:.04em;white-space:nowrap;color:var(--mute)}
+.bpill{appearance:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;flex:none;height:2.3rem;padding:0 1rem;border:2px solid var(--ink);border-radius:2rem;background:#fff;color:var(--ink);font-weight:700;font-size:.92rem;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.bpill.ic{width:2.3rem;padding:0}
 .bpill:hover,.bpill:focus-visible{background:var(--ink);color:#fff}
 .bpill svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.bstage{position:relative;min-height:0;background:var(--mist);--m:clamp(1rem,3.5vw,3rem)}
-#bimg{position:absolute;left:var(--m);top:var(--m);width:calc(100% - 2*var(--m));height:calc(100% - 2*var(--m));object-fit:contain;display:block;-webkit-user-drag:none;user-select:none;filter:drop-shadow(0 1px 1px rgba(20,23,26,.10)) drop-shadow(0 16px 24px rgba(20,23,26,.16))}
-.bcap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:1rem;padding:.9rem var(--pad);border-top:1px solid var(--rule);background:#fff}
-.bcap .l{justify-self:start}.bcap .r{justify-self:end}
-.bid{text-align:center;min-width:0}
-.bnum{display:block;font-family:var(--dots);font-size:.95rem;letter-spacing:.06em;color:var(--red)}
-.btitle{margin:.1rem 0 0;font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
-@media(max-width:40rem){#board .wordmark{display:none}.bpill .t{display:none}.bpill{padding:0;width:2.4rem;justify-content:center}.bpill.x{width:auto;padding:0 1rem}.bpill.x .t{display:inline}}
+.bstage{position:relative;min-height:0;--m:clamp(.4rem,1vw,.9rem)}
+#bimg{position:absolute;left:var(--m);top:var(--m);width:calc(100% - 2*var(--m));height:calc(100% - 2*var(--m));object-fit:contain;display:block;-webkit-user-drag:none;user-select:none;filter:drop-shadow(0 1px 1px rgba(20,23,26,.10)) drop-shadow(0 10px 18px rgba(20,23,26,.14))}
+@media(max-width:40rem){.bnum,.bcount{display:none}.bpill.x{width:2.3rem;padding:0}.bpill.x .t{display:none}}
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -458,19 +456,14 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 
 <div id="board" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
   <header class="btop">
-    <a class="tlogo" href="./" aria-label="Home"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#14171a"/><path d="M9 11h22v5.2h-8.4V30h-5.2V16.2H9z" fill="#fff"/></svg></a>
-    <a class="wordmark" href="./">Garrett Heaney</a>
-    <span class="grow"></span>
-    <span class="bcount" id="bcount"></span>
     <button class="bpill x" id="bclose" type="button" aria-label="Back to gallery"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><span class="t">All works</span></button>
+    <div class="bid"><span class="bnum" id="bnum"></span><p class="btitle" id="btitle"></p></div>
+    <span class="bcount" id="bcount"></span>
+    <a class="bpill ic" id="bprev" href="#" rel="prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg></a>
+    <a class="bpill ic" id="bnext" href="#" rel="next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></a>
     <span class="bstripe"></span>
   </header>
   <div class="bstage"><img id="bimg" alt="" draggable="false"></div>
-  <footer class="bcap">
-    <a class="bpill l" id="bprev" href="#" rel="prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg><span class="t">Previous</span></a>
-    <div class="bid"><span class="bnum" id="bnum"></span><p class="btitle" id="btitle"></p></div>
-    <a class="bpill r" id="bnext" href="#" rel="next"><span class="t">Next</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></a>
-  </footer>
 </div>
 
 <script>
@@ -748,7 +741,7 @@ if(links.length&&'IntersectionObserver' in window){
     bimg.alt = w.alt || w.title || ''; bimg.src = w.src;
     $('btitle').textContent = w.title || 'Untitled';
     $('bnum').textContent = 'R-' + pad2(bi + 1);
-    $('bcount').innerHTML = '<b>R-' + pad2(bi + 1) + '</b> / ' + N;
+    $('bcount').textContent = (bi + 1) + ' / ' + N;
     $('bprev').href = pw.href; $('bprev').setAttribute('aria-label', 'Previous piece: ' + (pw.title || 'Untitled'));
     $('bnext').href = nw.href; $('bnext').setAttribute('aria-label', 'Next piece: ' + (nw.title || 'Untitled'));
     document.title = (w.title || 'Untitled') + ' \u2013 Art by Auto Heaney';
