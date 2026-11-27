@@ -391,6 +391,25 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 .mason .cell:hover .num,.mason .cell:focus-visible .num{color:var(--red)}
 @media(prefers-reduced-motion:reduce){.mason .frame img{transition:none}.mason .cell:hover .frame img{transform:none}}
 .count{display:inline-block;margin-left:.6rem;font-family:var(--dots);color:var(--line)}
+
+/* viewer (opens over the gallery; URL becomes ?piece=slug) */
+#board{position:fixed;inset:0;z-index:800;display:none;grid-template-rows:auto minmax(0,1fr) auto;height:100vh;height:100dvh;background:#fff}
+#board.open{display:grid}
+.btop{position:relative;display:flex;align-items:center;gap:.9rem;padding:.7rem var(--pad);background:#fff;border-bottom:1px solid var(--rule)}
+.bstripe{position:absolute;left:0;right:0;bottom:-1px;height:5px;background:var(--red)}
+.bcount{font-family:var(--dots);font-size:1.05rem;letter-spacing:.04em;white-space:nowrap}
+.bcount b{color:var(--red);font-weight:400}
+.bpill{appearance:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;height:2.4rem;padding:0 1.1rem;border:2px solid var(--ink);border-radius:2rem;background:#fff;color:var(--ink);font-weight:700;font-size:.95rem;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.bpill:hover,.bpill:focus-visible{background:var(--ink);color:#fff}
+.bpill svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bstage{position:relative;min-height:0;background:var(--mist);--m:clamp(1rem,3.5vw,3rem)}
+#bimg{position:absolute;left:var(--m);top:var(--m);width:calc(100% - 2*var(--m));height:calc(100% - 2*var(--m));object-fit:contain;display:block;-webkit-user-drag:none;user-select:none;filter:drop-shadow(0 1px 1px rgba(20,23,26,.10)) drop-shadow(0 16px 24px rgba(20,23,26,.16))}
+.bcap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:1rem;padding:.9rem var(--pad);border-top:1px solid var(--rule);background:#fff}
+.bcap .l{justify-self:start}.bcap .r{justify-self:end}
+.bid{text-align:center;min-width:0}
+.bnum{display:block;font-family:var(--dots);font-size:.95rem;letter-spacing:.06em;color:var(--red)}
+.btitle{margin:.1rem 0 0;font-size:clamp(1.15rem,2.4vw,1.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+@media(max-width:40rem){#board .wordmark{display:none}.bpill .t{display:none}.bpill{padding:0;width:2.4rem;justify-content:center}.bpill.x{width:auto;padding:0 1rem}.bpill.x .t{display:inline}}
 </style>
 </head>
 <body class="p-art" data-name="Art" data-line-name="Red Line" data-next="Music">
@@ -436,6 +455,23 @@ details.f[open] .body{animation:openb .5s cubic-bezier(.2,.6,.3,1) both}
 </main>
 <footer class="f"><span>&copy; Garrett Heaney</span><a href="mailto:garrettheaney@gmail.com">garrettheaney@gmail.com</a></footer>
 <div class="sr" id="live" aria-live="polite"></div>
+
+<div id="board" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
+  <header class="btop">
+    <a class="tlogo" href="./" aria-label="Home"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#14171a"/><path d="M9 11h22v5.2h-8.4V30h-5.2V16.2H9z" fill="#fff"/></svg></a>
+    <a class="wordmark" href="./">Garrett Heaney</a>
+    <span class="grow"></span>
+    <span class="bcount" id="bcount"></span>
+    <button class="bpill x" id="bclose" type="button" aria-label="Back to gallery"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><span class="t">All works</span></button>
+    <span class="bstripe"></span>
+  </header>
+  <div class="bstage"><img id="bimg" alt="" draggable="false"></div>
+  <footer class="bcap">
+    <a class="bpill l" id="bprev" href="#" rel="prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg><span class="t">Previous</span></a>
+    <div class="bid"><span class="bnum" id="bnum"></span><p class="btitle" id="btitle"></p></div>
+    <a class="bpill r" id="bnext" href="#" rel="next"><span class="t">Next</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg></a>
+  </footer>
+</div>
 
 <script>
 (function(){
@@ -677,23 +713,17 @@ if(links.length&&'IntersectionObserver' in window){
     { file: "39-cubes.jpg", title: "Untitled", alt: "Stacked blue cubes patterned with tiny marks", w: 333, h: 415 },
     { file: "40-bandit-masks.jpg", title: "Bandit Masks", alt: "A bandit mask poster priced at five dollars", w: 500, h: 646 }
   ];
-  works.forEach(function (w) { w.thumb = 'art/thumb/' + w.file; w.slug = w.file.replace(/\.jpe?g$/i, '').replace(/^\d+-/, ''); w.path = 'art/' + w.slug + '/'; });
-
-  /* old shared links like art.html#pigeon -> the real page */
-  (function () {
-    var h = decodeURIComponent(location.hash.slice(1));
-    if (!h) return;
-    var k = works.findIndex(function (x) { return x.slug === h; });
-    if (k >= 0) location.replace(works[k].path);
-  })();
-
+  works.forEach(function (w) { w.thumb = 'art/thumb/' + w.file; w.src = 'art/full/' + w.file; w.slug = w.file.replace(/\.jpe?g$/i, '').replace(/^\d+-/, ''); w.href = '?piece=' + w.slug; });
   const N = works.length, cells = [];
   const pad2 = n => String(n).padStart(2, '0');
+  const mod = (a, b) => ((a % b) + b) % b;
   const $ = id => document.getElementById(id);
+  const S = window.GHsnd || { tick: function () {}, open: function () {} };
+  const baseTitle = document.title;
   $('total').textContent = N;
   const mason = $('mason');
   works.forEach(function (w, i) {
-    const c = document.createElement('a'); c.href = w.path; c.className = 'cell'; c.setAttribute('data-plain', '');
+    const c = document.createElement('a'); c.href = w.href; c.className = 'cell';
     c.setAttribute('aria-label', 'View ' + (w.title || 'Untitled') + ', ' + (i + 1) + ' of ' + N);
     const f = document.createElement('span'); f.className = 'frame';
     const im = document.createElement('img'); im.src = w.thumb; im.alt = w.alt || w.title || '';
@@ -705,18 +735,82 @@ if(links.length&&'IntersectionObserver' in window){
     const n = document.createElement('span'); n.className = 'num'; n.textContent = 'R-' + pad2(i + 1);
     const t = document.createElement('span'); t.className = 'ttl'; t.textContent = w.title || 'Untitled';
     cp.appendChild(n); cp.appendChild(t); c.appendChild(f); c.appendChild(cp);
+    c.addEventListener('click', function (e) { if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); openBoard(i, true); });
     mason.appendChild(c); cells.push(c);
   });
 
-  /* coming back from a piece: land on the piece you just left */
-  try {
-    var last = sessionStorage.getItem('gh-art-last');
-    sessionStorage.removeItem('gh-art-last');
-    if (last && document.referrer.indexOf(location.origin + '/art/') === 0) {
-      var k = works.findIndex(function (x) { return x.slug === last; });
-      if (k >= 0) { cells[k].scrollIntoView({ block: 'center', behavior: 'instant' }); cells[k].focus({ preventScroll: true }); }
+  /* ===== viewer: the address bar always shows art.html?piece=slug ===== */
+  const board = $('board'), bimg = $('bimg');
+  let bOpen = false, bi = 0, pushed = false, prevFocus = null;
+  const urlFor = w => location.pathname + '?piece=' + w.slug;
+  function show(i) {
+    bi = mod(i, N); const w = works[bi], pw = works[mod(bi - 1, N)], nw = works[mod(bi + 1, N)];
+    bimg.alt = w.alt || w.title || ''; bimg.src = w.src;
+    $('btitle').textContent = w.title || 'Untitled';
+    $('bnum').textContent = 'R-' + pad2(bi + 1);
+    $('bcount').innerHTML = '<b>R-' + pad2(bi + 1) + '</b> / ' + N;
+    $('bprev').href = pw.href; $('bprev').setAttribute('aria-label', 'Previous piece: ' + (pw.title || 'Untitled'));
+    $('bnext').href = nw.href; $('bnext').setAttribute('aria-label', 'Next piece: ' + (nw.title || 'Untitled'));
+    document.title = (w.title || 'Untitled') + ' \u2013 Art by Auto Heaney';
+    new Image().src = nw.src; new Image().src = pw.src;
+  }
+  function go(i) { show(i); try { history.replaceState(null, '', urlFor(works[bi])); } catch (e) {} S.tick(); }
+  function openBoard(i, push) {
+    if (bOpen) { show(i); return; }
+    bOpen = true; prevFocus = document.activeElement;
+    board.classList.add('open'); board.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    show(i);
+    if (push) { try { history.pushState(null, '', urlFor(works[bi])); pushed = true; } catch (e) { pushed = false; } }
+    $('bclose').focus(); S.open();
+  }
+  function closeBoard(fromPop) {
+    if (!bOpen) return;
+    bOpen = false; board.classList.remove('open'); board.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = ''; bimg.removeAttribute('src');
+    document.title = baseTitle;
+    if (!fromPop) {
+      if (pushed) { history.back(); }
+      else { try { history.replaceState(null, '', location.pathname); } catch (e) {} }
     }
-  } catch (e) {}
+    pushed = false;
+    cells[bi].scrollIntoView({ block: 'center', behavior: 'instant' }); cells[bi].focus({ preventScroll: true });
+  }
+  $('bprev').addEventListener('click', function (e) { if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); go(bi - 1); });
+  $('bnext').addEventListener('click', function (e) { if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; e.preventDefault(); go(bi + 1); });
+  $('bclose').addEventListener('click', function () { closeBoard(false); });
+  document.addEventListener('keydown', function (e) {
+    if (!bOpen || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeBoard(false); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); go(bi + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); go(bi - 1); }
+    else if (e.key === 'Tab') {
+      const f = [].slice.call(board.querySelectorAll('a[href],button')), k = f.indexOf(document.activeElement);
+      e.preventDefault(); f[(k + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus();
+    }
+  });
+  let sx = null;
+  board.addEventListener('pointerdown', function (e) { if (!e.target.closest('button, a')) sx = e.clientX; });
+  board.addEventListener('pointerup', function (e) {
+    if (sx === null) return; const dx = e.clientX - sx; sx = null;
+    if (Math.abs(dx) > 60) go(bi + (dx < 0 ? 1 : -1));
+  });
+
+  /* back / forward buttons, and links like art.html?piece=pigeon */
+  function slugNow() { try { return new URLSearchParams(location.search).get('piece'); } catch (e) { return null; } }
+  function sync() {
+    const s = slugNow(), k = s ? works.findIndex(function (x) { return x.slug === s; }) : -1;
+    if (k >= 0) { if (bOpen) show(k); else { openBoard(k, false); pushed = true; } }
+    else if (bOpen) closeBoard(true);
+  }
+  window.addEventListener('popstate', sync);
+
+  /* old shared links (art.html#pigeon) become the clean version */
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (!slugNow() && h && works.some(function (x) { return x.slug === h; })) {
+    try { history.replaceState(null, '', location.pathname + '?piece=' + h); } catch (e) {}
+  }
+  if (slugNow()) { const k = works.findIndex(function (x) { return x.slug === slugNow(); }); if (k >= 0) { openBoard(k, false); pushed = false; } }
 })();
 </script>
 </body>
